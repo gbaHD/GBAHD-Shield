@@ -15,6 +15,7 @@ Has the following features.
 - Some footprints on shield need to be made bigger for it to be easier to hand solder (X1, U3).
 - Breakout board needs to be made bigger.
 - FFC connectors need more space.
+- Grabs power from the 3.3V rail of the Edge board, this might be an issue.
 
 ## Contributing
 If you wish to contribute, see something wrong or want to add a feature please make a pull request or leave an issue!
