@@ -1,5 +1,4 @@
 # gbaHD Shield
-----
 This is a shield for the [gbaHD project](https://github.com/zwenergy/gbaHD).  
 
 Has the following features.
@@ -8,6 +7,7 @@ Has the following features.
 - Has a FFC 16 pin connector for controls with a wire up board.
 - Has a ATMEGA328p for using a SNES connector to control the GBA.
 - Has a analog switch for GBA power controls.
+- **Both FFC cables need to be opposite side**
 
 ### Currently untested.
 
