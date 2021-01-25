@@ -20,6 +20,33 @@ int btn_pins[12] = {
 	GB_B, 99, GB_SELECT, GB_START, GB_UP, GB_DOWN, GB_LEFT, GB_RIGHT, GB_A, 99, GB_L, GB_R
 };
 
+void doGBColor(){
+	// Do a quick B-Left for GB B&W color.
+	digitalWrite(GB_A, 1);
+	digitalWrite(GB_UP, 1);
+	digitalWrite(GB_DOWN, 1);
+	digitalWrite(GB_RIGHT, 1);
+	digitalWrite(GB_L, 1);
+	digitalWrite(GB_START, 1);
+	digitalWrite(GB_SELECT, 1);
+
+	digitalWrite(GB_B, 0);
+	delay(500);
+	digitalWrite(GB_LEFT, 0);
+	delay(2000);
+	digitalWrite(GB_B, 1);
+	digitalWrite(GB_LEFT, 1);
+}
+
+void reboot(){
+	shuttingOff = true;
+	digitalWrite(GB_PWR, 0);
+	delay(100);
+	digitalWrite(GB_PWR, 1);
+	shuttingOff = false;
+	doGBColor();
+}
+
 void setup() {
 	pinMode(SNES_CLOCK, OUTPUT);
 	digitalWrite(SNES_CLOCK, 1);
@@ -39,6 +66,8 @@ void setup() {
 
 	pinMode(GB_PWR, OUTPUT);
 	digitalWrite(GB_PWR, 1);
+	delay(500);
+	doGBColor();
 }
 
 
@@ -76,11 +105,7 @@ void loop() {
 	}
 
 	if(!((data >> 5) & 1) && !((data >> 2) & 1) && !shuttingOff && data<4095){
-		shuttingOff = true;
-		digitalWrite(GB_PWR, 0);
-		delay(100);
-		digitalWrite(GB_PWR, 1);
-		shuttingOff = false;
+		reboot();
 	}
 	delay(10);
 }
