@@ -27,7 +27,7 @@ If you wish to contribute, see something wrong or want to add a feature please m
 |U1			|SNES 7Pin						|
 |U2			|ATMEGA328p-AU					|
 |U3			|WAS3157B						|
-|X1			|8MHz Crystal SMD-3225		|
+|X1			|16MHz Crystal SMD-3225		|
 |SW1			|XKB-TS-1185EC-C-D-B			|
 |J1			|JUSHUO_AFC07-S40FCC-00		|
 |J2			|PinHeader 2x08 2.54mm		|
