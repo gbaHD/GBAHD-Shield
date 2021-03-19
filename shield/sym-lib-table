@@ -1,0 +1,3 @@
+(sym_lib_table
+  (lib (name GBAHD_Shield-rescue)(type Legacy)(uri ${KIPRJMOD}/GBAHD_Shield-rescue.lib)(options "")(descr ""))
+)
