@@ -47,6 +47,8 @@ Use the following image to wire up an arduino to the board to program it.
 ![PCB](./static/icsp.png "Wireup")  
 After wiring the board, follow this tutorial to flash the bootloader and the sketch to the board.  
 [ICSP Tutorial](https://www.arduino.cc/en/pmwiki.php?n=Tutorial/ArduinoISP)
+As target board choose "Arduino Pro or Pro Mini -  ATmega328p - 8MHz"
+Fuses should be Low: 0xE2 High: 0xD9 Ext: 0xFF
 
 ## Choosing the supply voltage
 As the OGBA and the GBA-SP use different battery technologies, they also require different voltages.
