@@ -3,14 +3,13 @@ This is a shield for the [gbaHD project](https://github.com/zwenergy/gbaHD).
 
 Has the following features.
 - Connects via female headers to the Edge board (shield)
-- Has a FFC 40 pin connector for OGBA LCD connector.
-- Has a FFC 32 pin connector for OGBA LCD connector.
-- Has a FFC 34 pin connector for GBA-SP LCD connector.
-- Has a FFC 16 pin connector for controls with a wire up board.
+- Has a FFC 40 pin connector for OGBA LCD connector. Need Type-B Cable (Reverse) vvv=======^^^
+- Has a FFC 32 pin connector for OGBA LCD connector. Need Type-B Cable (Reverse) vvv=======^^^
+- Has a FFC 34 pin connector for GBA-SP LCD connector. Need Type-A Cable (Direct) vvv=======vvv
+- Has a FFC 16 pin connector for controls with a wire up board. Need Type-B Cable (Reverse) vvv=======^^^
 - Has a ATMEGA328p for using a SNES connector to control the GBA.
 - Has a high-side switch for GBA power controls (IGR).
 - Has eight (8) testpoints on the bottom side for future features.
-- **Both FFC cables need to be opposite side**
 
 ## Issues
 - no known issues
@@ -57,3 +56,4 @@ Therefore we have a solder-jumper (JP1) which we use to choose between 3.3V and 
 ## Images
 ![PCB](./static/pcb.png "PCB")
 ![Breakout](./static/breakout.png "Breakout PCB")
+![Breakout_SP](./static/breakout_SP.png "Breakout PCB for GBA SP")
