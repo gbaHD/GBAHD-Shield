@@ -2,6 +2,7 @@
 #define FW_H_
 
 #include <SPI.h>
+#define GBA_OUTPUT_EN  9
 #define SNES_LATCH  10
 #define DEBUG 1
 
@@ -21,10 +22,8 @@
 #define CTRL_IN_START  (0x100)
 #define CTRL_IN_SELECT (0x200)
 
-#define COMBO_IGR             (CTRL_IN_A | CTRL_IN_B | CTRL_IN_START | CTRL_IN_SELECT)
-#define COMBO_PIXEL_GRID_ON   (CTRL_IN_UP | CTRL_IN_START | CTRL_IN_SELECT)
-#define COMBO_PIXEL_GRID_OFF  (CTRL_IN_DOWN | CTRL_IN_START | CTRL_IN_SELECT)
-
+#define COMBO_IGR                 (CTRL_IN_A | CTRL_IN_B | CTRL_IN_START | CTRL_IN_SELECT)
+#define COMBO_PIXEL_GRID_TOGGLE   (CTRL_IN_UP | CTRL_IN_START | CTRL_IN_SELECT)
 
 #define GBA_OUT_A      (0x010)
 #define GBA_OUT_B      (0x020)

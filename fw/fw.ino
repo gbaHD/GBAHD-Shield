@@ -46,7 +46,7 @@
  *                        Testpin T5 |11 D5 B4 18| serial data in (read controller data)
  *                        Testpin T6 |12 D6 B3 17| serial data out (write GBA controls)
  *                        Testpin T7 |13 D7 B2 16| serial chip select/latch
- *                        Testpin T8 |14 B0 B1 15| NC
+ *                        Testpin T8 |14 B0 B1 15| GBA_OUTPUT_EN
  *                                   `-----------'
  *                                   
  ********************************************************************************
@@ -69,28 +69,33 @@ uint16_t controller_data = 0xFF;
 /* === PROTOTYPES =========================================================== */
 uint16_t map_data(uint16_t ctrl_data);
 void process_combination(uint16_t ctrl_data);
-void reboot();
+void reboot(void);
+void toggle_grid(void);
 
 /* === IMPLEMENTATION ======================================================= */
-void setup() { 
+void setup(void) { 
   SPI.setDataMode(SPI_MODE2);
   SPI.setClockDivider(SPI_CLOCK_DIV32);
   SPI.begin();
   pinMode(SNES_LATCH, OUTPUT);
   digitalWrite(SNES_LATCH, HIGH);
-
+  pinMode(GBA_OUTPUT_EN, OUTPUT);
+  digitalWrite(GBA_OUTPUT_EN, HIGH);
   pinMode(GBA_POWER_SEL, OUTPUT);
+  digitalWrite(GBA_POWER_SEL, HIGH);
   pinMode(PIXEL_GRID, OUTPUT); 
   
 #if DEBUG == 1  
   Serial.begin(9600);
 #endif
-
+  delay(1000);
   reboot();
   }
 
-void loop() {
+void loop(void) {
   //The SNES Controller needs a falling edge on LATCH to know when to capture the data
+  if(((controller_data) & 0x3FF) == 0) digitalWrite(GBA_OUTPUT_EN, HIGH);
+  else digitalWrite(GBA_OUTPUT_EN, LOW);
   digitalWrite(SNES_LATCH, LOW);
   uint16_t in = (~SPI.transfer16((~controller_data) & 0x3FF))>>4;
   digitalWrite(SNES_LATCH, HIGH);
@@ -131,18 +136,24 @@ void process_combination(uint16_t ctrl_data){
       case COMBO_IGR: {
         reboot(); 
       }break;
-      case COMBO_PIXEL_GRID_ON: {
-        digitalWrite(PIXEL_GRID, HIGH);
-      }break;
-      case COMBO_PIXEL_GRID_OFF: {
-        digitalWrite(PIXEL_GRID, LOW);
+      case COMBO_PIXEL_GRID_TOGGLE: {
+        toggle_grid();
       }break;
     }
   }
 }
 
-void reboot(){
-  digitalWrite(GBA_POWER_SEL, 1);
-  delay(100);
-  digitalWrite(GBA_POWER_SEL, 0);
+void reboot(void){
+  digitalWrite(GBA_OUTPUT_EN, HIGH);
+  delay(250);
+  digitalWrite(GBA_POWER_SEL, HIGH);
+  delay(500);
+  digitalWrite(GBA_POWER_SEL, LOW);
+  delay(250);
+}
+
+void toggle_grid(void){
+  digitalWrite(PIXEL_GRID, HIGH);
+  delay(10);
+  digitalWrite(PIXEL_GRID, LOW);
 }
