@@ -654,8 +654,6 @@ Wire Wire Line
 	6100 5600 6050 5600
 Wire Wire Line
 	6050 5500 6100 5500
-Wire Wire Line
-	6100 5400 6050 5400
 Text GLabel 1300 5900 0    50   Input ~ 0
 ICSP_MOSI
 Wire Wire Line
@@ -1525,10 +1523,10 @@ F 3 "~" H 10450 5250 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Connector_Generic:Conn_01x01 BAT+1
+L Connector_Generic:Conn_01x01 VCC1
 U 1 1 608BF56E
 P 5550 7350
-F 0 "BAT+1" H 5750 7350 50  0000 C CNN
+F 0 "VCC1" H 5750 7350 50  0000 C CNN
 F 1 "Conn_01x01" H 5400 7250 50  0001 C CNN
 F 2 "TestPoint:TestPoint_Pad_1.5x1.5mm" H 5550 7350 50  0001 C CNN
 F 3 "~" H 5550 7350 50  0001 C CNN
@@ -1536,10 +1534,10 @@ F 3 "~" H 5550 7350 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Connector_Generic:Conn_01x01 BAT-1
+L Connector_Generic:Conn_01x01 GND1
 U 1 1 608C02ED
 P 5550 7500
-F 0 "BAT-1" H 5750 7500 50  0000 C CNN
+F 0 "GND1" H 5750 7500 50  0000 C CNN
 F 1 "Conn_01x01" H 5400 7350 50  0001 C CNN
 F 2 "TestPoint:TestPoint_Pad_1.5x1.5mm" H 5550 7500 50  0001 C CNN
 F 3 "~" H 5550 7500 50  0001 C CNN
@@ -1785,4 +1783,30 @@ Text GLabel 1300 6500 0    50   Input ~ 0
 ~GBA_BUTTONS_EN~
 Text GLabel 3350 6500 0    50   Input ~ 0
 ~GBA_BUTTONS_EN~
+$Comp
+L Connector_Generic:Conn_01x01 J12
+U 1 1 607B0906
+P 5400 5700
+F 0 "J12" H 5550 5700 50  0000 C CNN
+F 1 "Conn_01x01" H 5700 5700 50  0001 C CNN
+F 2 "TestPoint:TestPoint_Pad_1.5x1.5mm" H 5400 5700 50  0001 C CNN
+F 3 "~" H 5400 5700 50  0001 C CNN
+	1    5400 5700
+	0    1    1    0   
+$EndComp
+$Comp
+L power:VCC #PWR0116
+U 1 1 607E47FD
+P 5400 5450
+F 0 "#PWR0116" H 5400 5300 50  0001 C CNN
+F 1 "VCC" H 5415 5623 50  0000 C CNN
+F 2 "" H 5400 5450 50  0001 C CNN
+F 3 "" H 5400 5450 50  0001 C CNN
+	1    5400 5450
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5400 5450 5400 5500
+Wire Wire Line
+	6100 5400 6050 5400
 $EndSCHEMATC

@@ -43,19 +43,25 @@ If you wish to contribute, see something wrong or want to add a feature please m
 ## Programming the MCU
 In order to program the MCU, you need an arduino to use as ISP.  
 Use the following image to wire up an arduino to the board to program it.  
-**I would also recomend not programming it while seated in the FPGA board.**
+**I would also recomend programming while it's not seated in the FPGA board.**
 ![PCB](./static/icsp.png "Wireup")  
-After wiring the board, follow this tutorial to flash the bootloader and the sketch to the board.  
+After wiring the board, follow this tutorial to flash the the sketch to the board.  
 [ICSP Tutorial](https://www.arduino.cc/en/pmwiki.php?n=Tutorial/ArduinoISP)
 As target board choose "Arduino Pro or Pro Mini -  ATmega328p - 8MHz"
-Fuses should be Low: 0xE2 High: 0xD9 Ext: 0xFF
+Fuses must be Low: 0xE2 High: 0xD9 Ext: 0xFF
 
 ## Choosing the supply voltage
 As the OGBA and the GBA-SP use different battery technologies, they also require different voltages.
 The OGBA needs approx. 3V (2x 1.5V from AA cells - 3.3 will also fit) and the GBA-SP needs 3.3 - 4.2V (Lithium battery - 4.0V will also fit).
 Therefore we have a solder-jumper (JP1) which we use to choose between 3.3V and 4.0V.
+Plus we need to solder-bridge J1 and J12 due to the fact, that the power-managing chip on the SP mainboard blocks the power on if it detected a
+low battery recently. This will replace the power switch which therefore needs to be in **off position always!** 
+**v20210406 Owners** If you want to use this board with an SP simply connect the J1 to the VCC-line on the shield and on the mainboard connect EX1 with BAT+ and VCC with VCC.
+![Workaround](.static/workaround.png "Workaround")
+
 
 ## Images
 ![PCB](./static/pcb.png "PCB")
 ![Breakout](./static/breakout.png "Breakout PCB")
 ![Breakout_SP](./static/breakout_SP.png "Breakout PCB for GBA SP")
+![Hookup_SP](./static/hookup.png "Hookup")
