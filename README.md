@@ -57,7 +57,7 @@ Therefore we have a solder-jumper (JP1) which we use to choose between 3.3V and 
 Plus we need to solder-bridge J1 and J12 due to the fact, that the power-managing chip on the SP mainboard blocks the power on if it detected a
 low battery recently. This will replace the power switch which therefore needs to be in **off position always!** 
 **v20210406 Owners** If you want to use this board with an SP simply connect the J1 to the VCC-line on the shield and on the mainboard connect EX1 with BAT+ and VCC with VCC.
-![Workaround](.static/workaround.png "Workaround")
+![Workaround](./static/workaround.png "Workaround")
 
 
 ## Images
