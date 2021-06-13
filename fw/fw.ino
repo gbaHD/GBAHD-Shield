@@ -58,6 +58,8 @@
  *******************************************************************************/
 /* === INCLUDES ============================================================= */
 #include "fw.h"
+#include <EEPROM.h>
+
 
 /* === TYPES ================================================================ */
 
@@ -65,6 +67,7 @@
 
 /* === GLOBALS ============================================================== */
 uint16_t controller_data = 0xFF;
+int shader_status = 0;
 
 /* === PROTOTYPES =========================================================== */
 uint16_t map_data(uint16_t ctrl_data);
@@ -84,6 +87,12 @@ void setup(void) {
   pinMode(GBA_POWER_SEL, OUTPUT);
   digitalWrite(GBA_POWER_SEL, HIGH);
   pinMode(PIXEL_GRID, OUTPUT); 
+  shader_status = EEPROM.read(0);
+  for (int i=0; i == shader_status; i++){
+	  digitalWrite(PIXEL_GRID, HIGH);
+	  delay(10);
+	  digitalWrite(PIXEL_GRID, LOW);
+  }
   
 #if DEBUG == 1  
   Serial.begin(9600);
@@ -99,9 +108,13 @@ void loop(void) {
   digitalWrite(SNES_LATCH, LOW);
   uint16_t in = (~SPI.transfer16((~controller_data) & 0x3FF))>>4;
   digitalWrite(SNES_LATCH, HIGH);
-  
+
+  if(in != 0x0FFF && in != 0x0){
   controller_data = map_data(in);
   process_combination(in);         //process combination based on SNES input to also have X and Y for use
+  }else {
+    controller_data = 0;
+  }
   
 #if DEBUG == 1
   Serial.print(" Got value: ");
@@ -153,6 +166,9 @@ void reboot(void){
 }
 
 void toggle_grid(void){
+  if(shader_status == 4) shader_status = 0;
+  else shader_status = shader_status + 1;
+  EEPROM.write(0, shader_status);
   digitalWrite(PIXEL_GRID, HIGH);
   delay(10);
   digitalWrite(PIXEL_GRID, LOW);
