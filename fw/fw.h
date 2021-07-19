@@ -7,7 +7,7 @@
 #define DEBUG 0
 
 #define GBA_POWER_SEL 2
-#define PIXEL_GRID 3
+#define COMM_PIN 3
 
 #define CTRL_IN_A      (0x008)
 #define CTRL_IN_B      (0x800)
@@ -22,8 +22,8 @@
 #define CTRL_IN_START  (0x100)
 #define CTRL_IN_SELECT (0x200)
 
-#define COMBO_IGR                 (CTRL_IN_R | CTRL_IN_L | CTRL_IN_START | CTRL_IN_SELECT)
-#define COMBO_PIXEL_GRID_TOGGLE   (CTRL_IN_UP | CTRL_IN_R | CTRL_IN_L | CTRL_IN_SELECT)
+#define COMBO_IGR      (CTRL_IN_R | CTRL_IN_L | CTRL_IN_START | CTRL_IN_SELECT)
+#define ENABLE_OSD     (CTRL_IN_UP | CTRL_IN_R | CTRL_IN_L | CTRL_IN_SELECT)
 
 #define GBA_OUT_A      (0x010)
 #define GBA_OUT_B      (0x020)
