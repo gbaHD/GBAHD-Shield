@@ -26,7 +26,7 @@ If you wish to contribute, see something wrong or want to add a feature please m
 |R2			|1K 0805						|
 |R3, R4		|10K 0805						|
 |U1			|LM1117F-adj SOT89-3			|
-|U2,U3		|74HC595 TSSOP16				|
+|U2,U3		|74HC595 SOIC-16				|
 |U4			|SNES 7Pin						|
 |U5			|ATMEGA328p-AU					|
 |SW1		|XKB-TS-1185EC-C-D-B			|
