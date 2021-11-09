@@ -1,0 +1,3 @@
+[submodule "twiboot"]
+	path = twiboot
+	url = git@github.com:ManCloud/twiboot.git
