@@ -1,0 +1,46 @@
+<!doctype html>
+<head>
+<title>gbaHD Firmware Update</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="/pico.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=0.8">
+<body>
+<main class="container">
+    <nav>
+        <image src='/Logo.png'/>
+        <ul>
+            <li><a href='/' role='button'>Software Update</a></li>
+            <li><a href='#' role='button' class='outline'>WiFi Config</a></li>
+        </ul>
+    </nav>
+    <h1>WiFi Config</h1>
+    <div class='grid'>
+        <div>
+            <div>
+                <b>Mode:</b>
+                <p>{{MODE}}</p>
+            </div>
+            <div>
+                <b>SSID:</b>
+                <p>{{SSID}}</p>
+            </div>
+            <div>
+                <b>IP:</b>
+                <p>{{IP}}</p>
+            </div>
+        </div>
+        <div>
+            <form action='/wifi/config' method='POST'>
+                <label>SSID:</label>
+                <select name='ssid' id='ssid'>
+                    {{SSIDS}}
+                </select>
+                <label>Password:</label>
+                <input type='password' id='password' name='password'>
+                <input class='button' type='submit' value='Connect'>
+            </form>
+            <a href='/wifi/reset' role='button' class='secondary' style='width: 100%;'>Reset WiFi</a>
+        </div>
+    </div>
+</main>
+</body>
