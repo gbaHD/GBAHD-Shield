@@ -6,7 +6,7 @@
 	path = esp32/external/Bluepad32
 	url = https://gitlab.com/ricardoquesada/bluepad32.git
 [submodule "arduino"]
-	path = esp32/components/arduino-esp32
+	path = esp32/components/arduino
 	url = https://github.com/espressif/arduino-esp32.git
 [submodule "Bluepad32"]
 	path = esp32/external/bluepad32
