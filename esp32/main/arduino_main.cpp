@@ -22,6 +22,13 @@ limitations under the License.
 #include <Arduino.h>
 #include <Bluepad32.h>
 
+#include "web_handler.h"
+#include "bitstream_handler.h"
+#include <SPIFFS.h>
+
+
+// initialize the spartan_edge_esp32_boot library
+bitstream_handler _bitstream_handler;
 
 GamepadPtr myGamepad;
 
@@ -48,6 +55,22 @@ void setup() {
 
   // Setup the Bluepad32 callbacks
   BP32.setup(&onConnectedGamepad, &onDisconnectedGamepad);
+
+  // Start SPIFFS
+  SPIFFS.begin(true);
+
+  // initialization 
+  _bitstream_handler.init();
+
+  // Handle SD Card SPIFFS Update and Hotboot detection
+  _bitstream_handler.handle_sd_card();
+
+  // Handle pushing the bitstream to Spartan
+  _bitstream_handler.handle_bit_stream();
+
+
+  web_handler_init();
+
 }
 
 // Arduino loop function. Runs in CPU 1
@@ -128,6 +151,7 @@ void loop() {
     // For all the available functions.
   }
 
+  web_handler_run();
   delay(150);
 }
 

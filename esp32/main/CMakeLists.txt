@@ -6,10 +6,13 @@ set(COMPONENT_ADD_INCLUDEDIRS ".")
 
 set(COMPONENT_SRCS "arduino_main.cpp"
                    "main.c"
+                   "web_handler.cpp"
+                   "bitstream_handler.cpp"
                    )
 
 set(COMPONENT_REQUIRES "bluepad32"
                        "bluepad32_arduino"
+                       "arduino"
                        )
 
 register_component()

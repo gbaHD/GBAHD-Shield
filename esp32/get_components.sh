@@ -3,8 +3,8 @@
 BLUEPAD32=$(pwd)/external/bluepad32
 
 # Install Bluepad32 to components
-[ ! -d ${BLUEPAD32}/src/components/bluepad32 ] && cp -r ${BLUEPAD32}/src/components/bluepad32 ./components
-[ ! -d ${BLUEPAD32}/src/components/bluepad32_arduino ] && cp -r ${BLUEPAD32}/src/components/bluepad32_arduino ./components
+[ ! -d components/bluepad32 ] && cp -r ${BLUEPAD32}/src/components/bluepad32 ./components
+[ ! -d components/bluepad32_arduino ] && cp -r ${BLUEPAD32}/src/components/bluepad32_arduino ./components
 
 # Setup BTStack
 IDF_PATH=$(pwd)
