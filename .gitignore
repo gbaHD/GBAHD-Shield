@@ -1,2 +1,3 @@
 .vscode
 bom
+esp32/build/**
