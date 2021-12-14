@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-BLUEPAD32=$(pwd)/external/Bluepad32
+BLUEPAD32=$(pwd)/external/bluepad32
 
 # Install Bluepad32 to components
 [ ! -d ${BLUEPAD32}/src/components/bluepad32 ] && cp -r ${BLUEPAD32}/src/components/bluepad32 ./components

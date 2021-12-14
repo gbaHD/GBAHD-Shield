@@ -7,5 +7,5 @@ PROJECT_NAME := gbaHD
 
 include $(IDF_PATH)/make/project.mk
 
-prepare:
-	./get_components.sh
+#dependencies:
+#	./get_components.sh
