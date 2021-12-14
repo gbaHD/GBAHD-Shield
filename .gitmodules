@@ -1,6 +1,3 @@
 [submodule "arduino"]
 	path = esp32/components/arduino
 	url = https://github.com/espressif/arduino-esp32.git
-[submodule "Bluepad32"]
-	path = esp32/external/bluepad32
-	url = https://gitlab.com/ricardoquesada/bluepad32.git
