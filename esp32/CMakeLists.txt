@@ -10,4 +10,4 @@ include($ENV{IDF_PATH}/tools/cmake/project.cmake)
 
 project(gbaHD)
 
-spiffs_create_partition_image(spiffs ${CMAKE_CURRENT_SOURCE_DIR}/data )
+spiffs_create_partition_image(spiffs ${CMAKE_CURRENT_SOURCE_DIR}/data FLASH_IN_PROJECT)
