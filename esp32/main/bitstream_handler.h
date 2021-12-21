@@ -11,8 +11,7 @@
 #define BITSTREAM_SD_HOTBOOT_FILE       "/hotboot.bit"
 #define BITSTREAM_SPIFFS_PATH           "/bitstream.bit"
 
-
-class bitstream_handler {
+class Bitstream_Handler_Class {
   public:
     void init(void);	
     void handle_sd_card(void);
@@ -21,4 +20,7 @@ class bitstream_handler {
   private: 
     bool pushBitStream(File& file);
 };
+
+extern Bitstream_Handler_Class Bitstream_Handler;
+
 #endif

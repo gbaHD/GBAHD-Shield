@@ -15,6 +15,7 @@
 /* Chunk size for reading/writing bitstream */
 #define CHUNK_SIZE 256
 
+Bitstream_Handler_Class Bitstream_Handler;
 
 extern "C" {
   //external header for the pulling up of SD pins at the initialization
@@ -22,7 +23,7 @@ extern "C" {
 }
 
 // initialization
-void bitstream_handler::init(void) {
+void Bitstream_Handler_Class::init(void) {
 
 #ifndef DEV_BOARD
   // initialize serial communication at 115200 bits per second: 
@@ -56,7 +57,7 @@ void bitstream_handler::init(void) {
 
 
 // load bitstream from file to FPGA
-bool bitstream_handler::pushBitStream(File& file) {
+bool Bitstream_Handler_Class::pushBitStream(File& file) {
   char byte_buff[1024];  
 
   Serial.print("Loading FPGA ... ");
@@ -88,7 +89,7 @@ bool bitstream_handler::pushBitStream(File& file) {
   }
 }
 
-void bitstream_handler::handle_sd_card(void)
+void Bitstream_Handler_Class::handle_sd_card(void)
 {
   #ifndef DEV_BOARD
     if (SD_MMC.begin())
@@ -137,7 +138,7 @@ void bitstream_handler::handle_sd_card(void)
   #endif
 }
 
-void bitstream_handler::handle_bit_stream(void)
+void Bitstream_Handler_Class::handle_bit_stream(void)
 {
   #ifndef DEV_BOARD
     if ((SD_MMC.begin() && (SD_MMC.exists(BITSTREAM_SD_HOTBOOT_FILE))))
@@ -156,3 +157,4 @@ void bitstream_handler::handle_bit_stream(void)
     }
     #endif
 }
+

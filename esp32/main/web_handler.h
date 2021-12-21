@@ -1,9 +1,24 @@
 #ifndef _WEB_HANDLER_H
 #define _WEB_HANDLER_H
 
+#include <WebServer.h>
+#include <FS.h>
 
-void web_handler_init(void);
-void web_handler_run(void);
 
+
+class Web_Handler_Class {
+    public:
+        void init(void);
+        void run(void);
+    private:
+        static void _handle404();
+        static void _sendOK();
+        static void handleBitStreamUpload();
+        static void handleESPUpload();
+        static File fsUpload;
+        static WebServer _server;
+};
+
+extern Web_Handler_Class Web_Handler;
 
 #endif
