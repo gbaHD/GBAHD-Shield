@@ -6,4 +6,4 @@
 	url = https://gitlab.com/ricardoquesada/esp-idf-arduino-bluepad32-template.git
 [submodule "firmware/twiboot"]
 	path = firmware/twiboot
-	url = https://github.com/orempel/twiboot.git
+	url = https://github.com/ManCloud/twiboot.git
