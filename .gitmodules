@@ -1,6 +1,9 @@
-[submodule "arduino"]
-	path = esp32/components/arduino
+[submodule "firmware/esp32/components/arduino"]
+	path = firmware/esp32/components/arduino
 	url = https://github.com/espressif/arduino-esp32.git
-[submodule "esp32/external/bluepad32_template"]
-	path = esp32/external/bluepad32_template
+[submodule "firmware/esp32/external/bluepad32_template"]
+	path = firmware/esp32/external/bluepad32_template
 	url = https://gitlab.com/ricardoquesada/esp-idf-arduino-bluepad32-template.git
+[submodule "firmware/twiboot"]
+	path = firmware/twiboot
+	url = https://github.com/orempel/twiboot.git
