@@ -3,3 +3,8 @@ bom
 esp32/build/**
 esp32/components/bluepad32*
 esp32/components/btstack*
+*.gbr*
+*.drl
+*.zip
+*bak
+*.hex

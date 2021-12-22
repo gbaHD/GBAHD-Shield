@@ -1,1037 +1,799 @@
-237344387407680
-Button_Switch_SMD
-Nidec_Copal_SH-7010A
-4-bit rotary coded switch, J-hook, https://www.nidec-copal-electronics.com/e/catalog/switch/sh-7000.pdf
-rotary switch bcd
-0
-6
-5
-Button_Switch_SMD
-Nidec_Copal_SH-7010B
-4-bit rotary coded switch, gull wing, https://www.nidec-copal-electronics.com/e/catalog/switch/sh-7000.pdf
-rotary switch bcd
-0
-6
-5
-Button_Switch_SMD
-Nidec_Copal_SH-7040B
-4-bit rotary coded switch, gull wing, Gray code, https://www.nidec-copal-electronics.com/e/catalog/switch/sh-7000.pdf
-rotary switch bcd
-0
-5
-5
-Button_Switch_SMD
-Panasonic_EVQPUJ_EVQPUA
-http://industrial.panasonic.com/cdbs/www-data/pdf/ATV0000/ATV0000CE5.pdf
-SMD SMT SPST EVQPUJ EVQPUA
-0
-4
-2
-Button_Switch_SMD
-Panasonic_EVQPUK_EVQPUB
-http://industrial.panasonic.com/cdbs/www-data/pdf/ATV0000/ATV0000CE5.pdf
-SMD SMT SPST EVQPUK EVQPUB
-0
-4
-2
-Button_Switch_SMD
-Panasonic_EVQPUL_EVQPUC
-http://industrial.panasonic.com/cdbs/www-data/pdf/ATV0000/ATV0000CE5.pdf
-SMD SMT SPST EVQPUL EVQPUC
-0
-4
-2
-Button_Switch_SMD
-Panasonic_EVQPUM_EVQPUD
-http://industrial.panasonic.com/cdbs/www-data/pdf/ATV0000/ATV0000CE5.pdf
-SMD SMT SPST EVQPUM EVQPUD
-0
-4
-2
-Button_Switch_SMD
-SW_DIP_SPSTx01_Slide_6.7x4.1mm_W6.73mm_P2.54mm_LowProfile_JPin
-SMD 1x-dip-switch SPST , Slide, row spacing 6.73 mm (264 mils), body size 6.7x4.1mm (see e.g. https://www.ctscorp.com/wp-content/uploads/219.pdf), SMD, LowProfile, JPin
-SMD DIP Switch SPST Slide 6.73mm 264mil SMD LowProfile JPin
+184660660814145
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_MKDS-1,5-2-5.08_1x02_P5.08mm_Horizontal
+Terminal Block Phoenix MKDS-1,5-2-5.08, 2 pins, pitch 5.08mm, size 10.2x9.8mm^2, drill diamater 1.3mm, pad diameter 2.6mm, see http://www.farnell.com/datasheets/100425.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix MKDS-1,5-2-5.08 pitch 5.08mm size 10.2x9.8mm^2 drill 1.3mm pad 2.6mm
 0
 2
 2
-Button_Switch_SMD
-SW_DIP_SPSTx01_Slide_6.7x4.1mm_W8.61mm_P2.54mm_LowProfile
-SMD 1x-dip-switch SPST , Slide, row spacing 8.61 mm (338 mils), body size 6.7x4.1mm (see e.g. https://www.ctscorp.com/wp-content/uploads/219.pdf), SMD, LowProfile
-SMD DIP Switch SPST Slide 8.61mm 338mil SMD LowProfile
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_MKDS-1,5-2_1x02_P5.00mm_Horizontal
+Terminal Block Phoenix MKDS-1,5-2, 2 pins, pitch 5mm, size 10x9.8mm^2, drill diamater 1.3mm, pad diameter 2.6mm, see http://www.farnell.com/datasheets/100425.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix MKDS-1,5-2 pitch 5mm size 10x9.8mm^2 drill 1.3mm pad 2.6mm
 0
 2
 2
-Button_Switch_SMD
-SW_DIP_SPSTx01_Slide_9.78x4.72mm_W8.61mm_P2.54mm
-SMD 1x-dip-switch SPST , Slide, row spacing 8.61 mm (338 mils), body size 9.78x4.72mm (see e.g. https://www.ctscorp.com/wp-content/uploads/204.pdf), SMD
-SMD DIP Switch SPST Slide 8.61mm 338mil SMD
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_MKDS-1,5-3-5.08_1x03_P5.08mm_Horizontal
+Terminal Block Phoenix MKDS-1,5-3-5.08, 3 pins, pitch 5.08mm, size 15.2x9.8mm^2, drill diamater 1.3mm, pad diameter 2.6mm, see http://www.farnell.com/datasheets/100425.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix MKDS-1,5-3-5.08 pitch 5.08mm size 15.2x9.8mm^2 drill 1.3mm pad 2.6mm
 0
-2
-2
-Button_Switch_SMD
-SW_DIP_SPSTx01_Slide_Copal_CHS-01A_W5.08mm_P1.27mm_JPin
-SMD 1x-dip-switch SPST Copal_CHS-01A, Slide, row spacing 5.08 mm (200 mils), body size  (see http://www.nidec-copal-electronics.com/e/catalog/switch/chs.pdf), SMD, JPin
-SMD DIP Switch SPST Slide 5.08mm 200mil SMD JPin
-0
-2
-2
-Button_Switch_SMD
-SW_DIP_SPSTx01_Slide_Copal_CHS-01B_W7.62mm_P1.27mm
-SMD 1x-dip-switch SPST Copal_CHS-01B, Slide, row spacing 7.62 mm (300 mils), body size  (see http://www.nidec-copal-electronics.com/e/catalog/switch/chs.pdf), SMD
-SMD DIP Switch SPST Slide 7.62mm 300mil SMD
-0
-2
-2
-Button_Switch_SMD
-SW_DIP_SPSTx01_Slide_Copal_CVS-01xB_W5.9mm_P1mm
-SMD 1x-dip-switch SPST Copal_CVS-01xB, Slide, row spacing 5.9 mm (232 mils), body size  (see http://www.nidec-copal-electronics.com/e/catalog/switch/cvs.pdf)
-SMD DIP Switch SPST Slide 5.9mm 232mil
-0
-6
 3
-Button_Switch_SMD
-SW_DIP_SPSTx01_Slide_Omron_A6S-110x_W8.9mm_P2.54mm
-SMD 1x-dip-switch SPST Omron_A6S-110x, Slide, row spacing 8.9 mm (350 mils), body size  (see http://omronfs.omron.com/en_US/ecb/products/pdf/en-a6s.pdf)
-SMD DIP Switch SPST Slide 8.9mm 350mil
+3
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_MKDS-1,5-3_1x03_P5.00mm_Horizontal
+Terminal Block Phoenix MKDS-1,5-3, 3 pins, pitch 5mm, size 15x9.8mm^2, drill diamater 1.3mm, pad diameter 2.6mm, see http://www.farnell.com/datasheets/100425.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix MKDS-1,5-3 pitch 5mm size 15x9.8mm^2 drill 1.3mm pad 2.6mm
 0
-2
-2
-Button_Switch_SMD
-SW_DIP_SPSTx02_Slide_6.7x6.64mm_W6.73mm_P2.54mm_LowProfile_JPin
-SMD 2x-dip-switch SPST , Slide, row spacing 6.73 mm (264 mils), body size 6.7x6.64mm (see e.g. https://www.ctscorp.com/wp-content/uploads/219.pdf), SMD, LowProfile, JPin
-SMD DIP Switch SPST Slide 6.73mm 264mil SMD LowProfile JPin
-0
-4
-4
-Button_Switch_SMD
-SW_DIP_SPSTx02_Slide_6.7x6.64mm_W8.61mm_P2.54mm_LowProfile
-SMD 2x-dip-switch SPST , Slide, row spacing 8.61 mm (338 mils), body size 6.7x6.64mm (see e.g. https://www.ctscorp.com/wp-content/uploads/219.pdf), SMD, LowProfile
-SMD DIP Switch SPST Slide 8.61mm 338mil SMD LowProfile
+3
+3
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_MKDS-1,5-4-5.08_1x04_P5.08mm_Horizontal
+Terminal Block Phoenix MKDS-1,5-4-5.08, 4 pins, pitch 5.08mm, size 20.3x9.8mm^2, drill diamater 1.3mm, pad diameter 2.6mm, see http://www.farnell.com/datasheets/100425.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix MKDS-1,5-4-5.08 pitch 5.08mm size 20.3x9.8mm^2 drill 1.3mm pad 2.6mm
 0
 4
 4
-Button_Switch_SMD
-SW_DIP_SPSTx02_Slide_9.78x7.26mm_W8.61mm_P2.54mm
-SMD 2x-dip-switch SPST , Slide, row spacing 8.61 mm (338 mils), body size 9.78x7.26mm (see e.g. https://www.ctscorp.com/wp-content/uploads/204.pdf), SMD
-SMD DIP Switch SPST Slide 8.61mm 338mil SMD
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_MKDS-1,5-4_1x04_P5.00mm_Horizontal
+Terminal Block Phoenix MKDS-1,5-4, 4 pins, pitch 5mm, size 20x9.8mm^2, drill diamater 1.3mm, pad diameter 2.6mm, see http://www.farnell.com/datasheets/100425.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix MKDS-1,5-4 pitch 5mm size 20x9.8mm^2 drill 1.3mm pad 2.6mm
 0
 4
 4
-Button_Switch_SMD
-SW_DIP_SPSTx02_Slide_Copal_CHS-02A_W5.08mm_P1.27mm_JPin
-SMD 2x-dip-switch SPST Copal_CHS-02A, Slide, row spacing 5.08 mm (200 mils), body size  (see http://www.nidec-copal-electronics.com/e/catalog/switch/chs.pdf), SMD, JPin
-SMD DIP Switch SPST Slide 5.08mm 200mil SMD JPin
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_MKDS-1,5-5-5.08_1x05_P5.08mm_Horizontal
+Terminal Block Phoenix MKDS-1,5-5-5.08, 5 pins, pitch 5.08mm, size 25.4x9.8mm^2, drill diamater 1.3mm, pad diameter 2.6mm, see http://www.farnell.com/datasheets/100425.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix MKDS-1,5-5-5.08 pitch 5.08mm size 25.4x9.8mm^2 drill 1.3mm pad 2.6mm
 0
-4
-4
-Button_Switch_SMD
-SW_DIP_SPSTx02_Slide_Copal_CHS-02B_W7.62mm_P1.27mm
-SMD 2x-dip-switch SPST Copal_CHS-02B, Slide, row spacing 7.62 mm (300 mils), body size  (see http://www.nidec-copal-electronics.com/e/catalog/switch/chs.pdf), SMD
-SMD DIP Switch SPST Slide 7.62mm 300mil SMD
-0
-4
-4
-Button_Switch_SMD
-SW_DIP_SPSTx02_Slide_Copal_CVS-02xB_W5.9mm_P1mm
-SMD 2x-dip-switch SPST Copal_CVS-02xB, Slide, row spacing 5.9 mm (232 mils), body size  (see http://www.nidec-copal-electronics.com/e/catalog/switch/cvs.pdf)
-SMD DIP Switch SPST Slide 5.9mm 232mil
-0
-8
 5
-Button_Switch_SMD
-SW_DIP_SPSTx02_Slide_KingTek_DSHP02TJ_W5.25mm_P1.27mm_JPin
-SMD 2x-dip-switch SPST KingTek_DSHP02TJ, Slide, row spacing 5.25 mm (206 mils), body size  (see http://www.kingtek.net.cn/pic/201601201446313350.pdf), JPin
-SMD DIP Switch SPST Slide 5.25mm 206mil JPin
+5
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_MKDS-1,5-5_1x05_P5.00mm_Horizontal
+Terminal Block Phoenix MKDS-1,5-5, 5 pins, pitch 5mm, size 25x9.8mm^2, drill diamater 1.3mm, pad diameter 2.6mm, see http://www.farnell.com/datasheets/100425.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix MKDS-1,5-5 pitch 5mm size 25x9.8mm^2 drill 1.3mm pad 2.6mm
 0
-4
-4
-Button_Switch_SMD
-SW_DIP_SPSTx02_Slide_KingTek_DSHP02TS_W7.62mm_P1.27mm
-SMD 2x-dip-switch SPST KingTek_DSHP02TS, Slide, row spacing 7.62 mm (300 mils), body size  (see http://www.kingtek.net.cn/pic/201601201417455112.pdf)
-SMD DIP Switch SPST Slide 7.62mm 300mil
-0
-4
-4
-Button_Switch_SMD
-SW_DIP_SPSTx02_Slide_Omron_A6H-2101_W6.15mm_P1.27mm
-SMD 2x-dip-switch SPST Omron_A6H-2101, Slide, row spacing 6.15 mm (242 mils), body size  (see https://www.omron.com/ecb/products/pdf/en-a6h.pdf)
-SMD DIP Switch SPST Slide 6.15mm 242mil
-0
-4
-4
-Button_Switch_SMD
-SW_DIP_SPSTx02_Slide_Omron_A6S-210x_W8.9mm_P2.54mm
-SMD 2x-dip-switch SPST Omron_A6S-210x, Slide, row spacing 8.9 mm (350 mils), body size  (see http://omronfs.omron.com/en_US/ecb/products/pdf/en-a6s.pdf)
-SMD DIP Switch SPST Slide 8.9mm 350mil
-0
-4
-4
-Button_Switch_SMD
-SW_DIP_SPSTx03_Slide_6.7x9.18mm_W6.73mm_P2.54mm_LowProfile_JPin
-SMD 3x-dip-switch SPST , Slide, row spacing 6.73 mm (264 mils), body size 6.7x9.18mm (see e.g. https://www.ctscorp.com/wp-content/uploads/219.pdf), SMD, LowProfile, JPin
-SMD DIP Switch SPST Slide 6.73mm 264mil SMD LowProfile JPin
+5
+5
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_MKDS-1,5-6-5.08_1x06_P5.08mm_Horizontal
+Terminal Block Phoenix MKDS-1,5-6-5.08, 6 pins, pitch 5.08mm, size 30.5x9.8mm^2, drill diamater 1.3mm, pad diameter 2.6mm, see http://www.farnell.com/datasheets/100425.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix MKDS-1,5-6-5.08 pitch 5.08mm size 30.5x9.8mm^2 drill 1.3mm pad 2.6mm
 0
 6
 6
-Button_Switch_SMD
-SW_DIP_SPSTx03_Slide_6.7x9.18mm_W8.61mm_P2.54mm_LowProfile
-SMD 3x-dip-switch SPST , Slide, row spacing 8.61 mm (338 mils), body size 6.7x9.18mm (see e.g. https://www.ctscorp.com/wp-content/uploads/219.pdf), SMD, LowProfile
-SMD DIP Switch SPST Slide 8.61mm 338mil SMD LowProfile
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_MKDS-1,5-6_1x06_P5.00mm_Horizontal
+Terminal Block Phoenix MKDS-1,5-6, 6 pins, pitch 5mm, size 30x9.8mm^2, drill diamater 1.3mm, pad diameter 2.6mm, see http://www.farnell.com/datasheets/100425.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix MKDS-1,5-6 pitch 5mm size 30x9.8mm^2 drill 1.3mm pad 2.6mm
 0
 6
 6
-Button_Switch_SMD
-SW_DIP_SPSTx03_Slide_9.78x9.8mm_W8.61mm_P2.54mm
-SMD 3x-dip-switch SPST , Slide, row spacing 8.61 mm (338 mils), body size 9.78x9.8mm (see e.g. https://www.ctscorp.com/wp-content/uploads/204.pdf), SMD
-SMD DIP Switch SPST Slide 8.61mm 338mil SMD
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_MKDS-1,5-7-5.08_1x07_P5.08mm_Horizontal
+Terminal Block Phoenix MKDS-1,5-7-5.08, 7 pins, pitch 5.08mm, size 35.6x9.8mm^2, drill diamater 1.3mm, pad diameter 2.6mm, see http://www.farnell.com/datasheets/100425.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix MKDS-1,5-7-5.08 pitch 5.08mm size 35.6x9.8mm^2 drill 1.3mm pad 2.6mm
 0
-6
-6
-Button_Switch_SMD
-SW_DIP_SPSTx03_Slide_Copal_CVS-03xB_W5.9mm_P1mm
-SMD 3x-dip-switch SPST Copal_CVS-03xB, Slide, row spacing 5.9 mm (232 mils), body size  (see http://www.nidec-copal-electronics.com/e/catalog/switch/cvs.pdf)
-SMD DIP Switch SPST Slide 5.9mm 232mil
-0
-10
 7
-Button_Switch_SMD
-SW_DIP_SPSTx03_Slide_KingTek_DSHP03TJ_W5.25mm_P1.27mm_JPin
-SMD 3x-dip-switch SPST KingTek_DSHP03TJ, Slide, row spacing 5.25 mm (206 mils), body size  (see http://www.kingtek.net.cn/pic/201601201446313350.pdf), JPin
-SMD DIP Switch SPST Slide 5.25mm 206mil JPin
+7
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_MKDS-1,5-7_1x07_P5.00mm_Horizontal
+Terminal Block Phoenix MKDS-1,5-7, 7 pins, pitch 5mm, size 35x9.8mm^2, drill diamater 1.3mm, pad diameter 2.6mm, see http://www.farnell.com/datasheets/100425.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix MKDS-1,5-7 pitch 5mm size 35x9.8mm^2 drill 1.3mm pad 2.6mm
 0
-6
-6
-Button_Switch_SMD
-SW_DIP_SPSTx03_Slide_KingTek_DSHP03TS_W7.62mm_P1.27mm
-SMD 3x-dip-switch SPST KingTek_DSHP03TS, Slide, row spacing 7.62 mm (300 mils), body size  (see http://www.kingtek.net.cn/pic/201601201417455112.pdf)
-SMD DIP Switch SPST Slide 7.62mm 300mil
-0
-6
-6
-Button_Switch_SMD
-SW_DIP_SPSTx03_Slide_Omron_A6S-310x_W8.9mm_P2.54mm
-SMD 3x-dip-switch SPST Omron_A6S-310x, Slide, row spacing 8.9 mm (350 mils), body size  (see http://omronfs.omron.com/en_US/ecb/products/pdf/en-a6s.pdf)
-SMD DIP Switch SPST Slide 8.9mm 350mil
-0
-6
-6
-Button_Switch_SMD
-SW_DIP_SPSTx04_Slide_6.7x11.72mm_W6.73mm_P2.54mm_LowProfile_JPin
-SMD 4x-dip-switch SPST , Slide, row spacing 6.73 mm (264 mils), body size 6.7x11.72mm (see e.g. https://www.ctscorp.com/wp-content/uploads/219.pdf), SMD, LowProfile, JPin
-SMD DIP Switch SPST Slide 6.73mm 264mil SMD LowProfile JPin
+7
+7
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_MKDS-1,5-8-5.08_1x08_P5.08mm_Horizontal
+Terminal Block Phoenix MKDS-1,5-8-5.08, 8 pins, pitch 5.08mm, size 40.6x9.8mm^2, drill diamater 1.3mm, pad diameter 2.6mm, see http://www.farnell.com/datasheets/100425.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix MKDS-1,5-8-5.08 pitch 5.08mm size 40.6x9.8mm^2 drill 1.3mm pad 2.6mm
 0
 8
 8
-Button_Switch_SMD
-SW_DIP_SPSTx04_Slide_6.7x11.72mm_W8.61mm_P2.54mm_LowProfile
-SMD 4x-dip-switch SPST , Slide, row spacing 8.61 mm (338 mils), body size 6.7x11.72mm (see e.g. https://www.ctscorp.com/wp-content/uploads/219.pdf), SMD, LowProfile
-SMD DIP Switch SPST Slide 8.61mm 338mil SMD LowProfile
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_MKDS-1,5-8_1x08_P5.00mm_Horizontal
+Terminal Block Phoenix MKDS-1,5-8, 8 pins, pitch 5mm, size 40x9.8mm^2, drill diamater 1.3mm, pad diameter 2.6mm, see http://www.farnell.com/datasheets/100425.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix MKDS-1,5-8 pitch 5mm size 40x9.8mm^2 drill 1.3mm pad 2.6mm
 0
 8
 8
-Button_Switch_SMD
-SW_DIP_SPSTx04_Slide_9.78x12.34mm_W8.61mm_P2.54mm
-SMD 4x-dip-switch SPST , Slide, row spacing 8.61 mm (338 mils), body size 9.78x12.34mm (see e.g. https://www.ctscorp.com/wp-content/uploads/204.pdf), SMD
-SMD DIP Switch SPST Slide 8.61mm 338mil SMD
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_MKDS-1,5-9-5.08_1x09_P5.08mm_Horizontal
+Terminal Block Phoenix MKDS-1,5-9-5.08, 9 pins, pitch 5.08mm, size 45.7x9.8mm^2, drill diamater 1.3mm, pad diameter 2.6mm, see http://www.farnell.com/datasheets/100425.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix MKDS-1,5-9-5.08 pitch 5.08mm size 45.7x9.8mm^2 drill 1.3mm pad 2.6mm
 0
-8
-8
-Button_Switch_SMD
-SW_DIP_SPSTx04_Slide_Copal_CHS-04A_W5.08mm_P1.27mm_JPin
-SMD 4x-dip-switch SPST Copal_CHS-04A, Slide, row spacing 5.08 mm (200 mils), body size  (see http://www.nidec-copal-electronics.com/e/catalog/switch/chs.pdf), SMD, JPin
-SMD DIP Switch SPST Slide 5.08mm 200mil SMD JPin
-0
-8
-8
-Button_Switch_SMD
-SW_DIP_SPSTx04_Slide_Copal_CHS-04B_W7.62mm_P1.27mm
-SMD 4x-dip-switch SPST Copal_CHS-04B, Slide, row spacing 7.62 mm (300 mils), body size  (see http://www.nidec-copal-electronics.com/e/catalog/switch/chs.pdf), SMD
-SMD DIP Switch SPST Slide 7.62mm 300mil SMD
-0
-8
-8
-Button_Switch_SMD
-SW_DIP_SPSTx04_Slide_Copal_CVS-04xB_W5.9mm_P1mm
-SMD 4x-dip-switch SPST Copal_CVS-04xB, Slide, row spacing 5.9 mm (232 mils), body size  (see http://www.nidec-copal-electronics.com/e/catalog/switch/cvs.pdf)
-SMD DIP Switch SPST Slide 5.9mm 232mil
-0
-12
 9
-Button_Switch_SMD
-SW_DIP_SPSTx04_Slide_KingTek_DSHP04TJ_W5.25mm_P1.27mm_JPin
-SMD 4x-dip-switch SPST KingTek_DSHP04TJ, Slide, row spacing 5.25 mm (206 mils), body size  (see http://www.kingtek.net.cn/pic/201601201446313350.pdf), JPin
-SMD DIP Switch SPST Slide 5.25mm 206mil JPin
+9
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_MKDS-1,5-9_1x09_P5.00mm_Horizontal
+Terminal Block Phoenix MKDS-1,5-9, 9 pins, pitch 5mm, size 45x9.8mm^2, drill diamater 1.3mm, pad diameter 2.6mm, see http://www.farnell.com/datasheets/100425.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix MKDS-1,5-9 pitch 5mm size 45x9.8mm^2 drill 1.3mm pad 2.6mm
 0
-8
-8
-Button_Switch_SMD
-SW_DIP_SPSTx04_Slide_KingTek_DSHP04TS_W7.62mm_P1.27mm
-SMD 4x-dip-switch SPST KingTek_DSHP04TS, Slide, row spacing 7.62 mm (300 mils), body size  (see http://www.kingtek.net.cn/pic/201601201417455112.pdf)
-SMD DIP Switch SPST Slide 7.62mm 300mil
-0
-8
-8
-Button_Switch_SMD
-SW_DIP_SPSTx04_Slide_Omron_A6H-4101_W6.15mm_P1.27mm
-SMD 4x-dip-switch SPST Omron_A6H-4101, Slide, row spacing 6.15 mm (242 mils), body size  (see https://www.omron.com/ecb/products/pdf/en-a6h.pdf)
-SMD DIP Switch SPST Slide 6.15mm 242mil
-0
-8
-8
-Button_Switch_SMD
-SW_DIP_SPSTx04_Slide_Omron_A6S-410x_W8.9mm_P2.54mm
-SMD 4x-dip-switch SPST Omron_A6S-410x, Slide, row spacing 8.9 mm (350 mils), body size  (see http://omronfs.omron.com/en_US/ecb/products/pdf/en-a6s.pdf)
-SMD DIP Switch SPST Slide 8.9mm 350mil
-0
-8
-8
-Button_Switch_SMD
-SW_DIP_SPSTx05_Slide_6.7x14.26mm_W6.73mm_P2.54mm_LowProfile_JPin
-SMD 5x-dip-switch SPST , Slide, row spacing 6.73 mm (264 mils), body size 6.7x14.26mm (see e.g. https://www.ctscorp.com/wp-content/uploads/219.pdf), SMD, LowProfile, JPin
-SMD DIP Switch SPST Slide 6.73mm 264mil SMD LowProfile JPin
+9
+9
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_MKDS-1,5-10-5.08_1x10_P5.08mm_Horizontal
+Terminal Block Phoenix MKDS-1,5-10-5.08, 10 pins, pitch 5.08mm, size 50.8x9.8mm^2, drill diamater 1.3mm, pad diameter 2.6mm, see http://www.farnell.com/datasheets/100425.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix MKDS-1,5-10-5.08 pitch 5.08mm size 50.8x9.8mm^2 drill 1.3mm pad 2.6mm
 0
 10
 10
-Button_Switch_SMD
-SW_DIP_SPSTx05_Slide_6.7x14.26mm_W8.61mm_P2.54mm_LowProfile
-SMD 5x-dip-switch SPST , Slide, row spacing 8.61 mm (338 mils), body size 6.7x14.26mm (see e.g. https://www.ctscorp.com/wp-content/uploads/219.pdf), SMD, LowProfile
-SMD DIP Switch SPST Slide 8.61mm 338mil SMD LowProfile
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_MKDS-1,5-10_1x10_P5.00mm_Horizontal
+Terminal Block Phoenix MKDS-1,5-10, 10 pins, pitch 5mm, size 50x9.8mm^2, drill diamater 1.3mm, pad diameter 2.6mm, see http://www.farnell.com/datasheets/100425.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix MKDS-1,5-10 pitch 5mm size 50x9.8mm^2 drill 1.3mm pad 2.6mm
 0
 10
 10
-Button_Switch_SMD
-SW_DIP_SPSTx05_Slide_9.78x14.88mm_W8.61mm_P2.54mm
-SMD 5x-dip-switch SPST , Slide, row spacing 8.61 mm (338 mils), body size 9.78x14.88mm (see e.g. https://www.ctscorp.com/wp-content/uploads/204.pdf), SMD
-SMD DIP Switch SPST Slide 8.61mm 338mil SMD
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_MKDS-1,5-11-5.08_1x11_P5.08mm_Horizontal
+Terminal Block Phoenix MKDS-1,5-11-5.08, 11 pins, pitch 5.08mm, size 55.9x9.8mm^2, drill diamater 1.3mm, pad diameter 2.6mm, see http://www.farnell.com/datasheets/100425.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix MKDS-1,5-11-5.08 pitch 5.08mm size 55.9x9.8mm^2 drill 1.3mm pad 2.6mm
 0
-10
-10
-Button_Switch_SMD
-SW_DIP_SPSTx05_Slide_KingTek_DSHP05TJ_W5.25mm_P1.27mm_JPin
-SMD 5x-dip-switch SPST KingTek_DSHP05TJ, Slide, row spacing 5.25 mm (206 mils), body size  (see http://www.kingtek.net.cn/pic/201601201446313350.pdf), JPin
-SMD DIP Switch SPST Slide 5.25mm 206mil JPin
+11
+11
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_MKDS-1,5-11_1x11_P5.00mm_Horizontal
+Terminal Block Phoenix MKDS-1,5-11, 11 pins, pitch 5mm, size 55x9.8mm^2, drill diamater 1.3mm, pad diameter 2.6mm, see http://www.farnell.com/datasheets/100425.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix MKDS-1,5-11 pitch 5mm size 55x9.8mm^2 drill 1.3mm pad 2.6mm
 0
-10
-10
-Button_Switch_SMD
-SW_DIP_SPSTx05_Slide_KingTek_DSHP05TS_W7.62mm_P1.27mm
-SMD 5x-dip-switch SPST KingTek_DSHP05TS, Slide, row spacing 7.62 mm (300 mils), body size  (see http://www.kingtek.net.cn/pic/201601201417455112.pdf)
-SMD DIP Switch SPST Slide 7.62mm 300mil
-0
-10
-10
-Button_Switch_SMD
-SW_DIP_SPSTx05_Slide_Omron_A6S-510x_W8.9mm_P2.54mm
-SMD 5x-dip-switch SPST Omron_A6S-510x, Slide, row spacing 8.9 mm (350 mils), body size  (see http://omronfs.omron.com/en_US/ecb/products/pdf/en-a6s.pdf)
-SMD DIP Switch SPST Slide 8.9mm 350mil
-0
-10
-10
-Button_Switch_SMD
-SW_DIP_SPSTx06_Slide_6.7x16.8mm_W6.73mm_P2.54mm_LowProfile_JPin
-SMD 6x-dip-switch SPST , Slide, row spacing 6.73 mm (264 mils), body size 6.7x16.8mm (see e.g. https://www.ctscorp.com/wp-content/uploads/219.pdf), SMD, LowProfile, JPin
-SMD DIP Switch SPST Slide 6.73mm 264mil SMD LowProfile JPin
+11
+11
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_MKDS-1,5-12-5.08_1x12_P5.08mm_Horizontal
+Terminal Block Phoenix MKDS-1,5-12-5.08, 12 pins, pitch 5.08mm, size 61x9.8mm^2, drill diamater 1.3mm, pad diameter 2.6mm, see http://www.farnell.com/datasheets/100425.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix MKDS-1,5-12-5.08 pitch 5.08mm size 61x9.8mm^2 drill 1.3mm pad 2.6mm
 0
 12
 12
-Button_Switch_SMD
-SW_DIP_SPSTx06_Slide_6.7x16.8mm_W8.61mm_P2.54mm_LowProfile
-SMD 6x-dip-switch SPST , Slide, row spacing 8.61 mm (338 mils), body size 6.7x16.8mm (see e.g. https://www.ctscorp.com/wp-content/uploads/219.pdf), SMD, LowProfile
-SMD DIP Switch SPST Slide 8.61mm 338mil SMD LowProfile
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_MKDS-1,5-12_1x12_P5.00mm_Horizontal
+Terminal Block Phoenix MKDS-1,5-12, 12 pins, pitch 5mm, size 60x9.8mm^2, drill diamater 1.3mm, pad diameter 2.6mm, see http://www.farnell.com/datasheets/100425.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix MKDS-1,5-12 pitch 5mm size 60x9.8mm^2 drill 1.3mm pad 2.6mm
 0
 12
 12
-Button_Switch_SMD
-SW_DIP_SPSTx06_Slide_9.78x17.42mm_W8.61mm_P2.54mm
-SMD 6x-dip-switch SPST , Slide, row spacing 8.61 mm (338 mils), body size 9.78x17.42mm (see e.g. https://www.ctscorp.com/wp-content/uploads/204.pdf), SMD
-SMD DIP Switch SPST Slide 8.61mm 338mil SMD
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_MKDS-1,5-13-5.08_1x13_P5.08mm_Horizontal
+Terminal Block Phoenix MKDS-1,5-13-5.08, 13 pins, pitch 5.08mm, size 66x9.8mm^2, drill diamater 1.3mm, pad diameter 2.6mm, see http://www.farnell.com/datasheets/100425.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix MKDS-1,5-13-5.08 pitch 5.08mm size 66x9.8mm^2 drill 1.3mm pad 2.6mm
 0
-12
-12
-Button_Switch_SMD
-SW_DIP_SPSTx06_Slide_Copal_CHS-06A_W5.08mm_P1.27mm_JPin
-SMD 6x-dip-switch SPST Copal_CHS-06A, Slide, row spacing 5.08 mm (200 mils), body size  (see http://www.nidec-copal-electronics.com/e/catalog/switch/chs.pdf), SMD, JPin
-SMD DIP Switch SPST Slide 5.08mm 200mil SMD JPin
+13
+13
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_MKDS-1,5-13_1x13_P5.00mm_Horizontal
+Terminal Block Phoenix MKDS-1,5-13, 13 pins, pitch 5mm, size 65x9.8mm^2, drill diamater 1.3mm, pad diameter 2.6mm, see http://www.farnell.com/datasheets/100425.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix MKDS-1,5-13 pitch 5mm size 65x9.8mm^2 drill 1.3mm pad 2.6mm
 0
-12
-12
-Button_Switch_SMD
-SW_DIP_SPSTx06_Slide_Copal_CHS-06B_W7.62mm_P1.27mm
-SMD 6x-dip-switch SPST Copal_CHS-06B, Slide, row spacing 7.62 mm (300 mils), body size  (see http://www.nidec-copal-electronics.com/e/catalog/switch/chs.pdf), SMD
-SMD DIP Switch SPST Slide 7.62mm 300mil SMD
-0
-12
-12
-Button_Switch_SMD
-SW_DIP_SPSTx06_Slide_KingTek_DSHP06TJ_W5.25mm_P1.27mm_JPin
-SMD 6x-dip-switch SPST KingTek_DSHP06TJ, Slide, row spacing 5.25 mm (206 mils), body size  (see http://www.kingtek.net.cn/pic/201601201446313350.pdf), JPin
-SMD DIP Switch SPST Slide 5.25mm 206mil JPin
-0
-12
-12
-Button_Switch_SMD
-SW_DIP_SPSTx06_Slide_KingTek_DSHP06TS_W7.62mm_P1.27mm
-SMD 6x-dip-switch SPST KingTek_DSHP06TS, Slide, row spacing 7.62 mm (300 mils), body size  (see http://www.kingtek.net.cn/pic/201601201417455112.pdf)
-SMD DIP Switch SPST Slide 7.62mm 300mil
-0
-12
-12
-Button_Switch_SMD
-SW_DIP_SPSTx06_Slide_Omron_A6H-6101_W6.15mm_P1.27mm
-SMD 6x-dip-switch SPST Omron_A6H-6101, Slide, row spacing 6.15 mm (242 mils), body size  (see https://www.omron.com/ecb/products/pdf/en-a6h.pdf)
-SMD DIP Switch SPST Slide 6.15mm 242mil
-0
-12
-12
-Button_Switch_SMD
-SW_DIP_SPSTx06_Slide_Omron_A6S-610x_W8.9mm_P2.54mm
-SMD 6x-dip-switch SPST Omron_A6S-610x, Slide, row spacing 8.9 mm (350 mils), body size  (see http://omronfs.omron.com/en_US/ecb/products/pdf/en-a6s.pdf)
-SMD DIP Switch SPST Slide 8.9mm 350mil
-0
-12
-12
-Button_Switch_SMD
-SW_DIP_SPSTx07_Slide_6.7x19.34mm_W6.73mm_P2.54mm_LowProfile_JPin
-SMD 7x-dip-switch SPST , Slide, row spacing 6.73 mm (264 mils), body size 6.7x19.34mm (see e.g. https://www.ctscorp.com/wp-content/uploads/219.pdf), SMD, LowProfile, JPin
-SMD DIP Switch SPST Slide 6.73mm 264mil SMD LowProfile JPin
+13
+13
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_MKDS-1,5-14-5.08_1x14_P5.08mm_Horizontal
+Terminal Block Phoenix MKDS-1,5-14-5.08, 14 pins, pitch 5.08mm, size 71.1x9.8mm^2, drill diamater 1.3mm, pad diameter 2.6mm, see http://www.farnell.com/datasheets/100425.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix MKDS-1,5-14-5.08 pitch 5.08mm size 71.1x9.8mm^2 drill 1.3mm pad 2.6mm
 0
 14
 14
-Button_Switch_SMD
-SW_DIP_SPSTx07_Slide_6.7x19.34mm_W8.61mm_P2.54mm_LowProfile
-SMD 7x-dip-switch SPST , Slide, row spacing 8.61 mm (338 mils), body size 6.7x19.34mm (see e.g. https://www.ctscorp.com/wp-content/uploads/219.pdf), SMD, LowProfile
-SMD DIP Switch SPST Slide 8.61mm 338mil SMD LowProfile
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_MKDS-1,5-14_1x14_P5.00mm_Horizontal
+Terminal Block Phoenix MKDS-1,5-14, 14 pins, pitch 5mm, size 70x9.8mm^2, drill diamater 1.3mm, pad diameter 2.6mm, see http://www.farnell.com/datasheets/100425.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix MKDS-1,5-14 pitch 5mm size 70x9.8mm^2 drill 1.3mm pad 2.6mm
 0
 14
 14
-Button_Switch_SMD
-SW_DIP_SPSTx07_Slide_9.78x19.96mm_W8.61mm_P2.54mm
-SMD 7x-dip-switch SPST , Slide, row spacing 8.61 mm (338 mils), body size 9.78x19.96mm (see e.g. https://www.ctscorp.com/wp-content/uploads/204.pdf), SMD
-SMD DIP Switch SPST Slide 8.61mm 338mil SMD
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_MKDS-1,5-15-5.08_1x15_P5.08mm_Horizontal
+Terminal Block Phoenix MKDS-1,5-15-5.08, 15 pins, pitch 5.08mm, size 76.2x9.8mm^2, drill diamater 1.3mm, pad diameter 2.6mm, see http://www.farnell.com/datasheets/100425.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix MKDS-1,5-15-5.08 pitch 5.08mm size 76.2x9.8mm^2 drill 1.3mm pad 2.6mm
 0
-14
-14
-Button_Switch_SMD
-SW_DIP_SPSTx07_Slide_KingTek_DSHP07TJ_W5.25mm_P1.27mm_JPin
-SMD 7x-dip-switch SPST KingTek_DSHP07TJ, Slide, row spacing 5.25 mm (206 mils), body size  (see http://www.kingtek.net.cn/pic/201601201446313350.pdf), JPin
-SMD DIP Switch SPST Slide 5.25mm 206mil JPin
+15
+15
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_MKDS-1,5-15_1x15_P5.00mm_Horizontal
+Terminal Block Phoenix MKDS-1,5-15, 15 pins, pitch 5mm, size 75x9.8mm^2, drill diamater 1.3mm, pad diameter 2.6mm, see http://www.farnell.com/datasheets/100425.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix MKDS-1,5-15 pitch 5mm size 75x9.8mm^2 drill 1.3mm pad 2.6mm
 0
-14
-14
-Button_Switch_SMD
-SW_DIP_SPSTx07_Slide_KingTek_DSHP07TS_W7.62mm_P1.27mm
-SMD 7x-dip-switch SPST KingTek_DSHP07TS, Slide, row spacing 7.62 mm (300 mils), body size  (see http://www.kingtek.net.cn/pic/201601201417455112.pdf)
-SMD DIP Switch SPST Slide 7.62mm 300mil
-0
-14
-14
-Button_Switch_SMD
-SW_DIP_SPSTx07_Slide_Omron_A6S-710x_W8.9mm_P2.54mm
-SMD 7x-dip-switch SPST Omron_A6S-710x, Slide, row spacing 8.9 mm (350 mils), body size  (see http://omronfs.omron.com/en_US/ecb/products/pdf/en-a6s.pdf)
-SMD DIP Switch SPST Slide 8.9mm 350mil
-0
-14
-14
-Button_Switch_SMD
-SW_DIP_SPSTx08_Slide_6.7x21.88mm_W6.73mm_P2.54mm_LowProfile_JPin
-SMD 8x-dip-switch SPST , Slide, row spacing 6.73 mm (264 mils), body size 6.7x21.88mm (see e.g. https://www.ctscorp.com/wp-content/uploads/219.pdf), SMD, LowProfile, JPin
-SMD DIP Switch SPST Slide 6.73mm 264mil SMD LowProfile JPin
+15
+15
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_MKDS-1,5-16-5.08_1x16_P5.08mm_Horizontal
+Terminal Block Phoenix MKDS-1,5-16-5.08, 16 pins, pitch 5.08mm, size 81.3x9.8mm^2, drill diamater 1.3mm, pad diameter 2.6mm, see http://www.farnell.com/datasheets/100425.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix MKDS-1,5-16-5.08 pitch 5.08mm size 81.3x9.8mm^2 drill 1.3mm pad 2.6mm
 0
 16
 16
-Button_Switch_SMD
-SW_DIP_SPSTx08_Slide_6.7x21.88mm_W8.61mm_P2.54mm_LowProfile
-SMD 8x-dip-switch SPST , Slide, row spacing 8.61 mm (338 mils), body size 6.7x21.88mm (see e.g. https://www.ctscorp.com/wp-content/uploads/219.pdf), SMD, LowProfile
-SMD DIP Switch SPST Slide 8.61mm 338mil SMD LowProfile
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_MKDS-1,5-16_1x16_P5.00mm_Horizontal
+Terminal Block Phoenix MKDS-1,5-16, 16 pins, pitch 5mm, size 80x9.8mm^2, drill diamater 1.3mm, pad diameter 2.6mm, see http://www.farnell.com/datasheets/100425.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix MKDS-1,5-16 pitch 5mm size 80x9.8mm^2 drill 1.3mm pad 2.6mm
 0
 16
 16
-Button_Switch_SMD
-SW_DIP_SPSTx08_Slide_9.78x22.5mm_W8.61mm_P2.54mm
-SMD 8x-dip-switch SPST , Slide, row spacing 8.61 mm (338 mils), body size 9.78x22.5mm (see e.g. https://www.ctscorp.com/wp-content/uploads/204.pdf), SMD
-SMD DIP Switch SPST Slide 8.61mm 338mil SMD
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_MKDS-3-2-5.08_1x02_P5.08mm_Horizontal
+Terminal Block Phoenix MKDS-3-2-5.08, 2 pins, pitch 5.08mm, size 10.2x11.2mm^2, drill diamater 1.3mm, pad diameter 2.6mm, see http://www.farnell.com/datasheets/2138224.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix MKDS-3-2-5.08 pitch 5.08mm size 10.2x11.2mm^2 drill 1.3mm pad 2.6mm
 0
-16
-16
-Button_Switch_SMD
-SW_DIP_SPSTx08_Slide_Copal_CHS-08A_W5.08mm_P1.27mm_JPin
-SMD 8x-dip-switch SPST Copal_CHS-08A, Slide, row spacing 5.08 mm (200 mils), body size  (see http://www.nidec-copal-electronics.com/e/catalog/switch/chs.pdf), SMD, JPin
-SMD DIP Switch SPST Slide 5.08mm 200mil SMD JPin
+2
+2
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_MKDS-3-3-5.08_1x03_P5.08mm_Horizontal
+Terminal Block Phoenix MKDS-3-3-5.08, 3 pins, pitch 5.08mm, size 15.2x11.2mm^2, drill diamater 1.3mm, pad diameter 2.6mm, see http://www.farnell.com/datasheets/2138224.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix MKDS-3-3-5.08 pitch 5.08mm size 15.2x11.2mm^2 drill 1.3mm pad 2.6mm
 0
-16
-16
-Button_Switch_SMD
-SW_DIP_SPSTx08_Slide_Copal_CHS-08B_W7.62mm_P1.27mm
-SMD 8x-dip-switch SPST Copal_CHS-08B, Slide, row spacing 7.62 mm (300 mils), body size  (see http://www.nidec-copal-electronics.com/e/catalog/switch/chs.pdf), SMD
-SMD DIP Switch SPST Slide 7.62mm 300mil SMD
+3
+3
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_MKDS-3-4-5.08_1x04_P5.08mm_Horizontal
+Terminal Block Phoenix MKDS-3-4-5.08, 4 pins, pitch 5.08mm, size 20.3x11.2mm^2, drill diamater 1.3mm, pad diameter 2.6mm, see http://www.farnell.com/datasheets/2138224.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix MKDS-3-4-5.08 pitch 5.08mm size 20.3x11.2mm^2 drill 1.3mm pad 2.6mm
 0
-16
-16
-Button_Switch_SMD
-SW_DIP_SPSTx08_Slide_Copal_CVS-08xB_W5.9mm_P1mm
-SMD 8x-dip-switch SPST Copal_CVS-08xB, Slide, row spacing 5.9 mm (232 mils), body size  (see http://www.nidec-copal-electronics.com/e/catalog/switch/cvs.pdf)
-SMD DIP Switch SPST Slide 5.9mm 232mil
+4
+4
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_MKDS-3-5-5.08_1x05_P5.08mm_Horizontal
+Terminal Block Phoenix MKDS-3-5-5.08, 5 pins, pitch 5.08mm, size 25.4x11.2mm^2, drill diamater 1.3mm, pad diameter 2.6mm, see http://www.farnell.com/datasheets/2138224.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix MKDS-3-5-5.08 pitch 5.08mm size 25.4x11.2mm^2 drill 1.3mm pad 2.6mm
 0
-20
-17
-Button_Switch_SMD
-SW_DIP_SPSTx08_Slide_KingTek_DSHP08TJ_W5.25mm_P1.27mm_JPin
-SMD 8x-dip-switch SPST KingTek_DSHP08TJ, Slide, row spacing 5.25 mm (206 mils), body size  (see http://www.kingtek.net.cn/pic/201601201446313350.pdf), JPin
-SMD DIP Switch SPST Slide 5.25mm 206mil JPin
-0
-16
-16
-Button_Switch_SMD
-SW_DIP_SPSTx08_Slide_KingTek_DSHP08TS_W7.62mm_P1.27mm
-SMD 8x-dip-switch SPST KingTek_DSHP08TS, Slide, row spacing 7.62 mm (300 mils), body size  (see http://www.kingtek.net.cn/pic/201601201417455112.pdf)
-SMD DIP Switch SPST Slide 7.62mm 300mil
-0
-16
-16
-Button_Switch_SMD
-SW_DIP_SPSTx08_Slide_Omron_A6H-8101_W6.15mm_P1.27mm
-SMD 8x-dip-switch SPST Omron_A6H-8101, Slide, row spacing 6.15 mm (242 mils), body size  (see https://www.omron.com/ecb/products/pdf/en-a6h.pdf)
-SMD DIP Switch SPST Slide 6.15mm 242mil
-0
-16
-16
-Button_Switch_SMD
-SW_DIP_SPSTx08_Slide_Omron_A6S-810x_W8.9mm_P2.54mm
-SMD 8x-dip-switch SPST Omron_A6S-810x, Slide, row spacing 8.9 mm (350 mils), body size  (see http://omronfs.omron.com/en_US/ecb/products/pdf/en-a6s.pdf)
-SMD DIP Switch SPST Slide 8.9mm 350mil
-0
-16
-16
-Button_Switch_SMD
-SW_DIP_SPSTx09_Slide_6.7x24.42mm_W6.73mm_P2.54mm_LowProfile_JPin
-SMD 9x-dip-switch SPST , Slide, row spacing 6.73 mm (264 mils), body size 6.7x24.42mm (see e.g. https://www.ctscorp.com/wp-content/uploads/219.pdf), SMD, LowProfile, JPin
-SMD DIP Switch SPST Slide 6.73mm 264mil SMD LowProfile JPin
-0
-18
-18
-Button_Switch_SMD
-SW_DIP_SPSTx09_Slide_6.7x24.42mm_W8.61mm_P2.54mm_LowProfile
-SMD 9x-dip-switch SPST , Slide, row spacing 8.61 mm (338 mils), body size 6.7x24.42mm (see e.g. https://www.ctscorp.com/wp-content/uploads/219.pdf), SMD, LowProfile
-SMD DIP Switch SPST Slide 8.61mm 338mil SMD LowProfile
-0
-18
-18
-Button_Switch_SMD
-SW_DIP_SPSTx09_Slide_9.78x25.04mm_W8.61mm_P2.54mm
-SMD 9x-dip-switch SPST , Slide, row spacing 8.61 mm (338 mils), body size 9.78x25.04mm (see e.g. https://www.ctscorp.com/wp-content/uploads/204.pdf), SMD
-SMD DIP Switch SPST Slide 8.61mm 338mil SMD
-0
-18
-18
-Button_Switch_SMD
-SW_DIP_SPSTx09_Slide_KingTek_DSHP09TJ_W5.25mm_P1.27mm_JPin
-SMD 9x-dip-switch SPST KingTek_DSHP09TJ, Slide, row spacing 5.25 mm (206 mils), body size  (see http://www.kingtek.net.cn/pic/201601201446313350.pdf), JPin
-SMD DIP Switch SPST Slide 5.25mm 206mil JPin
-0
-18
-18
-Button_Switch_SMD
-SW_DIP_SPSTx09_Slide_KingTek_DSHP09TS_W7.62mm_P1.27mm
-SMD 9x-dip-switch SPST KingTek_DSHP09TS, Slide, row spacing 7.62 mm (300 mils), body size  (see http://www.kingtek.net.cn/pic/201601201417455112.pdf)
-SMD DIP Switch SPST Slide 7.62mm 300mil
-0
-18
-18
-Button_Switch_SMD
-SW_DIP_SPSTx09_Slide_Omron_A6S-910x_W8.9mm_P2.54mm
-SMD 9x-dip-switch SPST Omron_A6S-910x, Slide, row spacing 8.9 mm (350 mils), body size  (see http://omronfs.omron.com/en_US/ecb/products/pdf/en-a6s.pdf)
-SMD DIP Switch SPST Slide 8.9mm 350mil
-0
-18
-18
-Button_Switch_SMD
-SW_DIP_SPSTx10_Slide_6.7x26.96mm_W6.73mm_P2.54mm_LowProfile_JPin
-SMD 10x-dip-switch SPST , Slide, row spacing 6.73 mm (264 mils), body size 6.7x26.96mm (see e.g. https://www.ctscorp.com/wp-content/uploads/219.pdf), SMD, LowProfile, JPin
-SMD DIP Switch SPST Slide 6.73mm 264mil SMD LowProfile JPin
-0
-20
-20
-Button_Switch_SMD
-SW_DIP_SPSTx10_Slide_6.7x26.96mm_W8.61mm_P2.54mm_LowProfile
-SMD 10x-dip-switch SPST , Slide, row spacing 8.61 mm (338 mils), body size 6.7x26.96mm (see e.g. https://www.ctscorp.com/wp-content/uploads/219.pdf), SMD, LowProfile
-SMD DIP Switch SPST Slide 8.61mm 338mil SMD LowProfile
-0
-20
-20
-Button_Switch_SMD
-SW_DIP_SPSTx10_Slide_9.78x27.58mm_W8.61mm_P2.54mm
-SMD 10x-dip-switch SPST , Slide, row spacing 8.61 mm (338 mils), body size 9.78x27.58mm (see e.g. https://www.ctscorp.com/wp-content/uploads/204.pdf), SMD
-SMD DIP Switch SPST Slide 8.61mm 338mil SMD
-0
-20
-20
-Button_Switch_SMD
-SW_DIP_SPSTx10_Slide_Copal_CHS-10A_W5.08mm_P1.27mm_JPin
-SMD 10x-dip-switch SPST Copal_CHS-10A, Slide, row spacing 5.08 mm (200 mils), body size  (see http://www.nidec-copal-electronics.com/e/catalog/switch/chs.pdf), SMD, JPin
-SMD DIP Switch SPST Slide 5.08mm 200mil SMD JPin
-0
-20
-20
-Button_Switch_SMD
-SW_DIP_SPSTx10_Slide_Copal_CHS-10B_W7.62mm_P1.27mm
-SMD 10x-dip-switch SPST Copal_CHS-10B, Slide, row spacing 7.62 mm (300 mils), body size  (see http://www.nidec-copal-electronics.com/e/catalog/switch/chs.pdf), SMD
-SMD DIP Switch SPST Slide 7.62mm 300mil SMD
-0
-20
-20
-Button_Switch_SMD
-SW_DIP_SPSTx10_Slide_KingTek_DSHP10TJ_W5.25mm_P1.27mm_JPin
-SMD 10x-dip-switch SPST KingTek_DSHP10TJ, Slide, row spacing 5.25 mm (206 mils), body size  (see http://www.kingtek.net.cn/pic/201601201446313350.pdf), JPin
-SMD DIP Switch SPST Slide 5.25mm 206mil JPin
-0
-20
-20
-Button_Switch_SMD
-SW_DIP_SPSTx10_Slide_KingTek_DSHP10TS_W7.62mm_P1.27mm
-SMD 10x-dip-switch SPST KingTek_DSHP10TS, Slide, row spacing 7.62 mm (300 mils), body size  (see http://www.kingtek.net.cn/pic/201601201417455112.pdf)
-SMD DIP Switch SPST Slide 7.62mm 300mil
-0
-20
-20
-Button_Switch_SMD
-SW_DIP_SPSTx10_Slide_Omron_A6H-10101_W6.15mm_P1.27mm
-SMD 10x-dip-switch SPST Omron_A6H-10101, Slide, row spacing 6.15 mm (242 mils), body size  (see https://www.omron.com/ecb/products/pdf/en-a6h.pdf)
-SMD DIP Switch SPST Slide 6.15mm 242mil
-0
-20
-20
-Button_Switch_SMD
-SW_DIP_SPSTx10_Slide_Omron_A6S-1010x_W8.9mm_P2.54mm
-SMD 10x-dip-switch SPST Omron_A6S-1010x, Slide, row spacing 8.9 mm (350 mils), body size  (see http://omronfs.omron.com/en_US/ecb/products/pdf/en-a6s.pdf)
-SMD DIP Switch SPST Slide 8.9mm 350mil
-0
-20
-20
-Button_Switch_SMD
-SW_DIP_SPSTx11_Slide_6.7x29.5mm_W6.73mm_P2.54mm_LowProfile_JPin
-SMD 11x-dip-switch SPST , Slide, row spacing 6.73 mm (264 mils), body size 6.7x29.5mm (see e.g. https://www.ctscorp.com/wp-content/uploads/219.pdf), SMD, LowProfile, JPin
-SMD DIP Switch SPST Slide 6.73mm 264mil SMD LowProfile JPin
-0
-22
-22
-Button_Switch_SMD
-SW_DIP_SPSTx11_Slide_6.7x29.5mm_W8.61mm_P2.54mm_LowProfile
-SMD 11x-dip-switch SPST , Slide, row spacing 8.61 mm (338 mils), body size 6.7x29.5mm (see e.g. https://www.ctscorp.com/wp-content/uploads/219.pdf), SMD, LowProfile
-SMD DIP Switch SPST Slide 8.61mm 338mil SMD LowProfile
-0
-22
-22
-Button_Switch_SMD
-SW_DIP_SPSTx11_Slide_9.78x30.12mm_W8.61mm_P2.54mm
-SMD 11x-dip-switch SPST , Slide, row spacing 8.61 mm (338 mils), body size 9.78x30.12mm (see e.g. https://www.ctscorp.com/wp-content/uploads/204.pdf), SMD
-SMD DIP Switch SPST Slide 8.61mm 338mil SMD
-0
-22
-22
-Button_Switch_SMD
-SW_DIP_SPSTx12_Slide_6.7x32.04mm_W6.73mm_P2.54mm_LowProfile_JPin
-SMD 12x-dip-switch SPST , Slide, row spacing 6.73 mm (264 mils), body size 6.7x32.04mm (see e.g. https://www.ctscorp.com/wp-content/uploads/219.pdf), SMD, LowProfile, JPin
-SMD DIP Switch SPST Slide 6.73mm 264mil SMD LowProfile JPin
-0
-24
-24
-Button_Switch_SMD
-SW_DIP_SPSTx12_Slide_6.7x32.04mm_W8.61mm_P2.54mm_LowProfile
-SMD 12x-dip-switch SPST , Slide, row spacing 8.61 mm (338 mils), body size 6.7x32.04mm (see e.g. https://www.ctscorp.com/wp-content/uploads/219.pdf), SMD, LowProfile
-SMD DIP Switch SPST Slide 8.61mm 338mil SMD LowProfile
-0
-24
-24
-Button_Switch_SMD
-SW_DIP_SPSTx12_Slide_9.78x32.66mm_W8.61mm_P2.54mm
-SMD 12x-dip-switch SPST , Slide, row spacing 8.61 mm (338 mils), body size 9.78x32.66mm (see e.g. https://www.ctscorp.com/wp-content/uploads/204.pdf), SMD
-SMD DIP Switch SPST Slide 8.61mm 338mil SMD
-0
-24
-24
-Button_Switch_SMD
-SW_DPDT_CK_JS202011JCQN
-Sub-miniature slide switch, vertical, SMT J bend https://dznh3ojzb2azq.cloudfront.net/products/Slide/JS/documents/datasheet.pdf
-switch DPDT SMT
+5
+5
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_MKDS-3-6-5.08_1x06_P5.08mm_Horizontal
+Terminal Block Phoenix MKDS-3-6-5.08, 6 pins, pitch 5.08mm, size 30.5x11.2mm^2, drill diamater 1.3mm, pad diameter 2.6mm, see http://www.farnell.com/datasheets/2138224.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix MKDS-3-6-5.08 pitch 5.08mm size 30.5x11.2mm^2 drill 1.3mm pad 2.6mm
 0
 6
 6
-Button_Switch_SMD
-SW_MEC_5GSH9
-MEC 5G single pole normally-open tactile switch
-switch normally-open pushbutton push-button
-0
-4
-4
-Button_Switch_SMD
-SW_Push_1P1T-MP_NO_Horizontal_Alps_SKRTLAE010
-Side push button (https://www.alps.com/prod/info/E/PDF/Tact/SurfaceMount/SKRT/SKRT.pdf)
-push horizontal SPST 1P1T
-0
-5
-3
-Button_Switch_SMD
-SW_Push_1P1T-SH_NO_CK_KMR2xxG
-CK components KMR2 tactile switch with ground pin http://www.ckswitches.com/media/1479/kmr2.pdf
-tactile switch kmr2
-0
-5
-3
-Button_Switch_SMD
-SW_Push_1P1T_NO_6x6mm_H9.5mm
-tactile push button, 6x6mm e.g. PTS645xx series, height=9.5mm
-tact sw push 6mm smd
-0
-4
-2
-Button_Switch_SMD
-SW_Push_1P1T_NO_CK_KMR2
-CK components KMR2 tactile switch http://www.ckswitches.com/media/1479/kmr2.pdf
-tactile switch kmr2
-0
-4
-2
-Button_Switch_SMD
-SW_Push_1P1T_NO_CK_KSC6xxJ
-CK components KSC6 tactile switch https://www.ckswitches.com/media/1972/ksc6.pdf
-tactile switch ksc6
-0
-4
-2
-Button_Switch_SMD
-SW_Push_1P1T_NO_CK_KSC7xxJ
-CK components KSC7 tactile switch https://www.ckswitches.com/media/1973/ksc7.pdf
-tactile switch ksc7
-0
-4
-2
-Button_Switch_SMD
-SW_Push_1P1T_NO_CK_PTS125Sx43PSMTR
-C&K Switches 1P1T SMD PTS125 Series 12mm Tact Switch with Pegs, https://www.ckswitches.com/media/1462/pts125.pdf
-Button Tactile Switch SPST 1P1T
-0
-4
-2
-Button_Switch_SMD
-SW_Push_1P1T_NO_Vertical_Wuerth_434133025816
-https://katalog.we-online.com/em/datasheet/434133025816.pdf
-tactile switch Wurth Wuerth
-0
-4
-2
-Button_Switch_SMD
-SW_Push_SPST_NO_Alps_SKRK
-http://www.alps.com/prod/info/E/HTML/Tact/SurfaceMount/SKRK/SKRKAHE020.html
-SMD SMT button
-0
-2
-2
-Button_Switch_SMD
-SW_SP3T_PCM13
-Ultraminiature Surface Mount Slide Switch, right-angle, https://www.ckswitches.com/media/1424/pcm.pdf
-
-0
-8
-4
-Button_Switch_SMD
-SW_SPDT_CK-JS102011SAQN
-Sub-miniature slide switch, right-angle, http://www.ckswitches.com/media/1422/js.pdf
-switch spdt
-0
-3
-3
-Button_Switch_SMD
-SW_SPDT_PCM12
-Ultraminiature Surface Mount Slide Switch, right-angle, https://www.ckswitches.com/media/1424/pcm.pdf
-
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_MKDS-3-7-5.08_1x07_P5.08mm_Horizontal
+Terminal Block Phoenix MKDS-3-7-5.08, 7 pins, pitch 5.08mm, size 35.6x11.2mm^2, drill diamater 1.3mm, pad diameter 2.6mm, see http://www.farnell.com/datasheets/2138224.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix MKDS-3-7-5.08 pitch 5.08mm size 35.6x11.2mm^2 drill 1.3mm pad 2.6mm
 0
 7
+7
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_MKDS-3-8-5.08_1x08_P5.08mm_Horizontal
+Terminal Block Phoenix MKDS-3-8-5.08, 8 pins, pitch 5.08mm, size 40.6x11.2mm^2, drill diamater 1.3mm, pad diameter 2.6mm, see http://www.farnell.com/datasheets/2138224.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix MKDS-3-8-5.08 pitch 5.08mm size 40.6x11.2mm^2 drill 1.3mm pad 2.6mm
+0
+8
+8
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_MKDS-3-9-5.08_1x09_P5.08mm_Horizontal
+Terminal Block Phoenix MKDS-3-9-5.08, 9 pins, pitch 5.08mm, size 45.7x11.2mm^2, drill diamater 1.3mm, pad diameter 2.6mm, see http://www.farnell.com/datasheets/2138224.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix MKDS-3-9-5.08 pitch 5.08mm size 45.7x11.2mm^2 drill 1.3mm pad 2.6mm
+0
+9
+9
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_MKDS-3-10-5.08_1x10_P5.08mm_Horizontal
+Terminal Block Phoenix MKDS-3-10-5.08, 10 pins, pitch 5.08mm, size 50.8x11.2mm^2, drill diamater 1.3mm, pad diameter 2.6mm, see http://www.farnell.com/datasheets/2138224.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix MKDS-3-10-5.08 pitch 5.08mm size 50.8x11.2mm^2 drill 1.3mm pad 2.6mm
+0
+10
+10
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_MKDS-3-11-5.08_1x11_P5.08mm_Horizontal
+Terminal Block Phoenix MKDS-3-11-5.08, 11 pins, pitch 5.08mm, size 55.9x11.2mm^2, drill diamater 1.3mm, pad diameter 2.6mm, see http://www.farnell.com/datasheets/2138224.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix MKDS-3-11-5.08 pitch 5.08mm size 55.9x11.2mm^2 drill 1.3mm pad 2.6mm
+0
+11
+11
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_MKDS-3-12-5.08_1x12_P5.08mm_Horizontal
+Terminal Block Phoenix MKDS-3-12-5.08, 12 pins, pitch 5.08mm, size 61x11.2mm^2, drill diamater 1.3mm, pad diameter 2.6mm, see http://www.farnell.com/datasheets/2138224.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix MKDS-3-12-5.08 pitch 5.08mm size 61x11.2mm^2 drill 1.3mm pad 2.6mm
+0
+12
+12
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_MKDS-3-13-5.08_1x13_P5.08mm_Horizontal
+Terminal Block Phoenix MKDS-3-13-5.08, 13 pins, pitch 5.08mm, size 66x11.2mm^2, drill diamater 1.3mm, pad diameter 2.6mm, see http://www.farnell.com/datasheets/2138224.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix MKDS-3-13-5.08 pitch 5.08mm size 66x11.2mm^2 drill 1.3mm pad 2.6mm
+0
+13
+13
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_MKDS-3-14-5.08_1x14_P5.08mm_Horizontal
+Terminal Block Phoenix MKDS-3-14-5.08, 14 pins, pitch 5.08mm, size 71.1x11.2mm^2, drill diamater 1.3mm, pad diameter 2.6mm, see http://www.farnell.com/datasheets/2138224.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix MKDS-3-14-5.08 pitch 5.08mm size 71.1x11.2mm^2 drill 1.3mm pad 2.6mm
+0
+14
+14
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_MKDS-3-15-5.08_1x15_P5.08mm_Horizontal
+Terminal Block Phoenix MKDS-3-15-5.08, 15 pins, pitch 5.08mm, size 76.2x11.2mm^2, drill diamater 1.3mm, pad diameter 2.6mm, see http://www.farnell.com/datasheets/2138224.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix MKDS-3-15-5.08 pitch 5.08mm size 76.2x11.2mm^2 drill 1.3mm pad 2.6mm
+0
+15
+15
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_MKDS-3-16-5.08_1x16_P5.08mm_Horizontal
+Terminal Block Phoenix MKDS-3-16-5.08, 16 pins, pitch 5.08mm, size 81.3x11.2mm^2, drill diamater 1.3mm, pad diameter 2.6mm, see http://www.farnell.com/datasheets/2138224.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix MKDS-3-16-5.08 pitch 5.08mm size 81.3x11.2mm^2 drill 1.3mm pad 2.6mm
+0
+16
+16
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_MPT-0,5-2-2.54_1x02_P2.54mm_Horizontal
+Terminal Block Phoenix MPT-0,5-2-2.54, 2 pins, pitch 2.54mm, size 5.54x6.2mm^2, drill diamater 1.1mm, pad diameter 2.2mm, see http://www.mouser.com/ds/2/324/ItemDetail_1725656-920552.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix MPT-0,5-2-2.54 pitch 2.54mm size 5.54x6.2mm^2 drill 1.1mm pad 2.2mm
+0
+2
+2
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_MPT-0,5-3-2.54_1x03_P2.54mm_Horizontal
+Terminal Block Phoenix MPT-0,5-3-2.54, 3 pins, pitch 2.54mm, size 8.08x6.2mm^2, drill diamater 1.1mm, pad diameter 2.2mm, see http://www.mouser.com/ds/2/324/ItemDetail_1725656-920552.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix MPT-0,5-3-2.54 pitch 2.54mm size 8.08x6.2mm^2 drill 1.1mm pad 2.2mm
+0
 3
-Button_Switch_SMD
-SW_SPST_B3S-1000
-Surface Mount Tactile Switch for High-Density Packaging
-Tactile Switch
+3
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_MPT-0,5-4-2.54_1x04_P2.54mm_Horizontal
+Terminal Block Phoenix MPT-0,5-4-2.54, 4 pins, pitch 2.54mm, size 10.6x6.2mm^2, drill diamater 1.1mm, pad diameter 2.2mm, see http://www.mouser.com/ds/2/324/ItemDetail_1725672-916605.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix MPT-0,5-4-2.54 pitch 2.54mm size 10.6x6.2mm^2 drill 1.1mm pad 2.2mm
 0
 4
-2
-Button_Switch_SMD
-SW_SPST_B3S-1100
-Surface Mount Tactile Switch for High-Density Packaging with Ground Terminal
-Tactile Switch
+4
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_MPT-0,5-5-2.54_1x05_P2.54mm_Horizontal
+Terminal Block Phoenix MPT-0,5-5-2.54, 5 pins, pitch 2.54mm, size 13.2x6.2mm^2, drill diamater 1.1mm, pad diameter 2.2mm, see http://www.mouser.com/ds/2/324/ItemDetail_1725672-916605.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix MPT-0,5-5-2.54 pitch 2.54mm size 13.2x6.2mm^2 drill 1.1mm pad 2.2mm
 0
 5
+5
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_MPT-0,5-6-2.54_1x06_P2.54mm_Horizontal
+Terminal Block Phoenix MPT-0,5-6-2.54, 6 pins, pitch 2.54mm, size 15.7x6.2mm^2, drill diamater 1.1mm, pad diameter 2.2mm, see http://www.mouser.com/ds/2/324/ItemDetail_1725672-916605.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix MPT-0,5-6-2.54 pitch 2.54mm size 15.7x6.2mm^2 drill 1.1mm pad 2.2mm
+0
+6
+6
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_MPT-0,5-7-2.54_1x07_P2.54mm_Horizontal
+Terminal Block Phoenix MPT-0,5-7-2.54, 7 pins, pitch 2.54mm, size 18.2x6.2mm^2, drill diamater 1.1mm, pad diameter 2.2mm, see http://www.mouser.com/ds/2/324/ItemDetail_1725672-916605.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix MPT-0,5-7-2.54 pitch 2.54mm size 18.2x6.2mm^2 drill 1.1mm pad 2.2mm
+0
+7
+7
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_MPT-0,5-8-2.54_1x08_P2.54mm_Horizontal
+Terminal Block Phoenix MPT-0,5-8-2.54, 8 pins, pitch 2.54mm, size 20.8x6.2mm^2, drill diamater 1.1mm, pad diameter 2.2mm, see http://www.mouser.com/ds/2/324/ItemDetail_1725672-916605.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix MPT-0,5-8-2.54 pitch 2.54mm size 20.8x6.2mm^2 drill 1.1mm pad 2.2mm
+0
+8
+8
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_MPT-0,5-9-2.54_1x09_P2.54mm_Horizontal
+Terminal Block Phoenix MPT-0,5-9-2.54, 9 pins, pitch 2.54mm, size 23.3x6.2mm^2, drill diamater 1.1mm, pad diameter 2.2mm, see http://www.mouser.com/ds/2/324/ItemDetail_1725672-916605.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix MPT-0,5-9-2.54 pitch 2.54mm size 23.3x6.2mm^2 drill 1.1mm pad 2.2mm
+0
+9
+9
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_MPT-0,5-10-2.54_1x10_P2.54mm_Horizontal
+Terminal Block Phoenix MPT-0,5-10-2.54, 10 pins, pitch 2.54mm, size 25.9x6.2mm^2, drill diamater 1.1mm, pad diameter 2.2mm, see http://www.mouser.com/ds/2/324/ItemDetail_1725672-916605.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix MPT-0,5-10-2.54 pitch 2.54mm size 25.9x6.2mm^2 drill 1.1mm pad 2.2mm
+0
+10
+10
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_MPT-0,5-11-2.54_1x11_P2.54mm_Horizontal
+Terminal Block Phoenix MPT-0,5-11-2.54, 11 pins, pitch 2.54mm, size 28.4x6.2mm^2, drill diamater 1.1mm, pad diameter 2.2mm, see http://www.mouser.com/ds/2/324/ItemDetail_1725672-916605.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix MPT-0,5-11-2.54 pitch 2.54mm size 28.4x6.2mm^2 drill 1.1mm pad 2.2mm
+0
+11
+11
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_MPT-0,5-12-2.54_1x12_P2.54mm_Horizontal
+Terminal Block Phoenix MPT-0,5-12-2.54, 12 pins, pitch 2.54mm, size 30.9x6.2mm^2, drill diamater 1.1mm, pad diameter 2.2mm, see http://www.mouser.com/ds/2/324/ItemDetail_1725672-916605.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix MPT-0,5-12-2.54 pitch 2.54mm size 30.9x6.2mm^2 drill 1.1mm pad 2.2mm
+0
+12
+12
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_PT-1,5-2-3.5-H_1x02_P3.50mm_Horizontal
+Terminal Block Phoenix PT-1,5-2-3.5-H, 2 pins, pitch 3.5mm, size 7x7.6mm^2, drill diamater 1.2mm, pad diameter 2.4mm, see , script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix PT-1,5-2-3.5-H pitch 3.5mm size 7x7.6mm^2 drill 1.2mm pad 2.4mm
+0
+2
+2
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_PT-1,5-2-5.0-H_1x02_P5.00mm_Horizontal
+Terminal Block Phoenix PT-1,5-2-5.0-H, 2 pins, pitch 5mm, size 10x9mm^2, drill diamater 1.3mm, pad diameter 2.6mm, see http://www.mouser.com/ds/2/324/ItemDetail_1935161-922578.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix PT-1,5-2-5.0-H pitch 5mm size 10x9mm^2 drill 1.3mm pad 2.6mm
+0
+2
+2
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_PT-1,5-3-3.5-H_1x03_P3.50mm_Horizontal
+Terminal Block Phoenix PT-1,5-3-3.5-H, 3 pins, pitch 3.5mm, size 10.5x7.6mm^2, drill diamater 1.2mm, pad diameter 2.4mm, see , script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix PT-1,5-3-3.5-H pitch 3.5mm size 10.5x7.6mm^2 drill 1.2mm pad 2.4mm
+0
 3
-Button_Switch_SMD
-SW_SPST_B3SL-1002P
-Middle Stroke Tactile Switch, B3SL
-Middle Stroke Tactile Switch
-0
-4
-2
-Button_Switch_SMD
-SW_SPST_B3SL-1022P
-Middle Stroke Tactile Switch, B3SL
-Middle Stroke Tactile Switch
-0
-4
-2
-Button_Switch_SMD
-SW_SPST_B3U-1000P
-Ultra-small-sized Tactile Switch with High Contact Reliability, Top-actuated Model, without Ground Terminal, without Boss
-Tactile Switch
-0
-2
-2
-Button_Switch_SMD
-SW_SPST_B3U-1000P-B
-Ultra-small-sized Tactile Switch with High Contact Reliability, Top-actuated Model, without Ground Terminal, with Boss
-Tactile Switch
-0
-2
-2
-Button_Switch_SMD
-SW_SPST_B3U-1100P
-Ultra-small-sized Tactile Switch with High Contact Reliability, Top-actuated Model, with Ground Terminal, without Boss
-Tactile Switch
+3
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_PT-1,5-3-5.0-H_1x03_P5.00mm_Horizontal
+Terminal Block Phoenix PT-1,5-3-5.0-H, 3 pins, pitch 5mm, size 15x9mm^2, drill diamater 1.3mm, pad diameter 2.6mm, see http://www.mouser.com/ds/2/324/ItemDetail_1935161-922578.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix PT-1,5-3-5.0-H pitch 5mm size 15x9mm^2 drill 1.3mm pad 2.6mm
 0
 3
 3
-Button_Switch_SMD
-SW_SPST_B3U-1100P-B
-Ultra-small-sized Tactile Switch with High Contact Reliability, Top-actuated Model, with Ground Terminal, with Boss
-Tactile Switch
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_PT-1,5-4-3.5-H_1x04_P3.50mm_Horizontal
+Terminal Block Phoenix PT-1,5-4-3.5-H, 4 pins, pitch 3.5mm, size 14x7.6mm^2, drill diamater 1.2mm, pad diameter 2.4mm, see , script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix PT-1,5-4-3.5-H pitch 3.5mm size 14x7.6mm^2 drill 1.2mm pad 2.4mm
 0
+4
+4
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_PT-1,5-4-5.0-H_1x04_P5.00mm_Horizontal
+Terminal Block Phoenix PT-1,5-4-5.0-H, 4 pins, pitch 5mm, size 20x9mm^2, drill diamater 1.3mm, pad diameter 2.6mm, see http://www.mouser.com/ds/2/324/ItemDetail_1935161-922578.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix PT-1,5-4-5.0-H pitch 5mm size 20x9mm^2 drill 1.3mm pad 2.6mm
+0
+4
+4
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_PT-1,5-5-3.5-H_1x05_P3.50mm_Horizontal
+Terminal Block Phoenix PT-1,5-5-3.5-H, 5 pins, pitch 3.5mm, size 17.5x7.6mm^2, drill diamater 1.2mm, pad diameter 2.4mm, see , script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix PT-1,5-5-3.5-H pitch 3.5mm size 17.5x7.6mm^2 drill 1.2mm pad 2.4mm
+0
+5
+5
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_PT-1,5-5-5.0-H_1x05_P5.00mm_Horizontal
+Terminal Block Phoenix PT-1,5-5-5.0-H, 5 pins, pitch 5mm, size 25x9mm^2, drill diamater 1.3mm, pad diameter 2.6mm, see http://www.mouser.com/ds/2/324/ItemDetail_1935161-922578.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix PT-1,5-5-5.0-H pitch 5mm size 25x9mm^2 drill 1.3mm pad 2.6mm
+0
+5
+5
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_PT-1,5-6-3.5-H_1x06_P3.50mm_Horizontal
+Terminal Block Phoenix PT-1,5-6-3.5-H, 6 pins, pitch 3.5mm, size 21x7.6mm^2, drill diamater 1.2mm, pad diameter 2.4mm, see , script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix PT-1,5-6-3.5-H pitch 3.5mm size 21x7.6mm^2 drill 1.2mm pad 2.4mm
+0
+6
+6
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_PT-1,5-6-5.0-H_1x06_P5.00mm_Horizontal
+Terminal Block Phoenix PT-1,5-6-5.0-H, 6 pins, pitch 5mm, size 30x9mm^2, drill diamater 1.3mm, pad diameter 2.6mm, see http://www.mouser.com/ds/2/324/ItemDetail_1935161-922578.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix PT-1,5-6-5.0-H pitch 5mm size 30x9mm^2 drill 1.3mm pad 2.6mm
+0
+6
+6
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_PT-1,5-7-3.5-H_1x07_P3.50mm_Horizontal
+Terminal Block Phoenix PT-1,5-7-3.5-H, 7 pins, pitch 3.5mm, size 24.5x7.6mm^2, drill diamater 1.2mm, pad diameter 2.4mm, see , script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix PT-1,5-7-3.5-H pitch 3.5mm size 24.5x7.6mm^2 drill 1.2mm pad 2.4mm
+0
+7
+7
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_PT-1,5-7-5.0-H_1x07_P5.00mm_Horizontal
+Terminal Block Phoenix PT-1,5-7-5.0-H, 7 pins, pitch 5mm, size 35x9mm^2, drill diamater 1.3mm, pad diameter 2.6mm, see http://www.mouser.com/ds/2/324/ItemDetail_1935161-922578.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix PT-1,5-7-5.0-H pitch 5mm size 35x9mm^2 drill 1.3mm pad 2.6mm
+0
+7
+7
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_PT-1,5-8-3.5-H_1x08_P3.50mm_Horizontal
+Terminal Block Phoenix PT-1,5-8-3.5-H, 8 pins, pitch 3.5mm, size 28x7.6mm^2, drill diamater 1.2mm, pad diameter 2.4mm, see , script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix PT-1,5-8-3.5-H pitch 3.5mm size 28x7.6mm^2 drill 1.2mm pad 2.4mm
+0
+8
+8
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_PT-1,5-8-5.0-H_1x08_P5.00mm_Horizontal
+Terminal Block Phoenix PT-1,5-8-5.0-H, 8 pins, pitch 5mm, size 40x9mm^2, drill diamater 1.3mm, pad diameter 2.6mm, see http://www.mouser.com/ds/2/324/ItemDetail_1935161-922578.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix PT-1,5-8-5.0-H pitch 5mm size 40x9mm^2 drill 1.3mm pad 2.6mm
+0
+8
+8
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_PT-1,5-9-3.5-H_1x09_P3.50mm_Horizontal
+Terminal Block Phoenix PT-1,5-9-3.5-H, 9 pins, pitch 3.5mm, size 31.5x7.6mm^2, drill diamater 1.2mm, pad diameter 2.4mm, see , script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix PT-1,5-9-3.5-H pitch 3.5mm size 31.5x7.6mm^2 drill 1.2mm pad 2.4mm
+0
+9
+9
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_PT-1,5-9-5.0-H_1x09_P5.00mm_Horizontal
+Terminal Block Phoenix PT-1,5-9-5.0-H, 9 pins, pitch 5mm, size 45x9mm^2, drill diamater 1.3mm, pad diameter 2.6mm, see http://www.mouser.com/ds/2/324/ItemDetail_1935161-922578.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix PT-1,5-9-5.0-H pitch 5mm size 45x9mm^2 drill 1.3mm pad 2.6mm
+0
+9
+9
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_PT-1,5-10-3.5-H_1x10_P3.50mm_Horizontal
+Terminal Block Phoenix PT-1,5-10-3.5-H, 10 pins, pitch 3.5mm, size 35x7.6mm^2, drill diamater 1.2mm, pad diameter 2.4mm, see , script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix PT-1,5-10-3.5-H pitch 3.5mm size 35x7.6mm^2 drill 1.2mm pad 2.4mm
+0
+10
+10
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_PT-1,5-10-5.0-H_1x10_P5.00mm_Horizontal
+Terminal Block Phoenix PT-1,5-10-5.0-H, 10 pins, pitch 5mm, size 50x9mm^2, drill diamater 1.3mm, pad diameter 2.6mm, see http://www.mouser.com/ds/2/324/ItemDetail_1935161-922578.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix PT-1,5-10-5.0-H pitch 5mm size 50x9mm^2 drill 1.3mm pad 2.6mm
+0
+10
+10
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_PT-1,5-11-3.5-H_1x11_P3.50mm_Horizontal
+Terminal Block Phoenix PT-1,5-11-3.5-H, 11 pins, pitch 3.5mm, size 38.5x7.6mm^2, drill diamater 1.2mm, pad diameter 2.4mm, see , script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix PT-1,5-11-3.5-H pitch 3.5mm size 38.5x7.6mm^2 drill 1.2mm pad 2.4mm
+0
+11
+11
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_PT-1,5-11-5.0-H_1x11_P5.00mm_Horizontal
+Terminal Block Phoenix PT-1,5-11-5.0-H, 11 pins, pitch 5mm, size 55x9mm^2, drill diamater 1.3mm, pad diameter 2.6mm, see http://www.mouser.com/ds/2/324/ItemDetail_1935161-922578.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix PT-1,5-11-5.0-H pitch 5mm size 55x9mm^2 drill 1.3mm pad 2.6mm
+0
+11
+11
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_PT-1,5-12-3.5-H_1x12_P3.50mm_Horizontal
+Terminal Block Phoenix PT-1,5-12-3.5-H, 12 pins, pitch 3.5mm, size 42x7.6mm^2, drill diamater 1.2mm, pad diameter 2.4mm, see , script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix PT-1,5-12-3.5-H pitch 3.5mm size 42x7.6mm^2 drill 1.2mm pad 2.4mm
+0
+12
+12
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_PT-1,5-12-5.0-H_1x12_P5.00mm_Horizontal
+Terminal Block Phoenix PT-1,5-12-5.0-H, 12 pins, pitch 5mm, size 60x9mm^2, drill diamater 1.3mm, pad diameter 2.6mm, see http://www.mouser.com/ds/2/324/ItemDetail_1935161-922578.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix PT-1,5-12-5.0-H pitch 5mm size 60x9mm^2 drill 1.3mm pad 2.6mm
+0
+12
+12
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_PT-1,5-13-3.5-H_1x13_P3.50mm_Horizontal
+Terminal Block Phoenix PT-1,5-13-3.5-H, 13 pins, pitch 3.5mm, size 45.5x7.6mm^2, drill diamater 1.2mm, pad diameter 2.4mm, see , script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix PT-1,5-13-3.5-H pitch 3.5mm size 45.5x7.6mm^2 drill 1.2mm pad 2.4mm
+0
+13
+13
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_PT-1,5-13-5.0-H_1x13_P5.00mm_Horizontal
+Terminal Block Phoenix PT-1,5-13-5.0-H, 13 pins, pitch 5mm, size 65x9mm^2, drill diamater 1.3mm, pad diameter 2.6mm, see http://www.mouser.com/ds/2/324/ItemDetail_1935161-922578.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix PT-1,5-13-5.0-H pitch 5mm size 65x9mm^2 drill 1.3mm pad 2.6mm
+0
+13
+13
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_PT-1,5-14-3.5-H_1x14_P3.50mm_Horizontal
+Terminal Block Phoenix PT-1,5-14-3.5-H, 14 pins, pitch 3.5mm, size 49x7.6mm^2, drill diamater 1.2mm, pad diameter 2.4mm, see , script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix PT-1,5-14-3.5-H pitch 3.5mm size 49x7.6mm^2 drill 1.2mm pad 2.4mm
+0
+14
+14
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_PT-1,5-14-5.0-H_1x14_P5.00mm_Horizontal
+Terminal Block Phoenix PT-1,5-14-5.0-H, 14 pins, pitch 5mm, size 70x9mm^2, drill diamater 1.3mm, pad diameter 2.6mm, see http://www.mouser.com/ds/2/324/ItemDetail_1935161-922578.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix PT-1,5-14-5.0-H pitch 5mm size 70x9mm^2 drill 1.3mm pad 2.6mm
+0
+14
+14
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_PT-1,5-15-3.5-H_1x15_P3.50mm_Horizontal
+Terminal Block Phoenix PT-1,5-15-3.5-H, 15 pins, pitch 3.5mm, size 52.5x7.6mm^2, drill diamater 1.2mm, pad diameter 2.4mm, see , script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix PT-1,5-15-3.5-H pitch 3.5mm size 52.5x7.6mm^2 drill 1.2mm pad 2.4mm
+0
+15
+15
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_PT-1,5-15-5.0-H_1x15_P5.00mm_Horizontal
+Terminal Block Phoenix PT-1,5-15-5.0-H, 15 pins, pitch 5mm, size 75x9mm^2, drill diamater 1.3mm, pad diameter 2.6mm, see http://www.mouser.com/ds/2/324/ItemDetail_1935161-922578.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix PT-1,5-15-5.0-H pitch 5mm size 75x9mm^2 drill 1.3mm pad 2.6mm
+0
+15
+15
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_PT-1,5-16-3.5-H_1x16_P3.50mm_Horizontal
+Terminal Block Phoenix PT-1,5-16-3.5-H, 16 pins, pitch 3.5mm, size 56x7.6mm^2, drill diamater 1.2mm, pad diameter 2.4mm, see , script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix PT-1,5-16-3.5-H pitch 3.5mm size 56x7.6mm^2 drill 1.2mm pad 2.4mm
+0
+16
+16
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_PT-1,5-16-5.0-H_1x16_P5.00mm_Horizontal
+Terminal Block Phoenix PT-1,5-16-5.0-H, 16 pins, pitch 5mm, size 80x9mm^2, drill diamater 1.3mm, pad diameter 2.6mm, see http://www.mouser.com/ds/2/324/ItemDetail_1935161-922578.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix PT-1,5-16-5.0-H pitch 5mm size 80x9mm^2 drill 1.3mm pad 2.6mm
+0
+16
+16
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_PTSM-0,5-2-2,5-V-SMD_1x02-1MP_P2.50mm_Vertical
+PhoenixContact PTSM0,5 2 2,5mm vertical SMD spring clamp terminal block connector http://www.phoenixcontact.com/us/products/1814702/pdf
+PhoenixContact PTSM0.5 2 2.5mm vertical SMD spring clamp terminal block connector 
+0
+4
 3
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_PTSM-0,5-2-2.5-H-THR_1x02_P2.50mm_Horizontal
+Terminal Block Phoenix PTSM-0,5-2-2.5-H-THR, 2 pins, pitch 2.5mm, size 7.2x10mm^2, drill diamater 1.2mm, pad diameter 3mm, see http://www.produktinfo.conrad.com/datenblaetter/550000-574999/556441-da-01-de-LEITERPLATTENKL__PTSM_0_5__8_2_5_H_THR.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix PTSM-0,5-2-2.5-H-THR pitch 2.5mm size 7.2x10mm^2 drill 1.2mm pad 3mm
+0
+4
+2
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_PTSM-0,5-2-2.5-V-THR_1x02_P2.50mm_Vertical
+Terminal Block Phoenix PTSM-0,5-2-2.5-V-THR, vertical (cable from top), 2 pins, pitch 2.5mm, size 5.5x5mm^2, drill diamater 1.2mm, pad diameter 2mm, see http://www.produktinfo.conrad.com/datenblaetter/550000-574999/556444-da-01-de-LEITERPLATTENKL__PTSM_0_5__4_2_5_V_THR.pdf, script-generated with , script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix PTSM-0,5-2-2.5-V-THR vertical pitch 2.5mm size 5.5x5mm^2 drill 1.2mm pad 2mm
+0
+4
+2
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_PTSM-0,5-2-HV-2.5-SMD_1x02-1MP_P2.50mm_Vertical
+PhoenixContact PTSM0,5 2 HV 2,5mm vertical SMD spring clamp terminal block connector http://www.phoenixcontact.com/us/products/1778696/pdf
+2.5mm vertical SMD spring clamp terminal block connector 
+0
+4
 3
-Button_Switch_SMD
-SW_SPST_B3U-3000P
-Ultra-small-sized Tactile Switch with High Contact Reliability, Side-actuated Model, without Ground Terminal, without Boss
-Tactile Switch
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_PTSM-0,5-3-2,5-V-SMD_1x03-1MP_P2.50mm_Vertical
+PhoenixContact PTSM0,5 3 2,5mm vertical SMD spring clamp terminal block connector http://www.phoenixcontact.com/us/products/1814715/pdf
+PhoenixContact PTSM0.5 3 2.5mm vertical SMD spring clamp terminal block connector 
 0
-2
-2
-Button_Switch_SMD
-SW_SPST_B3U-3000P-B
-Ultra-small-sized Tactile Switch with High Contact Reliability, Side-actuated Model, without Ground Terminal, with Boss
-Tactile Switch
-0
-2
-2
-Button_Switch_SMD
-SW_SPST_B3U-3100P
-Ultra-small-sized Tactile Switch with High Contact Reliability, Side-actuated Model, with Ground Terminal, without Boss
-Tactile Switch
-0
-3
-3
-Button_Switch_SMD
-SW_SPST_B3U-3100P-B
-Ultra-small-sized Tactile Switch with High Contact Reliability, Side-actuated Model, with Ground Terminal, with Boss
-Tactile Switch
-0
-3
-3
-Button_Switch_SMD
-SW_SPST_CK_KXT3
-https://www.ckswitches.com/media/1465/kxt3.pdf
-Switch SPST KXT3
-0
-2
-2
-Button_Switch_SMD
-SW_SPST_CK_RS282G05A3
-https://www.mouser.com/ds/2/60/RS-282G05A-SM_RT-1159762.pdf
-SPST button tactile switch
-0
-2
-2
-Button_Switch_SMD
-SW_SPST_EVPBF
-Light Touch Switch
-
-0
+5
 4
-2
-Button_Switch_SMD
-SW_SPST_EVQP0
-Light Touch Switch, https://industrial.panasonic.com/cdbs/www-data/pdf/ATK0000/ATK0000CE28.pdf
-
-0
-4
-2
-Button_Switch_SMD
-SW_SPST_EVQP2
-Light Touch Switch
-
-0
-4
-2
-Button_Switch_SMD
-SW_SPST_EVQP7A
-Light Touch Switch,https://industrial.panasonic.com/cdbs/www-data/pdf/ATK0000/ATK0000CE20.pdf
-
-0
-4
-2
-Button_Switch_SMD
-SW_SPST_EVQP7C
-Light Touch Switch
-
-0
-4
-2
-Button_Switch_SMD
-SW_SPST_EVQPE1
-Light Touch Switch, https://industrial.panasonic.com/cdbs/www-data/pdf/ATK0000/ATK0000CE7.pdf
-
-0
-2
-2
-Button_Switch_SMD
-SW_SPST_EVQQ2
-Light Touch Switch, https://industrial.panasonic.com/cdbs/www-data/pdf/ATK0000/ATK0000CE28.pdf
-
-0
-4
-2
-Button_Switch_SMD
-SW_SPST_FSMSM
-http://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=1437566-3&DocType=Customer+Drawing&DocLang=English
-SPST button tactile switch
-0
-2
-2
-Button_Switch_SMD
-SW_SPST_KMR2
-CK components KMR2 tactile switch http://www.ckswitches.com/media/1479/kmr2.pdf
-tactile switch kmr2
-0
-4
-2
-Button_Switch_SMD
-SW_SPST_Omron_B3FS-100xP
-Surface Mount Tactile Switch for High-Density Mounting, 3.1mm height, https://omronfs.omron.com/en_US/ecb/products/pdf/en-b3fs.pdf
-Tactile Switch
-0
-4
-4
-Button_Switch_SMD
-SW_SPST_Omron_B3FS-101xP
-Surface Mount Tactile Switch for High-Density Mounting, 4.3mm height, https://omronfs.omron.com/en_US/ecb/products/pdf/en-b3fs.pdf
-Tactile Switch
-0
-4
-4
-Button_Switch_SMD
-SW_SPST_Omron_B3FS-105xP
-Surface Mount Tactile Switch for High-Density Mounting, 7.3mm height, https://omronfs.omron.com/en_US/ecb/products/pdf/en-b3fs.pdf
-Tactile Switch
-0
-4
-4
-Button_Switch_SMD
-SW_SPST_PTS645
-C&K Components SPST SMD PTS645 Series 6mm Tact Switch
-SPST Button Switch
-0
-4
-2
-Button_Switch_SMD
-SW_SPST_PTS810
-C&K Components, PTS 810 Series, Microminiature SMT Top Actuated, http://www.ckswitches.com/media/1476/pts810.pdf
-SPST Button Switch
-0
-4
-2
-Button_Switch_SMD
-SW_SPST_Panasonic_EVQPL_3PL_5PL_PT_A08
-Light Touch Switch, http://industrial.panasonic.com/cdbs/www-data/pdf/ATK0000/ATK0000CE3.pdf
-SMD SMT SPST EVQPL EVQPT
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_PTSM-0,5-3-2.5-H-THR_1x03_P2.50mm_Horizontal
+Terminal Block Phoenix PTSM-0,5-3-2.5-H-THR, 3 pins, pitch 2.5mm, size 9.7x10mm^2, drill diamater 1.2mm, pad diameter 3mm, see http://www.produktinfo.conrad.com/datenblaetter/550000-574999/556441-da-01-de-LEITERPLATTENKL__PTSM_0_5__8_2_5_H_THR.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix PTSM-0,5-3-2.5-H-THR pitch 2.5mm size 9.7x10mm^2 drill 1.2mm pad 3mm
 0
 6
 3
-Button_Switch_SMD
-SW_SPST_Panasonic_EVQPL_3PL_5PL_PT_A15
-Light Touch Switch, http://industrial.panasonic.com/cdbs/www-data/pdf/ATK0000/ATK0000CE3.pdf
-SMD SMT SPST EVQPL EVQPT
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_PTSM-0,5-3-2.5-V-THR_1x03_P2.50mm_Vertical
+Terminal Block Phoenix PTSM-0,5-3-2.5-V-THR, vertical (cable from top), 3 pins, pitch 2.5mm, size 8x5mm^2, drill diamater 1.2mm, pad diameter 2mm, see http://www.produktinfo.conrad.com/datenblaetter/550000-574999/556444-da-01-de-LEITERPLATTENKL__PTSM_0_5__4_2_5_V_THR.pdf, script-generated with , script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix PTSM-0,5-3-2.5-V-THR vertical pitch 2.5mm size 8x5mm^2 drill 1.2mm pad 2mm
 0
 6
 3
-Button_Switch_SMD
-SW_SPST_REED_CT05-XXXX-G1
-Coto Technologies SPST Reed Switch CT05-XXXX-G1
-Coto Reed SPST Switch
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_PTSM-0,5-3-HV-2.5-SMD_1x03-1MP_P2.50mm_Vertical
+PhoenixContact PTSM0,5 3 HV 2,5mm vertical SMD spring clamp terminal block connector http://www.phoenixcontact.com/us/products/1778706/pdf
+2.5mm vertical SMD spring clamp terminal block connector 
 0
-2
-2
-Button_Switch_SMD
-SW_SPST_REED_CT05-XXXX-J1
-Coto Technologies SPST Reed Switch CT05-XXXX-J1
-Coto Reed SPST Switch
+5
+4
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_PTSM-0,5-4-2,5-V-SMD_1x04-1MP_P2.50mm_Vertical
+PhoenixContact PTSM0,5 4 2,5mm vertical SMD spring clamp terminal block connector http://www.phoenixcontact.com/us/products/1814728/pdf
+PhoenixContact PTSM0.5 4 2.5mm vertical SMD spring clamp terminal block connector 
 0
-2
-2
-Button_Switch_SMD
-SW_SPST_REED_CT10-XXXX-G1
-Coto Technologies SPST Reed Switch CT10-XXXX-G1
-Coto Reed SPST Switch
+6
+5
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_PTSM-0,5-4-2.5-H-THR_1x04_P2.50mm_Horizontal
+Terminal Block Phoenix PTSM-0,5-4-2.5-H-THR, 4 pins, pitch 2.5mm, size 12.2x10mm^2, drill diamater 1.2mm, pad diameter 3mm, see http://www.produktinfo.conrad.com/datenblaetter/550000-574999/556441-da-01-de-LEITERPLATTENKL__PTSM_0_5__8_2_5_H_THR.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix PTSM-0,5-4-2.5-H-THR pitch 2.5mm size 12.2x10mm^2 drill 1.2mm pad 3mm
 0
-2
-2
-Button_Switch_SMD
-SW_SPST_REED_CT10-XXXX-G2
-Coto Technologies SPST Reed Switch CT10-XXXX-G2
-Coto Reed SPST Switch
+8
+4
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_PTSM-0,5-4-2.5-V-THR_1x04_P2.50mm_Vertical
+Terminal Block Phoenix PTSM-0,5-4-2.5-V-THR, vertical (cable from top), 4 pins, pitch 2.5mm, size 10.5x5mm^2, drill diamater 1.2mm, pad diameter 2mm, see http://www.produktinfo.conrad.com/datenblaetter/550000-574999/556444-da-01-de-LEITERPLATTENKL__PTSM_0_5__4_2_5_V_THR.pdf, script-generated with , script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix PTSM-0,5-4-2.5-V-THR vertical pitch 2.5mm size 10.5x5mm^2 drill 1.2mm pad 2mm
 0
-2
-2
-Button_Switch_SMD
-SW_SPST_REED_CT10-XXXX-G4
-Coto Technologies SPST Reed Switch CT10-XXXX-G4
-Coto Reed SPST Switch
-0
-2
-2
-Button_Switch_SMD
-SW_SPST_SKQG_WithStem
-ALPS 5.2mm Square Low-profile Type (Surface Mount) SKQG Series, With stem, http://www.alps.com/prod/info/E/HTML/Tact/SurfaceMount/SKQG/SKQGAFE010.html
-SPST Button Switch
+8
+4
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_PTSM-0,5-4-HV-2.5-SMD_1x04-1MP_P2.50mm_Vertical
+PhoenixContact PTSM0,5 4 HV 2,5mm vertical SMD spring clamp terminal block connector http://www.phoenixcontact.com/us/products/1778719/pdf
+2.5mm vertical SMD spring clamp terminal block connector 
 0
 4
-2
-Button_Switch_SMD
-SW_SPST_SKQG_WithoutStem
-ALPS 5.2mm Square Low-profile Type (Surface Mount) SKQG Series, Without stem, http://www.alps.com/prod/info/E/HTML/Tact/SurfaceMount/SKQG/SKQGAEE010.html
-SPST Button Switch
+3
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_PTSM-0,5-5-2,5-V-SMD_1x05-1MP_P2.50mm_Vertical
+PhoenixContact PTSM0,5 5 2,5mm vertical SMD spring clamp terminal block connector http://www.phoenixcontact.com/us/products/1814731/pdf
+PhoenixContact PTSM0.5 5 2.5mm vertical SMD spring clamp terminal block connector 
 0
-4
-2
-Button_Switch_SMD
-SW_SPST_TL3305A
-https://www.e-switch.com/system/asset/product_line/data_sheet/213/TL3305.pdf
-TL3305 Series Tact Switch
+7
+6
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_PTSM-0,5-5-2.5-H-THR_1x05_P2.50mm_Horizontal
+Terminal Block Phoenix PTSM-0,5-5-2.5-H-THR, 5 pins, pitch 2.5mm, size 14.7x10mm^2, drill diamater 1.2mm, pad diameter 3mm, see http://www.produktinfo.conrad.com/datenblaetter/550000-574999/556441-da-01-de-LEITERPLATTENKL__PTSM_0_5__8_2_5_H_THR.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix PTSM-0,5-5-2.5-H-THR pitch 2.5mm size 14.7x10mm^2 drill 1.2mm pad 3mm
 0
-4
-2
-Button_Switch_SMD
-SW_SPST_TL3305B
-https://www.e-switch.com/system/asset/product_line/data_sheet/213/TL3305.pdf
-TL3305 Series Tact Switch
+10
+5
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_PTSM-0,5-5-2.5-V-THR_1x05_P2.50mm_Vertical
+Terminal Block Phoenix PTSM-0,5-5-2.5-V-THR, vertical (cable from top), 5 pins, pitch 2.5mm, size 13x5mm^2, drill diamater 1.2mm, pad diameter 2mm, see http://www.produktinfo.conrad.com/datenblaetter/550000-574999/556444-da-01-de-LEITERPLATTENKL__PTSM_0_5__4_2_5_V_THR.pdf, script-generated with , script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix PTSM-0,5-5-2.5-V-THR vertical pitch 2.5mm size 13x5mm^2 drill 1.2mm pad 2mm
 0
-4
-2
-Button_Switch_SMD
-SW_SPST_TL3305C
-https://www.e-switch.com/system/asset/product_line/data_sheet/213/TL3305.pdf
-TL3305 Series Tact Switch
+10
+5
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_PTSM-0,5-5-HV-2.5-SMD_1x05-1MP_P2.50mm_Vertical
+PhoenixContact PTSM0,5 5 HV 2,5mm vertical SMD spring clamp terminal block connector http://www.phoenixcontact.com/us/products/1778722/pdf
+2.5mm vertical SMD spring clamp terminal block connector 
 0
-4
-2
-Button_Switch_SMD
-SW_SPST_TL3342
-Low-profile SMD Tactile Switch, https://www.e-switch.com/system/asset/product_line/data_sheet/165/TL3342.pdf
-SPST Tactile Switch
+7
+6
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_PTSM-0,5-6-2,5-V-SMD_1x06-1MP_P2.50mm_Vertical
+PhoenixContact PTSM0,5 6 2,5mm vertical SMD spring clamp terminal block connector http://www.phoenixcontact.com/us/products/1814744/pdf
+PhoenixContact PTSM0.5 6 2.5mm vertical SMD spring clamp terminal block connector 
 0
-4
-2
+8
+7
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_PTSM-0,5-6-2.5-H-THR_1x06_P2.50mm_Horizontal
+Terminal Block Phoenix PTSM-0,5-6-2.5-H-THR, 6 pins, pitch 2.5mm, size 17.2x10mm^2, drill diamater 1.2mm, pad diameter 3mm, see http://www.produktinfo.conrad.com/datenblaetter/550000-574999/556441-da-01-de-LEITERPLATTENKL__PTSM_0_5__8_2_5_H_THR.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix PTSM-0,5-6-2.5-H-THR pitch 2.5mm size 17.2x10mm^2 drill 1.2mm pad 3mm
+0
+12
+6
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_PTSM-0,5-6-2.5-V-THR_1x06_P2.50mm_Vertical
+Terminal Block Phoenix PTSM-0,5-6-2.5-V-THR, vertical (cable from top), 6 pins, pitch 2.5mm, size 15.5x5mm^2, drill diamater 1.2mm, pad diameter 2mm, see http://www.produktinfo.conrad.com/datenblaetter/550000-574999/556444-da-01-de-LEITERPLATTENKL__PTSM_0_5__4_2_5_V_THR.pdf, script-generated with , script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix PTSM-0,5-6-2.5-V-THR vertical pitch 2.5mm size 15.5x5mm^2 drill 1.2mm pad 2mm
+0
+12
+6
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_PTSM-0,5-6-HV-2.5-SMD_1x06-1MP_P2.50mm_Vertical
+PhoenixContact PTSM0,5 6 HV 2,5mm vertical SMD spring clamp terminal block connector http://www.phoenixcontact.com/us/products/1778735/pdf
+2.5mm vertical SMD spring clamp terminal block connector 
+0
+8
+7
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_PTSM-0,5-7-2,5-V-SMD_1x07-1MP_P2.50mm_Vertical
+PhoenixContact PTSM0,5 7 2,5mm vertical SMD spring clamp terminal block connector http://www.phoenixcontact.com/us/products/1814757/pdf
+PhoenixContact PTSM0.5 7 2.5mm vertical SMD spring clamp terminal block connector 
+0
+9
+8
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_PTSM-0,5-7-2.5-H-THR_1x07_P2.50mm_Horizontal
+Terminal Block Phoenix PTSM-0,5-7-2.5-H-THR, 7 pins, pitch 2.5mm, size 19.7x10mm^2, drill diamater 1.2mm, pad diameter 3mm, see http://www.produktinfo.conrad.com/datenblaetter/550000-574999/556441-da-01-de-LEITERPLATTENKL__PTSM_0_5__8_2_5_H_THR.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix PTSM-0,5-7-2.5-H-THR pitch 2.5mm size 19.7x10mm^2 drill 1.2mm pad 3mm
+0
+14
+7
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_PTSM-0,5-7-2.5-V-THR_1x07_P2.50mm_Vertical
+Terminal Block Phoenix PTSM-0,5-7-2.5-V-THR, vertical (cable from top), 7 pins, pitch 2.5mm, size 18x5mm^2, drill diamater 1.2mm, pad diameter 2mm, see http://www.produktinfo.conrad.com/datenblaetter/550000-574999/556444-da-01-de-LEITERPLATTENKL__PTSM_0_5__4_2_5_V_THR.pdf, script-generated with , script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix PTSM-0,5-7-2.5-V-THR vertical pitch 2.5mm size 18x5mm^2 drill 1.2mm pad 2mm
+0
+14
+7
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_PTSM-0,5-7-HV-2.5-SMD_1x07-1MP_P2.50mm_Vertical
+PhoenixContact PTSM0,5 7 HV 2,5mm vertical SMD spring clamp terminal block connector http://www.phoenixcontact.com/us/products/1778748/pdf
+2.5mm vertical SMD spring clamp terminal block connector 
+0
+9
+8
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_PTSM-0,5-8-2,5-V-SMD_1x08-1MP_P2.50mm_Vertical
+PhoenixContact PTSM0,5 8 2,5mm vertical SMD spring clamp terminal block connector http://www.phoenixcontact.com/us/products/1814760/pdf
+PhoenixContact PTSM0.5 8 2.5mm vertical SMD spring clamp terminal block connector 
+0
+10
+9
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_PTSM-0,5-8-2.5-H-THR_1x08_P2.50mm_Horizontal
+Terminal Block Phoenix PTSM-0,5-8-2.5-H-THR, 8 pins, pitch 2.5mm, size 22.2x10mm^2, drill diamater 1.2mm, pad diameter 3mm, see http://www.produktinfo.conrad.com/datenblaetter/550000-574999/556441-da-01-de-LEITERPLATTENKL__PTSM_0_5__8_2_5_H_THR.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix PTSM-0,5-8-2.5-H-THR pitch 2.5mm size 22.2x10mm^2 drill 1.2mm pad 3mm
+0
+16
+8
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_PTSM-0,5-8-2.5-V-THR_1x08_P2.50mm_Vertical
+Terminal Block Phoenix PTSM-0,5-8-2.5-V-THR, vertical (cable from top), 8 pins, pitch 2.5mm, size 20.5x5mm^2, drill diamater 1.2mm, pad diameter 2mm, see http://www.produktinfo.conrad.com/datenblaetter/550000-574999/556444-da-01-de-LEITERPLATTENKL__PTSM_0_5__4_2_5_V_THR.pdf, script-generated with , script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix
+THT Terminal Block Phoenix PTSM-0,5-8-2.5-V-THR vertical pitch 2.5mm size 20.5x5mm^2 drill 1.2mm pad 2mm
+0
+16
+8
+TerminalBlock_Phoenix
+TerminalBlock_Phoenix_PTSM-0,5-8-HV-2.5-SMD_1x08-1MP_P2.50mm_Vertical
+PhoenixContact PTSM0,5 8 HV 2,5mm vertical SMD spring clamp terminal block connector http://www.phoenixcontact.com/us/products/1778751/pdf
+2.5mm vertical SMD spring clamp terminal block connector 
+0
+10
+9

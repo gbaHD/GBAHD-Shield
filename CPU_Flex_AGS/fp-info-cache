@@ -1,4 +1,4 @@
-19268293040053076
+19224216431855660
 Battery
 BatteryHolder_Bulgin_BX0036_1xC
 Bulgin Battery Holder, BX0036, Battery Type C (https://www.bulgin.com/products/pub/media/bulgin/data/Battery_holders.pdf)
@@ -2807,13 +2807,6 @@ capacitor
 2
 2
 Capacitor_SMD
-C_0603_1608Metric_Pad1.05x0.95mm_HandSolder
-Capacitor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator
-capacitor handsolder
-0
-2
-2
-Capacitor_SMD
 C_0603_1608Metric_Pad1.08x0.95mm_HandSolder
 Capacitor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator
 capacitor handsolder
@@ -2824,13 +2817,6 @@ Capacitor_SMD
 C_0805_2012Metric
 Capacitor SMD 0805 (2012 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf, https://docs.google.com/spreadsheets/d/1BsfQQcO9C6DZCsRaXUlFlo91Tg2WpOkGARC1WS5S8t0/edit?usp=sharing), generated with kicad-footprint-generator
 capacitor
-0
-2
-2
-Capacitor_SMD
-C_0805_2012Metric_Pad1.15x1.40mm_HandSolder
-Capacitor SMD 0805 (2012 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: https://docs.google.com/spreadsheets/d/1BsfQQcO9C6DZCsRaXUlFlo91Tg2WpOkGARC1WS5S8t0/edit?usp=sharing), generated with kicad-footprint-generator
-capacitor handsolder
 0
 2
 2
@@ -2870,13 +2856,6 @@ capacitor handsolder
 2
 2
 Capacitor_SMD
-C_1206_3216Metric_Pad1.42x1.75mm_HandSolder
-Capacitor SMD 1206 (3216 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator
-capacitor handsolder
-0
-2
-2
-Capacitor_SMD
 C_1210_3225Metric
 Capacitor SMD 1210 (3225 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator
 capacitor
@@ -2891,37 +2870,9 @@ capacitor handsolder
 2
 2
 Capacitor_SMD
-C_1210_3225Metric_Pad1.42x2.65mm_HandSolder
-Capacitor SMD 1210 (3225 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator
-capacitor handsolder
-0
-2
-2
-Capacitor_SMD
-C_1806_4516Metric
-Capacitor SMD 1806 (4516 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.modelithics.com/models/Vendor/MuRata/BLM41P.pdf), generated with kicad-footprint-generator
-capacitor
-0
-2
-2
-Capacitor_SMD
-C_1806_4516Metric_Pad1.57x1.80mm_HandSolder
-Capacitor SMD 1806 (4516 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: https://www.modelithics.com/models/Vendor/MuRata/BLM41P.pdf), generated with kicad-footprint-generator
-capacitor handsolder
-0
-2
-2
-Capacitor_SMD
 C_1812_4532Metric
 Capacitor SMD 1812 (4532 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator
 capacitor
-0
-2
-2
-Capacitor_SMD
-C_1812_4532Metric_Pad1.30x3.40mm_HandSolder
-Capacitor SMD 1812 (4532 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: https://www.nikhef.nl/pub/departments/mt/projects/detectorR_D/dtddice/ERJ2G.pdf), generated with kicad-footprint-generator
-capacitor handsolder
 0
 2
 2
@@ -2942,27 +2893,6 @@ capacitor
 Capacitor_SMD
 C_1825_4564Metric_Pad1.57x6.80mm_HandSolder
 Capacitor SMD 1825 (4564 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size from: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator
-capacitor handsolder
-0
-2
-2
-Capacitor_SMD
-C_1825_4564Metric_Pad1.88x6.70mm_HandSolder
-Capacitor SMD 1825 (4564 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size from: http://datasheets.avx.com/AVX-HV_MLCC.pdf), generated with kicad-footprint-generator
-capacitor handsolder
-0
-2
-2
-Capacitor_SMD
-C_2010_5025Metric
-Capacitor SMD 2010 (5025 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator
-capacitor
-0
-2
-2
-Capacitor_SMD
-C_2010_5025Metric_Pad1.52x2.65mm_HandSolder
-Capacitor SMD 2010 (5025 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator
 capacitor handsolder
 0
 2
@@ -2991,34 +2921,6 @@ capacitor
 Capacitor_SMD
 C_2225_5664Metric_Pad1.80x6.60mm_HandSolder
 Capacitor SMD 2225 (5664 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size from: http://datasheets.avx.com/AVX-HV_MLCC.pdf), generated with kicad-footprint-generator
-capacitor handsolder
-0
-2
-2
-Capacitor_SMD
-C_2512_6332Metric
-Capacitor SMD 2512 (6332 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator
-capacitor
-0
-2
-2
-Capacitor_SMD
-C_2512_6332Metric_Pad1.52x3.35mm_HandSolder
-Capacitor SMD 2512 (6332 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator
-capacitor handsolder
-0
-2
-2
-Capacitor_SMD
-C_2816_7142Metric
-Capacitor SMD 2816 (7142 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size from: https://www.vishay.com/docs/30100/wsl.pdf), generated with kicad-footprint-generator
-capacitor
-0
-2
-2
-Capacitor_SMD
-C_2816_7142Metric_Pad3.20x4.45mm_HandSolder
-Capacitor SMD 2816 (7142 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size from: https://www.vishay.com/docs/30100/wsl.pdf), generated with kicad-footprint-generator
 capacitor handsolder
 0
 2
@@ -6432,6 +6334,13 @@ XT60 female vertical
 0
 2
 2
+Connector_Amphenol
+Amphenol_M8S-03PMMR-SF8001
+M8 Male connector for panel, 90° PCB mount (https://www.amphenolltw.com/2012download/2D%20PDF/03_M%20Series%20Sensor%20Connectors/M8S-XXPMMR-SF8001.pdf)
+three-pin M8
+0
+5
+4
 Connector_Audio
 Jack_3.5mm_CUI_SJ-3523-SMT_Horizontal
 3.5 mm, Stereo, Right Angle, Surface Mount (SMT), Audio Jack Connector (https://www.cui.com/product/resource/sj-352x-smt-series.pdf)
@@ -6481,13 +6390,6 @@ jack stereo TRS
 0
 5
 5
-Connector_Audio
-Jack_3.5mm_Neutrik_NMJ6HCD2_Horizontal
-NMJ6HCD2, TRS 1/4in (http://www.neutrik.com/en/audio/plugs-and-jacks/m-series/nmj6hcd2)
-NMJ6HCD2 TRS stereo jack connector
-0
-6
-6
 Connector_Audio
 Jack_3.5mm_PJ311_Horizontal
 PJ311 6pin SMD 3.5mm stereo headphones jack.
@@ -7945,13 +7847,6 @@ sd card
 15
 12
 Connector_Card
-microSD-TF-01A
-TFP09-2-12B
-SD TF TransFlash Card
-0
-13
-10
-Connector_Card
 microSD_HC_Hirose_DM3AT-SF-PEJM5
 Micro SD, SMD, right-angle, push-pull (https://www.hirose.com/product/en/download_file/key_name/DM3AT-SF-PEJM5/category/Drawing%20(2D)/doc_file_id/44099/?file_category_id=6&item_id=06090031000&is_series=)
 Micro SD
@@ -8197,23 +8092,9 @@ DIN 41612 IEC 60603 B/2
 16
 16
 Connector_DIN
-DIN41612_B2_2x8_Horizontal
-DIN 41612 connector, type B/2, horizontal, 16 pins wide, 2 rows, even columns
-DIN 41512 IEC 60603 B/2
-0
-16
-16
-Connector_DIN
 DIN41612_B2_2x8_Male_Horizontal_THT
 DIN41612 connector, type B/2, Horizontal, 2 rows 16 pins wide, https://www.erni-x-press.com/de/downloads/kataloge/englische_kataloge/erni-din41612-iec60603-2-e.pdf
 DIN 41612 IEC 60603 B/2
-0
-16
-16
-Connector_DIN
-DIN41612_B2_2x8_Vertical
-DIN 41612 connector, type B/2, vertical, 16 pins wide, 2 rows, even columns
-DIN 41512 IEC 60603 B/2
 0
 16
 16
@@ -8225,23 +8106,9 @@ DIN 41612 IEC 60603 B/2
 32
 32
 Connector_DIN
-DIN41612_B2_2x16_Horizontal
-DIN 41612 connector, type B/2, horizontal, 16 pins wide, 2 rows, full configuration
-DIN 41512 IEC 60603 B/2
-0
-32
-32
-Connector_DIN
 DIN41612_B2_2x16_Male_Horizontal_THT
 DIN41612 connector, type B/2, Horizontal, 2 rows 16 pins wide, https://www.erni-x-press.com/de/downloads/kataloge/englische_kataloge/erni-din41612-iec60603-2-e.pdf
 DIN 41612 IEC 60603 B/2
-0
-32
-32
-Connector_DIN
-DIN41612_B2_2x16_Vertical
-DIN 41612 connector, type B/2, vertical, 16 pins wide, 2 rows, full configuration
-DIN 41512 IEC 60603 B/2
 0
 32
 32
@@ -8253,23 +8120,9 @@ DIN 41612 IEC 60603 B/3
 10
 10
 Connector_DIN
-DIN41612_B3_2x5_Horizontal
-DIN 41612 connector, type B/3, horizontal, 10 pins wide, 2 rows, even columns
-DIN 41512 IEC 60603 B/3
-0
-10
-10
-Connector_DIN
 DIN41612_B3_2x5_Male_Horizontal_THT
 DIN41612 connector, type B/3, Horizontal, 2 rows 10 pins wide, https://www.erni-x-press.com/de/downloads/kataloge/englische_kataloge/erni-din41612-iec60603-2-e.pdf
 DIN 41612 IEC 60603 B/3
-0
-10
-10
-Connector_DIN
-DIN41612_B3_2x5_Vertical
-DIN 41612 connector, type B/3, vertical, 10 pins wide, 2 rows, even columns
-DIN 41512 IEC 60603 B/3
 0
 10
 10
@@ -8281,23 +8134,9 @@ DIN 41612 IEC 60603 B/3
 20
 20
 Connector_DIN
-DIN41612_B3_2x10_Horizontal
-DIN 41612 connector, type B/3, horizontal, 10 pins wide, 2 rows, full configuration
-DIN 41512 IEC 60603 B/3
-0
-20
-20
-Connector_DIN
 DIN41612_B3_2x10_Male_Horizontal_THT
 DIN41612 connector, type B/3, Horizontal, 2 rows 10 pins wide, https://www.erni-x-press.com/de/downloads/kataloge/englische_kataloge/erni-din41612-iec60603-2-e.pdf
 DIN 41612 IEC 60603 B/3
-0
-20
-20
-Connector_DIN
-DIN41612_B3_2x10_Vertical
-DIN 41612 connector, type B/3, vertical, 10 pins wide, 2 rows, full configuration
-DIN 41512 IEC 60603 B/3
 0
 20
 20
@@ -8323,23 +8162,9 @@ DIN 41612 IEC 60603 B
 32
 32
 Connector_DIN
-DIN41612_B_2x16_Horizontal
-DIN 41612 connector, type B, horizontal, 32 pins wide, 2 rows, even columns
-DIN 41512 IEC 60603 B
-0
-32
-32
-Connector_DIN
 DIN41612_B_2x16_Male_Horizontal_THT
 DIN41612 connector, type B, Horizontal, 2 rows 32 pins wide, https://www.erni-x-press.com/de/downloads/kataloge/englische_kataloge/erni-din41612-iec60603-2-e.pdf
 DIN 41612 IEC 60603 B
-0
-32
-32
-Connector_DIN
-DIN41612_B_2x16_Vertical
-DIN 41612 connector, type B, vertical, 32 pins wide, 2 rows, even columns
-DIN 41512 IEC 60603 B
 0
 32
 32
@@ -8351,23 +8176,9 @@ DIN 41612 IEC 60603 B
 64
 64
 Connector_DIN
-DIN41612_B_2x32_Horizontal
-DIN 41612 connector, type B, horizontal, 32 pins wide, 2 rows, full configuration
-DIN 41512 IEC 60603 B
-0
-64
-64
-Connector_DIN
 DIN41612_B_2x32_Male_Horizontal_THT
 DIN41612 connector, type B, Horizontal, 2 rows 32 pins wide, https://www.erni-x-press.com/de/downloads/kataloge/englische_kataloge/erni-din41612-iec60603-2-e.pdf
 DIN 41612 IEC 60603 B
-0
-64
-64
-Connector_DIN
-DIN41612_B_2x32_Vertical
-DIN 41612 connector, type B, vertical, 32 pins wide, 2 rows, full configuration
-DIN 41512 IEC 60603 B
 0
 64
 64
@@ -12425,13 +12236,6 @@ Through hole horizontal IDC box header THT 2x05 2.54mm double row
 10
 10
 Connector_IDC
-IDC-Header_2x05_P2.54mm_Horizontal_Lock
-Connector IDC Locked, 10 contacts, compatible header: PANCON HE10 (Series 50, (https://www.reboul.fr/storage/00003af6.pdf)
-connector idc locked
-0
-12
-10
-Connector_IDC
 IDC-Header_2x05_P2.54mm_Latch6.5mm_Vertical
 Through hole IDC header, 2x05, 2.54mm pitch, DIN 41651 / IEC 60603-13, double rows, 6.5mm latches, https://docs.google.com/spreadsheets/d/16SsEcesNF15N3Lb4niX7dcUr-NY5_MFPQhobNuNppn4/edit#gid=0
 Through hole vertical IDC header THT 2x05 2.54mm double row
@@ -12472,13 +12276,6 @@ Through hole IDC box header, 2x05, 2.54mm pitch, DIN 41651 / IEC 60603-13, doubl
 Through hole vertical IDC box header THT 2x05 2.54mm double row
 0
 10
-10
-Connector_IDC
-IDC-Header_2x05_P2.54mm_Vertical_Lock
-Connector IDC Locked, 10 contacts, compatible header: PANCON HE10 (Series 50, (https://www.reboul.fr/storage/00003af6.pdf)
-connector idc locked
-0
-12
 10
 Connector_IDC
 IDC-Header_2x06-1MP_P2.54mm_Latch6.5mm_Vertical
@@ -12656,13 +12453,6 @@ Through hole vertical IDC box header THT 2x07 2.54mm double row
 14
 14
 Connector_IDC
-IDC-Header_2x07_P2.54mm_Vertical_Lock
-Connector IDC Locked, 10 contacts, compatible header: PANCON HE10 (Series 50, (https://www.reboul.fr/storage/00003af6.pdf)
-connector idc locked
-0
-16
-14
-Connector_IDC
 IDC-Header_2x08-1MP_P2.54mm_Latch6.5mm_Vertical
 Through hole IDC header, 2x08, 2.54mm pitch, DIN 41651 / IEC 60603-13, double rows, 6.5mm latches, mounting holes, https://docs.google.com/spreadsheets/d/16SsEcesNF15N3Lb4niX7dcUr-NY5_MFPQhobNuNppn4/edit#gid=0
 Through hole vertical IDC header THT 2x08 2.54mm double row
@@ -12703,13 +12493,6 @@ Through hole IDC box header, 2x08, 2.54mm pitch, DIN 41651 / IEC 60603-13, doubl
 Through hole horizontal IDC box header THT 2x08 2.54mm double row
 0
 16
-16
-Connector_IDC
-IDC-Header_2x08_P2.54mm_Horizontal_Lock
-Connector IDC Locked, 10 contacts, compatible header: PANCON HE10 (Series 50, (https://www.reboul.fr/storage/00003af6.pdf)
-connector idc locked
-0
-18
 16
 Connector_IDC
 IDC-Header_2x08_P2.54mm_Latch6.5mm_Vertical
@@ -12754,13 +12537,6 @@ Through hole vertical IDC box header THT 2x08 2.54mm double row
 16
 16
 Connector_IDC
-IDC-Header_2x08_P2.54mm_Vertical_Lock
-Connector IDC Locked, 10 contacts, compatible header: PANCON HE10 (Series 50, (https://www.reboul.fr/storage/00003af6.pdf)
-connector idc locked
-0
-18
-16
-Connector_IDC
 IDC-Header_2x10-1MP_P2.54mm_Latch6.5mm_Vertical
 Through hole IDC header, 2x10, 2.54mm pitch, DIN 41651 / IEC 60603-13, double rows, 6.5mm latches, mounting holes, https://docs.google.com/spreadsheets/d/16SsEcesNF15N3Lb4niX7dcUr-NY5_MFPQhobNuNppn4/edit#gid=0
 Through hole vertical IDC header THT 2x10 2.54mm double row
@@ -12803,13 +12579,6 @@ Through hole horizontal IDC box header THT 2x10 2.54mm double row
 20
 20
 Connector_IDC
-IDC-Header_2x10_P2.54mm_Horizontal_Lock
-Connector IDC Locked, 10 contacts, compatible header: PANCON HE10 (Series 50, (https://www.reboul.fr/storage/00003af6.pdf)
-connector idc locked
-0
-22
-20
-Connector_IDC
 IDC-Header_2x10_P2.54mm_Latch6.5mm_Vertical
 Through hole IDC header, 2x10, 2.54mm pitch, DIN 41651 / IEC 60603-13, double rows, 6.5mm latches, https://docs.google.com/spreadsheets/d/16SsEcesNF15N3Lb4niX7dcUr-NY5_MFPQhobNuNppn4/edit#gid=0
 Through hole vertical IDC header THT 2x10 2.54mm double row
@@ -12850,13 +12619,6 @@ Through hole IDC box header, 2x10, 2.54mm pitch, DIN 41651 / IEC 60603-13, doubl
 Through hole vertical IDC box header THT 2x10 2.54mm double row
 0
 20
-20
-Connector_IDC
-IDC-Header_2x10_P2.54mm_Vertical_Lock
-Connector IDC Locked, 10 contacts, compatible header: PANCON HE10 (Series 50, (https://www.reboul.fr/storage/00003af6.pdf)
-connector idc locked
-0
-22
 20
 Connector_IDC
 IDC-Header_2x12-1MP_P2.54mm_Latch6.5mm_Vertical
@@ -12985,13 +12747,6 @@ Through hole horizontal IDC box header THT 2x13 2.54mm double row
 26
 26
 Connector_IDC
-IDC-Header_2x13_P2.54mm_Horizontal_Lock
-Connector IDC Locked, 10 contacts, compatible header: PANCON HE10 (Series 50, (https://www.reboul.fr/storage/00003af6.pdf)
-connector idc locked
-0
-28
-26
-Connector_IDC
 IDC-Header_2x13_P2.54mm_Latch6.5mm_Vertical
 Through hole IDC header, 2x13, 2.54mm pitch, DIN 41651 / IEC 60603-13, double rows, 6.5mm latches, https://docs.google.com/spreadsheets/d/16SsEcesNF15N3Lb4niX7dcUr-NY5_MFPQhobNuNppn4/edit#gid=0
 Through hole vertical IDC header THT 2x13 2.54mm double row
@@ -13032,13 +12787,6 @@ Through hole IDC box header, 2x13, 2.54mm pitch, DIN 41651 / IEC 60603-13, doubl
 Through hole vertical IDC box header THT 2x13 2.54mm double row
 0
 26
-26
-Connector_IDC
-IDC-Header_2x13_P2.54mm_Vertical_Lock
-Connector IDC Locked, 10 contacts, compatible header: PANCON HE10 (Series 50, (https://www.reboul.fr/storage/00003af6.pdf)
-connector idc locked
-0
-28
 26
 Connector_IDC
 IDC-Header_2x15-1MP_P2.54mm_Latch6.5mm_Vertical
@@ -13167,13 +12915,6 @@ Through hole horizontal IDC box header THT 2x17 2.54mm double row
 34
 34
 Connector_IDC
-IDC-Header_2x17_P2.54mm_Horizontal_Lock
-Connector IDC Locked, 10 contacts, compatible header: PANCON HE10 (Series 50, (https://www.reboul.fr/storage/00003af6.pdf)
-connector idc locked
-0
-36
-34
-Connector_IDC
 IDC-Header_2x17_P2.54mm_Latch6.5mm_Vertical
 Through hole IDC header, 2x17, 2.54mm pitch, DIN 41651 / IEC 60603-13, double rows, 6.5mm latches, https://docs.google.com/spreadsheets/d/16SsEcesNF15N3Lb4niX7dcUr-NY5_MFPQhobNuNppn4/edit#gid=0
 Through hole vertical IDC header THT 2x17 2.54mm double row
@@ -13214,13 +12955,6 @@ Through hole IDC box header, 2x17, 2.54mm pitch, DIN 41651 / IEC 60603-13, doubl
 Through hole vertical IDC box header THT 2x17 2.54mm double row
 0
 34
-34
-Connector_IDC
-IDC-Header_2x17_P2.54mm_Vertical_Lock
-Connector IDC Locked, 10 contacts, compatible header: PANCON HE10 (Series 50, (https://www.reboul.fr/storage/00003af6.pdf)
-connector idc locked
-0
-36
 34
 Connector_IDC
 IDC-Header_2x20-1MP_P2.54mm_Latch6.5mm_Vertical
@@ -13265,13 +12999,6 @@ Through hole horizontal IDC box header THT 2x20 2.54mm double row
 40
 40
 Connector_IDC
-IDC-Header_2x20_P2.54mm_Horizontal_Lock
-Connector IDC Locked, 10 contacts, compatible header: PANCON HE10 (Series 50, (https://www.reboul.fr/storage/00003af6.pdf)
-connector idc locked
-0
-42
-41
-Connector_IDC
 IDC-Header_2x20_P2.54mm_Latch6.5mm_Vertical
 Through hole IDC header, 2x20, 2.54mm pitch, DIN 41651 / IEC 60603-13, double rows, 6.5mm latches, https://docs.google.com/spreadsheets/d/16SsEcesNF15N3Lb4niX7dcUr-NY5_MFPQhobNuNppn4/edit#gid=0
 Through hole vertical IDC header THT 2x20 2.54mm double row
@@ -13312,13 +13039,6 @@ Through hole IDC box header, 2x20, 2.54mm pitch, DIN 41651 / IEC 60603-13, doubl
 Through hole vertical IDC box header THT 2x20 2.54mm double row
 0
 40
-40
-Connector_IDC
-IDC-Header_2x20_P2.54mm_Vertical_Lock
-Connector IDC Locked, 10 contacts, compatible header: PANCON HE10 (Series 50, (https://www.reboul.fr/storage/00003af6.pdf)
-connector idc locked
-0
-42
 40
 Connector_IDC
 IDC-Header_2x25-1MP_P2.54mm_Latch6.5mm_Vertical
@@ -13405,13 +13125,6 @@ Through hole vertical IDC box header THT 2x25 2.54mm double row
 50
 50
 Connector_IDC
-IDC-Header_2x25_P2.54mm_Vertical_Lock
-Connector IDC Locked, 10 contacts, compatible header: PANCON HE10 (Series 50, (https://www.reboul.fr/storage/00003af6.pdf)
-connector idc locked
-0
-52
-50
-Connector_IDC
 IDC-Header_2x30-1MP_P2.54mm_Latch6.5mm_Vertical
 Through hole IDC header, 2x30, 2.54mm pitch, DIN 41651 / IEC 60603-13, double rows, 6.5mm latches, mounting holes, https://docs.google.com/spreadsheets/d/16SsEcesNF15N3Lb4niX7dcUr-NY5_MFPQhobNuNppn4/edit#gid=0
 Through hole vertical IDC header THT 2x30 2.54mm double row
@@ -13496,13 +13209,6 @@ Through hole vertical IDC box header THT 2x30 2.54mm double row
 60
 60
 Connector_IDC
-IDC-Header_2x30_P2.54mm_Vertical_Lock
-Connector IDC Locked, 10 contacts, compatible header: PANCON HE10 (Series 50, (https://www.reboul.fr/storage/00003af6.pdf)
-connector idc locked
-0
-62
-60
-Connector_IDC
 IDC-Header_2x32-1MP_P2.54mm_Latch6.5mm_Vertical
 Through hole IDC header, 2x32, 2.54mm pitch, DIN 41651 / IEC 60603-13, double rows, 6.5mm latches, mounting holes, https://docs.google.com/spreadsheets/d/16SsEcesNF15N3Lb4niX7dcUr-NY5_MFPQhobNuNppn4/edit#gid=0
 Through hole vertical IDC header THT 2x32 2.54mm double row
@@ -13585,13 +13291,6 @@ Through hole IDC box header, 2x32, 2.54mm pitch, DIN 41651 / IEC 60603-13, doubl
 Through hole vertical IDC box header THT 2x32 2.54mm double row
 0
 64
-64
-Connector_IDC
-IDC-Header_2x32_P2.54mm_Vertical_Lock
-Connector IDC Locked, 10 contacts, compatible header: PANCON HE10 (Series 50, (https://www.reboul.fr/storage/00003af6.pdf)
-connector idc locked
-0
-66
 64
 Connector_JAE
 JAE_LY20-4P-DLT1_2x02_P2.00mm_Horizontal
@@ -22000,139 +21699,6 @@ connector Molex SlimStack side entry
 0
 80
 80
-Connector_Multicomp
-Multicomp_MC9A12-1034_2x05_P2.54mm_Vertical
-http://www.farnell.com/datasheets/1520732.pdf
-connector multicomp MC9A MC9A12
-0
-10
-10
-Connector_Multicomp
-Multicomp_MC9A12-1434_2x07_P2.54mm_Vertical
-http://www.farnell.com/datasheets/1520732.pdf
-connector multicomp MC9A MC9A12
-0
-14
-14
-Connector_Multicomp
-Multicomp_MC9A12-1634_2x08_P2.54mm_Vertical
-http://www.farnell.com/datasheets/1520732.pdf
-connector multicomp MC9A MC9A12
-0
-16
-16
-Connector_Multicomp
-Multicomp_MC9A12-2034_2x10_P2.54mm_Vertical
-http://www.farnell.com/datasheets/1520732.pdf
-connector multicomp MC9A MC9A12
-0
-20
-20
-Connector_Multicomp
-Multicomp_MC9A12-2634_2x13_P2.54mm_Vertical
-http://www.farnell.com/datasheets/1520732.pdf
-connector multicomp MC9A MC9A12
-0
-26
-26
-Connector_Multicomp
-Multicomp_MC9A12-3434_2x17_P2.54mm_Vertical
-http://www.farnell.com/datasheets/1520732.pdf
-connector multicomp MC9A MC9A12
-0
-34
-34
-Connector_Multicomp
-Multicomp_MC9A12-4034_2x20_P2.54mm_Vertical
-http://www.farnell.com/datasheets/1520732.pdf
-connector multicomp MC9A MC9A12
-0
-40
-40
-Connector_Multicomp
-Multicomp_MC9A12-5034_2x25_P2.54mm_Vertical
-http://www.farnell.com/datasheets/1520732.pdf
-connector multicomp MC9A MC9A12
-0
-50
-50
-Connector_Multicomp
-Multicomp_MC9A12-6034_2x30_P2.54mm_Vertical
-http://www.farnell.com/datasheets/1520732.pdf
-connector multicomp MC9A MC9A12
-0
-60
-60
-Connector_Multicomp
-Multicomp_MC9A12-6434_2x32_P2.54mm_Vertical
-http://www.farnell.com/datasheets/1520732.pdf
-connector multicomp MC9A MC9A12
-0
-64
-64
-Connector_Multicomp
-Multicomp_MC9A22-1034_2x05_P2.54mm_Horizontal
-http://www.farnell.com/cad/360651.pdf
-connector multicomp MC9A MC9A22
-0
-10
-10
-Connector_Multicomp
-Multicomp_MC9A22-1434_2x07_P2.54mm_Horizontal
-http://www.farnell.com/cad/360651.pdf
-connector multicomp MC9A MC9A22
-0
-14
-14
-Connector_Multicomp
-Multicomp_MC9A22-1634_2x08_P2.54mm_Horizontal
-http://www.farnell.com/cad/360651.pdf
-connector multicomp MC9A MC9A22
-0
-16
-16
-Connector_Multicomp
-Multicomp_MC9A22-2034_2x10_P2.54mm_Horizontal
-http://www.farnell.com/cad/360651.pdf
-connector multicomp MC9A MC9A22
-0
-20
-20
-Connector_Multicomp
-Multicomp_MC9A22-2634_2x13_P2.54mm_Horizontal
-http://www.farnell.com/cad/360651.pdf
-connector multicomp MC9A MC9A22
-0
-26
-26
-Connector_Multicomp
-Multicomp_MC9A22-3434_2x17_P2.54mm_Horizontal
-http://www.farnell.com/cad/360651.pdf
-connector multicomp MC9A MC9A22
-0
-34
-34
-Connector_Multicomp
-Multicomp_MC9A22-4034_2x20_P2.54mm_Horizontal
-http://www.farnell.com/cad/360651.pdf
-connector multicomp MC9A MC9A22
-0
-40
-40
-Connector_Multicomp
-Multicomp_MC9A22-5034_2x25_P2.54mm_Horizontal
-http://www.farnell.com/cad/360651.pdf
-connector multicomp MC9A MC9A22
-0
-50
-50
-Connector_Multicomp
-Multicomp_MC9A22-6034_2x30_P2.54mm_Horizontal
-http://www.farnell.com/cad/360651.pdf
-connector multicomp MC9A MC9A22
-0
-60
-60
 Connector_PCBEdge
 4UCON_10156_2x40_P1.27mm_Socket_Horizontal
 4UCON 10156 Card edge socket with 80 contacts (40 each side), through-hole, http://www.4uconnector.com/online/object/4udrawing/10156.pdf
@@ -47306,48 +46872,6 @@ connector wire 2sqmm double-strain-relief
 6
 6
 Connector_Wire
-SolderWirePad_1x01_Drill0.8mm
-Wire solder connection
-connector
-0
-1
-1
-Connector_Wire
-SolderWirePad_1x01_Drill1.2mm
-Wire solder connection
-connector
-0
-1
-1
-Connector_Wire
-SolderWirePad_1x01_Drill1.5mm
-Wire solder connection
-connector
-0
-1
-1
-Connector_Wire
-SolderWirePad_1x01_Drill1mm
-Wire solder connection
-connector
-0
-1
-1
-Connector_Wire
-SolderWirePad_1x01_Drill2.5mm
-Wire solder connection
-connector
-0
-1
-1
-Connector_Wire
-SolderWirePad_1x01_Drill2mm
-Wire solder connection
-connector
-0
-1
-1
-Connector_Wire
 SolderWirePad_1x01_SMD_1x2mm
 Wire Pad, Square, SMD Pad,  5mm x 10mm,
 MesurementPoint Square SMDPad 5mmx10mm 
@@ -47361,174 +46885,6 @@ MesurementPoint Square SMDPad 5mmx10mm
 0
 1
 1
-Connector_Wire
-SolderWirePad_1x02_P3.81mm_Drill0.8mm
-Wire solder connection
-connector
-0
-2
-2
-Connector_Wire
-SolderWirePad_1x02_P3.81mm_Drill1.2mm
-Wire solder connection
-connector
-0
-2
-2
-Connector_Wire
-SolderWirePad_1x02_P3.81mm_Drill1mm
-Wire solder connection
-connector
-0
-2
-2
-Connector_Wire
-SolderWirePad_1x02_P5.08mm_Drill1.5mm
-Wire solder connection
-connector
-0
-2
-2
-Connector_Wire
-SolderWirePad_1x02_P7.62mm_Drill2.5mm
-Wire solder connection
-connector
-0
-2
-2
-Connector_Wire
-SolderWirePad_1x02_P7.62mm_Drill2mm
-Wire solder connection
-connector
-0
-2
-2
-Connector_Wire
-SolderWirePad_1x03_P3.81mm_Drill1.2mm
-Wire solder connection
-connector
-0
-3
-3
-Connector_Wire
-SolderWirePad_1x03_P3.175mm_Drill0.8mm
-Wire solder connection
-connector
-0
-3
-3
-Connector_Wire
-SolderWirePad_1x03_P3.175mm_Drill1mm
-Wire solder connection
-connector
-0
-3
-3
-Connector_Wire
-SolderWirePad_1x03_P4.445mm_Drill1.5mm
-Wire solder connection
-connector
-0
-3
-3
-Connector_Wire
-SolderWirePad_1x03_P5.715mm_Drill2mm
-Wire solder connection
-connector
-0
-3
-3
-Connector_Wire
-SolderWirePad_1x03_P7.62mm_Drill2.5mm
-Wire solder connection
-connector
-0
-3
-3
-Connector_Wire
-SolderWirePad_1x04_P3.81mm_Drill1.2mm
-Wire solder connection
-connector
-0
-4
-4
-Connector_Wire
-SolderWirePad_1x04_P3.81mm_Drill1mm
-Wire solder connection
-connector
-0
-4
-4
-Connector_Wire
-SolderWirePad_1x04_P3.175mm_Drill0.8mm
-Wire solder connection
-connector
-0
-4
-4
-Connector_Wire
-SolderWirePad_1x04_P5.08mm_Drill1.5mm
-Wire solder connection
-connector
-0
-4
-4
-Connector_Wire
-SolderWirePad_1x04_P6.35mm_Drill2mm
-Wire solder connection
-connector
-0
-4
-4
-Connector_Wire
-SolderWirePad_1x04_P7.62mm_Drill2.5mm
-Wire solder connection
-connector
-0
-4
-4
-Connector_Wire
-SolderWirePad_2x02_P2.54mm_Drill0.8mm
-Wire solder connection
-connector
-0
-4
-4
-Connector_Wire
-SolderWirePad_2x02_P3.81mm_Drill1.2mm
-Wire solder connection
-connector
-0
-4
-4
-Connector_Wire
-SolderWirePad_2x02_P3.81mm_Drill1mm
-Wire solder connection
-connector
-0
-4
-4
-Connector_Wire
-SolderWirePad_2x02_P5.08mm_Drill1.5mm
-Wire solder connection
-connector
-0
-4
-4
-Connector_Wire
-SolderWirePad_2x02_P6.35mm_Drill2mm
-Wire solder connection
-connector
-0
-4
-4
-Connector_Wire
-SolderWirePad_2x02_P7.62mm_Drill2.5mm
-Wire solder connection
-connector
-0
-4
-4
 Connector_Wuerth
 Wuerth_WR-WTB_64800211622_1x02_P1.50mm_Vertical
 Wuerth WR-WTB series connector, 64800211622 (https://katalog.we-online.com/em/datasheet/6480xx11622.pdf), generated with kicad-footprint-generator
@@ -48135,13 +47491,6 @@ Converter_DCDC
 Converter_DCDC_muRata_NMAxxxxSC_THT
 muRata NMAxxxxSC footprint based on SIP7, http://power.murata.com/data/power/ncl/kdc_nma.pdf
 muRata NMAxxxxSC DCDC-Converter
-0
-5
-5
-Converter_DCDC
-Converter_DCDC_muRata_NXE2SxxxxMC_THT
-Isolated 2W Single Output SM DC/DC Converters, http://power.murata.com/data/power/ncl/kdc_nxe2.pdf
-Isolated 2W Single Output SM DC/DC Converters
 0
 5
 5
@@ -49562,27 +48911,6 @@ diode castellated
 Diode_SMD
 D_1210_3225Metric_Pad1.42x2.65mm_HandSolder
 Diode SMD 1210 (3225 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator
-diode handsolder
-0
-2
-2
-Diode_SMD
-D_1806_4516Metric
-Diode SMD 1806 (4516 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.modelithics.com/models/Vendor/MuRata/BLM41P.pdf), generated with kicad-footprint-generator
-diode
-0
-2
-2
-Diode_SMD
-D_1806_4516Metric_Castellated
-Diode SMD 1806 (4516 Metric), castellated end terminal, IPC_7351 nominal, (Body size source: https://www.modelithics.com/models/Vendor/MuRata/BLM41P.pdf), generated with kicad-footprint-generator
-diode castellated
-0
-2
-2
-Diode_SMD
-D_1806_4516Metric_Pad1.57x1.80mm_HandSolder
-Diode SMD 1806 (4516 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.modelithics.com/models/Vendor/MuRata/BLM41P.pdf), generated with kicad-footprint-generator
 diode handsolder
 0
 2
@@ -51548,13 +50876,6 @@ emi filter
 5
 5
 Fuse
-Fuse_0201_0603Metric
-Fuse SMD 0201 (0603 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.vishay.com/docs/20052/crcw0201e3.pdf), generated with kicad-footprint-generator
-resistor
-0
-4
-2
-Fuse
 Fuse_0402_1005Metric
 Fuse SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator
 fuse
@@ -51618,13 +50939,6 @@ fuse handsolder
 2
 2
 Fuse
-Fuse_01005_0402Metric
-Fuse SMD 01005 (0402 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: http://www.vishay.com/docs/20056/crcw01005e3.pdf), generated with kicad-footprint-generator
-resistor
-0
-4
-2
-Fuse
 Fuse_1206_3216Metric
 Fuse SMD 1206 (3216 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator
 fuse
@@ -51663,27 +50977,6 @@ Fuse
 Fuse_1210_3225Metric_Pad1.42x2.65mm_HandSolder
 Fuse SMD 1210 (3225 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator
 fuse handsolder
-0
-2
-2
-Fuse
-Fuse_1806_4516Metric
-Fuse SMD 1806 (4516 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.modelithics.com/models/Vendor/MuRata/BLM41P.pdf), generated with kicad-footprint-generator
-resistor
-0
-2
-2
-Fuse
-Fuse_1806_4516Metric_Castellated
-Fuse SMD 1806 (4516 Metric), castellated end terminal, IPC_7351. (Body size source: https://www.modelithics.com/models/Vendor/MuRata/BLM41P.pdf), generated with kicad-footprint-generator
-fuse castellated
-0
-2
-2
-Fuse
-Fuse_1806_4516Metric_Pad1.57x1.80mm_HandSolder
-Fuse SMD 1806 (4516 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: https://www.modelithics.com/models/Vendor/MuRata/BLM41P.pdf), generated with kicad-footprint-generator
-resistor handsolder
 0
 2
 2
@@ -52282,244 +51575,6 @@ Fuse Fuseholder TR5 Littelfuse/Wickmann No. 460 No560
 0
 2
 2
-Gekkio_Battery
-Battery_CR1616_Horizontal_Tabbed
-
-
-0
-2
-2
-Gekkio_Battery
-Battery_CR2025_Horizontal_Tabbed
-
-
-0
-2
-2
-Gekkio_Button_Switch_SMD
-SW_SPST_PTS540
-C&K Components SPST SMD PTS 540 Series 3.7mm Top Actuated Switch
-SPST button switch
-0
-4
-2
-Gekkio_Connector
-GameBoy_LinkPort_DMG_Horizontal
-Game Boy link port, original Game Boy
-game boy link port
-0
-8
-7
-Gekkio_Connector
-GameBoy_LinkPort_MGB_Horizontal
-
-
-0
-8
-7
-Gekkio_Connector_BarrelJack
-BarrelJack_CUI_PJ-202A_Horizontal
-DC power jack, 2.0 mm center pin, 2.5 A rating, right-angle orientation, through-hole, kinked pins (http://www.cui.com/product/resource/pj-202a.pdf)
-dc power barrel jack
-0
-3
-3
-Gekkio_Connector_PCBEdge
-Amphenol_10018783-x0x00_2x18_P1.00mm_Socket_Vertical
-x1 Vertical Card Edge Connector, 36 Positions, 1mm Pitch (https://cdn.amphenol-icc.com/media/wysiwyg/files/drawing/10018783.pdf)
-pci express x1
-0
-36
-36
-Gekkio_Connector_PCBEdge
-Amphenol_10018783-x0x01_2x32_P1.00mm_Socket_Vertical
-x4 Vertical Card Edge Connector, 64 Positions, 1mm Pitch (https://cdn.amphenol-icc.com/media/wysiwyg/files/drawing/10018783.pdf)
-pci express x4
-0
-64
-64
-Gekkio_Connector_PCBEdge
-Amphenol_10018783-x0x02_2x49_P1.00mm_Socket_Vertical
-x8 Vertical Card Edge Connector, 98 Positions, 1mm Pitch (https://cdn.amphenol-icc.com/media/wysiwyg/files/drawing/10018783.pdf)
-pci express x8
-0
-98
-98
-Gekkio_Connector_PCBEdge
-GameBoy_Cartridge_1x10_P1.50mm_Edge
-
-
-0
-10
-10
-Gekkio_Connector_PCBEdge
-GameBoy_Cartridge_1x32_P1.50mm_Edge
-Game Boy cartridge edge connector
-gameboy cartridge
-0
-32
-32
-Gekkio_Connector_PCBEdge
-GameBoy_Cartridge_AGB_1x32_P1.50mm_Socket_Horizontal
-Game Boy cartridge slot, Super Game Boy and Super Game Boy 2
-gameboy cartridge slot
-0
-32
-32
-Gekkio_Connector_PCBEdge
-GameBoy_Cartridge_DMG_1x32_P1.50mm_Socket_Horizontal
-Game Boy cartridge slot, original Game Boy
-gameboy cartridge slot
-0
-32
-32
-Gekkio_Connector_PCBEdge
-GameBoy_Cartridge_DSLite_1x32_P1.50mm_Socket_Horizontal
-Game Boy cartridge slot, DS Lite
-gameboy cartridge slot
-0
-34
-32
-Gekkio_Connector_PCBEdge
-GameBoy_Cartridge_DX-37787_1x32_P1.50mm_Socket_Horizontal
-Game Boy cartridge slot, DealExtreme 37787
-gameboy cartridge slot
-0
-34
-32
-Gekkio_Connector_PCBEdge
-GameBoy_Cartridge_SGB-SGB2_1x32_P1.50mm_Socket_Horizontal
-Game Boy cartridge slot, Super Game Boy and Super Game Boy 2
-gameboy cartridge slot
-0
-32
-32
-Gekkio_Connector_PCBEdge
-PCIExpress_x1_2x18_P1.00mm_Edge
-PCI Express x1 edge connector
-pci express x1
-0
-36
-36
-Gekkio_Connector_PCBEdge
-PCIExpress_x4_2x32_P1.00mm_Edge
-PCI Express x4 edge connector
-pci express x4
-0
-64
-64
-Gekkio_Connector_PCBEdge
-PCIExpress_x8_2x49_P1.00mm_Edge
-PCI Express x8 edge connector
-pci express x8
-0
-98
-98
-Gekkio_Connector_USB
-USB_Mini-B_Hirose_UX60SC-MB-5ST80_Horizontal
-https://www.hirose.com/product/en/products/UX/UX60SC-MB-5ST%2880%29/
-USB USB_B USB_Mini connector
-0
-7
-6
-Gekkio_Inductor_SMD
-L_CommonMode_TDK_ACM2520-3P_L2.5mm_W2.0mm_Px2.3mm_Py0.65mm
-https://product.tdk.com/info/en/catalog/datasheets/cmf_commercial_signal_acm2520_en.pdf
-common mode filter choke 3 pin
-0
-6
-6
-Gekkio_Inductor_SMD
-L_CommonMode_TDK_ACM4532-3P_L4.5mm_W3.2mm_Px4.1mm_Py1.7mm
-http://www1.futureelectronics.com/doc/TDK/ACM3225-271-2P-T001.pdf
-common mode filter choke 3 pin
-0
-6
-6
-Gekkio_Inductor_SMD
-L_HkHotline_MCW-0630
-SMD Power Inductor, https://datasheet.lcsc.com/szlcsc/Hk-hotline-MCW-0630-2R2-S1_C169317.pdf
-inductor smd
-0
-2
-2
-Gekkio_Inductor_SMD
-L_Samsung_CIGT252010
-
-
-0
-2
-2
-Gekkio_Inductor_SMD
-L_Sunltech_SLO0520H
-Wire Wound SMD Power Inductor, https://datasheet.lcsc.com/szlcsc/Sunltech-Tech-SLO0520H1R5MTT_C325981.pdf
-inductor sunltech slo0520h smd
-0
-2
-2
-Gekkio_Inductor_SMD
-L_Sunltech_SLW40xx
-Wire Wound SMD Power Inductor, https://datasheet.lcsc.com/szlcsc/Sunltech-Tech-SLW5020S1R5MST_C206398.pdf
-inductor sunltech slw40xx smd
-0
-2
-2
-Gekkio_MountingHole
-MountingHole_2.3mm
-Mounting Hole 2.5mm, no annular
-mounting hole 2.5mm no annular
-0
-0
-0
-Gekkio_MountingHole
-MountingHole_7.2mm
-Mounting Hole 6.5mm, no annular
-mounting hole 6.5mm no annular
-0
-0
-0
-Gekkio_Package_BGA
-Micron_VFBGA-54_8x8mm_Layout9x9_P0.8mm
-Micron 54-Ball VFBA 8mmx8mm
-BGA 54 0.8
-0
-54
-54
-Gekkio_Package_DFN_QFN
-OnSemi_DFN-6-1EP_3x3mm_P0.95mm_EP1.2x2.0mm
-DFN6 3*3 MM, 0.95 PITCH; CASE 506AH-01 (see ON Semiconductor 506AH.PDF)
-DFN 0.95
-0
-9
-7
-Gekkio_Package_TO_SOT_SMD
-Infineon_SOT-343_SC-82
-SC-82AB
-SC-82AB
-0
-4
-4
-Gekkio_Package_TO_SOT_SMD
-Rohm_HRP5
-Rohm HRP5 SMD package, http://rohmfs.rohm.com/en/techdata_basic/ic/package/hrp5_1-e.pdf
-Rohm HRP5 SMD
-0
-67
-5
-Gekkio_Potentiometer_SMD
-Potentiometer_Hokuriku_VG039NCH_Vertical
-Potentiometer, vertical, Hokuriku VG039NCH, https://datasheet.lcsc.com/szlcsc/Hokuriku-Elec-Industry-VG039NCHXTB104_C128545.pdf
-Potentiometer vertical Hokuriku VG039NCH
-0
-3
-3
-Gekkio_Transformer_THT
-Transformer_GameBoy_DMG
-
-
-0
-9
-9
 Heatsink
 Heatsink_35x26mm_1xFixation3mm_Fischer-SK486-35
 Heatsink, 35mm x 26mm, 1x Fixation 3mm, Fischer SK486-35
@@ -56034,223 +55089,6 @@ solder jumper open
 0
 5
 3
-Keyboard
-CHERRY_MX_DIODE
-
-
-0
-2
-2
-Keyboard
-CHERRY_MX_LED
-
-
-0
-2
-2
-Keyboard
-CHERRY_PCB_100H
-
-
-0
-2
-2
-Keyboard
-CHERRY_PCB_125H
-
-
-0
-2
-2
-Keyboard
-CHERRY_PCB_150H
-
-
-0
-2
-2
-Keyboard
-CHERRY_PCB_175H
-
-
-0
-2
-2
-Keyboard
-CHERRY_PCB_200H
-
-
-0
-2
-2
-Keyboard
-CHERRY_PCB_200V
-
-
-0
-2
-2
-Keyboard
-CHERRY_PCB_225H
-
-
-0
-2
-2
-Keyboard
-CHERRY_PCB_275H
-
-
-0
-2
-2
-Keyboard
-CHERRY_PCB_625H
-
-
-0
-2
-2
-Keyboard
-CHERRY_PLATE_100H
-
-
-0
-2
-2
-Keyboard
-CHERRY_PLATE_125H
-
-
-0
-2
-2
-Keyboard
-CHERRY_PLATE_150H
-
-
-0
-2
-2
-Keyboard
-CHERRY_PLATE_175H
-
-
-0
-2
-2
-Keyboard
-CHERRY_PLATE_200H
-
-
-0
-2
-2
-Keyboard
-CHERRY_PLATE_200V
-
-
-0
-2
-2
-Keyboard
-CHERRY_PLATE_225H
-
-
-0
-2
-2
-Keyboard
-CHERRY_PLATE_275H
-
-
-0
-2
-2
-Keyboard
-CHERRY_PLATE_625H
-
-
-0
-2
-2
-Keyboard
-C_0805
-Capacitor SMD 0805, reflow soldering, AVX (see smccp.pdf)
-capacitor 0805
-0
-2
-2
-Keyboard
-DIODE
-
-
-0
-2
-2
-Keyboard
-LED_3MM
-
-
-0
-2
-2
-Keyboard
-MSOP-8-PowerPad
-
-
-0
-9
-9
-Keyboard
-MUSB-X151-XX
-
-
-0
-5
-5
-Keyboard
-MUSBR-A111-XX
-
-
-0
-4
-4
-Keyboard
-MUSBX-A111-XX
-
-
-0
-4
-4
-Keyboard
-RESISTOR
-
-
-0
-2
-2
-Keyboard
-R_0805
-Resistor SMD 0805, reflow soldering, Vishay (see dcrcw.pdf)
-resistor 0805
-0
-2
-2
-Keyboard
-SOJ-2
-
-
-0
-2
-2
-Keyboard
-TEENSY_2.0
-
-
-0
-31
-31
 LED_SMD
 LED-APA102-2020
 http://www.led-color.com/upload/201604/APA102-2020%20SMD%20LED.pdf
@@ -56357,13 +55195,6 @@ LED handsolder
 2
 2
 LED_SMD
-LED_01005_0402Metric
-LED SMD 01005 (0402 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: http://www.vishay.com/docs/20056/crcw01005e3.pdf), generated with kicad-footprint-generator
-LED
-0
-4
-2
-LED_SMD
 LED_1206_3216Metric
 LED SMD 1206 (3216 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator
 LED
@@ -56408,27 +55239,6 @@ LED castellated
 LED_SMD
 LED_1210_3225Metric_Pad1.42x2.65mm_HandSolder
 LED SMD 1210 (3225 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator
-LED handsolder
-0
-2
-2
-LED_SMD
-LED_1806_4516Metric
-LED SMD 1806 (4516 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.modelithics.com/models/Vendor/MuRata/BLM41P.pdf), generated with kicad-footprint-generator
-diode
-0
-2
-2
-LED_SMD
-LED_1806_4516Metric_Castellated
-LED SMD 1806 (4516 Metric), castellated end terminal, IPC_7351 nominal, (Body size source: https://www.modelithics.com/models/Vendor/MuRata/BLM41P.pdf), generated with kicad-footprint-generator
-LED castellated
-0
-2
-2
-LED_SMD
-LED_1806_4516Metric_Pad1.57x1.80mm_HandSolder
-LED SMD 1806 (4516 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.modelithics.com/models/Vendor/MuRata/BLM41P.pdf), generated with kicad-footprint-generator
 LED handsolder
 0
 2
@@ -58715,6 +57525,1147 @@ mounting hole 8.4mm m8
 0
 9
 1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSE-ExternalM3_H5mm_9771050360
+Mounting Hardware, external M3, height 5, Wuerth electronics 9771050360 (https://katalog.we-online.com/em/datasheet/9771050360.pdf), generated with kicad-footprint-generator
+Mounting M3 9771050360
+0
+6
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSE-ExternalM3_H6mm_9771060360
+Mounting Hardware, external M3, height 6, Wuerth electronics 9771060360 (https://katalog.we-online.com/em/datasheet/9771060360.pdf), generated with kicad-footprint-generator
+Mounting M3 9771060360
+0
+6
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSE-ExternalM3_H7mm_9771070360
+Mounting Hardware, external M3, height 7, Wuerth electronics 9771070360 (https://katalog.we-online.com/em/datasheet/9771070360.pdf), generated with kicad-footprint-generator
+Mounting M3 9771070360
+0
+6
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSE-ExternalM3_H8mm_9771080360
+Mounting Hardware, external M3, height 8, Wuerth electronics 9771080360 (https://katalog.we-online.com/em/datasheet/9771080360.pdf), generated with kicad-footprint-generator
+Mounting M3 9771080360
+0
+6
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSE-ExternalM3_H9mm_9771090360
+Mounting Hardware, external M3, height 9, Wuerth electronics 9771090360 (https://katalog.we-online.com/em/datasheet/9771090360.pdf), generated with kicad-footprint-generator
+Mounting M3 9771090360
+0
+6
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSE-ExternalM3_H10mm_9771100360
+Mounting Hardware, external M3, height 10, Wuerth electronics 9771100360 (https://katalog.we-online.com/em/datasheet/9771100360.pdf), generated with kicad-footprint-generator
+Mounting M3 9771100360
+0
+6
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSE-ExternalM3_H11mm_9771110360
+Mounting Hardware, external M3, height 11, Wuerth electronics 9771110360 (https://katalog.we-online.com/em/datasheet/9771110360.pdf), generated with kicad-footprint-generator
+Mounting M3 9771110360
+0
+6
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSE-ExternalM3_H12mm_9771120360
+Mounting Hardware, external M3, height 12, Wuerth electronics 9771120360 (https://katalog.we-online.com/em/datasheet/9771120360.pdf), generated with kicad-footprint-generator
+Mounting M3 9771120360
+0
+6
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSE-ExternalM3_H13mm_9771130360
+Mounting Hardware, external M3, height 13, Wuerth electronics 9771130360 (https://katalog.we-online.com/em/datasheet/9771130360.pdf), generated with kicad-footprint-generator
+Mounting M3 9771130360
+0
+6
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSE-ExternalM3_H14mm_9771140360
+Mounting Hardware, external M3, height 14, Wuerth electronics 9771140360 (https://katalog.we-online.com/em/datasheet/9771140360.pdf), generated with kicad-footprint-generator
+Mounting M3 9771140360
+0
+6
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSE-ExternalM3_H15mm_9771150360
+Mounting Hardware, external M3, height 15, Wuerth electronics 9771150360 (https://katalog.we-online.com/em/datasheet/9771150360.pdf), generated with kicad-footprint-generator
+Mounting M3 9771150360
+0
+6
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSI-4.5mm_H1mm_9774010482
+Mounting Hardware, inside through hole 4.5mm, height 1, Wuerth electronics 9774010482 (https://katalog.we-online.de/em/datasheet/9774010482.pdf), generated with kicad-footprint-generator
+Mounting 4.5mm 9774010482
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSI-4.5mm_H2mm_9774020482
+Mounting Hardware, inside through hole 4.5mm, height 2, Wuerth electronics 9774020482 (https://katalog.we-online.de/em/datasheet/9774020482.pdf), generated with kicad-footprint-generator
+Mounting 4.5mm 9774020482
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSI-4.5mm_H3mm_9774030482
+Mounting Hardware, inside through hole 4.5mm, height 3, Wuerth electronics 9774030482 (https://katalog.we-online.de/em/datasheet/9774030482.pdf), generated with kicad-footprint-generator
+Mounting 4.5mm 9774030482
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSI-4.5mm_H4mm_9774040482
+Mounting Hardware, inside through hole 4.5mm, height 4, Wuerth electronics 9774040482 (https://katalog.we-online.de/em/datasheet/9774040482.pdf), generated with kicad-footprint-generator
+Mounting 4.5mm 9774040482
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSI-4.5mm_H5mm_9774050482
+Mounting Hardware, inside through hole 4.5mm, height 5, Wuerth electronics 9774050482 (https://katalog.we-online.de/em/datasheet/9774050482.pdf), generated with kicad-footprint-generator
+Mounting 4.5mm 9774050482
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSI-4.5mm_H6mm_9774060482
+Mounting Hardware, inside through hole 4.5mm, height 6, Wuerth electronics 9774060482 (https://katalog.we-online.de/em/datasheet/9774060482.pdf), generated with kicad-footprint-generator
+Mounting 4.5mm 9774060482
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSI-4.5mm_H7mm_9774070482
+Mounting Hardware, inside through hole 4.5mm, height 7, Wuerth electronics 9774070482 (https://katalog.we-online.de/em/datasheet/9774070482.pdf), generated with kicad-footprint-generator
+Mounting 4.5mm 9774070482
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSI-4.5mm_H8mm_9774080482
+Mounting Hardware, inside through hole 4.5mm, height 8, Wuerth electronics 9774080482 (https://katalog.we-online.de/em/datasheet/9774080482.pdf), generated with kicad-footprint-generator
+Mounting 4.5mm 9774080482
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSI-4.5mm_H9mm_9774090482
+Mounting Hardware, inside through hole 4.5mm, height 9, Wuerth electronics 9774090482 (https://katalog.we-online.de/em/datasheet/9774090482.pdf), generated with kicad-footprint-generator
+Mounting 4.5mm 9774090482
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSI-4.5mm_H10mm_9774100482
+Mounting Hardware, inside through hole 4.5mm, height 10, Wuerth electronics 9774100482 (https://katalog.we-online.de/em/datasheet/9774100482.pdf), generated with kicad-footprint-generator
+Mounting 4.5mm 9774100482
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSI-M1.6_H1.5mm_9774015633
+Mounting Hardware, inside through hole M1.6, height 1.5, Wuerth electronics 9774015633 (https://katalog.we-online.com/em/datasheet/9774015633.pdf), generated with kicad-footprint-generator
+Mounting M1.6 9774015633
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSI-M1.6_H1mm_9774010633
+Mounting Hardware, inside through hole M1.6, height 1, Wuerth electronics 9774010633 (https://katalog.we-online.com/em/datasheet/9774010633.pdf), generated with kicad-footprint-generator
+Mounting M1.6 9774010633
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSI-M1.6_H2.5mm_9774025633
+Mounting Hardware, inside through hole M1.6, height 2.5, Wuerth electronics 9774025633 (https://katalog.we-online.com/em/datasheet/9774025633.pdf), generated with kicad-footprint-generator
+Mounting M1.6 9774025633
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSI-M1.6_H2.5mm_ThreadDepth1.5mm_97730256332
+Mounting Hardware, inside blind hole M1.6, height 2.5, Wuerth electronics 97730256332 (https://katalog.we-online.com/em/datasheet/97730256332.pdf), generated with kicad-footprint-generator
+Mounting M1.6 97730256332
+0
+6
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSI-M1.6_H2.5mm_ThreadDepth1.5mm_NoNPTH_97730256330
+Mounting Hardware, inside blind hole M1.6, height 2.5, Wuerth electronics 97730256330 (https://katalog.we-online.com/em/datasheet/97730256330R.pdf), generated with kicad-footprint-generator
+Mounting M1.6 97730256330
+0
+5
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSI-M1.6_H2mm_9774020633
+Mounting Hardware, inside through hole M1.6, height 2, Wuerth electronics 9774020633 (https://katalog.we-online.com/em/datasheet/9774020633.pdf), generated with kicad-footprint-generator
+Mounting M1.6 9774020633
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSI-M1.6_H3.5mm_ThreadDepth2mm_97730356332
+Mounting Hardware, inside blind hole M1.6, height 3.5, Wuerth electronics 97730356332 (https://katalog.we-online.com/em/datasheet/97730356332.pdf), generated with kicad-footprint-generator
+Mounting M1.6 97730356332
+0
+6
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSI-M1.6_H3.5mm_ThreadDepth2mm_97730356334
+Mounting Hardware, inside blind hole M1.6, height 3.5, Wuerth electronics 97730356334 (https://katalog.we-online.com/em/datasheet/97730356334.pdf), generated with kicad-footprint-generator
+Mounting M1.6 97730356334
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSI-M1.6_H3.5mm_ThreadDepth2mm_NoNPTH_97730356330
+Mounting Hardware, inside blind hole M1.6, height 3.5, Wuerth electronics 97730356330 (https://katalog.we-online.com/em/datasheet/97730356330.pdf), generated with kicad-footprint-generator
+Mounting M1.6 97730356330
+0
+5
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSI-M1.6_H3mm_9774030633
+Mounting Hardware, inside through hole M1.6, height 3, Wuerth electronics 9774030633 (https://katalog.we-online.com/em/datasheet/9774030633.pdf), generated with kicad-footprint-generator
+Mounting M1.6 9774030633
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSI-M1.6_H3mm_ThreadDepth1.8mm_97730306332
+Mounting Hardware, inside blind hole M1.6, height 3, Wuerth electronics 97730306332 (https://katalog.we-online.com/em/datasheet/97730306332.pdf), generated with kicad-footprint-generator
+Mounting M1.6 97730306332
+0
+6
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSI-M1.6_H3mm_ThreadDepth1.8mm_NoNPTH_97730306330
+Mounting Hardware, inside blind hole M1.6, height 3, Wuerth electronics 97730306330 (https://katalog.we-online.com/em/datasheet/97730306330.pdf), generated with kicad-footprint-generator
+Mounting M1.6 97730306330
+0
+5
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSI-M1.6_H4.5mm_ThreadDepth2mm_97730456332
+Mounting Hardware, inside blind hole M1.6, height 4.5, Wuerth electronics 97730456332 (https://katalog.we-online.com/em/datasheet/97730456332.pdf), generated with kicad-footprint-generator
+Mounting M1.6 97730456332
+0
+6
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSI-M1.6_H4.5mm_ThreadDepth2mm_97730456334
+Mounting Hardware, inside blind hole M1.6, height 4.5, Wuerth electronics 97730456334 (https://katalog.we-online.com/em/datasheet/97730456334.pdf), generated with kicad-footprint-generator
+Mounting M1.6 97730456334
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSI-M1.6_H4.5mm_ThreadDepth2mm_NoNPTH_97730456330
+Mounting Hardware, inside blind hole M1.6, height 4.5, Wuerth electronics 97730456330 (https://katalog.we-online.com/em/datasheet/97730456330.pdf), generated with kicad-footprint-generator
+Mounting M1.6 97730456330
+0
+5
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSI-M1.6_H4mm_ThreadDepth2mm_97730406332
+Mounting Hardware, inside blind hole M1.6, height 4, Wuerth electronics 97730406332 (https://katalog.we-online.com/em/datasheet/97730406332.pdf), generated with kicad-footprint-generator
+Mounting M1.6 97730406332
+0
+6
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSI-M1.6_H4mm_ThreadDepth2mm_97730406334
+Mounting Hardware, inside blind hole M1.6, height 4, Wuerth electronics 97730406334 (https://katalog.we-online.com/em/datasheet/97730406334.pdf), generated with kicad-footprint-generator
+Mounting M1.6 97730406334
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSI-M1.6_H4mm_ThreadDepth2mm_NoNPTH_97730406330
+Mounting Hardware, inside blind hole M1.6, height 4, Wuerth electronics 97730406330 (https://katalog.we-online.com/em/datasheet/97730406330.pdf), generated with kicad-footprint-generator
+Mounting M1.6 97730406330
+0
+5
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSI-M1.6_H5mm_ThreadDepth2mm_97730506332
+Mounting Hardware, inside blind hole M1.6, height 5, Wuerth electronics 97730506332 (https://katalog.we-online.com/em/datasheet/97730506332.pdf), generated with kicad-footprint-generator
+Mounting M1.6 97730506332
+0
+6
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSI-M1.6_H5mm_ThreadDepth2mm_97730506334
+Mounting Hardware, inside blind hole M1.6, height 5, Wuerth electronics 97730506334 (https://katalog.we-online.com/em/datasheet/97730506334.pdf), generated with kicad-footprint-generator
+Mounting M1.6 97730506334
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSI-M1.6_H5mm_ThreadDepth2mm_NoNPTH_97730506330
+Mounting Hardware, inside blind hole M1.6, height 5, Wuerth electronics 97730506330 (https://katalog.we-online.com/em/datasheet/97730506330.pdf), generated with kicad-footprint-generator
+Mounting M1.6 97730506330
+0
+5
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSI-M1.6_H6mm_ThreadDepth2mm_97730606332
+Mounting Hardware, inside blind hole M1.6, height 6, Wuerth electronics 97730606332 (https://katalog.we-online.com/em/datasheet/97730606332.pdf), generated with kicad-footprint-generator
+Mounting M1.6 97730606332
+0
+6
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSI-M1.6_H6mm_ThreadDepth2mm_97730606334
+Mounting Hardware, inside blind hole M1.6, height 6, Wuerth electronics 97730606334 (https://katalog.we-online.com/em/datasheet/97730606334.pdf), generated with kicad-footprint-generator
+Mounting M1.6 97730606334
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSI-M1.6_H6mm_ThreadDepth2mm_NoNPTH_97730606330
+Mounting Hardware, inside blind hole M1.6, height 6, Wuerth electronics 97730606330 (https://katalog.we-online.com/em/datasheet/97730606330.pdf), generated with kicad-footprint-generator
+Mounting M1.6 97730606330
+0
+5
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSI-M2_H1.5mm_9774015243
+Mounting Hardware, inside through hole M2, height 1.5, Wuerth electronics 9774015243 (https://katalog.we-online.de/em/datasheet/9774015243.pdf), generated with kicad-footprint-generator
+Mounting M2 9774015243
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSI-M2_H1mm_9774010243
+Mounting Hardware, inside through hole M2, height 1, Wuerth electronics 9774010243 (https://katalog.we-online.de/em/datasheet/9774010243.pdf), generated with kicad-footprint-generator
+Mounting M2 9774010243
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSI-M2_H2.5mm_9774025243
+Mounting Hardware, inside through hole M2, height 2.5, Wuerth electronics 9774025243 (https://katalog.we-online.de/em/datasheet/9774025243.pdf), generated with kicad-footprint-generator
+Mounting M2 9774025243
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSI-M2_H2mm_9774020243
+Mounting Hardware, inside through hole M2, height 2, Wuerth electronics 9774020243 (https://katalog.we-online.de/em/datasheet/9774020243.pdf), generated with kicad-footprint-generator
+Mounting M2 9774020243
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSI-M2_H3.5mm_9774035243
+Mounting Hardware, inside through hole M2, height 3.5, Wuerth electronics 9774035243 (https://katalog.we-online.de/em/datasheet/9774035243.pdf), generated with kicad-footprint-generator
+Mounting M2 9774035243
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSI-M2_H3mm_9774030243
+Mounting Hardware, inside through hole M2, height 3, Wuerth electronics 9774030243 (https://katalog.we-online.de/em/datasheet/9774030243.pdf), generated with kicad-footprint-generator
+Mounting M2 9774030243
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSI-M2_H4.5mm_9774045243
+Mounting Hardware, inside through hole M2, height 4.5, Wuerth electronics 9774045243 (https://katalog.we-online.de/em/datasheet/9774045243.pdf), generated with kicad-footprint-generator
+Mounting M2 9774045243
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSI-M2_H4mm_9774040243
+Mounting Hardware, inside through hole M2, height 4, Wuerth electronics 9774040243 (https://katalog.we-online.de/em/datasheet/9774040243.pdf), generated with kicad-footprint-generator
+Mounting M2 9774040243
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSI-M2_H5mm_9774050243
+Mounting Hardware, inside through hole M2, height 5, Wuerth electronics 9774050243 (https://katalog.we-online.de/em/datasheet/9774050243.pdf), generated with kicad-footprint-generator
+Mounting M2 9774050243
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSI-M2_H6mm_9774060243
+Mounting Hardware, inside through hole M2, height 6, Wuerth electronics 9774060243 (https://katalog.we-online.de/em/datasheet/9774060243.pdf), generated with kicad-footprint-generator
+Mounting M2 9774060243
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSI-M2_H7mm_9774070243
+Mounting Hardware, inside through hole M2, height 7, Wuerth electronics 9774070243 (https://katalog.we-online.de/em/datasheet/9774070243.pdf), generated with kicad-footprint-generator
+Mounting M2 9774070243
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSI-M2_H8mm_9774080243
+Mounting Hardware, inside through hole M2, height 8, Wuerth electronics 9774080243 (https://katalog.we-online.de/em/datasheet/9774080243.pdf), generated with kicad-footprint-generator
+Mounting M2 9774080243
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSI-M3_H1.5mm_9774015360
+Mounting Hardware, inside through hole M3, height 1.5, Wuerth electronics 9774015360 (https://katalog.we-online.de/em/datasheet/9774015360.pdf), generated with kicad-footprint-generator
+Mounting M3 9774015360
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSI-M3_H1mm_9774010360
+Mounting Hardware, inside through hole M3, height 1, Wuerth electronics 9774010360 (https://katalog.we-online.de/em/datasheet/9774010360.pdf), generated with kicad-footprint-generator
+Mounting M3 9774010360
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSI-M3_H2.5mm_9774025360
+Mounting Hardware, inside through hole M3, height 2.5, Wuerth electronics 9774025360 (https://katalog.we-online.de/em/datasheet/9774025360.pdf), generated with kicad-footprint-generator
+Mounting M3 9774025360
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSI-M3_H2mm_9774020360
+Mounting Hardware, inside through hole M3, height 2, Wuerth electronics 9774020360 (https://katalog.we-online.de/em/datasheet/9774020360.pdf), generated with kicad-footprint-generator
+Mounting M3 9774020360
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSI-M3_H3mm_9774030360
+Mounting Hardware, inside through hole M3, height 3, Wuerth electronics 9774030360 (https://katalog.we-online.de/em/datasheet/9774030360R.pdf), generated with kicad-footprint-generator
+Mounting M3 9774030360
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSI-M3_H4mm_9774040360
+Mounting Hardware, inside through hole M3, height 4, Wuerth electronics 9774040360 (https://katalog.we-online.de/em/datasheet/9774040360.pdf), generated with kicad-footprint-generator
+Mounting M3 9774040360
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSI-M3_H5mm_9774050360
+Mounting Hardware, inside through hole M3, height 5, Wuerth electronics 9774050360 (https://katalog.we-online.de/em/datasheet/9774050360.pdf), generated with kicad-footprint-generator
+Mounting M3 9774050360
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSI-M3_H6mm_9774060360
+Mounting Hardware, inside through hole M3, height 6, Wuerth electronics 9774060360 (https://katalog.we-online.de/em/datasheet/9774060360.pdf), generated with kicad-footprint-generator
+Mounting M3 9774060360
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSI-M3_H7mm_9774070360
+Mounting Hardware, inside through hole M3, height 7, Wuerth electronics 9774070360 (https://katalog.we-online.de/em/datasheet/9774070360.pdf), generated with kicad-footprint-generator
+Mounting M3 9774070360
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSI-M3_H8mm_9774080360
+Mounting Hardware, inside through hole M3, height 8, Wuerth electronics 9774080360 (https://katalog.we-online.de/em/datasheet/9774080360.pdf), generated with kicad-footprint-generator
+Mounting M3 9774080360
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSI-M3_H9mm_9774090360
+Mounting Hardware, inside through hole M3, height 9, Wuerth electronics 9774090360 (https://katalog.we-online.de/em/datasheet/9774090360.pdf), generated with kicad-footprint-generator
+Mounting M3 9774090360
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSI-M3_H10mm_9774100360
+Mounting Hardware, inside through hole M3, height 10, Wuerth electronics 9774100360 (https://katalog.we-online.de/em/datasheet/9774100360.pdf), generated with kicad-footprint-generator
+Mounting M3 9774100360
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSI-M3_H11mm_9774110360
+Mounting Hardware, inside through hole M3, height 11, Wuerth electronics 9774110360 (https://katalog.we-online.de/em/datasheet/9774110360.pdf), generated with kicad-footprint-generator
+Mounting M3 9774110360
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSI-M3_H12mm_9774120360
+Mounting Hardware, inside through hole M3, height 12, Wuerth electronics 9774120360 (https://katalog.we-online.de/em/datasheet/9774120360.pdf), generated with kicad-footprint-generator
+Mounting M3 9774120360
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSI-M3_H13mm_9774130360
+Mounting Hardware, inside through hole M3, height 13, Wuerth electronics 9774130360 (https://katalog.we-online.de/em/datasheet/9774130360.pdf), generated with kicad-footprint-generator
+Mounting M3 9774130360
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSI-M3_H14mm_9774140360
+Mounting Hardware, inside through hole M3, height 14, Wuerth electronics 9774140360 (https://katalog.we-online.de/em/datasheet/9774140360.pdf), generated with kicad-footprint-generator
+Mounting M3 9774140360
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSI-M3_H15mm_9774150360
+Mounting Hardware, inside through hole M3, height 15, Wuerth electronics 9774150360 (https://katalog.we-online.de/em/datasheet/9774150360.pdf), generated with kicad-footprint-generator
+Mounting M3 9774150360
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSR-3.2mm_H2.6mm_ReverseMount_9775026960
+Mounting Hardware, inside through hole 3.2mm, height 2.6, Wuerth electronics 9775026960 (https://katalog.we-online.com/em/datasheet/9775026960R.pdf), generated with kicad-footprint-generator
+Mounting 3.2mm 9775026960
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSR-3.2mm_H3.1mm_ReverseMount_9775031960
+Mounting Hardware, inside through hole 3.2mm, height 3.1, Wuerth electronics 9775031960 (https://katalog.we-online.com/em/datasheet/9775031960.pdf), generated with kicad-footprint-generator
+Mounting 3.2mm 9775031960
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSR-3.2mm_H3.6mm_ReverseMount_9775036960
+Mounting Hardware, inside through hole 3.2mm, height 3.6, Wuerth electronics 9775036960 (https://katalog.we-online.com/em/datasheet/9775036960.pdf), generated with kicad-footprint-generator
+Mounting 3.2mm 9775036960
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSR-3.2mm_H4.1mm_ReverseMount_9775041960
+Mounting Hardware, inside through hole 3.2mm, height 4.1, Wuerth electronics 9775041960 (https://katalog.we-online.com/em/datasheet/9775041960.pdf), generated with kicad-footprint-generator
+Mounting 3.2mm 9775041960
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSR-3.2mm_H4.6mm_ReverseMount_9775046960
+Mounting Hardware, inside through hole 3.2mm, height 4.6, Wuerth electronics 9775046960 (https://katalog.we-online.com/em/datasheet/9775046960.pdf), generated with kicad-footprint-generator
+Mounting 3.2mm 9775046960
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSR-3.2mm_H5.1mm_ReverseMount_9775051960
+Mounting Hardware, inside through hole 3.2mm, height 5.1, Wuerth electronics 9775051960 (https://katalog.we-online.com/em/datasheet/9775051960.pdf), generated with kicad-footprint-generator
+Mounting 3.2mm 9775051960
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSR-3.2mm_H5.6mm_ReverseMount_9775056960
+Mounting Hardware, inside through hole 3.2mm, height 5.6, Wuerth electronics 9775056960 (https://katalog.we-online.com/em/datasheet/9775056960.pdf), generated with kicad-footprint-generator
+Mounting 3.2mm 9775056960
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSR-3.2mm_H6.6mm_ReverseMount_9775066960
+Mounting Hardware, inside through hole 3.2mm, height 6.6, Wuerth electronics 9775066960 (https://katalog.we-online.com/em/datasheet/9775066960.pdf), generated with kicad-footprint-generator
+Mounting 3.2mm 9775066960
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSR-3.2mm_H7.6mm_ReverseMount_9775076960
+Mounting Hardware, inside through hole 3.2mm, height 7.6, Wuerth electronics 9775076960 (https://katalog.we-online.com/em/datasheet/9775076960.pdf), generated with kicad-footprint-generator
+Mounting 3.2mm 9775076960
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSR-3.2mm_H8.6mm_ReverseMount_9775086960
+Mounting Hardware, inside through hole 3.2mm, height 8.6, Wuerth electronics 9775086960 (https://katalog.we-online.com/em/datasheet/9775086960.pdf), generated with kicad-footprint-generator
+Mounting 3.2mm 9775086960
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSR-3.2mm_H9.6mm_ReverseMount_9775096960
+Mounting Hardware, inside through hole 3.2mm, height 9.6, Wuerth electronics 9775096960 (https://katalog.we-online.com/em/datasheet/9775096960.pdf), generated with kicad-footprint-generator
+Mounting 3.2mm 9775096960
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSR-3.2mm_H10.6mm_ReverseMount_9775106960
+Mounting Hardware, inside through hole 3.2mm, height 10.6, Wuerth electronics 9775106960 (https://katalog.we-online.com/em/datasheet/9775106960.pdf), generated with kicad-footprint-generator
+Mounting 3.2mm 9775106960
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSR-3.2mm_H11.6mm_ReverseMount_9775116960
+Mounting Hardware, inside through hole 3.2mm, height 11.6, Wuerth electronics 9775116960 (https://katalog.we-online.com/em/datasheet/9775116960.pdf), generated with kicad-footprint-generator
+Mounting 3.2mm 9775116960
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSR-M3_H2.6mm_ReverseMount_9775026360
+Mounting Hardware, inside through hole M3, height 2.6, Wuerth electronics 9775026360 (https://katalog.we-online.com/em/datasheet/9775026360.pdf), generated with kicad-footprint-generator
+Mounting M3 9775026360
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSR-M3_H3.1mm_ReverseMount_9775031360
+Mounting Hardware, inside through hole M3, height 3.1, Wuerth electronics 9775031360 (https://katalog.we-online.com/em/datasheet/9775031360.pdf), generated with kicad-footprint-generator
+Mounting M3 9775031360
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSR-M3_H3.6mm_ReverseMount_9775036360
+Mounting Hardware, inside through hole M3, height 3.6, Wuerth electronics 9775036360 (https://katalog.we-online.com/em/datasheet/9775036360.pdf), generated with kicad-footprint-generator
+Mounting M3 9775036360
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSR-M3_H4.1mm_ReverseMount_9775041360
+Mounting Hardware, inside through hole M3, height 4.1, Wuerth electronics 9775041360 (https://katalog.we-online.com/em/datasheet/9775041360.pdf), generated with kicad-footprint-generator
+Mounting M3 9775041360
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSR-M3_H4.6mm_ReverseMount_9775046360
+Mounting Hardware, inside through hole M3, height 4.6, Wuerth electronics 9775046360 (https://katalog.we-online.com/em/datasheet/9775046360.pdf), generated with kicad-footprint-generator
+Mounting M3 9775046360
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSR-M3_H5.1mm_ReverseMount_9775051360
+Mounting Hardware, inside through hole M3, height 5.1, Wuerth electronics 9775051360 (https://katalog.we-online.com/em/datasheet/9775051360.pdf), generated with kicad-footprint-generator
+Mounting M3 9775051360
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSR-M3_H5.6mm_ReverseMount_9775056360
+Mounting Hardware, inside through hole M3, height 5.6, Wuerth electronics 9775056360 (https://katalog.we-online.com/em/datasheet/9775056360.pdf), generated with kicad-footprint-generator
+Mounting M3 9775056360
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSR-M3_H6.6mm_ReverseMount_9775066360
+Mounting Hardware, inside through hole M3, height 6.6, Wuerth electronics 9775066360 (https://katalog.we-online.com/em/datasheet/9775066360.pdf), generated with kicad-footprint-generator
+Mounting M3 9775066360
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSR-M3_H7.6mm_ReverseMount_9775076360
+Mounting Hardware, inside through hole M3, height 7.6, Wuerth electronics 9775076360 (https://katalog.we-online.com/em/datasheet/9775076360.pdf), generated with kicad-footprint-generator
+Mounting M3 9775076360
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSR-M3_H8.6mm_ReverseMount_9775086360
+Mounting Hardware, inside through hole M3, height 8.6, Wuerth electronics 9775086360 (https://katalog.we-online.com/em/datasheet/9775086360.pdf), generated with kicad-footprint-generator
+Mounting M3 9775086360
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSR-M3_H9.6mm_ReverseMount_9775096360
+Mounting Hardware, inside through hole M3, height 9.6, Wuerth electronics 9775096360 (https://katalog.we-online.com/em/datasheet/9775096360.pdf), generated with kicad-footprint-generator
+Mounting M3 9775096360
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSR-M3_H10.6mm_ReverseMount_9775106360
+Mounting Hardware, inside through hole M3, height 10.6, Wuerth electronics 9775106360 (https://katalog.we-online.com/em/datasheet/9775106360.pdf), generated with kicad-footprint-generator
+Mounting M3 9775106360
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSR-M3_H11.6mm_ReverseMount_9775116360
+Mounting Hardware, inside through hole M3, height 11.6, Wuerth electronics 9775116360 (https://katalog.we-online.com/em/datasheet/9775116360.pdf), generated with kicad-footprint-generator
+Mounting M3 9775116360
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSSR-3.3mm_H2.5mm_SnapRivet_9776025960
+Mounting Hardware, inside through hole 3.3mm, height 2.5, Wuerth electronics 9776025960 (https://katalog.we-online.com/em/datasheet/9776025960.pdf), generated with kicad-footprint-generator
+Mounting 3.3mm 9776025960
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSSR-3.3mm_H2mm_SnapRivet_9776020960
+Mounting Hardware, inside through hole 3.3mm, height 2, Wuerth electronics 9776020960 (https://katalog.we-online.com/em/datasheet/9776020960.pdf), generated with kicad-footprint-generator
+Mounting 3.3mm 9776020960
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSSR-3.3mm_H3mm_SnapRivet_9776030960
+Mounting Hardware, inside through hole 3.3mm, height 3, Wuerth electronics 9776030960 (https://katalog.we-online.com/em/datasheet/9776030960.pdf), generated with kicad-footprint-generator
+Mounting 3.3mm 9776030960
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSSR-3.3mm_H4mm_SnapRivet_9776040960
+Mounting Hardware, inside through hole 3.3mm, height 4, Wuerth electronics 9776040960 (https://katalog.we-online.com/em/datasheet/9776040960.pdf), generated with kicad-footprint-generator
+Mounting 3.3mm 9776040960
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSSR-3.3mm_H5mm_SnapRivet_9776050960
+Mounting Hardware, inside through hole 3.3mm, height 5, Wuerth electronics 9776050960 (https://katalog.we-online.com/em/datasheet/9776050960.pdf), generated with kicad-footprint-generator
+Mounting 3.3mm 9776050960
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSSR-3.3mm_H6mm_SnapRivet_9776060960
+Mounting Hardware, inside through hole 3.3mm, height 6, Wuerth electronics 9776060960 (https://katalog.we-online.com/em/datasheet/9776060960.pdf), generated with kicad-footprint-generator
+Mounting 3.3mm 9776060960
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSSR-3.3mm_H7mm_SnapRivet_9776070960
+Mounting Hardware, inside through hole 3.3mm, height 7, Wuerth electronics 9776070960 (https://katalog.we-online.com/em/datasheet/9776070960.pdf), generated with kicad-footprint-generator
+Mounting 3.3mm 9776070960
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSSR-3.3mm_H8mm_SnapRivet_9776080960
+Mounting Hardware, inside through hole 3.3mm, height 8, Wuerth electronics 9776080960 (https://katalog.we-online.com/em/datasheet/9776080960.pdf), generated with kicad-footprint-generator
+Mounting 3.3mm 9776080960
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSSR-3.3mm_H9mm_SnapRivet_9776090960
+Mounting Hardware, inside through hole 3.3mm, height 9, Wuerth electronics 9776090960 (https://katalog.we-online.com/em/datasheet/9776090960.pdf), generated with kicad-footprint-generator
+Mounting 3.3mm 9776090960
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMSSR-3.3mm_H10mm_SnapRivet_9776100960
+Mounting Hardware, inside through hole 3.3mm, height 10, Wuerth electronics 9776100960 (https://katalog.we-online.com/em/datasheet/9776100960R.pdf), generated with kicad-footprint-generator
+Mounting 3.3mm 9776100960
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMST-2.7mm_H1.5mm_9774015951
+Mounting Hardware, inside through hole 2.7mm, height 1.5, Wuerth electronics 9774015951 (https://katalog.we-online.de/em/datasheet/9774015951.pdf), generated with kicad-footprint-generator
+Mounting 2.7mm 9774015951
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMST-2.7mm_H1mm_9774010951
+Mounting Hardware, inside through hole 2.7mm, height 1, Wuerth electronics 9774010951 (https://katalog.we-online.de/em/datasheet/9774010951.pdf), generated with kicad-footprint-generator
+Mounting 2.7mm 9774010951
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMST-2.7mm_H2.5mm_9774025951
+Mounting Hardware, inside through hole 2.7mm, height 2.5, Wuerth electronics 9774025951 (https://katalog.we-online.de/em/datasheet/9774025951.pdf), generated with kicad-footprint-generator
+Mounting 2.7mm 9774025951
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMST-2.7mm_H2mm_9774020951
+Mounting Hardware, inside through hole 2.7mm, height 2, Wuerth electronics 9774020951 (https://katalog.we-online.de/em/datasheet/9774020951.pdf), generated with kicad-footprint-generator
+Mounting 2.7mm 9774020951
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMST-2.7mm_H3mm_9774030951
+Mounting Hardware, inside through hole 2.7mm, height 3, Wuerth electronics 9774030951 (https://katalog.we-online.de/em/datasheet/9774030951.pdf), generated with kicad-footprint-generator
+Mounting 2.7mm 9774030951
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMST-2.7mm_H4mm_9774040951
+Mounting Hardware, inside through hole 2.7mm, height 4, Wuerth electronics 9774040951 (https://katalog.we-online.de/em/datasheet/9774040951.pdf), generated with kicad-footprint-generator
+Mounting 2.7mm 9774040951
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMST-2.7mm_H5.5mm_9774055951
+Mounting Hardware, inside through hole 2.7mm, height 5.5, Wuerth electronics 9774055951 (https://katalog.we-online.de/em/datasheet/9774055951.pdf), generated with kicad-footprint-generator
+Mounting 2.7mm 9774055951
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMST-2.7mm_H5mm_9774050951
+Mounting Hardware, inside through hole 2.7mm, height 5, Wuerth electronics 9774050951 (https://katalog.we-online.de/em/datasheet/9774050951.pdf), generated with kicad-footprint-generator
+Mounting 2.7mm 9774050951
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMST-2.7mm_H6.5mm_9774065951
+Mounting Hardware, inside through hole 2.7mm, height 6.5, Wuerth electronics 9774065951 (https://katalog.we-online.de/em/datasheet/9774065951.pdf), generated with kicad-footprint-generator
+Mounting 2.7mm 9774065951
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMST-2.7mm_H6mm_9774060951
+Mounting Hardware, inside through hole 2.7mm, height 6, Wuerth electronics 9774060951 (https://katalog.we-online.de/em/datasheet/9774060951.pdf), generated with kicad-footprint-generator
+Mounting 2.7mm 9774060951
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMST-2.7mm_H7mm_9774070951
+Mounting Hardware, inside through hole 2.7mm, height 7, Wuerth electronics 9774070951 (https://katalog.we-online.de/em/datasheet/9774070951.pdf), generated with kicad-footprint-generator
+Mounting 2.7mm 9774070951
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMST-2.7mm_H8mm_9774080951
+Mounting Hardware, inside through hole 2.7mm, height 8, Wuerth electronics 9774080951 (https://katalog.we-online.de/em/datasheet/9774080951.pdf), generated with kicad-footprint-generator
+Mounting 2.7mm 9774080951
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMST-2.7mm_H9mm_9774090951
+Mounting Hardware, inside through hole 2.7mm, height 9, Wuerth electronics 9774090951 (https://katalog.we-online.de/em/datasheet/9774090951.pdf), generated with kicad-footprint-generator
+Mounting 2.7mm 9774090951
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMST-2.7mm_H10mm_9774100951
+Mounting Hardware, inside through hole 2.7mm, height 10, Wuerth electronics 9774100951 (https://katalog.we-online.de/em/datasheet/9774100951.pdf), generated with kicad-footprint-generator
+Mounting 2.7mm 9774100951
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMST-2.25mm_H1.5mm_9774015943
+Mounting Hardware, inside through hole 2.25mm, height 1.5, Wuerth electronics 9774015943 (https://katalog.we-online.de/em/datasheet/9774015943.pdf), generated with kicad-footprint-generator
+Mounting 2.25mm 9774015943
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMST-2.25mm_H1mm_9774010943
+Mounting Hardware, inside through hole 2.25mm, height 1, Wuerth electronics 9774010943 (https://katalog.we-online.de/em/datasheet/9774010943.pdf), generated with kicad-footprint-generator
+Mounting 2.25mm 9774010943
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMST-2.25mm_H2.5mm_9774025943
+Mounting Hardware, inside through hole 2.25mm, height 2.5, Wuerth electronics 9774025943 (https://katalog.we-online.de/em/datasheet/9774025943.pdf), generated with kicad-footprint-generator
+Mounting 2.25mm 9774025943
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMST-2.25mm_H2mm_9774020943
+Mounting Hardware, inside through hole 2.25mm, height 2, Wuerth electronics 9774020943 (https://katalog.we-online.de/em/datasheet/9774020943.pdf), generated with kicad-footprint-generator
+Mounting 2.25mm 9774020943
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMST-2.25mm_H3.5mm_9774035943
+Mounting Hardware, inside through hole 2.25mm, height 3.5, Wuerth electronics 9774035943 (https://katalog.we-online.de/em/datasheet/9774035943.pdf), generated with kicad-footprint-generator
+Mounting 2.25mm 9774035943
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMST-2.25mm_H3mm_9774030943
+Mounting Hardware, inside through hole 2.25mm, height 3, Wuerth electronics 9774030943 (https://katalog.we-online.de/em/datasheet/9774030943.pdf), generated with kicad-footprint-generator
+Mounting 2.25mm 9774030943
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMST-2.25mm_H4.5mm_9774045943
+Mounting Hardware, inside through hole 2.25mm, height 4.5, Wuerth electronics 9774045943 (https://katalog.we-online.de/em/datasheet/9774045943.pdf), generated with kicad-footprint-generator
+Mounting 2.25mm 9774045943
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMST-2.25mm_H4mm_9774040943
+Mounting Hardware, inside through hole 2.25mm, height 4, Wuerth electronics 9774040943 (https://katalog.we-online.de/em/datasheet/9774040943.pdf), generated with kicad-footprint-generator
+Mounting 2.25mm 9774040943
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMST-2.25mm_H5mm_9774050943
+Mounting Hardware, inside through hole 2.25mm, height 5, Wuerth electronics 9774050943 (https://katalog.we-online.de/em/datasheet/9774050943.pdf), generated with kicad-footprint-generator
+Mounting 2.25mm 9774050943
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMST-2.25mm_H6mm_9774060943
+Mounting Hardware, inside through hole 2.25mm, height 6, Wuerth electronics 9774060943 (https://katalog.we-online.de/em/datasheet/9774060943.pdf), generated with kicad-footprint-generator
+Mounting 2.25mm 9774060943
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMST-2.25mm_H7mm_9774070943
+Mounting Hardware, inside through hole 2.25mm, height 7, Wuerth electronics 9774070943 (https://katalog.we-online.de/em/datasheet/9774070943.pdf), generated with kicad-footprint-generator
+Mounting 2.25mm 9774070943
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMST-2.25mm_H8mm_9774080943
+Mounting Hardware, inside through hole 2.25mm, height 8, Wuerth electronics 9774080943 (https://katalog.we-online.de/em/datasheet/9774080943.pdf), generated with kicad-footprint-generator
+Mounting 2.25mm 9774080943
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMST-3.3mm_H1.5mm_9774015960
+Mounting Hardware, inside through hole 3.3mm, height 1.5, Wuerth electronics 9774015960 (https://katalog.we-online.de/em/datasheet/9774015960.pdf,), generated with kicad-footprint-generator
+Mounting 3.3mm 9774015960
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMST-3.3mm_H1mm_9774010960
+Mounting Hardware, inside through hole 3.3mm, height 1, Wuerth electronics 9774010960 (https://katalog.we-online.de/em/datasheet/9774010960.pdf,), generated with kicad-footprint-generator
+Mounting 3.3mm 9774010960
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMST-3.3mm_H2.5mm_9774025960
+Mounting Hardware, inside through hole 3.3mm, height 2.5, Wuerth electronics 9774025960 (https://katalog.we-online.de/em/datasheet/9774025960.pdf,), generated with kicad-footprint-generator
+Mounting 3.3mm 9774025960
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMST-3.3mm_H2mm_9774020960
+Mounting Hardware, inside through hole 3.3mm, height 2, Wuerth electronics 9774020960 (https://katalog.we-online.de/em/datasheet/9774020960.pdf,), generated with kicad-footprint-generator
+Mounting 3.3mm 9774020960
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMST-3.3mm_H3mm_9774030960
+Mounting Hardware, inside through hole 3.3mm, height 3, Wuerth electronics 9774030960 (https://katalog.we-online.de/em/datasheet/9774030960.pdf,), generated with kicad-footprint-generator
+Mounting 3.3mm 9774030960
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMST-3.3mm_H4mm_9774040960
+Mounting Hardware, inside through hole 3.3mm, height 4, Wuerth electronics 9774040960 (https://katalog.we-online.de/em/datasheet/9774040960.pdf,), generated with kicad-footprint-generator
+Mounting 3.3mm 9774040960
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMST-3.3mm_H5mm_9774050960
+Mounting Hardware, inside through hole 3.3mm, height 5, Wuerth electronics 9774050960 (https://katalog.we-online.de/em/datasheet/9774050960.pdf,), generated with kicad-footprint-generator
+Mounting 3.3mm 9774050960
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMST-3.3mm_H6mm_9774060960
+Mounting Hardware, inside through hole 3.3mm, height 6, Wuerth electronics 9774060960 (https://katalog.we-online.de/em/datasheet/9774060960.pdf,), generated with kicad-footprint-generator
+Mounting 3.3mm 9774060960
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMST-3.3mm_H7mm_9774070960
+Mounting Hardware, inside through hole 3.3mm, height 7, Wuerth electronics 9774070960 (https://katalog.we-online.de/em/datasheet/9774070960.pdf,), generated with kicad-footprint-generator
+Mounting 3.3mm 9774070960
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMST-3.3mm_H8mm_9774080960
+Mounting Hardware, inside through hole 3.3mm, height 8, Wuerth electronics 9774080960 (https://katalog.we-online.de/em/datasheet/9774080960.pdf,), generated with kicad-footprint-generator
+Mounting 3.3mm 9774080960
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMST-3.3mm_H9mm_9774090960
+Mounting Hardware, inside through hole 3.3mm, height 9, Wuerth electronics 9774090960 (https://katalog.we-online.de/em/datasheet/9774090960.pdf,), generated with kicad-footprint-generator
+Mounting 3.3mm 9774090960
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMST-3.3mm_H10mm_9774100960
+Mounting Hardware, inside through hole 3.3mm, height 10, Wuerth electronics 9774100960 (https://katalog.we-online.de/em/datasheet/9774100960.pdf,), generated with kicad-footprint-generator
+Mounting 3.3mm 9774100960
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMST-3.3mm_H11mm_9774110960
+Mounting Hardware, inside through hole 3.3mm, height 11, Wuerth electronics 9774110960 (https://katalog.we-online.de/em/datasheet/9774110960.pdf,), generated with kicad-footprint-generator
+Mounting 3.3mm 9774110960
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMST-3.3mm_H12mm_9774120960
+Mounting Hardware, inside through hole 3.3mm, height 12, Wuerth electronics 9774120960 (https://katalog.we-online.de/em/datasheet/9774120960.pdf,), generated with kicad-footprint-generator
+Mounting 3.3mm 9774120960
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMST-3.3mm_H13mm_9774130960
+Mounting Hardware, inside through hole 3.3mm, height 13, Wuerth electronics 9774130960 (https://katalog.we-online.de/em/datasheet/9774130960.pdf,), generated with kicad-footprint-generator
+Mounting 3.3mm 9774130960
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMST-3.3mm_H14mm_9774140960
+Mounting Hardware, inside through hole 3.3mm, height 14, Wuerth electronics 9774140960 (https://katalog.we-online.de/em/datasheet/9774140960.pdf,), generated with kicad-footprint-generator
+Mounting 3.3mm 9774140960
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMST-3.3mm_H15mm_9774150960
+Mounting Hardware, inside through hole 3.3mm, height 15, Wuerth electronics 9774150960 (https://katalog.we-online.de/em/datasheet/9774150960.pdf,), generated with kicad-footprint-generator
+Mounting 3.3mm 9774150960
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMST-4.5mm_H1mm_9774010982
+Mounting Hardware, inside through hole 4.5mm, height 1, Wuerth electronics 9774010982 (https://katalog.we-online.de/em/datasheet/9774010982.pdf), generated with kicad-footprint-generator
+Mounting 4.5mm 9774010982
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMST-4.5mm_H2mm_9774020982
+Mounting Hardware, inside through hole 4.5mm, height 2, Wuerth electronics 9774020982 (https://katalog.we-online.de/em/datasheet/9774020982.pdf), generated with kicad-footprint-generator
+Mounting 4.5mm 9774020982
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMST-4.5mm_H3mm_9774030982
+Mounting Hardware, inside through hole 4.5mm, height 3, Wuerth electronics 9774030982 (https://katalog.we-online.de/em/datasheet/9774030982.pdf), generated with kicad-footprint-generator
+Mounting 4.5mm 9774030982
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMST-4.5mm_H4mm_9774040982
+Mounting Hardware, inside through hole 4.5mm, height 4, Wuerth electronics 9774040982 (https://katalog.we-online.de/em/datasheet/9774040982.pdf), generated with kicad-footprint-generator
+Mounting 4.5mm 9774040982
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMST-4.5mm_H5mm_9774050982
+Mounting Hardware, inside through hole 4.5mm, height 5, Wuerth electronics 9774050982 (https://katalog.we-online.de/em/datasheet/9774050982.pdf), generated with kicad-footprint-generator
+Mounting 4.5mm 9774050982
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMST-4.5mm_H6mm_9774060982
+Mounting Hardware, inside through hole 4.5mm, height 6, Wuerth electronics 9774060982 (https://katalog.we-online.de/em/datasheet/9774060982.pdf), generated with kicad-footprint-generator
+Mounting 4.5mm 9774060982
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMST-4.5mm_H7mm_9774070982
+Mounting Hardware, inside through hole 4.5mm, height 7, Wuerth electronics 9774070982 (https://katalog.we-online.de/em/datasheet/9774070982.pdf), generated with kicad-footprint-generator
+Mounting 4.5mm 9774070982
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMST-4.5mm_H8mm_9774080982
+Mounting Hardware, inside through hole 4.5mm, height 8, Wuerth electronics 9774080982 (https://katalog.we-online.de/em/datasheet/9774080982.pdf), generated with kicad-footprint-generator
+Mounting 4.5mm 9774080982
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMST-4.5mm_H9mm_9774090982
+Mounting Hardware, inside through hole 4.5mm, height 9, Wuerth electronics 9774090982 (https://katalog.we-online.de/em/datasheet/9774090982.pdf), generated with kicad-footprint-generator
+Mounting 4.5mm 9774090982
+0
+8
+1
+Mounting_Wuerth
+Mounting_Wuerth_WA-SMST-4.5mm_H10mm_9774100982
+Mounting Hardware, inside through hole 4.5mm, height 10, Wuerth electronics 9774100982 (https://katalog.we-online.de/em/datasheet/9774100982.pdf), generated with kicad-footprint-generator
+Mounting 4.5mm 9774100982
+0
+8
+1
 NetTie
 NetTie-2_SMD_Pad0.5mm
 Net tie, 2 pin, 0.5mm square SMD pads
@@ -58799,223 +58750,41 @@ net tie
 0
 4
 4
-OFFSET
-ADV7513
+Nintendo
+CPU_AGB_B
 
 
 0
-67
-65
-OFFSET
-GBA_CONNECTOR
+181
+156
+Nintendo
+CPU_AGB_B_Interface
 
 
 0
-34
-32
-OFFSET
-GB_7.5mm
-
-
-0
-0
-0
-OFFSET
-JUSHUO_AFC07-S16FCC-00
-
-
-0
-18
-16
-OFFSET
-JUSHUO_AFC07-S32FCC-00
-
-
-0
-34
-32
-OFFSET
-JUSHUO_AFC07-S40FCC-00
-
-
-0
-42
-40
-OFFSET
-MAV-NUS-Side1
-
-
-0
-16
-16
-OFFSET
-Multiout
-
-
-0
-8
-8
-OFFSET
-N64_LOGO_COPPER_6mm
-
-
-0
-0
-0
-OFFSET
-OFFSET_LOGO
-
-
-0
-0
-0
-OFFSET
-OFFSET_LOGO_2.1mm
-
-
-0
-0
-0
-OFFSET
-OFFSET_LOGO_2.6mm
-
-
-0
-0
-0
-OFFSET
-OFFSET_LOGO_3.3mm
-
-
-0
-0
-0
-OFFSET
-OFFSET_LOGO_4.0mm
-
-
-0
-0
-0
-OFFSET
-OFFSET_LOGO_4.0mm_COPPER
-
-
-0
-0
-0
-OFFSET
-OFFSET_LOGO_4.5mm
-
-
-0
-0
-0
-OFFSET
-OFFSET_LOGO_5.5mm
-
-
-0
-0
-0
-OFFSET
-OFFSET_LOGO_6.2mm
-
-
-0
-0
-0
-OFFSET
-OFFSET_LOGO_9.5mm
-
-
-0
-0
-0
-OFFSET
-OFFSET_LOGO_34mm
-
-
-0
-0
-0
-OFFSET
-OFFSET_LOGO_SILK_2.6mm
-
-
-0
-0
-0
-OFFSET
-Pads_01x02
-
-
-0
-2
-2
-OFFSET
-Pads_01x05
-
-
-0
-5
-5
-OFFSET
-Pads_01x06
+25
+25
+Nintendo
+GameCube_PCB
 
 
 0
 6
 6
-OFFSET
-Pads_01x32
+Nintendo
+N64_DSUB
 
 
 0
-0
-0
-OFFSET
+15
+3
+Nintendo
 SNES_7PIN
 
 
 0
 7
 7
-OFFSET
-SOLDER_PAD
-
-
-0
-1
-1
-OFFSET
-SOLDER_PAD_2
-
-
-0
-1
-1
-OFFSET
-SOT-363
-
-
-0
-6
-6
-OFFSET
-XKB-TS-1185EC-C-D-B
-
-
-0
-4
-2
-OFFSET
-microSD-XKTF-0803-0
-
-
-0
-13
-9
 OptoDevice
 ADNS-9800
 Laser Gaming Sensor ADNS-9800
@@ -60269,13 +60038,6 @@ BGA 381 0.8
 0
 381
 381
-Package_BGA
-Linear_BGA-133_15.0x15.0_Layout12x12_P1.27mm
-Analog Devices (Linear Tech), 133-pin BGA uModule, 15.0x15.0x4.92mm, https://www.analog.com/media/en/technical-documentation/data-sheets/4637fc.pdf
-133 pin bga
-0
-134
-134
 Package_BGA
 Linear_BGA-133_15.0x15.0mm_Layout12x12_P1.27mm
 Analog Devices (Linear Tech), 133-pin BGA uModule, 15.0x15.0x4.92mm, https://www.analog.com/media/en/technical-documentation/data-sheets/4637fc.pdf
@@ -62293,13 +62055,6 @@ QFN NoLead
 17
 13
 Package_DFN_QFN
-QFN-14-1EP_1.6x1.6mm_P0.4mm_EP0.74x0.74mm
-QFN, 14 Pin (http://www.skyworksinc.com/uploads/documents/SKY13575_639LF_203270D.pdf), generated with kicad-footprint-generator ipc_noLead_generator.py
-QFN NoLead
-0
-19
-15
-Package_DFN_QFN
 QFN-16-1EP_3x3mm_P0.5mm_EP1.7x1.7mm
 QFN, 16 Pin (https://www.st.com/resource/en/datasheet/tsv521.pdf), generated with kicad-footprint-generator ipc_noLead_generator.py
 QFN NoLead
@@ -63700,13 +63455,6 @@ UQFN DFN 0.5 ST
 6
 6
 Package_DFN_QFN
-SiliconLabs_QFN-20-1EP_3x3mm_P0.5mm
-20-Lead Plastic Quad Flat, No Lead Package - 3x3 mm Body [QFN] with corner pads; see figure 8.2 of https://www.silabs.com/documents/public/data-sheets/efm8bb1-datasheet.pdf
-QFN 0.5
-0
-25
-21
-Package_DFN_QFN
 SiliconLabs_QFN-20-1EP_3x3mm_P0.5mm_EP1.8x1.8mm
 20-Lead Plastic Quad Flat, No Lead Package - 3x3 mm Body [QFN] with corner pads; see figure 8.2 of https://www.silabs.com/documents/public/data-sheets/efm8bb1-datasheet.pdf
 QFN 0.5
@@ -63715,13 +63463,6 @@ QFN 0.5
 21
 Package_DFN_QFN
 SiliconLabs_QFN-20-1EP_3x3mm_P0.5mm_EP1.8x1.8mm_ThermalVias
-20-Lead Plastic Quad Flat, No Lead Package - 3x3 mm Body [QFN] with corner pads and thermal vias; see figure 8.2 of https://www.silabs.com/documents/public/data-sheets/efm8bb1-datasheet.pdf
-QFN 0.5
-0
-31
-21
-Package_DFN_QFN
-SiliconLabs_QFN-20-1EP_3x3mm_P0.5mm_ThermalVias
 20-Lead Plastic Quad Flat, No Lead Package - 3x3 mm Body [QFN] with corner pads and thermal vias; see figure 8.2 of https://www.silabs.com/documents/public/data-sheets/efm8bb1-datasheet.pdf
 QFN 0.5
 0
@@ -67081,13 +66822,6 @@ LGA 28 5.2x3.8mm Pitch 0.5mm
 28
 28
 Package_LGA
-Linear_LGA-133_15.0x15.0_Layout12x12_P1.27mm
-Analog Devices (Linear Tech), 133-pin LGA uModule, 15.0x15.0x4.32mm, https://www.analog.com/media/en/technical-documentation/data-sheets/4637fc.pdf
-133 pin lga
-0
-133
-133
-Package_LGA
 Linear_LGA-133_15.0x15.0mm_Layout12x12_P1.27mm
 Analog Devices (Linear Tech), 133-pin LGA uModule, 15.0x15.0x4.32mm, https://www.analog.com/media/en/technical-documentation/data-sheets/4637fc.pdf
 133 pin lga
@@ -68883,6 +68617,13 @@ Package_SO
 SOIC-28W_7.5x18.7mm_P1.27mm
 SOIC, 28 Pin (https://www.akm.com/akm/en/file/datasheet/AK5394AVS.pdf#page=23), generated with kicad-footprint-generator ipc_gullwing_generator.py
 SOIC SO
+0
+28
+28
+Package_SO
+SOIC-28W_10.3x17.9mm_P1.27mm
+
+
 0
 28
 28
@@ -72869,27 +72610,6 @@ TO-264-5 Vertical RM 3.81mm
 0
 5
 5
-Panelization
-mouse-bite-1mm-slot
-
-
-0
-0
-0
-Panelization
-mouse-bite-2.54mm-slot
-
-
-0
-0
-0
-Panelization
-mouse-bite-2mm-slot
-
-
-0
-0
-0
 Potentiometer_SMD
 Potentiometer_ACP_CA6-VSMD_Vertical
 Potentiometer, vertical, ACP CA6-VSMD, http://www.acptechnologies.com/wp-content/uploads/2017/06/01-ACP-CA6.pdf
@@ -74710,125 +74430,6 @@ WiFi IEEE802.11 b/g/n
 0
 44
 44
-Raizu_HDMI
-BOOMELE-HDMI-005
-
-
-0
-21
-19
-Raizu_HDMI
-SOFNG_HDMI-019A
-
-
-0
-23
-19
-Raizu_HDMI
-SOFNG_HDMI-519
-
-
-0
-23
-21
-Raizu_Keyboard
-HS_MX_1.5U
-
-
-0
-2
-2
-Raizu_Keyboard
-HS_MX_1.25U
-
-
-0
-2
-2
-Raizu_Keyboard
-HS_MX_1.75U
-
-
-0
-2
-2
-Raizu_Keyboard
-HS_MX_1U
-
-
-0
-2
-2
-Raizu_Keyboard
-HS_MX_2U
-
-
-0
-2
-2
-Raizu_Keyboard
-HS_MX_6.25U
-
-
-0
-2
-2
-Raizu_Keyboard
-HS_MX_ISO_ENTER
-
-
-0
-2
-2
-Raizu_Keyboard
-MX_1.5U
-
-
-0
-2
-2
-Raizu_Keyboard
-MX_1.25U
-
-
-0
-2
-2
-Raizu_Keyboard
-MX_1.75U
-
-
-0
-2
-2
-Raizu_Keyboard
-MX_1U
-
-
-0
-2
-2
-Raizu_Keyboard
-MX_2U
-
-
-0
-2
-2
-Raizu_Keyboard
-MX_6.25U
-
-
-0
-2
-2
-Raizu_Keyboard
-MX_ISO_ENTER
-
-
-0
-2
-2
 Relay_SMD
 Relay_DPDT_AXICOM_IMSeries_JLeg
 http://www.te.com/commerce/DocumentDelivery/DDEController?Action=showdoc&DocId=Specification+Or+Standard%7F108-98001%7FW5%7Fpdf%7FEnglish%7FENG_SS_108-98001_W5.pdf
@@ -75558,13 +75159,6 @@ resistor handsolder
 2
 2
 Resistor_SMD
-R_0603_1608Metric_Pad1.05x0.95mm_HandSolder
-Resistor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator
-resistor handsolder
-0
-2
-2
-Resistor_SMD
 R_0612_1632Metric
 Resistor SMD 0612 (1632 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.vishay.com/docs/20019/rcwe.pdf), generated with kicad-footprint-generator
 resistor
@@ -75586,13 +75180,6 @@ resistor
 2
 2
 Resistor_SMD
-R_0805_2012Metric_Pad1.15x1.40mm_HandSolder
-Resistor SMD 0805 (2012 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: https://docs.google.com/spreadsheets/d/1BsfQQcO9C6DZCsRaXUlFlo91Tg2WpOkGARC1WS5S8t0/edit?usp=sharing), generated with kicad-footprint-generator
-resistor handsolder
-0
-2
-2
-Resistor_SMD
 R_0805_2012Metric_Pad1.20x1.40mm_HandSolder
 Resistor SMD 0805 (2012 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator
 resistor handsolder
@@ -75609,13 +75196,6 @@ resistor
 Resistor_SMD
 R_0815_2038Metric_Pad1.20x4.05mm_HandSolder
 Resistor SMD 0815 (2038 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: https://www.susumu.co.jp/common/pdf/n_catalog_partition07_en.pdf), generated with kicad-footprint-generator
-resistor handsolder
-0
-2
-2
-Resistor_SMD
-R_0815_2038Metric_Pad1.53x4.00mm_HandSolder
-Resistor SMD 0815 (2038 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: http://www.yageo.com/documents/recent/PYu-PRPFPH_521_RoHS_L_0.pdf), generated with kicad-footprint-generator
 resistor handsolder
 0
 2
@@ -75663,13 +75243,6 @@ resistor handsolder
 2
 2
 Resistor_SMD
-R_1206_3216Metric_Pad1.42x1.75mm_HandSolder
-Resistor SMD 1206 (3216 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator
-resistor handsolder
-0
-2
-2
-Resistor_SMD
 R_1210_3225Metric
 Resistor SMD 1210 (3225 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator
 resistor
@@ -75684,13 +75257,6 @@ resistor handsolder
 2
 2
 Resistor_SMD
-R_1210_3225Metric_Pad1.42x2.65mm_HandSolder
-Resistor SMD 1210 (3225 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator
-resistor handsolder
-0
-2
-2
-Resistor_SMD
 R_1218_3246Metric
 Resistor SMD 1218 (3246 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.vishay.com/docs/20035/dcrcwe3.pdf), generated with kicad-footprint-generator
 resistor
@@ -75700,20 +75266,6 @@ resistor
 Resistor_SMD
 R_1218_3246Metric_Pad1.22x4.75mm_HandSolder
 Resistor SMD 1218 (3246 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: https://www.vishay.com/docs/20035/dcrcwe3.pdf), generated with kicad-footprint-generator
-resistor handsolder
-0
-2
-2
-Resistor_SMD
-R_1806_4516Metric
-Resistor SMD 1806 (4516 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.modelithics.com/models/Vendor/MuRata/BLM41P.pdf), generated with kicad-footprint-generator
-resistor
-0
-2
-2
-Resistor_SMD
-R_1806_4516Metric_Pad1.57x1.80mm_HandSolder
-Resistor SMD 1806 (4516 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: https://www.modelithics.com/models/Vendor/MuRata/BLM41P.pdf), generated with kicad-footprint-generator
 resistor handsolder
 0
 2
@@ -75747,13 +75299,6 @@ resistor handsolder
 2
 2
 Resistor_SMD
-R_2010_5025Metric_Pad1.52x2.65mm_HandSolder
-Resistor SMD 2010 (5025 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator
-resistor handsolder
-0
-2
-2
-Resistor_SMD
 R_2512_6332Metric
 Resistor SMD 2512 (6332 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator
 resistor
@@ -75763,13 +75308,6 @@ resistor
 Resistor_SMD
 R_2512_6332Metric_Pad1.40x3.35mm_HandSolder
 Resistor SMD 2512 (6332 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator
-resistor handsolder
-0
-2
-2
-Resistor_SMD
-R_2512_6332Metric_Pad1.52x3.35mm_HandSolder
-Resistor SMD 2512 (6332 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator
 resistor handsolder
 0
 2
@@ -77083,6 +76621,27 @@ Current transducer
 0
 10
 10
+Sensor_Distance
+ST_VL53L1x
+VL53L1x distance sensor
+VL53L1CXV0FY1 VL53L1x
+0
+13
+12
+Sensor_Humidity
+Sensirion_DFN-4-1EP_2x2mm_P1mm_EP0.7x1.6mm
+DFN, 4 Pin (https://www.sensirion.com/fileadmin/user_upload/customers/sensirion/Dokumente/0_Datasheets/Humidity/Sensirion_Humidity_Sensors_SHTC3_Datasheet.pdf)
+Sensirion DFN NoLead
+0
+10
+5
+Sensor_Humidity
+Sensirion_DFN-8-1EP_2.5x2.5mm_P0.5mm_EP1.1x1.7mm
+Sensirion DFN-8 SHT3x-DIS (https://www.sensirion.com/fileadmin/user_upload/customers/sensirion/Dokumente/2_Humidity_Sensors/Datasheets/Sensirion_Humidity_Sensors_SHT3x_Datasheet_digital.pdf)
+sensirion dfn nolead
+0
+10
+9
 Sensor_Motion
 InvenSense_QFN-24_3x3mm_P0.4mm
 24-Lead Plastic QFN (3mm x 3mm); Pitch 0.4mm; EP 1.7x1.54mm; for InvenSense motion sensors; keepout area marked (Package see: https://store.invensense.com/datasheets/invensense/MPU9250REV1.0.pdf; See also https://www.invensense.com/wp-content/uploads/2015/02/InvenSense-MEMS-Handling.pdf)
@@ -81640,6 +81199,97 @@ THT Terminal Block WAGO 804-324 45Degree pitch 7.5mm size 179x15mm^2 drill 1.2mm
 0
 48
 24
+TerminalBlock_Wuerth
+Wuerth_REDCUBE-THR_WP-THRBU_74650073_THR
+REDCUBE THR with internal through-hole thread WP-THRBU (https://www.we-online.de/katalog/datasheet/74650073.pdf)
+screw terminal thread redcube thr power connector
+0
+8
+1
+TerminalBlock_Wuerth
+Wuerth_REDCUBE-THR_WP-THRBU_74650074_THR
+REDCUBE THR with internal through-hole thread WP-THRBU (https://www.we-online.de/katalog/datasheet/74650074.pdf)
+screw terminal thread redcube thr power connector
+0
+8
+1
+TerminalBlock_Wuerth
+Wuerth_REDCUBE-THR_WP-THRBU_74650094_THR
+REDCUBE THR with internal through-hole thread WP-THRBU (https://www.we-online.de/katalog/datasheet/74650094.pdf)
+screw terminal thread redcube thr power connector
+0
+16
+1
+TerminalBlock_Wuerth
+Wuerth_REDCUBE-THR_WP-THRBU_74650173_THR
+REDCUBE THR with internal through-hole thread WP-THRBU (https://www.we-online.de/katalog/datasheet/74650173.pdf)
+screw terminal thread redcube thr power connector
+0
+8
+1
+TerminalBlock_Wuerth
+Wuerth_REDCUBE-THR_WP-THRBU_74650174_THR
+REDCUBE THR with internal through-hole thread WP-THRBU (https://www.we-online.de/katalog/datasheet/74650174.pdf)
+screw terminal thread redcube thr power connector
+0
+8
+1
+TerminalBlock_Wuerth
+Wuerth_REDCUBE-THR_WP-THRBU_74650194_THR
+REDCUBE THR with internal through-hole thread WP-THRBU (https://www.we-online.de/katalog/datasheet/74650194.pdf)
+screw terminal thread redcube thr power connector
+0
+18
+1
+TerminalBlock_Wuerth
+Wuerth_REDCUBE-THR_WP-THRBU_74650195_THR
+REDCUBE THR with internal through-hole thread WP-THRBU (https://www.we-online.de/katalog/datasheet/74650195.pdf)
+screw terminal thread redcube thr power connector
+0
+18
+1
+TerminalBlock_Wuerth
+Wuerth_REDCUBE-THR_WP-THRBU_74655095_THR
+REDCUBE THR with internal through-hole thread WP-THRBU (https://www.we-online.de/katalog/datasheet/74655095.pdf)
+screw terminal thread redcube thr power connector
+0
+16
+1
+TerminalBlock_Wuerth
+Wuerth_REDCUBE-THR_WP-THRSH_74651173_THR
+REDCUBE THR with internal through-hole thread WP-THRSH (https://www.we-online.de/katalog/datasheet/74651173.pdf)
+screw terminal thread redcube thr power connector
+0
+8
+1
+TerminalBlock_Wuerth
+Wuerth_REDCUBE-THR_WP-THRSH_74651174_THR
+REDCUBE THR with internal through-hole thread WP-THRSH (https://www.we-online.de/katalog/datasheet/74651174.pdf)
+screw terminal thread redcube thr power connector
+0
+8
+1
+TerminalBlock_Wuerth
+Wuerth_REDCUBE-THR_WP-THRSH_74651175_THR
+REDCUBE THR with internal through-hole thread WP-THRSH (https://www.we-online.de/katalog/datasheet/74651175.pdf)
+screw terminal thread redcube thr power connector
+0
+8
+1
+TerminalBlock_Wuerth
+Wuerth_REDCUBE-THR_WP-THRSH_74651194_THR
+REDCUBE THR with internal through-hole thread WP-THRSH (https://www.we-online.de/katalog/datasheet/74651194.pdf)
+screw terminal thread redcube thr power connector
+0
+18
+1
+TerminalBlock_Wuerth
+Wuerth_REDCUBE-THR_WP-THRSH_74651195_THR
+REDCUBE THR with internal through-hole thread WP-THRSH (https://www.we-online.de/katalog/datasheet/74651195.pdf)
+screw terminal thread redcube thr power connector
+0
+18
+1
 TestPoint
 TestPoint_2Pads_Pitch2.54mm_Drill0.8mm
 Test point with 2 pins, pitch 2.54mm, drill diameter 0.8mm
@@ -81716,6 +81366,13 @@ wire loop as test point, pitch 7.62mm, hole diameter 1.3mm, wire diameter 1.0mm
 test point wire loop
 0
 2
+1
+TestPoint
+TestPoint_Keystone_0309_Micro-Miniature
+
+
+0
+1
 1
 TestPoint
 TestPoint_Keystone_5000-5004_Miniature
@@ -82648,69 +82305,6 @@ transformer flyback
 0
 10
 10
-Type-C
-12401598E4#2A
-
-
-0
-28
-28
-Type-C
-HRO-TYPE-C-31-M-12
-
-
-0
-16
-13
-Type-C
-HRO-TYPE-C-31-M-12-Assembly
-
-
-0
-16
-13
-Type-C
-HRO-TYPE-C-31-M-12-HandSoldering
-
-
-0
-16
-13
-Type-C
-HRO-TYPE-C-31-M-13
-
-
-0
-16
-13
-Type-C
-USB_C_GCT_USB4085
-
-
-0
-20
-17
-Type-C
-Wurth-632723300011
-
-
-0
-32
-27
-Type-C
-Wurth-632723300011-HandSoldering
-
-
-0
-30
-26
-Type-C
-Wurth-632723300011-MaximumExtensionMount
-
-
-0
-32
-27
 Valve
 Valve_ECC-83-1
 Valve ECC-83-1 round pins
@@ -83481,633 +83075,3 @@ varistor SIOV
 0
 2
 2
-esp32-wrover
-ESP32-WROVER
-
-
-0
-64
-39
-keyboard_parts
-4P4C
-http://www.assmann.us/specs/A-2004-3-4-LP-N-R_REV00.pdf
-4P4C, RJ
-0
-6
-6
-keyboard_parts
-ALPS_PLATE_SPRING
-http://deskthority.net/wiki/File:Alps_Electric_--_spec_--_5454_31.pdf
-ALPS, keyboard switch, SKCM, SKCL
-0
-4
-3
-keyboard_parts
-ALPS_PLATE_SPRING_CUTOUT
-
-
-0
-0
-0
-keyboard_parts
-ALPS_SKCM
-http://deskthority.net/wiki/File:Alps_Electric_--_spec_--_5454_31.pdf
-ALPS, keyboard switch, SKCM, SKCL
-0
-2
-2
-keyboard_parts
-ALPS_SKCM_CUTOUT
-
-
-0
-0
-0
-keyboard_parts
-ALPS_SKCM_CUTOUT_STAB256
-
-
-0
-0
-0
-keyboard_parts
-ALPS_SKCM_CUTOUT_STAB406
-
-
-0
-0
-0
-keyboard_parts
-ALPS_SKCM_CUTOUT_STAB883
-
-
-0
-0
-0
-keyboard_parts
-ALPS_SKCM_LED
-http://deskthority.net/wiki/File:Alps_Electric_--_spec_--_5454_31.pdf
-ALPS, keyboard switch, SKCM, SKCL
-0
-4
-4
-keyboard_parts
-ALPS_SKCM_reverse_pad
-http://deskthority.net/wiki/File:Alps_Electric_--_spec_--_5454_31.pdf
-ALPS, keyboard switch, SKCM, SKCL
-0
-2
-2
-keyboard_parts
-AVR_ICSP_3x2
-Double rangee de contacts 2 x 4 pins
-CONN
-0
-6
-6
-keyboard_parts
-C_1608
-SMT, 1608, 0603
-SMT, 1608, 0603
-0
-2
-2
-keyboard_parts
-C_1608_rev2
-SMT, 1608, 0603
-SMT, 1608, 0603
-0
-2
-2
-keyboard_parts
-C_3216
-SMD, 3216, 1210, C
-SMD, 3216, 1210, C
-0
-2
-2
-keyboard_parts
-C_3216_rev2
-SMD, 3216, 1210, C
-SMD, 3216, 1210, C
-0
-2
-2
-keyboard_parts
-C_3225
-SMD, 3216, 1210, C
-SMD, 3216, 1210, C
-0
-2
-2
-keyboard_parts
-C_3528
-SMD, 3216, 1210, C
-SMD, 3216, 1210, C
-0
-2
-2
-keyboard_parts
-C_3528_pol
-SMD, 3216, 1210, C
-SMD, 3216, 1210, C
-0
-2
-2
-keyboard_parts
-C_6032
-SMD, 3216, 1210, C
-SMD, 3216, 1210, C
-0
-2
-2
-keyboard_parts
-DSUB9P
-
-
-0
-11
-10
-keyboard_parts
-D_SC79
-SMT, 1608, 0603
-SMT, 1608, 0603
-0
-2
-2
-keyboard_parts
-D_SOD123
-
-
-0
-2
-2
-keyboard_parts
-D_SOD123W_hand
-
-
-0
-2
-2
-keyboard_parts
-D_SOD123_axial
-
-
-0
-6
-2
-keyboard_parts
-D_SOD123_hand
-
-
-0
-2
-2
-keyboard_parts
-D_axial
-
-
-0
-2
-2
-keyboard_parts
-FA-238
-
-
-0
-4
-3
-keyboard_parts
-HC-49_SMT
-
-
-0
-2
-2
-keyboard_parts
-HHKB_JP_HRS_DF14_15P
-http://www.mouser.com/ds/2/185/e53800017-12550.pdf
-HHKB JP, HRS, Hirose, DF14, 15P
-0
-17
-17
-keyboard_parts
-HHKB_PRO2_ZH13
-http://www.jst-mfg.com/product/pdf/eng/eZH.pdf
-HHKB pro2, JST, ZH
-0
-15
-15
-keyboard_parts
-HHKB_PRO2_ZH13_TH
-http://www.jst-mfg.com/product/pdf/eng/eZH.pdf
-JST ZH 13 HHKB pro2
-0
-13
-13
-keyboard_parts
-HHKB_PRO_PH15
-http://www.jst-mfg.com/product/pdf/eng/ePH.pdf
-JST PH 15 HHKB PRO
-0
-15
-15
-keyboard_parts
-HOLE_M2.6
-
-
-0
-1
-1
-keyboard_parts
-HOLE_M3
-
-
-0
-1
-1
-keyboard_parts
-HRS_DF14_20P
-http://www.mouser.com/ds/2/185/e53800017-12550.pdf
-HHKB JP, HRS, Hirose, DF14, 15P
-0
-22
-22
-keyboard_parts
-JST_PH2_SMT
-http://www.jst-mfg.com/product/pdf/eng/ePH.pdf
-JST, PH, Lipo, battery
-0
-4
-3
-keyboard_parts
-JST_PH2_SMT_TH
-http://www.jst-mfg.com/product/pdf/eng/ePH.pdf
-JST, PH, Lipo, battery
-0
-6
-3
-keyboard_parts
-JST_PH2_TH
-
-JST, PH2, Lipo
-0
-2
-2
-keyboard_parts
-LED_0805
-LED 0805 smd package
-LED 0805 SMD
-0
-2
-2
-keyboard_parts
-LED_2012_HSOL
-LED 0805 smd package
-LED 0805 SMD
-0
-2
-2
-keyboard_parts
-LED_3020_REFLOW
-LED 0805 smd package
-LED 0805 SMD
-0
-2
-2
-keyboard_parts
-LED_3025_DUAL
-
-
-0
-4
-4
-keyboard_parts
-LED_TH
-LED 3mm - Lead pitch 100mil (2,54mm)
-LED led 3mm 3MM 100mil 2,54mm
-0
-2
-2
-keyboard_parts
-LED_TH_BIVAR
-LED 3mm - Lead pitch 100mil (2,54mm)
-LED led 3mm 3MM 100mil 2,54mm
-0
-2
-2
-keyboard_parts
-LTC4054
-
-Lipo charger
-0
-5
-5
-keyboard_parts
-L_6x6MM
-
-
-0
-2
-2
-keyboard_parts
-L_7x7MM
-
-
-0
-2
-2
-keyboard_parts
-MINI_DIN_8
-
-
-0
-11
-9
-keyboard_parts
-MOS_FET_SOT23-3_HSOL
-SOT23
-
-0
-3
-3
-keyboard_parts
-PIN_1
-
-CONN pin 1 circle
-0
-1
-1
-keyboard_parts
-PIN_1_SQUARE
-
-CONN pin 1 square
-0
-1
-1
-keyboard_parts
-PPTC_nano
-
-
-0
-2
-2
-keyboard_parts
-PTC_3225
-
-
-0
-2
-2
-keyboard_parts
-Poker_oval_hole
-
-
-0
-1
-0
-keyboard_parts
-Poker_side_edge_long
-
-
-0
-1
-0
-keyboard_parts
-QFP32
-
-
-0
-32
-32
-keyboard_parts
-QFP32_reflow
-http://www.atmel.com/images/atmel-8826-seeprom-pcb-mounting-guidelines-surface-mount-packages-applicationnote.pdf
-
-0
-32
-32
-keyboard_parts
-QFP44
-
-
-0
-44
-44
-keyboard_parts
-QFP44_reflow
-http://www.atmel.com/images/atmel-8826-seeprom-pcb-mounting-guidelines-surface-mount-packages-applicationnote.pdf
-
-0
-44
-44
-keyboard_parts
-RN42
-
-
-0
-32
-32
-keyboard_parts
-R_1608
-SMT, 1608, 0603
-SMT, 1608, 0603
-0
-2
-2
-keyboard_parts
-R_1608_NOGUIDE
-SMT, 1608, 0603
-SMT, 1608, 0603
-0
-2
-2
-keyboard_parts
-R_1608_rev2
-SMT, 1608, 0603
-SMT, 1608, 0603
-0
-2
-2
-keyboard_parts
-R_2012
-SMT, 1608, 0603
-SMT, 1608, 0603
-0
-2
-2
-keyboard_parts
-SLP3-200-100-F
-
-
-0
-0
-0
-keyboard_parts
-SM_3216_POL
-
-
-0
-2
-2
-keyboard_parts
-SOLDER_JUMPER_2
-
-solder jumper bridge configuration
-0
-2
-2
-keyboard_parts
-SOLDER_JUMPER_2_WIRED
-
-solder jumper bridge configuration
-0
-3
-1
-keyboard_parts
-SOLDER_JUMPER_3
-
-solder jumper bridge configuration
-0
-3
-3
-keyboard_parts
-SOT23-3_HSOL
-SOT23
-
-0
-3
-3
-keyboard_parts
-SOT23-5_HSOL
-SOT23
-
-0
-5
-5
-keyboard_parts
-SOT23-6_HSOL
-SOT23
-
-0
-6
-6
-keyboard_parts
-SW_ALPS_SKRP
-
-
-0
-4
-2
-keyboard_parts
-SW_ALPS_SKSG
-
-
-0
-6
-4
-keyboard_parts
-SW_ALPS_SSAA
-
-
-0
-8
-8
-keyboard_parts
-SW_MINI_SLIDE
-
-
-0
-6
-6
-keyboard_parts
-SW_TACT_TH_HORIZ
-http://www.alps.com/products/WebObjects/catalog.woa/E/HTML/Tact/SnapIn/SKHH/SKHHLMA010.html
-ALPS SKHH tactile switch
-0
-4
-4
-keyboard_parts
-SW_TACT_TH_HORIZ_LOW
-http://www.alps.com/products/WebObjects/catalog.woa/E/HTML/Tact/SnapIn/SKHL/SKHLLAA010.html
-ALPS SKHLL low tactile switch
-0
-4
-4
-keyboard_parts
-USB_A
-
-
-0
-6
-5
-keyboard_parts
-USB_A_PLUG
-
-
-0
-8
-6
-keyboard_parts
-USB_microB
-USB microB hirose ZX62R-B-5P
-USB micorB hirose
-0
-11
-6
-keyboard_parts
-USB_miniB
-http://www.hirose.co.jp/cataloge_hp/e24000019.pdf
-USB miniB hirose
-0
-9
-9
-keyboard_parts
-USB_miniB_hirose_5S8
-USB miniB hirose UX60SC-MB-5S8
-USB miniB hirose through hole UX60SC-MB-5S8
-0
-9
-6
-keyboard_parts
-USB_miniB_hirose_5ST
-USB miniB hirose UX60SC_MB_5ST
-USB miniB hirose new
-0
-7
-6
-keyboard_parts
-USB_miniB_hirose_5ST_hand
-USB miniB hirose UX60SC_MB_5ST
-USB miniB hirose new
-0
-7
-6
-keyboard_parts
-WT12_bluegiga
-
-BlueGiga, WT12, Bluetooth
-0
-31
-31
-keyboard_parts
-XTAL_HC_49_TH
-
-
-0
-2
-2
-keyboard_parts
-tmk2016
-
-
-0
-0
-0
-keyboard_parts
-tmk_logo
-
-
-0
-0
-0
