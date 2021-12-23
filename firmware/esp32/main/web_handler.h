@@ -15,6 +15,8 @@ class Web_Handler_Class {
         static void _sendOK();
         static void handleBitStreamUpload();
         static void handleESPUpload();
+        static void handleSPIFFSUpload();
+
         static File fsUpload;
         static WebServer _server;
 };
