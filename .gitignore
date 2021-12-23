@@ -1,8 +1,8 @@
 .vscode
 bom
-esp32/build/**
-esp32/components/bluepad32*
-esp32/components/btstack*
+firmware/esp32/build/**
+firmware/esp32/components/bluepad32*
+firmware/esp32/components/btstack*
 *.gbr*
 *.drl
 *.zip
