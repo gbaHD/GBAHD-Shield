@@ -3,7 +3,7 @@
 #include <SPIFFS.h>
 
 
-#define DEV_BOARD
+//#define DEV_BOARD
 
 /* pin define */
 #define XFPGA_CCLK_PIN 17

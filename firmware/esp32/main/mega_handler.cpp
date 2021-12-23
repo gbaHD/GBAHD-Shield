@@ -21,7 +21,7 @@
 #define GBA_OUT_SELECT (0x200)
 
 #define MEGA_BL_ADDRESS             (0x29)
-#define MEGA_VERSION_HASH_OFFSET    (0x100) // <-- This needs to be updated once we know the location
+#define MEGA_VERSION_HASH_OFFSET    (0x200) // <-- This needs to be updated once we know the location
 #define MEGA_PAGE_SIZE              (0x80)  // <-- Page Size of ATMega328P
 
 #define SDA_PIN         (32)
@@ -78,7 +78,7 @@ void Mega_Handler_Class::update_controller()
 void Mega_Handler_Class::get_update_version(String& version)
 {
     char hash[8] = {0};
-    File atmelFile = SPIFFS.open("/atmel.hex", "r");
+    File atmelFile = SPIFFS.open("/atmega.bin", "r");
 
     if (atmelFile)
     {
@@ -130,13 +130,23 @@ void Mega_Handler_Class::update_mega()
     get_update_version(newVersion);
     if (oldVersion != newVersion)
     {
-        File atmelFile = SPIFFS.open("/atmel.hex", "r");
+        Serial.print("New version detected... Old version: ");
+        Serial.print(oldVersion);
+        Serial.print("New version: ");
+        Serial.println(newVersion);
+
+        File atmelFile = SPIFFS.open("/atmega.bin", "r");
         uint16_t write_address = 0;
+
+        Serial.println("Updating Shield...");
+
 
         char buffer[MEGA_PAGE_SIZE] = {0};
         
         while (atmelFile.readBytes(buffer, MEGA_PAGE_SIZE) > 0)
         {
+            Serial.print("Writing at ");
+            Serial.println(write_address);
             Wire.beginTransmission(MEGA_BL_ADDRESS);
             Wire.write(0x02);
             Wire.write(0x01);
@@ -153,6 +163,8 @@ void Mega_Handler_Class::update_mega()
 
             write_address += MEGA_PAGE_SIZE;
         }
+
+        Serial.println("Update Done!");
 
         atmelFile.close();
     }
