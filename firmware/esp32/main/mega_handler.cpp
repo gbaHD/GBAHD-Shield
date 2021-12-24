@@ -104,8 +104,6 @@ void Mega_Handler_Class::get_mega_version(String& version)
     while (Wire.available()) {
         version += static_cast<char>(Wire.read());
     }
-
-    Wire.endTransmission();
 }
 
 void Mega_Handler_Class::stop_bootloader()
