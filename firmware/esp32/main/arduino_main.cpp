@@ -48,11 +48,12 @@ void setup() {
   // Handle pushing the bitstream to Spartan
   Bitstream_Handler.handle_bit_stream();
 
+  Mega_Handler.init();
+
   Wifi_Handler.init();
 
   Web_Handler.init();
 
-  Mega_Handler.init();
 
 }
 

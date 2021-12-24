@@ -29,6 +29,7 @@
 
 GamepadPtr Mega_Handler_Class::controller;
 
+const String avr_upd_bin = "/atmel.bin";
 
 void Mega_Handler_Class::onConnectedGamepad(GamepadPtr gp) 
 {
@@ -67,6 +68,7 @@ void Mega_Handler_Class::update_controller()
     Wire.beginTransmission(MEGA_BL_ADDRESS);
     Wire.write(reinterpret_cast<uint8_t*>(&newOutputs), sizeof(uint16_t));
     Wire.endTransmission();
+    Wire.flush();
 
     if (newOutputs != 0)
     {
@@ -78,7 +80,7 @@ void Mega_Handler_Class::update_controller()
 void Mega_Handler_Class::get_update_version(String& version)
 {
     char hash[8] = {0};
-    File atmelFile = SPIFFS.open("/atmel.hex", "r");
+    File atmelFile = SPIFFS.open(avr_upd_bin, "r");
 
     if (atmelFile)
     {
@@ -94,10 +96,8 @@ void Mega_Handler_Class::get_update_version(String& version)
 void Mega_Handler_Class::get_mega_version(String& version)
 {
     Wire.beginTransmission(MEGA_BL_ADDRESS);
-    Wire.write(0x02);   // <-- Command
-    Wire.write(0x01);   // <-- Use FLASH
-    Wire.write(0xFF & (MEGA_VERSION_HASH_OFFSET >> 8));
-    Wire.write(0xFF & MEGA_VERSION_HASH_OFFSET);
+    uint8_t cmd[4] = {0x02, 0x01, ((MEGA_VERSION_HASH_OFFSET >> 8) & 0xFF), MEGA_VERSION_HASH_OFFSET & 0xFF};
+    Wire.write(cmd, sizeof(cmd));   // <-- Command Read
     Wire.endTransmission();
     Wire.requestFrom(MEGA_BL_ADDRESS, 7); // <-- Request only 7 Byte for short commit hash
 
@@ -106,6 +106,7 @@ void Mega_Handler_Class::get_mega_version(String& version)
     }
 
     Wire.endTransmission();
+    Wire.flush();
 }
 
 void Mega_Handler_Class::stop_bootloader()
@@ -113,14 +114,17 @@ void Mega_Handler_Class::stop_bootloader()
     Wire.beginTransmission(MEGA_BL_ADDRESS);
     Wire.write(0x00);
     Wire.endTransmission();
+    Wire.flush();
 }
 
 void Mega_Handler_Class::start_application()
 {
+	Serial.println("Starting application");
     Wire.beginTransmission(MEGA_BL_ADDRESS);
     Wire.write(0x01);
     Wire.write(0x80);
     Wire.endTransmission();
+    Wire.flush();
 }
 
 void Mega_Handler_Class::update_mega()
@@ -130,31 +134,32 @@ void Mega_Handler_Class::update_mega()
     get_update_version(newVersion);
     if (oldVersion != newVersion)
     {
-        File atmelFile = SPIFFS.open("/atmel.hex", "r");
+    	Serial.println("Version Missmatch: Updating Shield-FW!");
+        File atmelFile = SPIFFS.open(avr_upd_bin, "r");
         uint16_t write_address = 0;
 
-        char buffer[MEGA_PAGE_SIZE] = {0};
+        uint8_t buffer[MEGA_PAGE_SIZE] = {0};
         
-        while (atmelFile.readBytes(buffer, MEGA_PAGE_SIZE) > 0)
+        while (atmelFile.read(buffer, MEGA_PAGE_SIZE) > 0)
         {
             Wire.beginTransmission(MEGA_BL_ADDRESS);
             Wire.write(0x02);
             Wire.write(0x01);
-
             Wire.write(0xFF & (write_address >> 8));
             Wire.write(0xFF & write_address);
 
-            for (uint8_t idx = 0U; idx < MEGA_PAGE_SIZE; idx++)
-            {
-                Wire.write(buffer[idx]);
-            }
+            Wire.write(buffer, sizeof(buffer));
 
             Wire.endTransmission();
+            Serial.println();
 
             write_address += MEGA_PAGE_SIZE;
         }
 
+    	Serial.println("Update: Done");
         atmelFile.close();
+    } else {
+    	Serial.println("Version Match: No Update!");
     }
 }
 
