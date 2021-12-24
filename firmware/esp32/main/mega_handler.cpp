@@ -98,7 +98,7 @@ void Mega_Handler_Class::get_mega_version(String& version)
     Wire.beginTransmission(MEGA_BL_ADDRESS);
     uint8_t cmd[4] = {0x02, 0x01, ((MEGA_VERSION_HASH_OFFSET >> 8) & 0xFF), MEGA_VERSION_HASH_OFFSET & 0xFF};
     Wire.write(cmd, sizeof(cmd));   // <-- Command Read
-    Wire.endTransmission();
+    Wire.endTransmission(false);
     Wire.requestFrom(MEGA_BL_ADDRESS, 7); // <-- Request only 7 Byte for short commit hash
 
     while (Wire.available()) {
@@ -140,23 +140,22 @@ void Mega_Handler_Class::update_mega()
         uint16_t write_address = 0;
 
         Serial.println("Updating Shield...");
-        uint8_t buffer[MEGA_PAGE_SIZE] = {0};
-        
-        while (atmelFile.read(buffer, MEGA_PAGE_SIZE) > 0)
+        uint8_t buffer[MEGA_PAGE_SIZE+4] = {0};
+        buffer[0] = 0x02;
+        buffer[1] = 0x01;
+        while (atmelFile.read(&buffer[4], MEGA_PAGE_SIZE) > 0)
         {
             Serial.print("Writing at ");
             Serial.println(write_address);
-            Wire.beginTransmission(MEGA_BL_ADDRESS);
-            Wire.write(0x02);
-            Wire.write(0x01);
-            Wire.write(0xFF & (write_address >> 8));
-            Wire.write(0xFF & write_address);
+            buffer[2] = 0xFF & (write_address >> 8);
+            buffer[3] = 0xFF & write_address;
 
-            Wire.write(buffer, sizeof(buffer));
+            Wire.beginTransmission(MEGA_BL_ADDRESS);
+            if(Wire.write(buffer, sizeof(buffer)) != sizeof(buffer))
+            	Serial.println("Page not sent completely!");
 
             Wire.endTransmission();
-            Serial.println();
-
+            delay(100);
             write_address += MEGA_PAGE_SIZE;
         }
 
