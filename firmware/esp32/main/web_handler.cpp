@@ -24,8 +24,9 @@ void Web_Handler_Class::handleBitStreamUpload() {
   // TBD: Assert size.
   
   // Receive the file and store it into the file system.
-  // The SD card should be already mounted.
+
   HTTPUpload& upload = _server.upload();
+  
   if ( upload.status == UPLOAD_FILE_START ) {
     // Open the file to write.
     //fsUpload = SD_MMC.open( LOADING_DEFAULT_FIEE, "w" );
@@ -48,11 +49,12 @@ void Web_Handler_Class::handleBitStreamUpload() {
 }
 
 
-void Web_Handler_Class::handleESPUpload() {
+void Web_Handler_Class::handleESPUpload() 
+{
   // TBD: Assert size.
   
   // Receive the file and store it into the file system.
-  // The SD card should be already mounted.
+
   HTTPUpload& upload = _server.upload();
   if ( upload.status == UPLOAD_FILE_START ) {
     // Open the file to write.
@@ -73,84 +75,35 @@ void Web_Handler_Class::handleESPUpload() {
   }
 }
 
-// static void handleWifiConfig(void)
-// {
-//   String options_string = "";
+void Web_Handler_Class::handleSPIFFSUpload() 
+{
+  // TBD: Assert size.
 
-//   if (WiFi.scanComplete() != WIFI_SCAN_RUNNING)
-//   {
-//     Serial.print("Starting new scan");
-//     WiFi.scanDelete();
-//     WiFi.scanNetworks(true);
-//   }
-//   while(WiFi.scanComplete() == WIFI_SCAN_RUNNING){
-//     Serial.print(".");
-//     delay(100);
-//   }
-//   Serial.println("Done!");
-//   for (int i = 0; i < WiFi.scanComplete(); ++i) {
-//     options_string += "<option value='" + WiFi.SSID(i) + "'>" + WiFi.SSID(i) + "</option>";
+  // Receive the file and store it into the file system.
 
-//   }
-
-//   File config_template = SPIFFS.open("/webpage/wifi.template", "r");
-  
-//   String string_template = config_template.readString();
-
-//   config_template.close();
-
-//   string_template.replace("{{SSIDS}}", options_string);
-//   if (WiFi.getMode() == WIFI_MODE_AP)
-//   {
-//     string_template.replace("{{MODE}}", "AP");
-//     string_template.replace("{{SSID}}", _ssid);
-//     string_template.replace("{{IP}}", WiFi.softAPIP().toString() + "/" + WiFi.softAPSubnetCIDR());
-//   }
-//   else
-//   {
-//     string_template.replace("{{MODE}}", "STA");
-//     string_template.replace("{{SSID}}", WiFi.SSID());
-//     string_template.replace("{{IP}}", WiFi.localIP().toString() + "/" + WiFi.subnetCIDR());
-//   }
-  
-//   _server.sendHeader("Connection", "close");
-//   _server.send(200, "text/html", string_template);
-  
-// }
-
-// static void updateWifiConfig(void)
-// {
-//   if (_server.args() >= 2)
-//   {
-//     String ssid;
-//     String password;
-//     for (uint8_t i = 0U; i < _server.args(); i++)
-//     {
-//       String arg = _server.argName(i);
-
-//       if (arg.equals("ssid"))
-//       {
-//         ssid = _server.arg(i);
-//       }
-//       else if (arg.equals("password"))
-//       {
-//         password = _server.arg(i);
-//       }
-//     }
-
-//     Wifi_Handler.updateSTACredentials(ssid, password);
-//   }
-
-//   ESP.restart();
-  
-// }
-
-// static void resetWifiConfig(void)
-// {
-//   Wifi_Handler.reset();
-//   _sendOK();
-//   ESP.restart();
-// }
+  HTTPUpload& upload = _server.upload();
+  if ( upload.status == UPLOAD_FILE_START ) 
+  {
+    // Open the file to write.
+    if (!Update.begin(UPDATE_SIZE_UNKNOWN, U_SPIFFS)) { //start with max available size
+      Update.printError(Serial);
+    }
+  } else if ( upload.status == UPLOAD_FILE_WRITE ) 
+  {
+    /* flashing SPIFFS*/
+    if (Update.write(upload.buf, upload.currentSize) != upload.currentSize) {
+      Update.printError(Serial);
+    }
+  } 
+  else if ( UPLOAD_FILE_END == upload.status ) 
+  {
+    if (Update.end(true)) { //true to set the size to the current progress
+      Serial.printf("Update Success: %u\nRebooting...\n", upload.totalSize);
+    } else {
+      Update.printError(Serial);
+    }
+  }
+}
 
 
 void Web_Handler_Class::init(void)
@@ -161,6 +114,9 @@ void Web_Handler_Class::init(void)
 
   // Handle Bitstream upload.
   _server.on( "/upgrade/esp32", HTTP_POST, _sendOK, handleESPUpload );
+
+  // Handle SPIFFS upload.
+  _server.on( "/upgrade/spiffs", HTTP_POST, _sendOK, handleSPIFFSUpload );
 
   // _server.on( "/wifi/config", HTTP_GET, handleWifiConfig );
   // _server.on( "/wifi/config", HTTP_POST, updateWifiConfig );
@@ -176,7 +132,8 @@ void Web_Handler_Class::init(void)
 
 
   // Set up DNS.
-  if ( !MDNS.begin( "gbahd" ) ) {
+  if ( !MDNS.begin( "gbahd" ) ) 
+  {
     Serial.println( "Error setting up DNS" );
   }
 

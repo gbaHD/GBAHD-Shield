@@ -21,7 +21,7 @@
 #define GBA_OUT_SELECT (0x200)
 
 #define MEGA_BL_ADDRESS             (0x29)
-#define MEGA_VERSION_HASH_OFFSET    (0x100) // <-- This needs to be updated once we know the location
+#define MEGA_VERSION_HASH_OFFSET    (0x200) // <-- This needs to be updated once we know the location
 #define MEGA_PAGE_SIZE              (0x80)  // <-- Page Size of ATMega328P
 
 #define SDA_PIN         (32)
@@ -29,7 +29,7 @@
 
 GamepadPtr Mega_Handler_Class::controller;
 
-const String avr_upd_bin = "/atmel.bin";
+const String avr_upd_bin = "/atmega.bin";
 
 void Mega_Handler_Class::onConnectedGamepad(GamepadPtr gp) 
 {
@@ -104,9 +104,6 @@ void Mega_Handler_Class::get_mega_version(String& version)
     while (Wire.available()) {
         version += static_cast<char>(Wire.read());
     }
-
-    Wire.endTransmission();
-    Wire.flush();
 }
 
 void Mega_Handler_Class::stop_bootloader()
@@ -134,14 +131,21 @@ void Mega_Handler_Class::update_mega()
     get_update_version(newVersion);
     if (oldVersion != newVersion)
     {
-    	Serial.println("Version Missmatch: Updating Shield-FW!");
+        Serial.print("New version detected... Old version: ");
+        Serial.print(oldVersion);
+        Serial.print("New version: ");
+        Serial.println(newVersion);
+
         File atmelFile = SPIFFS.open(avr_upd_bin, "r");
         uint16_t write_address = 0;
 
+        Serial.println("Updating Shield...");
         uint8_t buffer[MEGA_PAGE_SIZE] = {0};
         
         while (atmelFile.read(buffer, MEGA_PAGE_SIZE) > 0)
         {
+            Serial.print("Writing at ");
+            Serial.println(write_address);
             Wire.beginTransmission(MEGA_BL_ADDRESS);
             Wire.write(0x02);
             Wire.write(0x01);

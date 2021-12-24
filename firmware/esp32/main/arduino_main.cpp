@@ -54,7 +54,6 @@ void setup() {
 
   Web_Handler.init();
 
-
 }
 
 // Arduino loop function. Runs in CPU 1
@@ -135,9 +134,9 @@ void loop() {
   //   // For all the available functions.
   // }
 
+  Mega_Handler.update();
   Web_Handler.run();
   Wifi_Handler.update();
-  Mega_Handler.update();
   delay(150);
 }
 
