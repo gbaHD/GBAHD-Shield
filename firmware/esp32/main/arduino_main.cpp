@@ -133,10 +133,12 @@ void loop() {
   //   // You can query the axis and other properties as well. See Gamepad.h
   //   // For all the available functions.
   // }
-
-  Mega_Handler.update();
-  Web_Handler.run();
-  Wifi_Handler.update();
-  delay(150);
+	int64_t target_micros = esp_timer_get_time() + 150000;	//150ms
+	while(esp_timer_get_time() < target_micros) {	//timer will roll over every ~292471 years... so no problem here
+		Mega_Handler.update();
+		delay(5);
+	}
+	Web_Handler.run();
+	Wifi_Handler.update();
 }
 

@@ -59,14 +59,15 @@
 /* === INCLUDES ============================================================= */
 #include "avr.h"
 #include <EEPROM.h>
-
+#include <Wire.h>
 
 /* === TYPES ================================================================ */
 
 /* === MACROS =============================================================== */
 
 /* === GLOBALS ============================================================== */
-uint16_t controller_data = 0xFFFF;
+uint16_t controller_data = 0x0000;
+uint16_t twi_data = 0x0000;
 bool osd_enabled = false;
 
 /* === PROTOTYPES =========================================================== */
@@ -77,6 +78,9 @@ void reboot(void);
 
 /* === IMPLEMENTATION ======================================================= */
 void setup(void) {
+  Wire.begin(0x29);                // join I2C bus with address #41
+  Wire.onReceive(receiveEvent); // register event
+  
   SPI.setDataMode(SPI_MODE2);
   SPI.setClockDivider(SPI_CLOCK_DIV32);
   SPI.begin();
@@ -96,19 +100,21 @@ void setup(void) {
   Serial.begin(9600);
 #endif
 
-  delay(1000);
   reboot();
 }
 
 void loop(void) {
   //The SNES Controller needs a falling edge on LATCH to know when to capture the data
-  if (((controller_data) & 0x3FF) == 0) digitalWrite(GBA_OUTPUT_EN, HIGH);
-  else digitalWrite(GBA_OUTPUT_EN, LOW);
+  digitalWrite(GBA_OUTPUT_EN, ((controller_data & 0x3FF) == 0) ? HIGH : LOW);
+  
   digitalWrite(SNES_LATCH, LOW);
   uint16_t in = (~SPI.transfer16((~controller_data) & 0x3FF)) >> 4;
   digitalWrite(SNES_LATCH, HIGH);
 
-  if (in != 0x0FFF && in != 0x0) {
+  if(in == 0x0FFF) in = 0;
+  in |= twi_data;
+  twi_data = 0; //twi_data is consumed
+  if (in != 0x0) {
     controller_data = map_data(in);
   } else {
     controller_data = 0;
@@ -203,4 +209,12 @@ void transferSpartan(uint8_t data) {
       delayMicroseconds(2);
     }
   }
+}
+
+// function that executes whenever data is received from master
+// this function is registered as an event, see setup()
+void receiveEvent(int howMany) {
+  twi_data = Wire.read();
+  twi_data |= Wire.read() << 8;
+  Wire.flush();
 }

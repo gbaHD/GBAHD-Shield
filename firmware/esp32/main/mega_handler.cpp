@@ -72,16 +72,16 @@ void Mega_Handler_Class::update_controller()
         MAP_BUTTON(((controller->axisX() < -80) ? DPAD_LEFT : 0), newOutputs, DPAD_LEFT, CTRL_IN_LEFT);
         MAP_BUTTON(controller->dpad(), newOutputs, DPAD_RIGHT, CTRL_IN_RIGHT);
         MAP_BUTTON(((controller->axisX() > 80) ? DPAD_RIGHT : 0), newOutputs, DPAD_RIGHT, CTRL_IN_RIGHT);
-        MAP_BUTTON(controller->buttons(), newOutputs, BUTTON_A, CTRL_IN_A);
-        MAP_BUTTON(controller->buttons(), newOutputs, BUTTON_B, CTRL_IN_B);
-        MAP_BUTTON(controller->buttons(), newOutputs, BUTTON_X, CTRL_IN_X);
-        MAP_BUTTON(controller->buttons(), newOutputs, BUTTON_Y, CTRL_IN_Y);
+        MAP_BUTTON(controller->buttons(), newOutputs, BUTTON_B, CTRL_IN_A);
+        MAP_BUTTON(controller->buttons(), newOutputs, BUTTON_A, CTRL_IN_B);
+        MAP_BUTTON(controller->buttons(), newOutputs, BUTTON_Y, CTRL_IN_X);
+        MAP_BUTTON(controller->buttons(), newOutputs, BUTTON_X, CTRL_IN_Y);
         MAP_BUTTON(controller->buttons(), newOutputs, BUTTON_TRIGGER_L, CTRL_IN_L);
         MAP_BUTTON(controller->buttons(), newOutputs, BUTTON_SHOULDER_L, CTRL_IN_L);
         MAP_BUTTON(controller->buttons(), newOutputs, BUTTON_TRIGGER_R, CTRL_IN_R);
         MAP_BUTTON(controller->buttons(), newOutputs, BUTTON_SHOULDER_R, CTRL_IN_R);
         MAP_BUTTON(controller->miscButtons(), newOutputs, MISC_BUTTON_SYSTEM, CTRL_IN_START);
-        MAP_BUTTON(controller->miscButtons(), newOutputs, MISC_BUTTON_HOME, CTRL_IN_START);
+        MAP_BUTTON(controller->miscButtons(), newOutputs, MISC_BUTTON_HOME, CTRL_IN_SELECT);
         MAP_BUTTON(controller->miscButtons(), newOutputs, MISC_BUTTON_BACK, CTRL_IN_SELECT);
 
         Wire.beginTransmission(MEGA_BL_ADDRESS);
@@ -92,8 +92,8 @@ void Mega_Handler_Class::update_controller()
 
         if (newOutputs != 0)
         {
-        	Serial.print("Current Controls: ");
-        	Serial.println(newOutputs, BIN);
+        	Serial.print("Current Controls: 0x");
+        	Serial.println(newOutputs, HEX);
         }
     }
 }
