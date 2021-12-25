@@ -65,6 +65,7 @@ void Wifi_Handler_Class::getSTACredentials(String& ssid, String& password)
             }
             wifi_creds.close();
         }
+
         if ((ssid != newSSID) || (password != newPassword))
         {
             saveWifiCredentials(newSSID, newPassword);
@@ -115,8 +116,6 @@ void Wifi_Handler_Class::restoreWifiCredentials(String* ssid, String* password)
 
 void Wifi_Handler_Class::connectWifiSTA(String& ssid, String& password)
 {
-    WiFi.mode(WIFI_STA);  
-
     WiFi.begin(ssid.c_str(), password.c_str());
 }
 
@@ -134,27 +133,31 @@ void Wifi_Handler_Class::init()
 
 void Wifi_Handler_Class::update()
 {
-	static wl_status_t last_status = WL_DISCONNECTED;
-	wl_status_t curr_status = WiFi.status();
-	if(last_status != curr_status) {
-		last_status = curr_status;
-		switch(curr_status)
-		{
-		case WL_IDLE_STATUS:
-		case WL_CONNECTED:
-			Serial.println("Connection established.");
-			break;
-		case WL_NO_SSID_AVAIL:
-		case WL_CONNECT_FAILED:
-		case WL_CONNECTION_LOST:
-			Serial.println("Connection not available.");
-			break;
-		case WL_SCAN_COMPLETED:
-		case WL_DISCONNECTED:
-		default:
-			break;
-		}
-	}
+    static wl_status_t old_status = WL_NO_SHIELD;
+    wl_status_t new_status = WiFi.status();
+    if (old_status != new_status)
+    {
+        switch(new_status)
+        {
+            case WL_IDLE_STATUS:
+            case WL_CONNECTED:
+                Serial.println("Connection established.");
+                Serial.print("IP:\t");
+                Serial.println(WiFi.localIP());
+                break;
+            case WL_NO_SSID_AVAIL:
+            case WL_CONNECT_FAILED:
+            case WL_CONNECTION_LOST:
+                Serial.println("Connection not available.");
+                break;
+            case WL_SCAN_COMPLETED:
+            case WL_DISCONNECTED:
+            default:
+            break;
+        }
+
+        old_status = new_status;
+    }
 }
 
 void Wifi_Handler_Class::reset()

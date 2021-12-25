@@ -83,17 +83,18 @@ void Mega_Handler_Class::update_controller()
         MAP_BUTTON(controller->miscButtons(), newOutputs, MISC_BUTTON_SYSTEM, CTRL_IN_START);
         MAP_BUTTON(controller->miscButtons(), newOutputs, MISC_BUTTON_HOME, CTRL_IN_START);
         MAP_BUTTON(controller->miscButtons(), newOutputs, MISC_BUTTON_BACK, CTRL_IN_SELECT);
-    }
 
-    Wire.beginTransmission(MEGA_BL_ADDRESS);
-    Wire.write(reinterpret_cast<uint8_t*>(&newOutputs), sizeof(uint16_t));
-    Wire.endTransmission();
-    Wire.flush();
+        Wire.beginTransmission(MEGA_BL_ADDRESS);
+        Wire.write(reinterpret_cast<uint8_t*>(&newOutputs), sizeof(uint16_t));
+        Wire.endTransmission();
+        Wire.flush();
 
-    if (newOutputs != 0)
-    {
-        Serial.print("Current Controls: ");
-        Serial.println(newOutputs, BIN);
+
+        if (newOutputs != 0)
+        {
+        	Serial.print("Current Controls: ");
+        	Serial.println(newOutputs, BIN);
+        }
     }
 }
 
