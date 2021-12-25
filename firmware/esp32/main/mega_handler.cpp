@@ -20,6 +20,19 @@
 #define GBA_OUT_START  (0x100)
 #define GBA_OUT_SELECT (0x200)
 
+#define CTRL_IN_A      (0x008)
+#define CTRL_IN_B      (0x800)
+#define CTRL_IN_Y      (0x400)
+#define CTRL_IN_X      (0x004)
+#define CTRL_IN_UP     (0x080)
+#define CTRL_IN_DOWN   (0x040)
+#define CTRL_IN_LEFT   (0x020)
+#define CTRL_IN_RIGHT  (0x010)
+#define CTRL_IN_L      (0x002)
+#define CTRL_IN_R      (0x001)
+#define CTRL_IN_START  (0x100)
+#define CTRL_IN_SELECT (0x200)
+
 #define MEGA_BL_ADDRESS             (0x29)
 #define MEGA_VERSION_HASH_OFFSET    (0x200) // <-- This needs to be updated once we know the location
 #define MEGA_PAGE_SIZE              (0x80)  // <-- Page Size of ATMega328P
@@ -51,18 +64,25 @@ void Mega_Handler_Class::update_controller()
 
     if (controller && controller->isConnected()) 
     {
-        MAP_BUTTON(controller->dpad(), newOutputs, DPAD_UP, GBA_OUT_UP);
-        MAP_BUTTON(controller->dpad(), newOutputs, DPAD_DOWN, GBA_OUT_DOWN);
-        MAP_BUTTON(controller->dpad(), newOutputs, DPAD_LEFT, GBA_OUT_LEFT);
-        MAP_BUTTON(controller->dpad(), newOutputs, DPAD_RIGHT, GBA_OUT_RIGHT);
-        MAP_BUTTON(controller->buttons(), newOutputs, BUTTON_A, GBA_OUT_A);
-        MAP_BUTTON(controller->buttons(), newOutputs, BUTTON_B, GBA_OUT_B);
-        MAP_BUTTON(controller->buttons(), newOutputs, BUTTON_TRIGGER_L, GBA_OUT_L);
-        MAP_BUTTON(controller->buttons(), newOutputs, BUTTON_SHOULDER_L, GBA_OUT_L);
-        MAP_BUTTON(controller->buttons(), newOutputs, BUTTON_TRIGGER_R, GBA_OUT_R);
-        MAP_BUTTON(controller->buttons(), newOutputs, BUTTON_SHOULDER_R, GBA_OUT_R);
-        MAP_BUTTON(controller->miscButtons(), newOutputs, MISC_BUTTON_HOME, GBA_OUT_START);
-        MAP_BUTTON(controller->miscButtons(), newOutputs, MISC_BUTTON_BACK, GBA_OUT_SELECT);
+        MAP_BUTTON(controller->dpad(), newOutputs, DPAD_UP, CTRL_IN_UP);
+        MAP_BUTTON(((controller->axisY() < -80) ? DPAD_UP : 0), newOutputs, DPAD_UP, CTRL_IN_UP);
+        MAP_BUTTON(controller->dpad(), newOutputs, DPAD_DOWN, CTRL_IN_DOWN);
+        MAP_BUTTON(((controller->axisY() > 80) ? DPAD_DOWN : 0), newOutputs, DPAD_DOWN, CTRL_IN_DOWN);
+        MAP_BUTTON(controller->dpad(), newOutputs, DPAD_LEFT, CTRL_IN_LEFT);
+        MAP_BUTTON(((controller->axisX() < -80) ? DPAD_LEFT : 0), newOutputs, DPAD_LEFT, CTRL_IN_LEFT);
+        MAP_BUTTON(controller->dpad(), newOutputs, DPAD_RIGHT, CTRL_IN_RIGHT);
+        MAP_BUTTON(((controller->axisX() > 80) ? DPAD_RIGHT : 0), newOutputs, DPAD_RIGHT, CTRL_IN_RIGHT);
+        MAP_BUTTON(controller->buttons(), newOutputs, BUTTON_A, CTRL_IN_A);
+        MAP_BUTTON(controller->buttons(), newOutputs, BUTTON_B, CTRL_IN_B);
+        MAP_BUTTON(controller->buttons(), newOutputs, BUTTON_X, CTRL_IN_X);
+        MAP_BUTTON(controller->buttons(), newOutputs, BUTTON_Y, CTRL_IN_Y);
+        MAP_BUTTON(controller->buttons(), newOutputs, BUTTON_TRIGGER_L, CTRL_IN_L);
+        MAP_BUTTON(controller->buttons(), newOutputs, BUTTON_SHOULDER_L, CTRL_IN_L);
+        MAP_BUTTON(controller->buttons(), newOutputs, BUTTON_TRIGGER_R, CTRL_IN_R);
+        MAP_BUTTON(controller->buttons(), newOutputs, BUTTON_SHOULDER_R, CTRL_IN_R);
+        MAP_BUTTON(controller->miscButtons(), newOutputs, MISC_BUTTON_SYSTEM, CTRL_IN_START);
+        MAP_BUTTON(controller->miscButtons(), newOutputs, MISC_BUTTON_HOME, CTRL_IN_START);
+        MAP_BUTTON(controller->miscButtons(), newOutputs, MISC_BUTTON_BACK, CTRL_IN_SELECT);
     }
 
     Wire.beginTransmission(MEGA_BL_ADDRESS);

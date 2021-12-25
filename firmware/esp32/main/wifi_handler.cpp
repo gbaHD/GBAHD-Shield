@@ -134,22 +134,27 @@ void Wifi_Handler_Class::init()
 
 void Wifi_Handler_Class::update()
 {
-    switch(WiFi.status())
-    {
-        case WL_IDLE_STATUS:
-        case WL_CONNECTED:
-            Serial.println("Connection established.");
-            break;
-        case WL_NO_SSID_AVAIL:
-        case WL_CONNECT_FAILED:
-        case WL_CONNECTION_LOST:
-            Serial.println("Connection not available.");
-            break;
-        case WL_SCAN_COMPLETED:
-        case WL_DISCONNECTED:
-        default:
-        break;
-    }
+	static wl_status_t last_status = WL_DISCONNECTED;
+	wl_status_t curr_status = WiFi.status();
+	if(last_status != curr_status) {
+		last_status = curr_status;
+		switch(curr_status)
+		{
+		case WL_IDLE_STATUS:
+		case WL_CONNECTED:
+			Serial.println("Connection established.");
+			break;
+		case WL_NO_SSID_AVAIL:
+		case WL_CONNECT_FAILED:
+		case WL_CONNECTION_LOST:
+			Serial.println("Connection not available.");
+			break;
+		case WL_SCAN_COMPLETED:
+		case WL_DISCONNECTED:
+		default:
+			break;
+		}
+	}
 }
 
 void Wifi_Handler_Class::reset()
