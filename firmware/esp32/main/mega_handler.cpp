@@ -63,12 +63,13 @@ void Mega_Handler_Class::update_controller()
         MAP_BUTTON(controller->buttons(), newOutputs, BUTTON_SHOULDER_R, GBA_OUT_R);
         MAP_BUTTON(controller->miscButtons(), newOutputs, MISC_BUTTON_HOME, GBA_OUT_START);
         MAP_BUTTON(controller->miscButtons(), newOutputs, MISC_BUTTON_BACK, GBA_OUT_SELECT);
+        
+        Wire.beginTransmission(MEGA_BL_ADDRESS);
+        Wire.write(reinterpret_cast<uint8_t*>(&newOutputs), sizeof(uint16_t));
+        Wire.endTransmission();
+        Wire.flush();
     }
 
-    Wire.beginTransmission(MEGA_BL_ADDRESS);
-    Wire.write(reinterpret_cast<uint8_t*>(&newOutputs), sizeof(uint16_t));
-    Wire.endTransmission();
-    Wire.flush();
 
     if (newOutputs != 0)
     {
