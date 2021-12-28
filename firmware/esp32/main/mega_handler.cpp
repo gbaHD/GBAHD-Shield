@@ -205,10 +205,11 @@ bool Mega_Handler_Class::verify_flash(uint16_t address, const uint8_t* buffer, s
     bool ret = true;
 
     Serial.print("Waiting for TWI response");
-    while ((!Wire.available()) && (timeout < MEGA_RESPONSE_TIMEOUT)) 
-    {
+
+    do {
         Serial.print(".");
         
+        Wire.beginTransmission(MEGA_BL_ADDRESS);
         Wire.write(cmd, sizeof(cmd)/sizeof(uint8_t));   // <-- Command Read
         Wire.endTransmission(false);
         Wire.requestFrom(MEGA_BL_ADDRESS, size);
@@ -220,7 +221,7 @@ bool Mega_Handler_Class::verify_flash(uint16_t address, const uint8_t* buffer, s
             Serial.println("Timeout!");
             break;
         }
-    }
+    } while ((!Wire.available()) && (timeout < MEGA_RESPONSE_TIMEOUT));
 
     for(uint16_t i = 0U; (i < size) && ret; i++)
     {
@@ -229,6 +230,8 @@ bool Mega_Handler_Class::verify_flash(uint16_t address, const uint8_t* buffer, s
             ret = false;
         }
     }
+
+
 
     return ret;
 }
@@ -272,8 +275,8 @@ void Mega_Handler_Class::update_mega()
         {
             Serial.print("Writing at ");
             Serial.println(write_address, HEX);
-            buffer[2] = highByte(write_address); // 0xFF & (write_address >> 8);
-            buffer[3] = /*0xFF & */ lowByte(write_address);
+            buffer[2] = highByte(write_address);
+            buffer[3] = lowByte(write_address);
 
             Wire.beginTransmission(MEGA_BL_ADDRESS);
             if(Wire.write(buffer, sizeof(buffer)) != sizeof(buffer))
@@ -284,9 +287,12 @@ void Mega_Handler_Class::update_mega()
 
             delay(100);
 
+            Serial.println("Flash verify ...");
             if (!verify_flash(write_address, &buffer[4], MEGA_PAGE_SIZE))
             {
-                Serial.println("Flash verify failed!");
+                Serial.println("verify failed!");
+            } else {
+                Serial.println("verify passed!");
             }
             write_address += MEGA_PAGE_SIZE;
         }
