@@ -16,6 +16,11 @@ class Mega_Handler_Class
         void update_mega();
         void stop_bootloader();
         void start_application();
+        void print_chip_info();
+        bool verify_flash(uint16_t address, const uint8_t* buffer, size_t size);
+
+        uint16_t get_twi_flash_bytes(uint16_t address, uint8_t* buffer, size_t size);
+
         static void onConnectedGamepad(GamepadPtr gp);
         static void onDisconnectedGamepad(GamepadPtr gp);
         static GamepadPtr controller;

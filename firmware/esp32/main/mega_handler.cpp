@@ -33,9 +33,13 @@
 #define CTRL_IN_START  (0x100)
 #define CTRL_IN_SELECT (0x200)
 
+#define ENABLE_OSD     (CTRL_IN_UP | CTRL_IN_R | CTRL_IN_L | CTRL_IN_SELECT)
+
+
 #define MEGA_BL_ADDRESS             (0x29)
 #define MEGA_VERSION_HASH_OFFSET    (0x200) // <-- This needs to be updated once we know the location
 #define MEGA_PAGE_SIZE              (0x80)  // <-- Page Size of ATMega328P
+#define MEGA_RESPONSE_TIMEOUT       (10)
 
 #define SDA_PIN         (32)
 #define SCL_PIN         (33)
@@ -80,9 +84,14 @@ void Mega_Handler_Class::update_controller()
         MAP_BUTTON(controller->buttons(), newOutputs, BUTTON_SHOULDER_L, CTRL_IN_L);
         MAP_BUTTON(controller->buttons(), newOutputs, BUTTON_TRIGGER_R, CTRL_IN_R);
         MAP_BUTTON(controller->buttons(), newOutputs, BUTTON_SHOULDER_R, CTRL_IN_R);
-        MAP_BUTTON(controller->miscButtons(), newOutputs, MISC_BUTTON_SYSTEM, CTRL_IN_START);
-        MAP_BUTTON(controller->miscButtons(), newOutputs, MISC_BUTTON_HOME, CTRL_IN_SELECT);
+
+        MAP_BUTTON(controller->miscButtons(), newOutputs, MISC_BUTTON_HOME, CTRL_IN_START);
         MAP_BUTTON(controller->miscButtons(), newOutputs, MISC_BUTTON_BACK, CTRL_IN_SELECT);
+
+        if (controller->miscSystem())
+        {
+            newOutputs = ENABLE_OSD;
+        }
 
         Wire.beginTransmission(MEGA_BL_ADDRESS);
         Wire.write(reinterpret_cast<uint8_t*>(&newOutputs), sizeof(uint16_t));
@@ -112,6 +121,15 @@ void Mega_Handler_Class::get_update_version(String& version)
     version += hash;
 
     atmelFile.close();
+
+    Serial.print("New version:\t");
+
+    for (uint8_t i = 0; i < 8; i++)
+    {
+        Serial.print(version.c_str()[i], HEX);
+    }
+
+    Serial.println("");
 }
 
 void Mega_Handler_Class::get_mega_version(String& version)
@@ -125,6 +143,14 @@ void Mega_Handler_Class::get_mega_version(String& version)
     while (Wire.available()) {
         version += static_cast<char>(Wire.read());
     }
+
+    Serial.print("Old version:\t");
+    for (uint8_t i = 0; i < 8; i++)
+    {
+        Serial.print(version.c_str()[i], HEX);
+    }
+
+    Serial.println("");
 }
 
 void Mega_Handler_Class::stop_bootloader()
@@ -145,6 +171,87 @@ void Mega_Handler_Class::start_application()
     Wire.flush();
 }
 
+uint16_t Mega_Handler_Class::get_twi_flash_bytes(uint16_t address, uint8_t* buffer, size_t size)
+{
+    uint8_t cmd[4] = {0x02, 0x01, highByte(address), lowByte(address)};
+    uint16_t timeout = 0U;
+    uint16_t bytes_read = 0U;
+    Wire.write(cmd, sizeof(cmd));   // <-- Command Read
+    Wire.endTransmission(false);
+    Wire.requestFrom(MEGA_BL_ADDRESS, size); // <-- Request only 7 Byte for short commit hash
+
+    while ((!Wire.available()) && (timeout < MEGA_RESPONSE_TIMEOUT)) 
+    {
+        Serial.println("Waiting for TWI response");
+        if (++timeout > MEGA_RESPONSE_TIMEOUT)
+        {
+            Serial.println("Timeout!");
+            break;
+        }
+    }
+
+    for(; (bytes_read < size) && Wire.available(); bytes_read++)
+    {
+        buffer[bytes_read] = Wire.read();
+    }
+
+    return bytes_read;
+}
+
+bool Mega_Handler_Class::verify_flash(uint16_t address, const uint8_t* buffer, size_t size)
+{
+    uint8_t cmd[4] = {0x02, 0x01, highByte(address), lowByte(address)};
+    uint16_t timeout = 0U;
+    bool ret = true;
+
+    Serial.print("Waiting for TWI response");
+    while ((!Wire.available()) && (timeout < MEGA_RESPONSE_TIMEOUT)) 
+    {
+        Serial.print(".");
+        
+        Wire.write(cmd, sizeof(cmd)/sizeof(uint8_t));   // <-- Command Read
+        Wire.endTransmission(false);
+        Wire.requestFrom(MEGA_BL_ADDRESS, size);
+
+        delay(100);
+        if (++timeout > MEGA_RESPONSE_TIMEOUT)
+        {
+            ret = false;
+            Serial.println("Timeout!");
+            break;
+        }
+    }
+
+    for(uint16_t i = 0U; (i < size) && ret; i++)
+    {
+        if (buffer[i] != Wire.read())
+        {
+            ret = false;
+        }
+    }
+
+    return ret;
+}
+
+void Mega_Handler_Class::print_chip_info()
+{
+    Wire.beginTransmission(MEGA_BL_ADDRESS);
+    Wire.write(0x02);
+    Wire.write(0x00);
+    Wire.write(0x00);
+    Wire.write(0x00);
+    Wire.endTransmission(false);
+    Wire.requestFrom(MEGA_BL_ADDRESS, 8);
+    Serial.print("Chip Info: ");
+    for (uint8_t i = 0U; i < 8; i++)
+    {
+        Serial.print(i);
+        Serial.print(" - ");
+        Serial.println(static_cast<char>(Wire.read()), HEX);
+    }
+    Serial.println("");
+}
+
 void Mega_Handler_Class::update_mega()
 {
     String oldVersion = "", newVersion = "";
@@ -152,10 +259,7 @@ void Mega_Handler_Class::update_mega()
     get_update_version(newVersion);
     if (oldVersion != newVersion)
     {
-        Serial.print("New version detected... Old version: ");
-        Serial.print(oldVersion);
-        Serial.print("New version: ");
-        Serial.println(newVersion);
+        print_chip_info();
 
         File atmelFile = SPIFFS.open(avr_upd_bin, "r");
         uint16_t write_address = 0;
@@ -167,16 +271,23 @@ void Mega_Handler_Class::update_mega()
         while (atmelFile.read(&buffer[4], MEGA_PAGE_SIZE) > 0)
         {
             Serial.print("Writing at ");
-            Serial.println(write_address);
-            buffer[2] = 0xFF & (write_address >> 8);
-            buffer[3] = 0xFF & write_address;
+            Serial.println(write_address, HEX);
+            buffer[2] = highByte(write_address); // 0xFF & (write_address >> 8);
+            buffer[3] = /*0xFF & */ lowByte(write_address);
 
             Wire.beginTransmission(MEGA_BL_ADDRESS);
             if(Wire.write(buffer, sizeof(buffer)) != sizeof(buffer))
             	Serial.println("Page not sent completely!");
 
             Wire.endTransmission();
+
+
             delay(100);
+
+            if (!verify_flash(write_address, &buffer[4], MEGA_PAGE_SIZE))
+            {
+                Serial.println("Flash verify failed!");
+            }
             write_address += MEGA_PAGE_SIZE;
         }
 

@@ -4,6 +4,8 @@
 #include <Update.h>
 #include <ESPmDNS.h>
 #include <Preferences.h>
+#include <pgmspace.h>
+
 
 #include "bitstream_handler.h"
 
@@ -11,6 +13,9 @@
 Web_Handler_Class Web_Handler;
 WebServer Web_Handler_Class::_server( 80 );
 File Web_Handler_Class::fsUpload;
+
+const String BT_MAPPING_OPTION = "<option value=\"{{OPTION_VALUE}}\" {{SELECTED}}>{{OPTION_TEXT}}</option>";
+const String BT_MAPPING_TR = "<tr><td>{{INPUT_BTN}}</td><td><select name=\"{{SELECT_NAME}}\" id=\"{{SELECT_NAME}}\">{{MAPPING_OPTIONS}}</select></td></tr>";
 
 void Web_Handler_Class::_handle404() {
   _server.send( 404, "text/plain", "Not found." );

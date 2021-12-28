@@ -1,11 +1,10 @@
 #include <Arduino.h>
 #include <WiFi.h>
-#include <Preferences.h>
 #include <SD_MMC.h>
 #include <cJSON.h>
 
 #include "wifi_handler.h"
-
+#include "preferences_handler.h"
 
 #define WIFI_SSID_SIZE    ( 32U )  // 32 length
 #define WIFI_PW_SIZE      ( 64U )     // 64 length
@@ -14,7 +13,7 @@
 
 void Wifi_Handler_Class::getSTACredentials(String& ssid, String& password)
 {
-    restoreWifiCredentials(&ssid, &password);
+    Preferences_Handler.restoreWifiCredentials(ssid, password);
     Serial.println(ssid);
 
     if (SD_MMC.begin())
@@ -68,9 +67,16 @@ void Wifi_Handler_Class::getSTACredentials(String& ssid, String& password)
 
         if ((ssid != newSSID) || (password != newPassword))
         {
-            saveWifiCredentials(newSSID, newPassword);
-            ssid = newSSID;
-            password = newPassword;
+            if ((newSSID.length() < WIFI_SSID_SIZE) && (newPassword.length() < WIFI_PW_SIZE))
+            {
+                Preferences_Handler.saveWifiCredentials(newSSID, newPassword);
+                ssid = newSSID;
+                password = newPassword;
+            }
+            else
+            {
+                Serial.println("Error: Entered SSID or Password is too long and is potentially invalid.");
+            }
         }
     }
     else
@@ -81,38 +87,6 @@ void Wifi_Handler_Class::getSTACredentials(String& ssid, String& password)
 }
 
 
-bool Wifi_Handler_Class::saveWifiCredentials(String& ssid, String& password)
-{
-  bool retval = true;
-
-  if ((ssid.length() < WIFI_SSID_SIZE) && (password.length() < WIFI_PW_SIZE))
-  {
-    Preferences preferences;
-    preferences.begin("GBAHD_WIFI");
-    preferences.putString("SSID", ssid);
-    preferences.putString("PASSWORD", password);
-    preferences.end();
-    retval = true;
-  }
-  else
-  {
-    retval = false;
-    Serial.println("Entered SSID or Password is too long and is potentially invalid.");
-  }
-
-  return retval;
-}
-
-
-void Wifi_Handler_Class::restoreWifiCredentials(String* ssid, String* password)
-{
-  Preferences preferences;
-  preferences.begin("GBAHD_WIFI");
-  *ssid = preferences.getString("SSID", "gbahd");
-  *password = preferences.getString("PASSWORD", "gbahdwifi");
-
-  preferences.end();
-}
 
 void Wifi_Handler_Class::connectWifiSTA(String& ssid, String& password)
 {
@@ -160,13 +134,6 @@ void Wifi_Handler_Class::update()
     }
 }
 
-void Wifi_Handler_Class::reset()
-{
-    Preferences preferences;
-    preferences.begin("GBAHD_WIFI");
-    preferences.putString("SSID", "");
-    preferences.putString("PASSWORD", "");
-    preferences.end();
-}
+
 
 Wifi_Handler_Class Wifi_Handler;
