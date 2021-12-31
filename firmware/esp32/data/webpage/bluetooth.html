@@ -1,0 +1,46 @@
+<!doctype html>
+
+<head>
+    <title>gbaHD Bluetooth Config</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
+
+
+<body>
+    <main class="container">
+        <nav>
+            <ul>
+              <li><img src="Logo.png"></li>
+            </ul>
+            <ul>
+              <li><a href="#" role="button" >Bluetooth</a></li>
+              <li><a href="index.html" role="button" class="outline">Firmware</a></li>
+            </ul>
+          </nav>
+        <h1>gbaHD Bluetooth Config</h1>
+        <form action="/bluetooth.html" method="post">
+            <article>
+                <h3>General Config</h3>
+                <p>
+                    <input type="checkbox" id="bluetooth_enable" name="bluetooth_enable" {{BT_ENABLED}}><label for="bluetooth_enable">Enable Bluetooth</label>
+                </p>
+                <h3>Mapping</h3>
+                <p>
+
+                    <table>
+                        <tr>
+                            <th>Input:</th>
+                            <th>Output:</th>
+                        </tr>
+                        {{MAPPINGS}}
+                    </table>
+                </p>
+                <footer>
+                    <input type="submit" value="Save"/>
+                </footer>
+            </article>
+        </form>
+    </main>
+</body>
+</head>
