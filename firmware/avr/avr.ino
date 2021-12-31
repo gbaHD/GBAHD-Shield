@@ -58,6 +58,7 @@
  *******************************************************************************/
 /* === INCLUDES ============================================================= */
 #include "avr.h"
+#include <avr/wdt.h>
 #include <EEPROM.h>
 #include <Wire.h>
 
@@ -69,6 +70,7 @@
 uint16_t controller_data = 0x0000;
 uint16_t twi_data = 0x0000;
 bool osd_enabled = false;
+volatile uint32_t twi_data_valid_ms = 0;
 
 /* === PROTOTYPES =========================================================== */
 uint16_t map_data(uint16_t ctrl_data);
@@ -105,15 +107,20 @@ void setup(void) {
 
 void loop(void) {
   //The SNES Controller needs a falling edge on LATCH to know when to capture the data
-  digitalWrite(GBA_OUTPUT_EN, ((controller_data & 0x3FF) == 0) ? HIGH : LOW);
+  digitalWrite(GBA_OUTPUT_EN, (controller_data == 0) ? HIGH : LOW);
   
   digitalWrite(SNES_LATCH, LOW);
   uint16_t in = (~SPI.transfer16((~controller_data) & 0x3FF)) >> 4;
   digitalWrite(SNES_LATCH, HIGH);
 
   if(in == 0x0FFF) in = 0;
-  in |= twi_data;
-  twi_data = 0; //twi_data is consumed
+  
+  if(twi_data_valid_ms > millis()) {
+    in |= twi_data;
+  } else {
+    twi_data = 0; //twi_data is consumed
+  }
+  
   if (in != 0x0) {
     controller_data = map_data(in);
   } else {
@@ -184,6 +191,11 @@ void process_data(uint16_t ctrl_data) {
             transferSpartan(0);
           }
         } break;
+        case COMBO_AVR_RST: {
+          wdt_enable(WDTO_15MS);
+          WDTCSR |= _BV(WDIE);
+          while(1);
+        } break;
     }
   }
 }
@@ -217,4 +229,10 @@ void receiveEvent(int howMany) {
   twi_data = Wire.read();
   twi_data |= Wire.read() << 8;
   Wire.flush();
+  twi_data_valid_ms = millis() + TWI_VALID_TIMEOUT;
+}
+
+ISR(WDT_vect)
+{
+  wdt_disable();
 }
