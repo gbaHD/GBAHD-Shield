@@ -3,60 +3,70 @@
 #include "preferences_handler.h"
 
 
-void Preferences_Handler_Class::saveWifiCredentials(String& ssid, String& password)
+void Preferences_Handler_Class::saveWifiCredentials(Wifi_Config& cfg)
 {
     Preferences preferences;
     preferences.begin("GBAHD_WIFI");
-    preferences.putString("SSID", ssid);
-    preferences.putString("PASSWORD", password);
+    preferences.putString("SSID", cfg.ssid);
+    preferences.putString("PASSWORD", cfg.password);
     preferences.end();
+    wifi_config = cfg;
 }
 
 
-void Preferences_Handler_Class::restoreWifiCredentials(String& ssid, String& password)
+void Preferences_Handler_Class::restoreWifiCredentials()
 {
   Preferences preferences;
   preferences.begin("GBAHD_WIFI");
-  ssid = preferences.getString("SSID", "gbahd");
-  password = preferences.getString("PASSWORD", "gbahdwifi");
-
+  wifi_config.ssid = preferences.getString("SSID", "gbahd");
+  wifi_config.password = preferences.getString("PASSWORD", "gbahdwifi");
   preferences.end();
 }
 
-
-void Preferences_Handler_Class::saveBluetoothConfig(bool& bluetooth_enable, Button_Mapping& mapping)
+void Preferences_Handler_Class::saveBluetoothConfig(Bluetooth_Config& cfg)
 {
     Preferences preferences;
     preferences.begin("GBAHD_BTCONFIG");
-    preferences.putUShort("D_UP", mapping.dpad_up);
-    preferences.putUShort("D_DWN", mapping.dpad_down);
-    preferences.putUShort("D_LFT", mapping.dpad_left);
-    preferences.putUShort("D_RGT", mapping.dpad_right);
-    preferences.putUShort("TR_L", mapping.trigger_l);
-    preferences.putUShort("TR_R", mapping.trigger_r);
-    preferences.putUShort("SH_L", mapping.shoulder_l);
-    preferences.putUShort("SH_R", mapping.shoulder_r);
-    preferences.putUShort("SYS", mapping.system);
-    preferences.putUShort("STRT", mapping.start);
-    preferences.putUShort("SEL", mapping.select);
+    preferences.putUShort("D_UP",  cfg.mapping[BT_INP_UP]);
+    preferences.putUShort("D_DWN", cfg.mapping[BT_INP_DOWN]);
+    preferences.putUShort("D_LFT", cfg.mapping[BT_INP_LEFT]);
+    preferences.putUShort("D_RGT", cfg.mapping[BT_INP_RIGHT]);
+    preferences.putUShort("TR_L",  cfg.mapping[BT_INP_TR_L]);
+    preferences.putUShort("TR_R",  cfg.mapping[BT_INP_TR_R]);
+    preferences.putUShort("SH_L",  cfg.mapping[BT_INP_SH_L]);
+    preferences.putUShort("SH_R",  cfg.mapping[BT_INP_SH_R]);
+    preferences.putUShort("SYS",   cfg.mapping[BT_INP_SYSTEM]);
+    preferences.putUShort("BTNA",  cfg.mapping[BT_INP_A]);
+    preferences.putUShort("BTNB",  cfg.mapping[BT_INP_B]);
+    preferences.getUShort("BTNX",  cfg.mapping[BT_INP_X]);
+    preferences.getUShort("BTNY",  cfg.mapping[BT_INP_Y]);
+    preferences.putUShort("STRT",  cfg.mapping[BT_INP_START]);
+    preferences.putUShort("SEL",   cfg.mapping[BT_INP_SELECT]);
+    preferences.putBool("ENABLED", cfg.enabled);
     preferences.end();
+    bt_config = cfg;
 }
 
-void Preferences_Handler_Class::restoreBluetoothConfig(bool& bluetooth_enable, Button_Mapping& mapping)
+void Preferences_Handler_Class::restoreBluetoothConfig()
 {
     Preferences preferences;
     preferences.begin("GBAHD_BTCONFIG");
-    preferences.getUShort("D_UP", mapping.dpad_up);
-    preferences.getUShort("D_DWN", mapping.dpad_down);
-    preferences.getUShort("D_LFT", mapping.dpad_left);
-    preferences.getUShort("D_RGT", mapping.dpad_right);
-    preferences.getUShort("TR_L", mapping.trigger_l);
-    preferences.getUShort("TR_R", mapping.trigger_r);
-    preferences.getUShort("SH_L", mapping.shoulder_l);
-    preferences.getUShort("SH_R", mapping.shoulder_r);
-    preferences.getUShort("SYS", mapping.system);
-    preferences.getUShort("STRT", mapping.start);
-    preferences.getUShort("SEL", mapping.select);
+    bt_config.mapping[BT_INP_UP] = preferences.getUShort("D_UP", CTRL_IN_UP);
+    bt_config.mapping[BT_INP_DOWN] = preferences.getUShort("D_DWN", CTRL_IN_DOWN);
+    bt_config.mapping[BT_INP_LEFT] = preferences.getUShort("D_LFT", CTRL_IN_LEFT);
+    bt_config.mapping[BT_INP_RIGHT] = preferences.getUShort("D_RGT", CTRL_IN_RIGHT);
+    bt_config.mapping[BT_INP_TR_L] = preferences.getUShort("TR_L", CTRL_IN_L);
+    bt_config.mapping[BT_INP_TR_R] = preferences.getUShort("TR_R", CTRL_IN_R);
+    bt_config.mapping[BT_INP_SH_L] = preferences.getUShort("SH_L", CTRL_IN_L);
+    bt_config.mapping[BT_INP_SH_R] = preferences.getUShort("SH_R", CTRL_IN_R);
+    bt_config.mapping[BT_INP_SYSTEM] = preferences.getUShort("SYS", ENABLE_OSD);
+    bt_config.mapping[BT_INP_A] = preferences.getUShort("BTNA", CTRL_IN_A);
+    bt_config.mapping[BT_INP_B] = preferences.getUShort("BTNB", CTRL_IN_B);
+    bt_config.mapping[BT_INP_X] = preferences.getUShort("BTNX", CTRL_IN_X);
+    bt_config.mapping[BT_INP_Y] = preferences.getUShort("BTNY", CTRL_IN_Y);
+    bt_config.mapping[BT_INP_START] = preferences.getUShort("STRT", CTRL_IN_START);
+    bt_config.mapping[BT_INP_SELECT] = preferences.getUShort("SEL", CTRL_IN_SELECT);
+    bt_config.enabled = preferences.getBool("ENABLED", true);
     preferences.end();    
 }
 
@@ -68,5 +78,12 @@ void Preferences_Handler_Class::reset()
     preferences.putString("PASSWORD", "");
     preferences.end();
 }
+
+void Preferences_Handler_Class::init()
+{
+    restoreBluetoothConfig();
+    restoreWifiCredentials();
+}
+
 
 Preferences_Handler_Class Preferences_Handler;
