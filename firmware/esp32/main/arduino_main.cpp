@@ -38,7 +38,7 @@ static int64_t timer_50ms_timestamp = 0U;
 // Arduino setup function. Runs in CPU 1
 void setup() {
   Serial.begin(115200);
-
+  Serial.setDebugOutput(false);
   // Start SPIFFS
   SPIFFS.begin(true);
 
@@ -50,6 +50,8 @@ void setup() {
 
   // Handle pushing the bitstream to Spartan
   Bitstream_Handler.handle_bit_stream();
+
+  Preferences_Handler.init();
 
   Mega_Handler.init();
 

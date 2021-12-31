@@ -1,1 +1,46 @@
-<!doctype html><head><title>gbaHD Firmware Update</title><meta charset="utf-8"><link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css"><meta name="viewport" content="width=device-width,initial-scale=0.8"><body><main class="container"><h1>gbaHD Firmware Update</h1><div class="grid"><div><form action="/upgrade/bitstream" method="post" enctype="multipart/form-data"><label>FPGA bitstream:</label> <input type="file" name="name" accept=".bit"> <input class="button" type="submit" value="Upload"></form></div><div><form action="/upgrade/esp32" method="post" enctype="multipart/form-data"><label>ESP32 Application:</label> <input type="file" name="name" accept="firmware.elf"> <input class="button" type="submit" value="Upload"></form></div></div><details><summary>WARNING: SPIFFS Partition Update</summary><p>This will update your complete SPIFFS partition. It may cause the web view to malfunction up to a point were you need to manually reflash your Spartan Edge Board.<br>This will overwrite your currently installed bitstream.</p><form action="/upgrade/spiffs" method="post" enctype="multipart/form-data"><label>SPIFFS Image:</label> <input type="file" name="name" accept="spiffs.bin"> <input class="button" type="submit" value="Upload - I KNOW WHAT I'M DOING"></form></details></main></body></head>
+<!doctype html>
+
+<head>
+    <title>gbaHD Firmware Update</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
+    <meta name="viewport" content="width=device-width,initial-scale=0.8">
+
+<body>
+    <main class="container">
+        <nav>
+            <ul>
+              <li><img src="Logo.png"></li>
+            </ul>
+            <ul>
+              <li><a href="bluetooth.html" role="button" class="outline">Bluetooth</a></li>
+              <li><a href="#" role="button">Firmware</a></li>
+            </ul>
+          </nav>
+        <h1>gbaHD Firmware Update</h1>
+        <article>
+            <div class="grid">
+                <div>
+                    <form action="/upgrade/bitstream" method="post" enctype="multipart/form-data"><label>FPGA
+                        bitstream:</label> <input type="file" name="name" accept=".bit"> <input class="button"
+                        type="submit" value="Upload"></form>
+                    </div>
+                    <div>
+                        <form action="/upgrade/esp32" method="post" enctype="multipart/form-data"><label>ESP32
+                            Application:</label> <input type="file" name="name" accept="firmware.elf"> <input class="button"
+                            type="submit" value="Upload"></form>
+                        </div>
+                    </div>
+                    <details>
+                        <summary>WARNING: SPIFFS Partition Update</summary>
+                        <p>This will update your complete SPIFFS partition. It may cause the web view to malfunction up to a point
+                            were you need to manually reflash your Spartan Edge Board.<br>This will overwrite your currently
+                            installed bitstream.</p>
+                    <form action="/upgrade/spiffs" method="post" enctype="multipart/form-data"><label>SPIFFS Image:</label>
+                        <input type="file" name="name" accept="spiffs.bin"> <input class="button" type="submit"
+                        value="Upload - I KNOW WHAT I'M DOING"></form>
+                    </details>
+        </article>
+    </main>
+</body>
+</head>

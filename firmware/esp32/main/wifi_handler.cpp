@@ -4,25 +4,26 @@
 #include <cJSON.h>
 
 #include "wifi_handler.h"
-#include "preferences_handler.h"
 
 #define WIFI_SSID_SIZE    ( 32U )  // 32 length
 #define WIFI_PW_SIZE      ( 64U )     // 64 length
-#define WIFI_CREDS_FILE     ( "/wifi_credentials.json" )
+#define WIFI_CREDS_FILE    "/wifi.cfg"
 
 
-void Wifi_Handler_Class::getSTACredentials(String& ssid, String& password)
+void Wifi_Handler_Class::getSTACredentials(Wifi_Config& wifi_config)
 {
-    Preferences_Handler.restoreWifiCredentials(ssid, password);
-    Serial.println(ssid);
+    Preferences_Handler.getWifiCredentials(wifi_config);
+    Serial.println(wifi_config.ssid);
 
     if (SD_MMC.begin())
     {
-        String newSSID, newPassword;
+        Wifi_Config new_wifi_config;
 
-        if (SD_MMC.exists(WIFI_CREDS_FILE))
+        File wifi_creds = SD_MMC.open(WIFI_CREDS_FILE, "r", true);
+
+        if (wifi_creds)
         {
-            File wifi_creds = SD_MMC.open(WIFI_CREDS_FILE, "r");
+            Serial.println("Found creds file...");
             if (wifi_creds.size() < 1024U)
             {
                 cJSON *creds_json = NULL;
@@ -32,6 +33,7 @@ void Wifi_Handler_Class::getSTACredentials(String& ssid, String& password)
                     wifi_creds.readBytes(buffer, (sizeof(buffer)/sizeof(buffer[0])));
                     
                     creds_json = cJSON_Parse(buffer);
+                    Serial.println("Loaded new creds...");
                 }
 
                 if (NULL != creds_json)
@@ -40,14 +42,15 @@ void Wifi_Handler_Class::getSTACredentials(String& ssid, String& password)
                         cJSON* ssid = cJSON_GetObjectItem(creds_json, "ssid");
                         if (cJSON_IsString(ssid) && (ssid->valuestring != NULL))
                         {
-                            newSSID = ssid->valuestring;
+                            new_wifi_config.ssid = ssid->valuestring;
+                            Serial.println("Creds File SSID: " + new_wifi_config.ssid);
                         }
                     }
                     {
                         cJSON* password = cJSON_GetObjectItem(creds_json, "password");
                         if (cJSON_IsString(password) && (password->valuestring != NULL))
                         {
-                            newPassword = password->valuestring;
+                            new_wifi_config.password = password->valuestring;
                         }
                     }
                     cJSON_Delete(creds_json);
@@ -64,14 +67,17 @@ void Wifi_Handler_Class::getSTACredentials(String& ssid, String& password)
             }
             wifi_creds.close();
         }
-
-        if ((ssid != newSSID) || (password != newPassword))
+        else
         {
-            if ((newSSID.length() < WIFI_SSID_SIZE) && (newPassword.length() < WIFI_PW_SIZE))
+            Serial.println("Didn't find any Wifi Creds file on SD-Card. Skipping Update.");
+        }
+
+        if ((wifi_config.ssid != new_wifi_config.ssid) || (wifi_config.password != new_wifi_config.password))
+        {
+            if ((new_wifi_config.ssid.length() < WIFI_SSID_SIZE) && (new_wifi_config.password.length() < WIFI_PW_SIZE))
             {
-                Preferences_Handler.saveWifiCredentials(newSSID, newPassword);
-                ssid = newSSID;
-                password = newPassword;
+                Preferences_Handler.saveWifiCredentials(new_wifi_config);
+                wifi_config = new_wifi_config;
             }
             else
             {
@@ -88,21 +94,20 @@ void Wifi_Handler_Class::getSTACredentials(String& ssid, String& password)
 
 
 
-void Wifi_Handler_Class::connectWifiSTA(String& ssid, String& password)
+void Wifi_Handler_Class::connectWifiSTA(Wifi_Config& wifi_config)
 {
-    WiFi.begin(ssid.c_str(), password.c_str());
+    WiFi.begin(wifi_config.ssid.c_str(), wifi_config.password.c_str());
 }
 
 void Wifi_Handler_Class::init()
 {
-    String ssid;
-    String password;
+    Wifi_Config wifi_config;
 
     WiFi.setHostname("gbaHD");
 
-    getSTACredentials(ssid, password);
+    getSTACredentials(wifi_config);
 
-    connectWifiSTA(ssid, password);
+    connectWifiSTA(wifi_config);
 }
 
 void Wifi_Handler_Class::update()

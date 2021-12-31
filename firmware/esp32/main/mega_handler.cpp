@@ -5,36 +5,11 @@
 #include <SPIFFS.h>
 
 #include "mega_handler.h"
+#include "preferences_handler.h"
+
 
 
 #define MAP_BUTTON(INPUT, OUTPUT, I_MASK, O_MASK) (OUTPUT |= ( INPUT & I_MASK ) ? O_MASK : 0)
-
-#define GBA_OUT_A      (0x010)
-#define GBA_OUT_B      (0x020)
-#define GBA_OUT_UP     (0x001)
-#define GBA_OUT_DOWN   (0x002)
-#define GBA_OUT_LEFT   (0x004)
-#define GBA_OUT_RIGHT  (0x008)
-#define GBA_OUT_L      (0x040)
-#define GBA_OUT_R      (0x080)
-#define GBA_OUT_START  (0x100)
-#define GBA_OUT_SELECT (0x200)
-
-#define CTRL_IN_A      (0x008)
-#define CTRL_IN_B      (0x800)
-#define CTRL_IN_Y      (0x400)
-#define CTRL_IN_X      (0x004)
-#define CTRL_IN_UP     (0x080)
-#define CTRL_IN_DOWN   (0x040)
-#define CTRL_IN_LEFT   (0x020)
-#define CTRL_IN_RIGHT  (0x010)
-#define CTRL_IN_L      (0x002)
-#define CTRL_IN_R      (0x001)
-#define CTRL_IN_START  (0x100)
-#define CTRL_IN_SELECT (0x200)
-
-#define ENABLE_OSD     (CTRL_IN_UP | CTRL_IN_R | CTRL_IN_L | CTRL_IN_SELECT)
-
 
 #define MEGA_BL_ADDRESS             (0x29)
 #define MEGA_VERSION_HASH_OFFSET    (0x200) // <-- This needs to be updated once we know the location
@@ -63,35 +38,33 @@ void Mega_Handler_Class::onDisconnectedGamepad(GamepadPtr gp)
 void Mega_Handler_Class::update_controller()
 {
     uint16_t newOutputs = 0U;
+    Bluetooth_Config bt_config;
+    Preferences_Handler.getBluetoothConfig(bt_config);
 
     BP32.update();
 
     if (controller && controller->isConnected()) 
     {
-        MAP_BUTTON(controller->dpad(), newOutputs, DPAD_UP, CTRL_IN_UP);
-        MAP_BUTTON(((controller->axisY() < -80) ? DPAD_UP : 0), newOutputs, DPAD_UP, CTRL_IN_UP);
-        MAP_BUTTON(controller->dpad(), newOutputs, DPAD_DOWN, CTRL_IN_DOWN);
-        MAP_BUTTON(((controller->axisY() > 80) ? DPAD_DOWN : 0), newOutputs, DPAD_DOWN, CTRL_IN_DOWN);
-        MAP_BUTTON(controller->dpad(), newOutputs, DPAD_LEFT, CTRL_IN_LEFT);
-        MAP_BUTTON(((controller->axisX() < -80) ? DPAD_LEFT : 0), newOutputs, DPAD_LEFT, CTRL_IN_LEFT);
-        MAP_BUTTON(controller->dpad(), newOutputs, DPAD_RIGHT, CTRL_IN_RIGHT);
-        MAP_BUTTON(((controller->axisX() > 80) ? DPAD_RIGHT : 0), newOutputs, DPAD_RIGHT, CTRL_IN_RIGHT);
-        MAP_BUTTON(controller->buttons(), newOutputs, BUTTON_B, CTRL_IN_A);
-        MAP_BUTTON(controller->buttons(), newOutputs, BUTTON_A, CTRL_IN_B);
-        MAP_BUTTON(controller->buttons(), newOutputs, BUTTON_Y, CTRL_IN_X);
-        MAP_BUTTON(controller->buttons(), newOutputs, BUTTON_X, CTRL_IN_Y);
-        MAP_BUTTON(controller->buttons(), newOutputs, BUTTON_TRIGGER_L, CTRL_IN_L);
-        MAP_BUTTON(controller->buttons(), newOutputs, BUTTON_SHOULDER_L, CTRL_IN_L);
-        MAP_BUTTON(controller->buttons(), newOutputs, BUTTON_TRIGGER_R, CTRL_IN_R);
-        MAP_BUTTON(controller->buttons(), newOutputs, BUTTON_SHOULDER_R, CTRL_IN_R);
+        MAP_BUTTON(controller->dpad(), newOutputs, DPAD_UP,  bt_config.mapping[BT_INP_UP]);
+        MAP_BUTTON(((controller->axisY() < -80) ? DPAD_UP : 0), newOutputs, DPAD_UP, bt_config.mapping[BT_INP_UP]);
+        MAP_BUTTON(controller->dpad(), newOutputs, DPAD_DOWN, bt_config.mapping[BT_INP_DOWN]);
+        MAP_BUTTON(((controller->axisY() > 80) ? DPAD_DOWN : 0), newOutputs, DPAD_DOWN, bt_config.mapping[BT_INP_DOWN]);
+        MAP_BUTTON(controller->dpad(), newOutputs, DPAD_LEFT, bt_config.mapping[BT_INP_LEFT]);
+        MAP_BUTTON(((controller->axisX() < -80) ? DPAD_LEFT : 0), newOutputs, DPAD_LEFT, bt_config.mapping[BT_INP_LEFT]);
+        MAP_BUTTON(controller->dpad(), newOutputs, DPAD_RIGHT, bt_config.mapping[BT_INP_RIGHT]);
+        MAP_BUTTON(((controller->axisX() > 80) ? DPAD_RIGHT : 0), newOutputs, DPAD_RIGHT, bt_config.mapping[BT_INP_RIGHT]);
+        MAP_BUTTON(controller->buttons(), newOutputs, BUTTON_B, bt_config.mapping[BT_INP_B]);
+        MAP_BUTTON(controller->buttons(), newOutputs, BUTTON_A, bt_config.mapping[BT_INP_A]);
+        MAP_BUTTON(controller->buttons(), newOutputs, BUTTON_Y, bt_config.mapping[BT_INP_Y]);
+        MAP_BUTTON(controller->buttons(), newOutputs, BUTTON_X, bt_config.mapping[BT_INP_X]);
+        MAP_BUTTON(controller->buttons(), newOutputs, BUTTON_TRIGGER_L, bt_config.mapping[BT_INP_TR_L]);
+        MAP_BUTTON(controller->buttons(), newOutputs, BUTTON_SHOULDER_L, bt_config.mapping[BT_INP_SH_L]);
+        MAP_BUTTON(controller->buttons(), newOutputs, BUTTON_TRIGGER_R, bt_config.mapping[BT_INP_TR_R]);
+        MAP_BUTTON(controller->buttons(), newOutputs, BUTTON_SHOULDER_R, bt_config.mapping[BT_INP_SH_R]);
+        MAP_BUTTON(controller->miscButtons(), newOutputs, MISC_BUTTON_SYSTEM, bt_config.mapping[BT_INP_SYSTEM]);
+        MAP_BUTTON(controller->miscButtons(), newOutputs, MISC_BUTTON_HOME, bt_config.mapping[BT_INP_START]);
+        MAP_BUTTON(controller->miscButtons(), newOutputs, MISC_BUTTON_BACK, bt_config.mapping[BT_INP_SELECT]);
 
-        MAP_BUTTON(controller->miscButtons(), newOutputs, MISC_BUTTON_HOME, CTRL_IN_START);
-        MAP_BUTTON(controller->miscButtons(), newOutputs, MISC_BUTTON_BACK, CTRL_IN_SELECT);
-
-        if (controller->miscSystem())
-        {
-            newOutputs = ENABLE_OSD;
-        }
 
         Wire.beginTransmission(MEGA_BL_ADDRESS);
         Wire.write(reinterpret_cast<uint8_t*>(&newOutputs), sizeof(uint16_t));
@@ -153,6 +126,16 @@ void Mega_Handler_Class::get_mega_version(String& version)
     Serial.println("");
 }
 
+void Mega_Handler_Class::restart_shield()
+{
+    uint16_t restart = RESET_SHIELD;
+    Wire.beginTransmission(MEGA_BL_ADDRESS);
+    Wire.write(reinterpret_cast<uint8_t*>(&restart), sizeof(uint16_t));
+    Wire.endTransmission();
+    Wire.flush();
+    delay(50);
+}
+
 void Mega_Handler_Class::stop_bootloader()
 {
     Wire.beginTransmission(MEGA_BL_ADDRESS);
@@ -160,6 +143,7 @@ void Mega_Handler_Class::stop_bootloader()
     Wire.endTransmission();
     Wire.flush();
 }
+
 
 void Mega_Handler_Class::start_application()
 {
@@ -176,19 +160,26 @@ uint16_t Mega_Handler_Class::get_twi_flash_bytes(uint16_t address, uint8_t* buff
     uint8_t cmd[4] = {0x02, 0x01, highByte(address), lowByte(address)};
     uint16_t timeout = 0U;
     uint16_t bytes_read = 0U;
-    Wire.write(cmd, sizeof(cmd));   // <-- Command Read
-    Wire.endTransmission(false);
-    Wire.requestFrom(MEGA_BL_ADDRESS, size); // <-- Request only 7 Byte for short commit hash
 
-    while ((!Wire.available()) && (timeout < MEGA_RESPONSE_TIMEOUT)) 
+    Serial.println("Waiting for TWI response");
+
+    do  
     {
-        Serial.println("Waiting for TWI response");
+        Serial.print(".");
+        
+        Wire.beginTransmission(MEGA_BL_ADDRESS);
+
+        Wire.write(cmd, sizeof(cmd));   // <-- Command Read
+        Wire.endTransmission(false);
+
+        Wire.requestFrom(MEGA_BL_ADDRESS, size); // <-- Request only 7 Byte for short commit hash
         if (++timeout > MEGA_RESPONSE_TIMEOUT)
         {
             Serial.println("Timeout!");
             break;
         }
-    }
+
+    } while ((!Wire.available()) && (timeout < MEGA_RESPONSE_TIMEOUT));
 
     for(; (bytes_read < size) && Wire.available(); bytes_read++)
     {
@@ -231,13 +222,12 @@ bool Mega_Handler_Class::verify_flash(uint16_t address, const uint8_t* buffer, s
         }
     }
 
-
-
     return ret;
 }
 
-void Mega_Handler_Class::print_chip_info()
+bool Mega_Handler_Class::get_chip_info()
 {
+    bool ret = false;
     Wire.beginTransmission(MEGA_BL_ADDRESS);
     Wire.write(0x02);
     Wire.write(0x00);
@@ -246,23 +236,43 @@ void Mega_Handler_Class::print_chip_info()
     Wire.endTransmission(false);
     Wire.requestFrom(MEGA_BL_ADDRESS, 8);
     Serial.print("Chip Info: ");
-    for (uint8_t i = 0U; i < 8; i++)
+    if (Wire.available())
     {
-        Serial.print(i);
-        Serial.print(" - ");
-        Serial.println(static_cast<char>(Wire.read()), HEX);
+        for (uint8_t i = 0U; i < 8; i++)
+        {
+            Serial.print(i);
+            Serial.print(" - ");
+            Serial.println(static_cast<char>(Wire.read()), HEX);
+        }
+        Serial.println("");
+        ret = true;
     }
-    Serial.println("");
+    else
+    {
+        Serial.println("TWI is not answering...");
+        ret = false;
+    }
+    return ret;
 }
 
 void Mega_Handler_Class::update_mega()
 {
     String oldVersion = "", newVersion = "";
+
+    if (!get_chip_info())
+    {
+        restart_shield();
+    }
+    
     get_mega_version(oldVersion);
     get_update_version(newVersion);
-    if (oldVersion != newVersion)
+
+    /*if (oldVersion == "")
     {
-        print_chip_info();
+        Serial.println("Something went wrong - wasn't able to get a version from Shield.");
+    }
+    else*/ if (oldVersion != newVersion)
+    {
 
         File atmelFile = SPIFFS.open(avr_upd_bin, "r");
         uint16_t write_address = 0;
@@ -307,12 +317,18 @@ void Mega_Handler_Class::update_mega()
 
 void Mega_Handler_Class::init()
 {
-    String fv = BP32.firmwareVersion();
-    Serial.print("Bluepad32 Firmware: ");
-    Serial.println(fv);
+    Bluetooth_Config bt_config;
+    Preferences_Handler.getBluetoothConfig(bt_config);
 
-    // Setup the Bluepad32 callbacks
-    BP32.setup(&onConnectedGamepad, &onDisconnectedGamepad);
+    if (bt_config.enabled)
+    {
+        String fv = BP32.firmwareVersion();
+        Serial.print("Bluepad32 Firmware: ");
+        Serial.println(fv);
+
+        // Setup the Bluepad32 callbacks
+        BP32.setup(&onConnectedGamepad, &onDisconnectedGamepad);
+    }
 
     Wire.begin(SDA_PIN, SCL_PIN);
 
@@ -321,6 +337,7 @@ void Mega_Handler_Class::init()
     update_mega();
 
     start_application();
+
 }
 
 void Mega_Handler_Class::update()
