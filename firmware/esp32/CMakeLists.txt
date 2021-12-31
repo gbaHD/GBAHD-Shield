@@ -8,7 +8,7 @@ file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/external/bluepad32_template/components/bts
 
 include($ENV{IDF_PATH}/tools/cmake/project.cmake)
 
-add_definitions(-DI2C_BUFFER_LENGTH=132)
+add_compile_definitions(I2C_BUFFER_LENGTH=132)
 
 project(gbaHD)
 
