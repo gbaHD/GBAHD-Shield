@@ -1,8 +1,37 @@
 
+/*******************************************************************************
+  ; -----------------------------------------------------------------------
+   gbaHD-ESP32 for zwenergys gbaHD
+
+   MIT License
+
+   Copyright (c) 2021 Alexander Kreutz
+
+   Permission is hereby granted, free of charge, to any person obtaining a copy
+   of this software and associated documentation files (the "Software"), to deal
+   in the Software without restriction, including without limitation the rights
+   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+   copies of the Software, and to permit persons to whom the Software is
+   furnished to do so, subject to the following conditions:
+
+   The above copyright notice and this permission notice shall be included in all
+   copies or substantial portions of the Software.
+
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+   SOFTWARE.
+
+ *******************************************************************************/
+
 #include <Arduino.h>
 #include <Wire.h>
 #include <Bluepad32.h>
 #include <SPIFFS.h>
+#include <mbedtls/sha1.h>
 
 #include "mega_handler.h"
 #include "preferences_handler.h"
@@ -21,7 +50,6 @@
 
 GamepadPtr Mega_Handler_Class::controller;
 
-const String avr_upd_bin = "/atmega.bin";
 
 void Mega_Handler_Class::onConnectedGamepad(GamepadPtr gp) 
 {
@@ -82,48 +110,58 @@ void Mega_Handler_Class::update_controller()
 
 void Mega_Handler_Class::get_update_version(String& version)
 {
-    char hash[8] = {0};
-    File atmelFile = SPIFFS.open(avr_upd_bin, "r");
+    unsigned char hash[20] = {0};
+    File atmelFile = SPIFFS.open(ATMEGA_SPIFFS_PATH, "r");
 
     if (atmelFile)
     {
-        atmelFile.seek(MEGA_VERSION_HASH_OFFSET);
+        mbedtls_sha1_context ctx;
+        mbedtls_sha1_init(&ctx);
+        mbedtls_sha1_starts(&ctx);
+        unsigned char buffer[MEGA_PAGE_SIZE];
 
-        atmelFile.readBytes(hash, 7);
+        size_t bytes_read = 0U;
+        do
+        {
+            bytes_read = atmelFile.readBytes(reinterpret_cast<char*>(buffer), MEGA_PAGE_SIZE);
+            mbedtls_sha1_update(&ctx, (buffer), bytes_read);
+        } while (bytes_read > 0U);
+        mbedtls_sha1_finish(&ctx, hash);
     }
-    version += hash;
 
     atmelFile.close();
 
     Serial.print("New version:\t");
 
-    for (uint8_t i = 0; i < 8; i++)
+    for (uint8_t i = 0; i < 20; i++)
     {
-        Serial.print(version.c_str()[i], HEX);
+        version += String(hash[i], HEX);
     }
 
-    Serial.println("");
+    Serial.println(version);
 }
 
 void Mega_Handler_Class::get_mega_version(String& version)
 {
+    unsigned char hash[20] = {0};
+    uint8_t cmd[4] = {0x02, 0x02, 0x00, 0x00};
+
     Wire.beginTransmission(MEGA_BL_ADDRESS);
-    uint8_t cmd[4] = {0x02, 0x01, ((MEGA_VERSION_HASH_OFFSET >> 8) & 0xFF), MEGA_VERSION_HASH_OFFSET & 0xFF};
     Wire.write(cmd, sizeof(cmd));   // <-- Command Read
     Wire.endTransmission(false);
-    Wire.requestFrom(MEGA_BL_ADDRESS, 7); // <-- Request only 7 Byte for short commit hash
+    Wire.requestFrom(MEGA_BL_ADDRESS, 20); // <-- Request only 7 Byte for short commit hash
 
     while (Wire.available()) {
-        version += static_cast<char>(Wire.read());
+        Wire.readBytes(hash, 20);
     }
 
     Serial.print("Old version:\t");
-    for (uint8_t i = 0; i < 8; i++)
+    for (uint8_t i = 0; i < 20; i++)
     {
-        Serial.print(version.c_str()[i], HEX);
+        version += String(hash[i], HEX);
     }
 
-    Serial.println("");
+    Serial.println(version);
 }
 
 void Mega_Handler_Class::restart_shield()
@@ -267,48 +305,83 @@ void Mega_Handler_Class::update_mega()
     get_mega_version(oldVersion);
     get_update_version(newVersion);
 
-    /*if (oldVersion == "")
+    if (oldVersion != newVersion)
     {
-        Serial.println("Something went wrong - wasn't able to get a version from Shield.");
-    }
-    else*/ if (oldVersion != newVersion)
-    {
+        mbedtls_sha1_context ctx;
+        mbedtls_sha1_init(&ctx);
+        mbedtls_sha1_starts(&ctx);
 
-        File atmelFile = SPIFFS.open(avr_upd_bin, "r");
-        uint16_t write_address = 0;
-
-        Serial.println("Updating Shield...");
-        uint8_t buffer[MEGA_PAGE_SIZE+4] = {0};
-        buffer[0] = 0x02;
-        buffer[1] = 0x01;
-        while (atmelFile.read(&buffer[4], MEGA_PAGE_SIZE) > 0)
         {
-            Serial.print("Writing at ");
-            Serial.println(write_address, HEX);
-            buffer[2] = highByte(write_address);
-            buffer[3] = lowByte(write_address);
+            File atmelFile = SPIFFS.open(ATMEGA_SPIFFS_PATH, "r");
+            uint16_t write_address = 0;
+            uint8_t bytes_read = 0U;
+            uint8_t buffer[MEGA_PAGE_SIZE+4] = {0};
 
+            Serial.println("Updating Shield...");
+
+            buffer[0] = 0x02;
+            buffer[1] = 0x01;
+
+            bytes_read = atmelFile.read(&buffer[4], MEGA_PAGE_SIZE);
+
+            while (bytes_read > 0)
+            {
+                Serial.print("Writing at ");
+                Serial.println(write_address, HEX);
+                buffer[2] = highByte(write_address);
+                buffer[3] = lowByte(write_address);
+
+                Wire.beginTransmission(MEGA_BL_ADDRESS);
+                if(Wire.write(buffer, sizeof(buffer)) != sizeof(buffer))
+                    Serial.println("Page not sent completely!");
+
+                Wire.endTransmission();
+
+                mbedtls_sha1_update(&ctx, &buffer[4], bytes_read);
+
+                delay(100);
+
+                Serial.println("Flash verify ...");
+                if (!verify_flash(write_address, &buffer[4], MEGA_PAGE_SIZE))
+                {
+                    Serial.println("verify failed!");
+                } 
+                else 
+                {
+                    Serial.println("verify passed!");
+                }
+                write_address += MEGA_PAGE_SIZE;
+                bytes_read = atmelFile.read(&buffer[4], MEGA_PAGE_SIZE);
+            }
+
+
+
+            atmelFile.close();
+        }
+
+        {
+            uint8_t hash[24];
+            String version = "";
+            hash[0] = 0x02;
+            hash[1] = 0x02;
+            hash[2] = 0x00;
+            hash[3] = 0x00;
+            mbedtls_sha1_finish(&ctx, &hash[4]);
             Wire.beginTransmission(MEGA_BL_ADDRESS);
-            if(Wire.write(buffer, sizeof(buffer)) != sizeof(buffer))
+            if(Wire.write(hash, sizeof(hash)) != sizeof(hash))
             	Serial.println("Page not sent completely!");
 
             Wire.endTransmission();
 
-
-            delay(100);
-
-            Serial.println("Flash verify ...");
-            if (!verify_flash(write_address, &buffer[4], MEGA_PAGE_SIZE))
+            for (uint8_t i = 4; i < 24; i++)
             {
-                Serial.println("verify failed!");
-            } else {
-                Serial.println("verify passed!");
+                version += String(hash[i], HEX);
             }
-            write_address += MEGA_PAGE_SIZE;
-        }
+            Serial.println("Updated to version:\t" + version);
+        }  
+
 
     	Serial.println("Update: Done");
-        atmelFile.close();
     } else {
     	Serial.println("Version Match: No Update!");
     }

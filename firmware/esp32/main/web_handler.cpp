@@ -1,3 +1,31 @@
+/*******************************************************************************
+  ; -----------------------------------------------------------------------
+   gbaHD-ESP32 for zwenergys gbaHD
+
+   MIT License
+
+   Copyright (c) 2021 Alexander Kreutz
+
+   Permission is hereby granted, free of charge, to any person obtaining a copy
+   of this software and associated documentation files (the "Software"), to deal
+   in the Software without restriction, including without limitation the rights
+   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+   copies of the Software, and to permit persons to whom the Software is
+   furnished to do so, subject to the following conditions:
+
+   The above copyright notice and this permission notice shall be included in all
+   copies or substantial portions of the Software.
+
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+   SOFTWARE.
+
+ *******************************************************************************/
+
 #include "web_handler.h"
 #include <Arduino.h>
 #include <SPIFFS.h>
@@ -129,6 +157,7 @@ void Web_Handler_Class::handleESPUpload()
         Serial.printf("Update Success: %u\nRebooting...\n", upload.totalSize);
         _server.sendHeader( "Location", "/" );
         _server.send( 303 );
+        delay(200);
         ESP.restart();
       } else {
         Update.printError(Serial);
@@ -162,12 +191,42 @@ void Web_Handler_Class::handleSPIFFSUpload()
       Serial.printf("Update Success: %u\nRebooting...\n", upload.totalSize);
       _server.sendHeader( "Location", "/" );
       _server.send( 303 );
+      delay(200);
       ESP.restart();
     } else {
       Update.printError(Serial);
     }
   }
 }
+
+void Web_Handler_Class::handleAtmelUpload()
+{
+
+  HTTPUpload& upload = _server.upload();
+  
+  if ( upload.status == UPLOAD_FILE_START ) {
+    // Open the file to write.
+    //fsUpload = SD_MMC.open( LOADING_DEFAULT_FIEE, "w" );
+    fsUpload = SPIFFS.open( ATMEGA_SPIFFS_PATH, "w");
+  } else if ( upload.status == UPLOAD_FILE_WRITE ) {
+    if ( fsUpload ) {
+      fsUpload.write( upload.buf, upload.currentSize );
+    }
+  } else if ( UPLOAD_FILE_END == upload.status ) {
+    if ( fsUpload ) {
+      fsUpload.close();
+      Serial.println( "Received file" );
+      // Send a response.
+      _server.sendHeader( "Location", "/" );
+      _server.send( 303 );
+      delay(200);
+      ESP.restart();
+    } else {
+      _server.send( 500, "text/plain", "500: Error creating file." );
+    }
+  }
+}
+
 
 
 void Web_Handler_Class::handleBluetooth()
@@ -229,6 +288,9 @@ void Web_Handler_Class::init(void)
 
   // Handle SPIFFS upload.
   _server.on( "/upgrade/spiffs", HTTP_POST, _sendOK, handleSPIFFSUpload );
+
+  // Handle ATMega upload.
+  _server.on( "/upgrade/atmega", HTTP_POST, _sendOK, handleAtmelUpload );
 
   // Handle bt config
   _server.on( "/bluetooth.html", HTTP_GET, handleBluetooth );
