@@ -40,13 +40,10 @@
 
 #define MAP_BUTTON(INPUT, OUTPUT, I_MASK, O_MASK) (OUTPUT |= ( INPUT & I_MASK ) ? O_MASK : 0)
 
-#define MEGA_BL_ADDRESS             (0x29)
-#define MEGA_VERSION_HASH_OFFSET    (0x200) // <-- This needs to be updated once we know the location
-#define MEGA_PAGE_SIZE              (0x80)  // <-- Page Size of ATMega328P
-#define MEGA_RESPONSE_TIMEOUT       (10)
-
 #define SDA_PIN         (32)
 #define SCL_PIN         (33)
+
+#define SHIELD_TIMEOUT  (5)
 
 GamepadPtr Mega_Handler_Class::controller;
 
@@ -108,9 +105,20 @@ void Mega_Handler_Class::update_controller()
     }
 }
 
+
+void Mega_Handler_Class::print_hash(const uint8_t* const hash)
+{
+    for (uint8_t i = 0; i < 20; i++)
+    {
+        Serial.print(hash[i], HEX);
+    }
+
+    Serial.println();
+}
+
 void Mega_Handler_Class::get_update_version(String& version)
 {
-    unsigned char hash[20] = {0};
+    uint8_t hash[20] = {0};
     File atmelFile = SPIFFS.open(ATMEGA_SPIFFS_PATH, "r");
 
     if (atmelFile)
@@ -118,13 +126,13 @@ void Mega_Handler_Class::get_update_version(String& version)
         mbedtls_sha1_context ctx;
         mbedtls_sha1_init(&ctx);
         mbedtls_sha1_starts(&ctx);
-        unsigned char buffer[MEGA_PAGE_SIZE];
+        uint8_t buffer[MEGA_PAGE_SIZE];
 
         size_t bytes_read = 0U;
         do
         {
             bytes_read = atmelFile.readBytes(reinterpret_cast<char*>(buffer), MEGA_PAGE_SIZE);
-            mbedtls_sha1_update(&ctx, (buffer), bytes_read);
+            mbedtls_sha1_update(&ctx, buffer, bytes_read);
         } while (bytes_read > 0U);
         mbedtls_sha1_finish(&ctx, hash);
     }
@@ -133,17 +141,12 @@ void Mega_Handler_Class::get_update_version(String& version)
 
     Serial.print("New version:\t");
 
-    for (uint8_t i = 0; i < 20; i++)
-    {
-        version += String(hash[i], HEX);
-    }
-
-    Serial.println(version);
+    print_hash(hash);
 }
 
 void Mega_Handler_Class::get_mega_version(String& version)
 {
-    unsigned char hash[20] = {0};
+    uint8_t hash[20] = {0};
     uint8_t cmd[4] = {0x02, 0x02, 0x00, 0x00};
 
     Wire.beginTransmission(MEGA_BL_ADDRESS);
@@ -156,22 +159,62 @@ void Mega_Handler_Class::get_mega_version(String& version)
     }
 
     Serial.print("Old version:\t");
-    for (uint8_t i = 0; i < 20; i++)
-    {
-        version += String(hash[i], HEX);
+    print_hash(hash);
+}
+
+
+void Mega_Handler_Class::get_mega_hash(uint8_t hash[20])
+{
+    uint8_t cmd[4] = {0x02, 0x02, 0x00, 0x00};
+
+    Wire.beginTransmission(MEGA_BL_ADDRESS);
+    Wire.write(cmd, sizeof(cmd));   // <-- Command Read
+    Wire.endTransmission(false);
+    Wire.requestFrom(MEGA_BL_ADDRESS, 20); // <-- Request only 7 Byte for short commit hash
+
+    while (Wire.available()) {
+        Wire.readBytes(hash, 20);
     }
 
-    Serial.println(version);
+    Serial.print("Old version:\t");
+    print_hash(hash);
+}
+
+void Mega_Handler_Class::get_update_hash(uint8_t hash[20])
+{
+    File atmelFile = SPIFFS.open(ATMEGA_SPIFFS_PATH, "r");
+
+    if (atmelFile)
+    {
+        mbedtls_sha1_context ctx;
+        mbedtls_sha1_init(&ctx);
+        mbedtls_sha1_starts(&ctx);
+        uint8_t buffer[MEGA_PAGE_SIZE];
+
+        size_t bytes_read = 0U;
+        do
+        {
+            bytes_read = atmelFile.readBytes(reinterpret_cast<char*>(buffer), MEGA_PAGE_SIZE);
+            mbedtls_sha1_update(&ctx, buffer, bytes_read);
+        } while (bytes_read > 0U);
+        mbedtls_sha1_finish(&ctx, hash);
+    }
+
+    atmelFile.close();
+
+    Serial.print("New version:\t");
+    print_hash(hash);
 }
 
 void Mega_Handler_Class::restart_shield()
 {
     uint16_t restart = RESET_SHIELD;
+    Serial.println("Restarting shield");
     Wire.beginTransmission(MEGA_BL_ADDRESS);
     Wire.write(reinterpret_cast<uint8_t*>(&restart), sizeof(uint16_t));
     Wire.endTransmission();
     Wire.flush();
-    delay(50);
+    delay(100);
 }
 
 void Mega_Handler_Class::stop_bootloader()
@@ -193,46 +236,13 @@ void Mega_Handler_Class::start_application()
     Wire.flush();
 }
 
-uint16_t Mega_Handler_Class::get_twi_flash_bytes(uint16_t address, uint8_t* buffer, size_t size)
-{
-    uint8_t cmd[4] = {0x02, 0x01, highByte(address), lowByte(address)};
-    uint16_t timeout = 0U;
-    uint16_t bytes_read = 0U;
-
-    Serial.println("Waiting for TWI response");
-
-    do  
-    {
-        Serial.print(".");
-        
-        Wire.beginTransmission(MEGA_BL_ADDRESS);
-
-        Wire.write(cmd, sizeof(cmd));   // <-- Command Read
-        Wire.endTransmission(false);
-
-        Wire.requestFrom(MEGA_BL_ADDRESS, size); // <-- Request only 7 Byte for short commit hash
-        if (++timeout > MEGA_RESPONSE_TIMEOUT)
-        {
-            Serial.println("Timeout!");
-            break;
-        }
-
-    } while ((!Wire.available()) && (timeout < MEGA_RESPONSE_TIMEOUT));
-
-    for(; (bytes_read < size) && Wire.available(); bytes_read++)
-    {
-        buffer[bytes_read] = Wire.read();
-    }
-
-    return bytes_read;
-}
-
-bool Mega_Handler_Class::verify_flash(uint16_t address, const uint8_t* buffer, size_t size)
+bool Mega_Handler_Class::verify_page(uint16_t address, const uint8_t page[MEGA_PAGE_SIZE])
 {
     uint8_t cmd[4] = {0x02, 0x01, highByte(address), lowByte(address)};
     uint16_t timeout = 0U;
     bool ret = true;
 
+    Serial.println("Flash verify ...");
     Serial.print("Waiting for TWI response");
 
     do {
@@ -241,23 +251,31 @@ bool Mega_Handler_Class::verify_flash(uint16_t address, const uint8_t* buffer, s
         Wire.beginTransmission(MEGA_BL_ADDRESS);
         Wire.write(cmd, sizeof(cmd)/sizeof(uint8_t));   // <-- Command Read
         Wire.endTransmission(false);
-        Wire.requestFrom(MEGA_BL_ADDRESS, size);
+        Wire.requestFrom(MEGA_BL_ADDRESS, MEGA_PAGE_SIZE);
 
         delay(100);
         if (++timeout > MEGA_RESPONSE_TIMEOUT)
         {
             ret = false;
             Serial.println("Timeout!");
-            break;
         }
     } while ((!Wire.available()) && (timeout < MEGA_RESPONSE_TIMEOUT));
 
-    for(uint16_t i = 0U; (i < size) && ret; i++)
+    for(uint16_t i = 0U; (i < MEGA_PAGE_SIZE) && ret; i++)
     {
-        if (buffer[i] != Wire.read())
+        if (page[i] != Wire.read())
         {
             ret = false;
         }
+    }
+
+    if (!ret)
+    {
+        Serial.println("verify failed!");
+    } 
+    else 
+    {
+        Serial.println("verify passed!");
     }
 
     return ret;
@@ -293,97 +311,101 @@ bool Mega_Handler_Class::get_chip_info()
     return ret;
 }
 
+bool Mega_Handler_Class::flash_page(uint16_t address, const uint8_t page[MEGA_PAGE_SIZE])
+{
+    uint8_t cmd[4] = {0x02, 0x01, highByte(address), lowByte(address)};
+    bool ret = true;
+
+    Wire.beginTransmission(MEGA_BL_ADDRESS);
+    Wire.write(cmd, 4);
+
+    if(Wire.write(page, MEGA_PAGE_SIZE) != MEGA_PAGE_SIZE)
+    {
+        Serial.println("Page not sent completely!");
+        ret = false;
+    }
+
+    Wire.endTransmission();
+
+    return ret;
+}
+
 void Mega_Handler_Class::update_mega()
 {
-    String oldVersion = "", newVersion = "";
+    uint8_t oldHash[20] = {0}, newHash[20] = {0};
+    uint8_t shield_timeout = 0U;
+    bool shield_available = get_chip_info();
 
-    if (!get_chip_info())
+
+    while ((!shield_available) && (shield_timeout < SHIELD_TIMEOUT))
     {
+        Serial.println("Cannot connecto to Shield Bootloader...");
         restart_shield();
+        shield_timeout++;
+        delay(1000);
+        shield_available = get_chip_info();
     }
     
-    get_mega_version(oldVersion);
-    get_update_version(newVersion);
 
-    if (oldVersion != newVersion)
+
+    if (shield_available)
     {
-        mbedtls_sha1_context ctx;
-        mbedtls_sha1_init(&ctx);
-        mbedtls_sha1_starts(&ctx);
 
+        get_mega_hash(oldHash);
+        get_update_hash(newHash);
+
+        if (memcmp(oldHash, newHash, 20))
         {
-            File atmelFile = SPIFFS.open(ATMEGA_SPIFFS_PATH, "r");
-            uint16_t write_address = 0;
-            uint8_t bytes_read = 0U;
-            uint8_t buffer[MEGA_PAGE_SIZE+4] = {0};
-
-            Serial.println("Updating Shield...");
-
-            buffer[0] = 0x02;
-            buffer[1] = 0x01;
-
-            bytes_read = atmelFile.read(&buffer[4], MEGA_PAGE_SIZE);
-
-            while (bytes_read > 0)
+            bool update_success = true;
             {
-                Serial.print("Writing at ");
-                Serial.println(write_address, HEX);
-                buffer[2] = highByte(write_address);
-                buffer[3] = lowByte(write_address);
+                File atmelFile = SPIFFS.open(ATMEGA_SPIFFS_PATH, "r");
+                uint16_t write_address = 0;
+                uint8_t bytes_read = 0U;
+                uint8_t buffer[MEGA_PAGE_SIZE] = {0};
+
+                Serial.println("Updating Shield...");
+
+                bytes_read = atmelFile.read(&buffer[4], MEGA_PAGE_SIZE);
+
+                while ((bytes_read > 0) && (update_success))
+                {
+                    Serial.print("Writing at ");
+                    Serial.println(write_address, HEX);
+                    update_success = flash_page(write_address, buffer);
+                    update_success &= verify_page(write_address, buffer);
+
+                    write_address += MEGA_PAGE_SIZE;
+                    bytes_read = atmelFile.read(buffer, MEGA_PAGE_SIZE);
+                }
+
+                atmelFile.close();
+            }
+            if(update_success)
+            {
+                uint8_t cmd[4] = {0x02, 0x02, 0x00, 0x00};
 
                 Wire.beginTransmission(MEGA_BL_ADDRESS);
-                if(Wire.write(buffer, sizeof(buffer)) != sizeof(buffer))
-                    Serial.println("Page not sent completely!");
-
+                Wire.write(cmd, sizeof(cmd));
+                Wire.write(newHash, sizeof(newHash));
                 Wire.endTransmission();
 
-                mbedtls_sha1_update(&ctx, &buffer[4], bytes_read);
-
-                delay(100);
-
-                Serial.println("Flash verify ...");
-                if (!verify_flash(write_address, &buffer[4], MEGA_PAGE_SIZE))
-                {
-                    Serial.println("verify failed!");
-                } 
-                else 
-                {
-                    Serial.println("verify passed!");
-                }
-                write_address += MEGA_PAGE_SIZE;
-                bytes_read = atmelFile.read(&buffer[4], MEGA_PAGE_SIZE);
-            }
-
-
-
-            atmelFile.close();
-        }
-
-        {
-            uint8_t hash[24];
-            String version = "";
-            hash[0] = 0x02;
-            hash[1] = 0x02;
-            hash[2] = 0x00;
-            hash[3] = 0x00;
-            mbedtls_sha1_finish(&ctx, &hash[4]);
-            Wire.beginTransmission(MEGA_BL_ADDRESS);
-            if(Wire.write(hash, sizeof(hash)) != sizeof(hash))
-            	Serial.println("Page not sent completely!");
-
-            Wire.endTransmission();
-
-            for (uint8_t i = 4; i < 24; i++)
+                Serial.print("Updated to version:\t");
+                print_hash(newHash);
+            }  
+            else
             {
-                version += String(hash[i], HEX);
+                Serial.println("Update: failed");
             }
-            Serial.println("Updated to version:\t" + version);
-        }  
 
-
-    	Serial.println("Update: Done");
-    } else {
-    	Serial.println("Version Match: No Update!");
+        } 
+        else 
+        {
+            Serial.println("Version Match: No Update!");
+        }
+    }
+    else
+    {
+        Serial.println("Shield is not available. Update failed.");
     }
 }
 

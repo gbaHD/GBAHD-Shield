@@ -50,6 +50,10 @@
 
 #define ATMEGA_SPIFFS_PATH ( "/atmega.bin" )
 
+#define MEGA_BL_ADDRESS             (0x29)
+#define MEGA_PAGE_SIZE              (0x80)  // <-- Page Size of ATMega328P
+#define MEGA_RESPONSE_TIMEOUT       (10)
+
 
 class Mega_Handler_Class 
 {
@@ -58,6 +62,8 @@ class Mega_Handler_Class
         void update();
         void get_mega_version(String& version);
         void get_update_version(String& version);
+        void get_mega_hash(uint8_t hash[20]);
+        void get_update_hash(uint8_t hash[20]);
     private:
         void update_controller();
         void update_mega();
@@ -65,9 +71,9 @@ class Mega_Handler_Class
         void restart_shield();
         void start_application();
         bool get_chip_info();
-        bool verify_flash(uint16_t address, const uint8_t* buffer, size_t size);
-
-        uint16_t get_twi_flash_bytes(uint16_t address, uint8_t* buffer, size_t size);
+        void print_hash(const uint8_t* const hash);
+        bool verify_page(uint16_t address, const uint8_t page[MEGA_PAGE_SIZE]);
+        bool flash_page(uint16_t address, const uint8_t page[MEGA_PAGE_SIZE]);
 
         static void onConnectedGamepad(GamepadPtr gp);
         static void onDisconnectedGamepad(GamepadPtr gp);
