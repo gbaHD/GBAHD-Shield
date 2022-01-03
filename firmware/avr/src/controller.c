@@ -41,7 +41,8 @@ void controller_init(void) {
 void controller_update(void) {
     GBA_OUTPUT_EN_M(gba_data != 0);
     CTRL_PORT &= ~_BV(CTRL_LATCH);
-    controller_data = ((~transfer_16bit(~(gba_data & GBA_DATA_MASK))) >> 4) & CTRL_DATA_MASK;
+    controller_data = ((~transfer_16bit(~(gba_data & GBA_DATA_MASK))));
+    controller_data = (controller_data == 0xFFFF) ? 0 : ((controller_data >> 4) & CTRL_DATA_MASK);
     CTRL_PORT |= _BV(CTRL_LATCH);
 }
 
