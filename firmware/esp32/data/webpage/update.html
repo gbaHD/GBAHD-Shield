@@ -1,0 +1,49 @@
+<!doctype html>
+
+<head>
+    <title>gbaHD Firmware Update</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/pico.min.css">
+    <meta name="viewport" content="width=device-width,initial-scale=0.8">
+
+    <body>
+        <main class="container">
+            <nav>
+                <ul>
+                    <li><img src="/Logo.png"></li>
+                </ul>
+                <ul>
+                    <li><a href="/bluetooth.html" role="button" class="outline">Bluetooth</a></li>
+                    <li><a href="#" role="button">Firmware</a></li>
+                </ul>
+            </nav>
+            <h1>gbaHD Firmware Update</h1>
+            <article>
+                <h3>Update {{STATE}}</h3>
+                <p>
+                    <table>
+                        <tr>
+                            <td>Main</td>
+                            <td>{{ESP_VER}}</td>
+                        </tr>
+                        <tr>
+                            <td>Bitstream</td>
+                            <td>{{BITSTREAM_VER}}</td>
+                        </tr>
+                        <tr>
+                            <td>Shield</td>
+                            <td>{{SHIELD_VER}}</td>
+                        </tr>
+                    </table>
+                </p>
+                <p>
+                    Please reboot to activate the Update
+                </p>
+                <footer>
+                    <a href="/reboot" role="button">Reboot</a>
+                    <a href="/" role="button" class="outline">Back</a>
+                </footer>
+            </article>
+        </main>
+    </body>
+</head>
