@@ -90,30 +90,31 @@ void Mega_Handler_Class::update_controller()
         MAP_BUTTON(controller->miscButtons(), newOutputs, MISC_BUTTON_HOME, bt_config.mapping[BT_INP_START]);
         MAP_BUTTON(controller->miscButtons(), newOutputs, MISC_BUTTON_BACK, bt_config.mapping[BT_INP_SELECT]);
 
+    }
 
-        Wire.beginTransmission(MEGA_BL_ADDRESS);
-        Wire.write(reinterpret_cast<uint8_t*>(&newOutputs), sizeof(uint16_t));
-        Wire.endTransmission();
-        Wire.flush();
+    Wire.beginTransmission(MEGA_BL_ADDRESS);
+    Wire.write(reinterpret_cast<uint8_t*>(&newOutputs), sizeof(uint16_t));
+    Wire.endTransmission();
+    Wire.flush();
 
 
-        if (newOutputs != 0)
-        {
-        	Serial.print("Current Controls: 0x");
-        	Serial.println(newOutputs, HEX);
-        }
+    if (newOutputs != 0)
+    {
+        Serial.print("Current Controls: 0x");
+        Serial.println(newOutputs, HEX);
     }
 }
 
 
-void Mega_Handler_Class::print_hash(const uint8_t* const hash)
+String Mega_Handler_Class::string_hash(const uint8_t* const hash)
 {
+    String hash_string = "";
     for (uint8_t i = 0; i < 20; i++)
     {
-        Serial.print(hash[i], HEX);
+        hash_string += String(hash[i], HEX);
     }
 
-    Serial.println();
+    return hash_string;
 }
 
 void Mega_Handler_Class::get_update_version(String& version)
@@ -139,9 +140,9 @@ void Mega_Handler_Class::get_update_version(String& version)
 
     atmelFile.close();
 
-    Serial.print("New version:\t");
+    version = string_hash(hash);
+    Serial.println("New version:\t " + version);
 
-    print_hash(hash);
 }
 
 void Mega_Handler_Class::get_mega_version(String& version)
@@ -158,8 +159,9 @@ void Mega_Handler_Class::get_mega_version(String& version)
         Wire.readBytes(hash, 20);
     }
 
-    Serial.print("Old version:\t");
-    print_hash(hash);
+    version = string_hash(hash);
+
+    Serial.println("Old version:\t " + version);
 }
 
 
@@ -176,8 +178,8 @@ void Mega_Handler_Class::get_mega_hash(uint8_t hash[20])
         Wire.readBytes(hash, 20);
     }
 
-    Serial.print("Old version:\t");
-    print_hash(hash);
+    Serial.println("Old version:\t " + string_hash(hash));
+
 }
 
 void Mega_Handler_Class::get_update_hash(uint8_t hash[20])
@@ -202,8 +204,7 @@ void Mega_Handler_Class::get_update_hash(uint8_t hash[20])
 
     atmelFile.close();
 
-    Serial.print("New version:\t");
-    print_hash(hash);
+    Serial.println("New version:\t" + string_hash(hash));
 }
 
 void Mega_Handler_Class::restart_shield()
@@ -291,9 +292,9 @@ bool Mega_Handler_Class::get_chip_info()
     Wire.write(0x00);
     Wire.endTransmission(false);
     Wire.requestFrom(MEGA_BL_ADDRESS, 8);
-    Serial.print("Chip Info: ");
     if (Wire.available())
     {
+        Serial.print("Chip Info: ");
         for (uint8_t i = 0U; i < 8; i++)
         {
             Serial.print(i);
@@ -339,7 +340,7 @@ void Mega_Handler_Class::update_mega()
 
     while ((!shield_available) && (shield_timeout < SHIELD_TIMEOUT))
     {
-        Serial.println("Cannot connecto to Shield Bootloader...");
+        Serial.println("Press Reset on Shield... Retrying - " + String(shield_timeout));
         restart_shield();
         shield_timeout++;
         delay(1000);
@@ -389,8 +390,7 @@ void Mega_Handler_Class::update_mega()
                 Wire.write(newHash, sizeof(newHash));
                 Wire.endTransmission();
 
-                Serial.print("Updated to version:\t");
-                print_hash(newHash);
+                Serial.print("Updated to version:\t" + string_hash(newHash));
             }  
             else
             {
@@ -437,7 +437,12 @@ void Mega_Handler_Class::init()
 
 void Mega_Handler_Class::update()
 {
-    update_controller();
+    Bluetooth_Config bt_config;
+    Preferences_Handler.getBluetoothConfig(bt_config);
+    if (bt_config.enabled)
+    {
+        update_controller();
+    }
 }
 
 Mega_Handler_Class Mega_Handler;

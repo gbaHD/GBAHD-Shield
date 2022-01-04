@@ -71,7 +71,7 @@ class Mega_Handler_Class
         void restart_shield();
         void start_application();
         bool get_chip_info();
-        void print_hash(const uint8_t* const hash);
+        String string_hash(const uint8_t* const hash);
         bool verify_page(uint16_t address, const uint8_t page[MEGA_PAGE_SIZE]);
         bool flash_page(uint16_t address, const uint8_t page[MEGA_PAGE_SIZE]);
 
