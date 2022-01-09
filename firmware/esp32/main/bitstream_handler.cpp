@@ -168,21 +168,26 @@ void Bitstream_Handler_Class::handle_sd_card(void)
 
 void Bitstream_Handler_Class::handle_bit_stream(void)
 {
-  #ifndef DEV_BOARD
-    if ((SD_MMC.begin() && (SD_MMC.exists(BITSTREAM_SD_HOTBOOT_FILE))))
-    {
-        File file = SD_MMC.open(BITSTREAM_SD_HOTBOOT_FILE, "r");
-        this->pushBitStream(file);
-    }
-    else if ((SPIFFS.exists(BITSTREAM_SPIFFS_PATH)))
-    {
-        File file = SPIFFS.open(BITSTREAM_SPIFFS_PATH, "r");
-        this->pushBitStream(file);
-    }
-    else
-    {
-      Serial.println("No Bitstream available. Please Upload Bitstream.");
-    }
-    #endif
+  // #ifndef DEV_BOARD
+  //   if ((SD_MMC.begin() && (SD_MMC.exists(BITSTREAM_SD_HOTBOOT_FILE))))
+  //   {
+  //       File file = SD_MMC.open(BITSTREAM_SD_HOTBOOT_FILE, "r");
+  //       this->pushBitStream(file);
+  //   }
+  //   else if ((SPIFFS.exists(BITSTREAM_SPIFFS_PATH)))
+  //   {
+  //       File file = SPIFFS.open(BITSTREAM_SPIFFS_PATH, "r");
+  //       this->pushBitStream(file);
+  //   }
+  //   else
+  //   {
+  //     Serial.println("No Bitstream available. Please Upload Bitstream.");
+  //   }
+  //   #endif
+  File file = SPIFFS.open(BITSTREAM_SPIFFS_PATH, "r");
+  if (file)
+  {
+    this->pushBitStream(file);
+  }
 }
 
