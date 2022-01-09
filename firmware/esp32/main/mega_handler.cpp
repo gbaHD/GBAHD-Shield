@@ -141,8 +141,6 @@ void Mega_Handler_Class::get_update_version(String& version)
     atmelFile.close();
 
     version = string_hash(hash);
-    Serial.println("New version:\t " + version);
-
 }
 
 void Mega_Handler_Class::get_mega_version(String& version)
@@ -160,8 +158,6 @@ void Mega_Handler_Class::get_mega_version(String& version)
     }
 
     version = string_hash(hash);
-
-    Serial.println("Old version:\t " + version);
 }
 
 
@@ -177,9 +173,6 @@ void Mega_Handler_Class::get_mega_hash(uint8_t hash[20])
     while (Wire.available()) {
         Wire.readBytes(hash, 20);
     }
-
-    Serial.println("Old version:\t " + string_hash(hash));
-
 }
 
 void Mega_Handler_Class::get_update_hash(uint8_t hash[20])
@@ -203,19 +196,18 @@ void Mega_Handler_Class::get_update_hash(uint8_t hash[20])
     }
 
     atmelFile.close();
-
-    Serial.println("New version:\t" + string_hash(hash));
 }
 
 void Mega_Handler_Class::restart_shield()
 {
     uint16_t restart = RESET_SHIELD;
     Serial.println("Restarting shield");
+    Wire.flush();
     Wire.beginTransmission(MEGA_BL_ADDRESS);
     Wire.write(reinterpret_cast<uint8_t*>(&restart), sizeof(uint16_t));
     Wire.endTransmission();
-    Wire.flush();
     delay(100);
+    stop_bootloader();
 }
 
 void Mega_Handler_Class::stop_bootloader()
@@ -331,7 +323,7 @@ bool Mega_Handler_Class::flash_page(uint16_t address, const uint8_t page[MEGA_PA
     return ret;
 }
 
-void Mega_Handler_Class::update_mega()
+void Mega_Handler_Class::update_mega(bool force)
 {
     uint8_t oldHash[20] = {0}, newHash[20] = {0};
     uint8_t shield_timeout = 0U;
@@ -342,20 +334,17 @@ void Mega_Handler_Class::update_mega()
     {
         Serial.println("Press Reset on Shield... Retrying - " + String(shield_timeout));
         restart_shield();
+        delay(500);
         shield_timeout++;
-        delay(1000);
         shield_available = get_chip_info();
     }
     
-
-
     if (shield_available)
     {
-
         get_mega_hash(oldHash);
         get_update_hash(newHash);
 
-        if (memcmp(oldHash, newHash, 20))
+        if (memcmp(oldHash, newHash, 20) || force)
         {
             bool update_success = true;
             {
@@ -366,7 +355,7 @@ void Mega_Handler_Class::update_mega()
 
                 Serial.println("Updating Shield...");
 
-                bytes_read = atmelFile.read(&buffer[4], MEGA_PAGE_SIZE);
+                bytes_read = atmelFile.read(buffer, MEGA_PAGE_SIZE);
 
                 while ((bytes_read > 0) && (update_success))
                 {
@@ -396,7 +385,7 @@ void Mega_Handler_Class::update_mega()
             {
                 Serial.println("Update: failed");
             }
-
+            
         } 
         else 
         {
@@ -407,6 +396,13 @@ void Mega_Handler_Class::update_mega()
     {
         Serial.println("Shield is not available. Update failed.");
     }
+}
+
+void Mega_Handler_Class::trigger_external_update(bool force)
+{
+    restart_shield();
+    update_mega(force);
+    start_application();
 }
 
 

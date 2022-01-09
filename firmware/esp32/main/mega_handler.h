@@ -46,9 +46,12 @@
 #define CTRL_IN_SELECT (0x200)
 
 #define ENABLE_OSD     (CTRL_IN_UP | CTRL_IN_R | CTRL_IN_L | CTRL_IN_SELECT)
-#define RESET_SHIELD   (CTRL_IN_LEFT | CTRL_IN_RIGHT | CTRL_IN_R | CTRL_IN_L | CTRL_IN_START | CTRL_IN_SELECT | CTRL_IN_A | CTRL_IN_X)
+#define RESET_SHIELD   (CTRL_IN_R | CTRL_IN_L | CTRL_IN_START | CTRL_IN_SELECT | CTRL_IN_A | CTRL_IN_X | CTRL_IN_LEFT | CTRL_IN_RIGHT)
+
 
 #define ATMEGA_SPIFFS_PATH ( "/atmega.bin" )
+#define ATMEGA_FORCE_FLAG  ( "/atmega.force" )
+
 
 #define MEGA_BL_ADDRESS             (0x29)
 #define MEGA_PAGE_SIZE              (0x80)  // <-- Page Size of ATMega328P
@@ -64,9 +67,10 @@ class Mega_Handler_Class
         void get_update_version(String& version);
         void get_mega_hash(uint8_t hash[20]);
         void get_update_hash(uint8_t hash[20]);
+        void trigger_external_update(bool force);
     private:
+        void update_mega(bool force = false);
         void update_controller();
-        void update_mega();
         void stop_bootloader();
         void restart_shield();
         void start_application();
