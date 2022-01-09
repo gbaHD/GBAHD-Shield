@@ -17,7 +17,8 @@
                     <li><a href="#" role="button">Firmware</a></li>
                 </ul>
             </nav>
-            <h1>gbaHD Firmware Update</h1>
+            <h1>gba<sup>HD</sup> Firmware Update</h1>
+            {{MESSAGE}}
             <article>
                 <details open>
                     <summary>Manual Firmware Update</summary>
@@ -32,7 +33,12 @@
                         </div>
                     </div>
                     <div>
-                        <form action="/upgrade/atmega" method="post" enctype="multipart/form-data"><label>Shield Firmware:</label> <input type="file" name="name" accept=".bin"> <input class="button" type="submit" value="Upload"></form>
+                        <form action="/upgrade/atmega" method="post" enctype="multipart/form-data">
+                            <label>Shield Firmware:</label>
+                            <input type="checkbox" id="force" name="force">
+                            <label for="force" data-tooltip="Force on same version">Force Update</label>
+                            <input type="file" name="name" accept=".bin">
+                            <input class="button" type="submit" value="Upload"></form>
                     </div>
                     </div>
                 </details>
