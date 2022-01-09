@@ -69,10 +69,10 @@ class Web_Handler_Class {
         static String build_update_done(bool success);
 
 
-
         static File fsUpload;
         static bool uploadSuccess;
         static WebServer _server;
+        static int64_t rebootTimer;
 };
 
 extern Web_Handler_Class Web_Handler;

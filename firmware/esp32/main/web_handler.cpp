@@ -42,6 +42,8 @@ Web_Handler_Class Web_Handler;
 WebServer Web_Handler_Class::_server(80);
 File Web_Handler_Class::fsUpload;
 bool Web_Handler_Class::uploadSuccess = false;
+int64_t Web_Handler_Class::rebootTimer = -1;
+
 
 const String BT_MAPPING_OPTION = "<option value=\"{{OPTION_VALUE}}\" {{SELECTED}}>{{OPTION_TEXT}}</option>";
 const String BT_MAPPING_TR = "<tr><td>{{INPUT_BTN}}</td><td><select name=\"{{SELECT_NAME}}\" id=\"{{SELECT_NAME}}\">{{MAPPING_OPTIONS}}</select></td></tr>";
@@ -72,6 +74,7 @@ void Web_Handler_Class::_sendOK()
 {
   _server.send(200);
 }
+
 
 String Web_Handler_Class::build_option(uint16_t value, uint16_t mappedValue, String text)
 {
@@ -135,9 +138,8 @@ void Web_Handler_Class::handleReboot()
 {
   _server.sendHeader("Location", "/");
   _server.send(303);
-  
-  delay(1000);
-  ESP.restart();
+  rebootTimer = (esp_timer_get_time() / 1000) + 4000;
+  Serial.println("Scheduled Reboot");
 }
 
 void Web_Handler_Class::handleUploadDone()
@@ -186,6 +188,10 @@ void Web_Handler_Class::handleSPIFFSFileUpload()
       {
         fsUpload.close();
         uploadSuccess = true;
+        if (path == ATMEGA_SPIFFS_PATH)
+        {
+          Mega_Handler.trigger_external_update(_server.arg("force") == "on");
+        }
       }
       else
       {
@@ -236,9 +242,8 @@ void Web_Handler_Class::handlePartitionUpload()
   {
     if (Update.end(true))
     { //true to set the size to the current progress
-      Serial.printf("Update Success: %u\nRebooting...\n", upload.totalSize);
+      Serial.printf("Update Success: %u\n", upload.totalSize);
       uploadSuccess = true;
-      //ESP.restart();
     }
     else
     {
@@ -333,5 +338,10 @@ void Web_Handler_Class::init(void)
 
 void Web_Handler_Class::run(void)
 {
+  if ((rebootTimer > 0) && (rebootTimer < (esp_timer_get_time() / 1000)))
+  {
+    ESP.restart();
+  }
+
   _server.handleClient();
 }
