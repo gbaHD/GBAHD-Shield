@@ -90,10 +90,17 @@ int main(void) {
     reboot();
     while(1) {
         controller_update();
-        if(twi_available()) set_controller_data(twi_read());
+        if(twi_available()){
+            uint16_t tmpVal = twi_read();
+            if(tmpVal & CTRL_BT_CONNECTED) {
+                set_controller_data(tmpVal & CTRL_DATA_MASK);
+            } else {
+                twi_flush();
+            }
+        }
         process_data(get_controller_data());
         controller_map_data();
-        _delay_ms(8);
+//        _delay_ms(8);
     }
 }
 
