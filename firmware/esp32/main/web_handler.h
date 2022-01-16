@@ -58,7 +58,7 @@ class Web_Handler_Class {
     private:
         static void _handle404();
         static void _sendOK();
-        static void handleBluetooth();
+        static void handleSettings();
         static void handlePartitionUpload();
         static void handleSPIFFSFileUpload();
         static void handleUploadDone();

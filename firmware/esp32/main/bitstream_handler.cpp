@@ -30,6 +30,7 @@
 #include <SD_MMC.h>
 #include <SPIFFS.h>
 
+#include "preferences_handler.h"
 
 //#define DEV_BOARD
 
@@ -184,7 +185,24 @@ void Bitstream_Handler_Class::handle_bit_stream(void)
   //     Serial.println("No Bitstream available. Please Upload Bitstream.");
   //   }
   //   #endif
-  File file = SPIFFS.open(BITSTREAM_SPIFFS_PATH, "r");
+  Settings settings = {};
+  String bitstream_path = "";
+  Preferences_Handler.getSettings(settings);
+
+  if (settings.bitstream == BITSTREAM_720P)
+  {
+    bitstream_path = BITSTREAM_720P_PATH;
+  }
+  else if (settings.bitstream == BITSTREAM_1080P)
+  {
+    bitstream_path = BITSTREAM_1080P_PATH;
+  }
+  else
+  {
+    bitstream_path = BITSTREAM_SPIFFS_PATH;
+  }
+
+  File file = SPIFFS.open(bitstream_path, "r");
   if (file)
   {
     this->pushBitStream(file);

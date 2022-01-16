@@ -254,19 +254,23 @@ void Web_Handler_Class::handlePartitionUpload()
 
 
 
-void Web_Handler_Class::handleBluetooth()
+void Web_Handler_Class::handleSettings()
 {
   String page_string = "";
-  Serial.println("Handle Bluetooth");
 
   if (_server.method() == HTTP_POST)
   {
     Bluetooth_Config config = {};
+    Settings settings = {};
     for (uint8_t i = 0U; i < _server.args(); i++)
     {
       if (_server.argName(i) == "bluetooth_enable")
       {
         config.enabled = (_server.arg(i) == "on");
+      }
+      else if (_server.argName(i) == "bitstream")
+      {
+        settings.bitstream = _server.arg(i).toInt();
       }
       else
       {
@@ -274,10 +278,11 @@ void Web_Handler_Class::handleBluetooth()
       }
     }
     Preferences_Handler.saveBluetoothConfig(config);
+    Preferences_Handler.saveSettings(settings);
   }
 
   {
-    File page = SPIFFS.open("/webpage/bluetooth.html", "r");
+    File page = SPIFFS.open("/webpage/settings.html", "r");
     if (page)
     {
       page_string = page.readString();
@@ -287,7 +292,9 @@ void Web_Handler_Class::handleBluetooth()
 
   {
     Bluetooth_Config config;
+    Settings settings;
     Preferences_Handler.getBluetoothConfig(config);
+    Preferences_Handler.getSettings(settings);
     String mapping_string = "";
     for (uint16_t i = 0U; i < BT_INP_MAX; i++)
     {
@@ -295,6 +302,8 @@ void Web_Handler_Class::handleBluetooth()
     }
     page_string.replace("{{MAPPINGS}}", mapping_string);
     page_string.replace("{{BT_ENABLED}}", config.enabled ? "checked" : "");
+    page_string.replace("{{720_SELECTED}}", settings.bitstream == BITSTREAM_720P ? "selected" : "");
+    page_string.replace("{{1080_SELECTED}}", settings.bitstream == BITSTREAM_1080P ? "selected" : "");
   }
 
   _server.send(200, "text/html", page_string);
@@ -317,8 +326,8 @@ void Web_Handler_Class::init(void)
   _server.on("/reboot", HTTP_GET, handleReboot);
 
   // Handle bt config
-  _server.on("/bluetooth.html", HTTP_GET, handleBluetooth);
-  _server.on("/bluetooth.html", HTTP_POST, handleBluetooth);
+  _server.on("/settings.html", HTTP_GET, handleSettings);
+  _server.on("/settings.html", HTTP_POST, handleSettings);
 
   _server.serveStatic("/", SPIFFS, "/webpage/index.html");
   _server.serveStatic("/pico.min.css", SPIFFS, "/webpage/pico.min.css");

@@ -38,6 +38,8 @@
 #define BITSTREAM_SD_UPDATE_FILE_OLD    "/update.done"
 #define BITSTREAM_SD_HOTBOOT_FILE       "/hotboot.bit"
 #define BITSTREAM_SPIFFS_PATH           "/bitstream.bit"
+#define BITSTREAM_720P_PATH             "/720p.bit"
+#define BITSTREAM_1080P_PATH            "/1080.bit"
 
 class Bitstream_Handler_Class {
   public:

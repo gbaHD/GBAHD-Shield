@@ -60,6 +60,17 @@ typedef struct
     bool enabled;
 } Bluetooth_Config;
 
+enum
+{
+    BITSTREAM_720P  = 0U,
+    BITSTREAM_1080P = 1U
+};
+
+typedef struct
+{
+    uint16_t bitstream;
+} Settings;
+
 typedef struct 
 {
     String ssid;
@@ -73,21 +84,29 @@ class Preferences_Handler_Class
         void saveWifiCredentials(Wifi_Config& cfg);
         void getWifiCredentials(Wifi_Config& cfg)
         {
-            cfg = wifi_config;
+            cfg = this->wifi_config;
         }
 
         void saveBluetoothConfig(Bluetooth_Config& cfg);
         void getBluetoothConfig(Bluetooth_Config& cfg) {
-            cfg = bt_config;
+            cfg = this->bt_config;
         }
+
+        void saveSettings(Settings& settings);
+        void getSettings(Settings& settings) {
+            settings = this->settings;
+        }
+
         void reset();
         void init();
 
     private:
         void restoreBluetoothConfig();
         void restoreWifiCredentials();
+        void restoreSettings();
         Wifi_Config wifi_config;
         Bluetooth_Config bt_config;
+        Settings settings;
 
 
 };
