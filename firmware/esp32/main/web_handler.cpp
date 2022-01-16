@@ -309,6 +309,23 @@ void Web_Handler_Class::handleSettings()
   _server.send(200, "text/html", page_string);
 }
 
+void Web_Handler_Class::handleIndex()
+{
+  String page_string = "";
+  {
+    File page = SPIFFS.open("/webpage/index.html", "r");
+    if (page)
+    {
+      page_string = page.readString();
+      page.close();
+    }
+  }
+  page_string.replace("{{MESSAGE}}", "");
+
+  _server.send(200, "text/html", page_string);
+}
+
+
 void Web_Handler_Class::init(void)
 {
 
@@ -329,7 +346,7 @@ void Web_Handler_Class::init(void)
   _server.on("/settings.html", HTTP_GET, handleSettings);
   _server.on("/settings.html", HTTP_POST, handleSettings);
 
-  _server.serveStatic("/", SPIFFS, "/webpage/index.html");
+  _server.on("/", HTTP_GET, handleIndex);
   _server.serveStatic("/pico.min.css", SPIFFS, "/webpage/pico.min.css");
   _server.serveStatic("/Logo.png", SPIFFS, "/webpage/Logo.png");
 

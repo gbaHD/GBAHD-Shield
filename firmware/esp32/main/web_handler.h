@@ -63,6 +63,7 @@ class Web_Handler_Class {
         static void handleSPIFFSFileUpload();
         static void handleUploadDone();
         static void handleReboot();
+        static void handleIndex();
 
         static String build_option(uint16_t value, uint16_t mappedValue, String text);
         static String build_select_entry(uint16_t& inp_btn, uint16_t& mappedValue);
