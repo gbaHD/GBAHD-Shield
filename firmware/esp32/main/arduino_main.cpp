@@ -52,6 +52,8 @@ void setup() {
   // Start SPIFFS
   SPIFFS.begin(true);
 
+  Preferences_Handler.init();
+  
   // initialization 
   Bitstream_Handler.init();
 
@@ -61,7 +63,6 @@ void setup() {
   // Handle pushing the bitstream to Spartan
   Bitstream_Handler.handle_bit_stream();
 
-  Preferences_Handler.init();
 
   Mega_Handler.init();
 
