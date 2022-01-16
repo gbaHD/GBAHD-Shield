@@ -32,6 +32,7 @@ void twi_init(void);
 void twi_stop(void);
 bool twi_available(void);
 uint16_t twi_read(void);
+void twi_flush(void);
 
 ISR(TWI_vect);
 

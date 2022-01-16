@@ -44,8 +44,14 @@ bool twi_available(void) {
 
 //returns 0xFF if there is no more data in the buffer
 uint16_t twi_read(void) {
-    rx_bytes = 0;
+//    rx_bytes = 0;
     return rx_buff[1] << 8 | rx_buff[0];
+}
+
+//returns 0xFF if there is no more data in the buffer
+void twi_flush(void) {
+    rx_bytes = 0;
+//    return rx_buff[1] << 8 | rx_buff[0];
 }
 
 ISR (TWI_vect)
