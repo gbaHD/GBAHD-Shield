@@ -32,23 +32,31 @@
 #include <Bluepad32.h>
 
 
-#define CTRL_IN_A      (0x008)
-#define CTRL_IN_B      (0x800)
-#define CTRL_IN_Y      (0x400)
-#define CTRL_IN_X      (0x004)
-#define CTRL_IN_UP     (0x080)
-#define CTRL_IN_DOWN   (0x040)
-#define CTRL_IN_LEFT   (0x020)
-#define CTRL_IN_RIGHT  (0x010)
-#define CTRL_IN_L      (0x002)
-#define CTRL_IN_R      (0x001)
-#define CTRL_IN_START  (0x100)
-#define CTRL_IN_SELECT (0x200)
+#define CTRL_IN_A         (0x008)
+#define CTRL_IN_B         (0x800)
+#define CTRL_IN_Y         (0x400)
+#define CTRL_IN_X         (0x004)
+#define CTRL_IN_UP        (0x080)
+#define CTRL_IN_DOWN      (0x040)
+#define CTRL_IN_LEFT      (0x020)
+#define CTRL_IN_RIGHT     (0x010)
+#define CTRL_IN_L         (0x002)
+#define CTRL_IN_R         (0x001)
+#define CTRL_IN_START     (0x100)
+#define CTRL_IN_SELECT    (0x200)
+#define CTRL_BT_AVAILABLE (0x1000)
 
 #define ENABLE_OSD     (CTRL_IN_UP | CTRL_IN_R | CTRL_IN_L | CTRL_IN_SELECT)
-#define RESET_SHIELD   (CTRL_IN_LEFT | CTRL_IN_RIGHT | CTRL_IN_R | CTRL_IN_L | CTRL_IN_START | CTRL_IN_SELECT | CTRL_IN_A | CTRL_IN_X)
+#define RESET_SHIELD   (CTRL_IN_R | CTRL_IN_L | CTRL_IN_START | CTRL_IN_SELECT | CTRL_IN_A | CTRL_IN_X | CTRL_IN_LEFT | CTRL_IN_RIGHT)
+
 
 #define ATMEGA_SPIFFS_PATH ( "/atmega.bin" )
+#define ATMEGA_FORCE_FLAG  ( "/atmega.force" )
+
+
+#define MEGA_BL_ADDRESS             (0x29)
+#define MEGA_PAGE_SIZE              (0x80)  // <-- Page Size of ATMega328P
+#define MEGA_RESPONSE_TIMEOUT       (10)
 
 
 class Mega_Handler_Class 
@@ -58,16 +66,19 @@ class Mega_Handler_Class
         void update();
         void get_mega_version(String& version);
         void get_update_version(String& version);
+        void get_mega_hash(uint8_t hash[20]);
+        void get_update_hash(uint8_t hash[20]);
+        void trigger_external_update(bool force);
     private:
+        void update_mega(bool force = false);
         void update_controller();
-        void update_mega();
         void stop_bootloader();
         void restart_shield();
         void start_application();
         bool get_chip_info();
-        bool verify_flash(uint16_t address, const uint8_t* buffer, size_t size);
-
-        uint16_t get_twi_flash_bytes(uint16_t address, uint8_t* buffer, size_t size);
+        String string_hash(const uint8_t* const hash);
+        bool verify_page(uint16_t address, const uint8_t page[MEGA_PAGE_SIZE]);
+        bool flash_page(uint16_t address, const uint8_t page[MEGA_PAGE_SIZE]);
 
         static void onConnectedGamepad(GamepadPtr gp);
         static void onDisconnectedGamepad(GamepadPtr gp);

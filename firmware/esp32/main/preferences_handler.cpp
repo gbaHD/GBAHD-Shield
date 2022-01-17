@@ -75,6 +75,7 @@ void Preferences_Handler_Class::saveBluetoothConfig(Bluetooth_Config& cfg)
     bt_config = cfg;
 }
 
+
 void Preferences_Handler_Class::restoreBluetoothConfig()
 {
     Preferences preferences;
@@ -98,6 +99,25 @@ void Preferences_Handler_Class::restoreBluetoothConfig()
     preferences.end();    
 }
 
+
+void Preferences_Handler_Class::saveSettings(Settings& settings)
+{
+    Preferences preferences;
+    preferences.begin("GBAHD_SETTINGS");
+    preferences.putUChar("BITSTREAM", settings.bitstream);
+    preferences.end();
+    this->settings = settings;
+}
+
+void Preferences_Handler_Class::restoreSettings()
+{
+    Preferences preferences;
+    preferences.begin("GBAHD_SETTINGS");
+    this->settings.bitstream = preferences.getUChar("BITSTREAM", BITSTREAM_720P);
+    preferences.end();
+}
+
+
 void Preferences_Handler_Class::reset()
 {
     Preferences preferences;
@@ -111,6 +131,7 @@ void Preferences_Handler_Class::init()
 {
     restoreBluetoothConfig();
     restoreWifiCredentials();
+    restoreSettings();
 }
 
 

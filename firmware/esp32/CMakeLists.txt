@@ -6,6 +6,11 @@ file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/external/bluepad32_template/components/blu
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/external/bluepad32_template/components/bluepad32_arduino DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/components)
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/external/bluepad32_template/components/btstack DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/components)
 
+
+# See: https://gitlab.com/ricardoquesada/bluepad32/-/issues/9
+set(ENV{BLUEPAD32_ARDUINO} TRUE)
+
+
 include($ENV{IDF_PATH}/tools/cmake/project.cmake)
 
 add_compile_definitions(I2C_BUFFER_LENGTH=132)

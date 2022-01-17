@@ -1,5 +1,6 @@
 .vscode
 bom
+firmware/esp32/main/build/**
 firmware/esp32/build/**
 firmware/esp32/components/bluepad32*
 firmware/esp32/components/btstack*

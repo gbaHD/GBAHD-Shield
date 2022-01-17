@@ -11,7 +11,8 @@ set(srcs
 set(requires "bluepad32"
              "bluepad32_arduino"
              "arduino"
-             "json")
+             "json"
+             "app_update")
 
 idf_component_register(SRCS "preferences_handler.cpp" "${srcs}"
                     INCLUDE_DIRS "."

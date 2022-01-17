@@ -58,17 +58,22 @@ class Web_Handler_Class {
     private:
         static void _handle404();
         static void _sendOK();
-        static void handleBitStreamUpload();
-        static void handleESPUpload();
-        static void handleSPIFFSUpload();
-        static void handleAtmelUpload();
-        static void handleBluetooth();
+        static void handleSettings();
+        static void handlePartitionUpload();
+        static void handleSPIFFSFileUpload();
+        static void handleUploadDone();
+        static void handleReboot();
+        static void handleIndex();
 
         static String build_option(uint16_t value, uint16_t mappedValue, String text);
         static String build_select_entry(uint16_t& inp_btn, uint16_t& mappedValue);
+        static String build_update_done(bool success);
+
 
         static File fsUpload;
+        static bool uploadSuccess;
         static WebServer _server;
+        static int64_t rebootTimer;
 };
 
 extern Web_Handler_Class Web_Handler;

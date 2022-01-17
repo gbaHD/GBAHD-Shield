@@ -30,6 +30,7 @@
 #include <SD_MMC.h>
 #include <SPIFFS.h>
 
+#include "preferences_handler.h"
 
 //#define DEV_BOARD
 
@@ -168,21 +169,43 @@ void Bitstream_Handler_Class::handle_sd_card(void)
 
 void Bitstream_Handler_Class::handle_bit_stream(void)
 {
-  #ifndef DEV_BOARD
-    if ((SD_MMC.begin() && (SD_MMC.exists(BITSTREAM_SD_HOTBOOT_FILE))))
-    {
-        File file = SD_MMC.open(BITSTREAM_SD_HOTBOOT_FILE, "r");
-        this->pushBitStream(file);
-    }
-    else if ((SPIFFS.exists(BITSTREAM_SPIFFS_PATH)))
-    {
-        File file = SPIFFS.open(BITSTREAM_SPIFFS_PATH, "r");
-        this->pushBitStream(file);
-    }
-    else
-    {
-      Serial.println("No Bitstream available. Please Upload Bitstream.");
-    }
-    #endif
+  // #ifndef DEV_BOARD
+  //   if ((SD_MMC.begin() && (SD_MMC.exists(BITSTREAM_SD_HOTBOOT_FILE))))
+  //   {
+  //       File file = SD_MMC.open(BITSTREAM_SD_HOTBOOT_FILE, "r");
+  //       this->pushBitStream(file);
+  //   }
+  //   else if ((SPIFFS.exists(BITSTREAM_SPIFFS_PATH)))
+  //   {
+  //       File file = SPIFFS.open(BITSTREAM_SPIFFS_PATH, "r");
+  //       this->pushBitStream(file);
+  //   }
+  //   else
+  //   {
+  //     Serial.println("No Bitstream available. Please Upload Bitstream.");
+  //   }
+  //   #endif
+  Settings settings = {};
+  String bitstream_path = "";
+  Preferences_Handler.getSettings(settings);
+
+  if (settings.bitstream == BITSTREAM_720P)
+  {
+    bitstream_path = BITSTREAM_720P_PATH;
+  }
+  else if (settings.bitstream == BITSTREAM_1080P)
+  {
+    bitstream_path = BITSTREAM_1080P_PATH;
+  }
+  else
+  {
+    bitstream_path = BITSTREAM_SPIFFS_PATH;
+  }
+
+  File file = SPIFFS.open(bitstream_path, "r");
+  if (file)
+  {
+    this->pushBitStream(file);
+  }
 }
 
