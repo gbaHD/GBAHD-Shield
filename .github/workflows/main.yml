@@ -43,3 +43,8 @@ jobs:
           # A file, directory or wildcard pattern that describes what to upload
           path: firmware/esp32/build/*.bin
           # The desired behavior if no files are found using the provided path.
+      - uses: ncipollo/release-action@v1
+        with:
+          artifacts: firmware/esp32/build/**/*.bin
+          token: ${{ secrets.GITHUB_TOKEN }}
+          draft: true
