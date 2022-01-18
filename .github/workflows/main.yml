@@ -40,7 +40,7 @@ jobs:
       - name: ESP32
         # You may pin to the exact commit or the version.
         # uses: espressif/esp-idf-ci-action@d69494cb0e7f6e06d27addca596aa4519b0b4e7f
-        uses: espressif/esp-idf-ci-action@rust-latest
+        uses: espressif/esp-idf-ci-action@release-v4.4
         with:
           # Relative path under $GITHUB_WORKSPACE to place the repository
           path: firmware/esp32
