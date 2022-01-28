@@ -80,22 +80,22 @@ void Preferences_Handler_Class::restoreBluetoothConfig()
 {
     Preferences preferences;
     preferences.begin("GBAHD_BTCONFIG");
-    bt_config.mapping[BT_INP_UP] = preferences.getUShort("D_UP", CTRL_IN_UP);
-    bt_config.mapping[BT_INP_DOWN] = preferences.getUShort("D_DWN", CTRL_IN_DOWN);
-    bt_config.mapping[BT_INP_LEFT] = preferences.getUShort("D_LFT", CTRL_IN_LEFT);
-    bt_config.mapping[BT_INP_RIGHT] = preferences.getUShort("D_RGT", CTRL_IN_RIGHT);
-    bt_config.mapping[BT_INP_TR_L] = preferences.getUShort("TR_L", CTRL_IN_L);
-    bt_config.mapping[BT_INP_TR_R] = preferences.getUShort("TR_R", CTRL_IN_R);
-    bt_config.mapping[BT_INP_SH_L] = preferences.getUShort("SH_L", CTRL_IN_L);
-    bt_config.mapping[BT_INP_SH_R] = preferences.getUShort("SH_R", CTRL_IN_R);
-    bt_config.mapping[BT_INP_SYSTEM] = preferences.getUShort("SYS", ENABLE_OSD);
-    bt_config.mapping[BT_INP_A] = preferences.getUShort("BTNA", CTRL_IN_A);
-    bt_config.mapping[BT_INP_B] = preferences.getUShort("BTNB", CTRL_IN_B);
-    bt_config.mapping[BT_INP_X] = preferences.getUShort("BTNX", CTRL_IN_X);
-    bt_config.mapping[BT_INP_Y] = preferences.getUShort("BTNY", CTRL_IN_Y);
-    bt_config.mapping[BT_INP_START] = preferences.getUShort("STRT", CTRL_IN_START);
-    bt_config.mapping[BT_INP_SELECT] = preferences.getUShort("SEL", CTRL_IN_SELECT);
-    bt_config.enabled = preferences.getBool("ENABLED", true);
+    bt_config.mapping[BT_INP_UP] =      preferences.getUShort("D_UP", CTRL_IN_UP);
+    bt_config.mapping[BT_INP_DOWN] =    preferences.getUShort("D_DWN", CTRL_IN_DOWN);
+    bt_config.mapping[BT_INP_LEFT] =    preferences.getUShort("D_LFT", CTRL_IN_LEFT);
+    bt_config.mapping[BT_INP_RIGHT] =   preferences.getUShort("D_RGT", CTRL_IN_RIGHT);
+    bt_config.mapping[BT_INP_TR_L] =    preferences.getUShort("TR_L", CTRL_IN_L);
+    bt_config.mapping[BT_INP_TR_R] =    preferences.getUShort("TR_R", CTRL_IN_R);
+    bt_config.mapping[BT_INP_SH_L] =    preferences.getUShort("SH_L", CTRL_IN_L);
+    bt_config.mapping[BT_INP_SH_R] =    preferences.getUShort("SH_R", CTRL_IN_R);
+    bt_config.mapping[BT_INP_SYSTEM] =  preferences.getUShort("SYS", ENABLE_OSD);
+    bt_config.mapping[BT_INP_A] =       preferences.getUShort("BTNA", CTRL_IN_A);
+    bt_config.mapping[BT_INP_B] =       preferences.getUShort("BTNB", CTRL_IN_B);
+    bt_config.mapping[BT_INP_X] =       preferences.getUShort("BTNX", CTRL_IN_X);
+    bt_config.mapping[BT_INP_Y] =       preferences.getUShort("BTNY", CTRL_IN_Y);
+    bt_config.mapping[BT_INP_START] =   preferences.getUShort("STRT", CTRL_IN_START);
+    bt_config.mapping[BT_INP_SELECT] =  preferences.getUShort("SEL", CTRL_IN_SELECT);
+    bt_config.enabled =                 preferences.getBool("ENABLED", true);
     preferences.end();    
 }
 
