@@ -51,8 +51,11 @@ GamepadPtr Mega_Handler_Class::controller;
 
 void Mega_Handler_Class::onConnectedGamepad(GamepadPtr gp) 
 {
-  controller = gp;
-  Serial.println("CALLBACK: Controller is connected!");
+    if (!controller)
+    {
+        controller = gp;
+        Serial.println("CALLBACK: Controller is connected!");
+    }
 }
 
 void Mega_Handler_Class::onDisconnectedGamepad(GamepadPtr gp) 
@@ -74,14 +77,14 @@ void Mega_Handler_Class::update_controller()
 
         if (controller && controller->isConnected()) 
         {
-            MAP_BUTTON(controller->dpad(), new_outputs, DPAD_UP,  bt_config.mapping[BT_INP_UP]);
             MAP_BUTTON(((controller->axisY() < -80) ? DPAD_UP : 0), new_outputs, DPAD_UP, bt_config.mapping[BT_INP_UP]);
-            MAP_BUTTON(controller->dpad(), new_outputs, DPAD_DOWN, bt_config.mapping[BT_INP_DOWN]);
             MAP_BUTTON(((controller->axisY() > 80) ? DPAD_DOWN : 0), new_outputs, DPAD_DOWN, bt_config.mapping[BT_INP_DOWN]);
-            MAP_BUTTON(controller->dpad(), new_outputs, DPAD_LEFT, bt_config.mapping[BT_INP_LEFT]);
             MAP_BUTTON(((controller->axisX() < -80) ? DPAD_LEFT : 0), new_outputs, DPAD_LEFT, bt_config.mapping[BT_INP_LEFT]);
-            MAP_BUTTON(controller->dpad(), new_outputs, DPAD_RIGHT, bt_config.mapping[BT_INP_RIGHT]);
             MAP_BUTTON(((controller->axisX() > 80) ? DPAD_RIGHT : 0), new_outputs, DPAD_RIGHT, bt_config.mapping[BT_INP_RIGHT]);
+            MAP_BUTTON(controller->dpad(), new_outputs, DPAD_UP,  bt_config.mapping[BT_INP_UP]);
+            MAP_BUTTON(controller->dpad(), new_outputs, DPAD_DOWN, bt_config.mapping[BT_INP_DOWN]);
+            MAP_BUTTON(controller->dpad(), new_outputs, DPAD_LEFT, bt_config.mapping[BT_INP_LEFT]);
+            MAP_BUTTON(controller->dpad(), new_outputs, DPAD_RIGHT, bt_config.mapping[BT_INP_RIGHT]);
             MAP_BUTTON(controller->buttons(), new_outputs, BUTTON_B, bt_config.mapping[BT_INP_B]);
             MAP_BUTTON(controller->buttons(), new_outputs, BUTTON_A, bt_config.mapping[BT_INP_A]);
             MAP_BUTTON(controller->buttons(), new_outputs, BUTTON_Y, bt_config.mapping[BT_INP_Y]);
@@ -105,18 +108,16 @@ void Mega_Handler_Class::update_controller()
     if (new_outputs != previous_outputs)
     {
         Wire.beginTransmission(MEGA_BL_ADDRESS);
+        Wire.flush();
         Wire.write(reinterpret_cast<uint8_t*>(&new_outputs), sizeof(uint16_t));
         Wire.endTransmission();
         Wire.flush();
 
         previous_outputs = new_outputs;
-    }
-
-    if (new_outputs != 0)
-    {
         Serial.print("Current Controls: 0x");
         Serial.println(new_outputs, HEX);
     }
+
 }
 
 
@@ -428,6 +429,7 @@ void Mega_Handler_Class::init()
 
     BP32.setup(&onConnectedGamepad, &onDisconnectedGamepad);
     uni_bluetooth_enable_new_connections(bt_config.enabled);
+    
 
     Wire.begin(SDA_PIN, SCL_PIN);
 
@@ -441,9 +443,6 @@ void Mega_Handler_Class::init()
 
 void Mega_Handler_Class::update()
 {
-    Bluetooth_Config bt_config;
-    Preferences_Handler.getBluetoothConfig(bt_config);
-    uni_bluetooth_enable_new_connections(bt_config.enabled);
     update_controller();
 }
 
