@@ -44,7 +44,6 @@ File Web_Handler_Class::fsUpload;
 bool Web_Handler_Class::uploadSuccess = false;
 int64_t Web_Handler_Class::rebootTimer = -1;
 
-
 const String BT_MAPPING_OPTION = "<option value=\"{{OPTION_VALUE}}\" {{SELECTED}}>{{OPTION_TEXT}}</option>";
 const String BT_MAPPING_TR = "<tr><td>{{INPUT_BTN}}</td><td><select name=\"{{SELECT_NAME}}\" id=\"{{SELECT_NAME}}\">{{MAPPING_OPTIONS}}</select></td></tr>";
 
@@ -279,34 +278,38 @@ void Web_Handler_Class::handleSettings()
     }
     Preferences_Handler.saveBluetoothConfig(config);
     Preferences_Handler.saveSettings(settings);
-  }
 
+    handleReboot();
+  }
+  else
   {
-    File page = SPIFFS.open("/webpage/settings.html", "r");
-    if (page)
     {
-      page_string = page.readString();
-      page.close();
+      File page = SPIFFS.open("/webpage/settings.html", "r");
+      if (page)
+      {
+        page_string = page.readString();
+        page.close();
+      }
     }
-  }
 
-  {
-    Bluetooth_Config config;
-    Settings settings;
-    Preferences_Handler.getBluetoothConfig(config);
-    Preferences_Handler.getSettings(settings);
-    String mapping_string = "";
-    for (uint16_t i = 0U; i < BT_INP_MAX; i++)
     {
-      mapping_string += build_select_entry(i, config.mapping[i]);
+      Bluetooth_Config config;
+      Settings settings;
+      Preferences_Handler.getBluetoothConfig(config);
+      Preferences_Handler.getSettings(settings);
+      String mapping_string = "";
+      for (uint16_t i = 0U; i < BT_INP_MAX; i++)
+      {
+        mapping_string += build_select_entry(i, config.mapping[i]);
+      }
+      page_string.replace("{{MAPPINGS}}", mapping_string);
+      page_string.replace("{{BT_ENABLED}}", config.enabled ? "checked" : "");
+      page_string.replace("{{720_SELECTED}}", settings.bitstream == BITSTREAM_720P ? "selected" : "");
+      page_string.replace("{{1080_SELECTED}}", settings.bitstream == BITSTREAM_1080P ? "selected" : "");
     }
-    page_string.replace("{{MAPPINGS}}", mapping_string);
-    page_string.replace("{{BT_ENABLED}}", config.enabled ? "checked" : "");
-    page_string.replace("{{720_SELECTED}}", settings.bitstream == BITSTREAM_720P ? "selected" : "");
-    page_string.replace("{{1080_SELECTED}}", settings.bitstream == BITSTREAM_1080P ? "selected" : "");
-  }
 
-  _server.send(200, "text/html", page_string);
+    _server.send(200, "text/html", page_string);
+  }
 }
 
 void Web_Handler_Class::handleIndex()
