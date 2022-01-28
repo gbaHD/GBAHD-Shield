@@ -13,6 +13,7 @@
 #include <avr/interrupt.h>
 #include <stdint.h>
 #include <stdbool.h>
+#include <string.h>  //<- for memmove
 
 #include "pins.h"
 

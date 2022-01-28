@@ -56,21 +56,28 @@ void twi_flush(void) {
 
 ISR (TWI_vect)
 {
+    static uint8_t buff[2];
+    static uint8_t buff_bytes = 0;
     switch (TW_STATUS)
     {
     // Slave Receiver
     case TW_SR_SLA_ACK: //slave was addressed: prepare to receive data
         LED_PORT |= _BV(LED_RED_PIN);
         TWCR_ACK;
-        rx_bytes = 0;
+        buff_bytes = 0;
         break;
 
     case TW_SR_DATA_ACK: // Databyte received
-        if(rx_bytes < sizeof(rx_buff)) {
-            rx_buff[rx_bytes++]=TWDR;
+        if(buff_bytes < sizeof(buff)) {
+            buff[buff_bytes++]=TWDR;
             TWCR_ACK;
         } else {
             TWCR_NACK;  //too much data sent
+        }
+
+        if(buff_bytes == sizeof(buff)) {
+            rx_bytes = buff_bytes;
+            memmove(rx_buff, buff, sizeof(buff));
         }
         break;
         //Slave transmitter
