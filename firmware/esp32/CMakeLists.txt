@@ -5,6 +5,8 @@ cmake_minimum_required(VERSION 3.5)
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/external/bluepad32_template/components/bluepad32 DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/components)
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/external/bluepad32_template/components/bluepad32_arduino DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/components)
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/external/bluepad32_template/components/btstack DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/components)
+file(COPY_FILE ${CMAKE_CURRENT_SOURCE_DIR}/external/zwenergy/bitstream/default_720p.bit ${CMAKE_CURRENT_SOURCE_DIR}/data/720p.bit ONLY_IF_DIFFERENT)
+file(COPY_FILE ${CMAKE_CURRENT_SOURCE_DIR}/external/zwenergy/bitstream/default_1080p.bit ${CMAKE_CURRENT_SOURCE_DIR}/data/1080p.bit ONLY_IF_DIFFERENT)
 
 
 # See: https://gitlab.com/ricardoquesada/bluepad32/-/issues/9
@@ -18,3 +20,4 @@ add_compile_definitions(I2C_BUFFER_LENGTH=132)
 project(gbaHD)
 
 spiffs_create_partition_image(spiffs ${CMAKE_CURRENT_SOURCE_DIR}/data FLASH_IN_PROJECT)
+#littlefs_create_partition_image(littlefs ${CMAKE_CURRENT_SOURCE_DIR}/data FLASH_IN_PROJECT)
