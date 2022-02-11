@@ -28,11 +28,12 @@
 
 #include "bitstream_handler.h"
 #include <SD_MMC.h>
-#include <SPIFFS.h>
+#include <LittleFS.h>
 
 #include "preferences_handler.h"
+#include "log_handler.h"
 
-//#define DEV_BOARD
+#define DEV_BOARD
 
 /* pin define */
 #define XFPGA_CCLK_PIN 17
@@ -89,7 +90,7 @@ void Bitstream_Handler_Class::init(void) {
 bool Bitstream_Handler_Class::pushBitStream(File& file) {
   char byte_buff[1024];  
 
-  Serial.print("Loading FPGA ... ");
+  Log_Handler.print("Loading FPGA ... ");
   pinMode(XFPGA_DIN_PIN, OUTPUT);
 
   while(file.available()){
@@ -99,7 +100,7 @@ bool Bitstream_Handler_Class::pushBitStream(File& file) {
      }
   }
   
-  Serial.println("DONE!");
+  Log_Handler.println("DONE!");
   digitalWrite(XFPGA_CCLK_PIN, LOW); 
   
   file.close();
@@ -108,12 +109,12 @@ bool Bitstream_Handler_Class::pushBitStream(File& file) {
   // check the result
   if (0 == digitalRead(XFPGA_DONE_PIN)) 
   {
-    Serial.println("FPGA Configuration Failed");
+    Log_Handler.println("FPGA Configuration Failed");
     return false;
   }
   else 
   {
-    Serial.println("FPGA Configuration success");
+    Log_Handler.println("FPGA Configuration success");
     return true;
   }
 }
@@ -123,43 +124,43 @@ void Bitstream_Handler_Class::handle_sd_card(void)
   #ifndef DEV_BOARD
     if (SD_MMC.begin())
     {
-        Serial.println("SD Card available! Checking for update...");
+        Log_Handler.println("SD Card available! Checking for update...");
 
         if (SD_MMC.exists(BITSTREAM_SD_UPDATE_FILE))
         {
-            // if (SPIFFS.begin(true))
+            // if (LittleFS.begin(true))
             // {
-              Serial.println("Update available, copying to SPIFFS");
+              Log_Handler.println("Update available, copying to LittleFS");
 
               unsigned char buffer[CHUNK_SIZE];
               int bytes_read;
 
               File SD_File = SD_MMC.open(BITSTREAM_SD_UPDATE_FILE, "r");
-              File SPIFFS_File = SPIFFS.open(BITSTREAM_SPIFFS_PATH, "w+");
+              File LittleFS_File = LittleFS.open(BITSTREAM_SPIFFS_PATH, "w+");
 
               do
               {
-                  Serial.print(".");
+                  Log_Handler.print(".");
                   bytes_read = SD_File.read(buffer, CHUNK_SIZE);
-                  SPIFFS_File.write(buffer, CHUNK_SIZE);
+                  LittleFS_File.write(buffer, CHUNK_SIZE);
 
               } while (bytes_read > 0);
 
-              SPIFFS_File.flush();
+              LittleFS_File.flush();
 
               SD_File.close();
-              SPIFFS_File.close();
+              LittleFS_File.close();
 
-              Serial.println("Done!");
-              Serial.println("Renaming Update File.");
+              Log_Handler.println("Done!");
+              Log_Handler.println("Renaming Update File.");
 
               SD_MMC.rename(BITSTREAM_SD_UPDATE_FILE, BITSTREAM_SD_UPDATE_FILE_OLD);
 
-          //    SPIFFS.end();
+          //    LittleFS.end();
           // }
           // else
           // {
-          //   Serial.println("Error mounting SPIFFS. Please reflash using Serial flashing.");
+          //   Serial.println("Error mounting LittleFS. Please reflash using Serial flashing.");
           // }
         }
         SD_MMC.end();
@@ -175,9 +176,9 @@ void Bitstream_Handler_Class::handle_bit_stream(void)
   //       File file = SD_MMC.open(BITSTREAM_SD_HOTBOOT_FILE, "r");
   //       this->pushBitStream(file);
   //   }
-  //   else if ((SPIFFS.exists(BITSTREAM_SPIFFS_PATH)))
+  //   else if ((LittleFS.exists(BITSTREAM_SPIFFS_PATH)))
   //   {
-  //       File file = SPIFFS.open(BITSTREAM_SPIFFS_PATH, "r");
+  //       File file = LittleFS.open(BITSTREAM_SPIFFS_PATH, "r");
   //       this->pushBitStream(file);
   //   }
   //   else
@@ -202,10 +203,11 @@ void Bitstream_Handler_Class::handle_bit_stream(void)
     bitstream_path = BITSTREAM_SPIFFS_PATH;
   }
 
-  File file = SPIFFS.open(bitstream_path, "r");
+  File file = LittleFS.open(bitstream_path, "r");
   if (file)
   {
     this->pushBitStream(file);
   }
+  file.close();
 }
 

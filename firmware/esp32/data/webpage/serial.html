@@ -1,0 +1,35 @@
+<!doctype html>
+
+<head>
+    <title>gbaHD Web Serial</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="pico.min.css">
+    <meta name="viewport" content="width=device-width,initial-scale=0.8">
+    <script type="text/javascript">
+        var ws = new WebSocket("ws://%IP_ADDRESS%/serial");
+
+        ws.onmessage = function(evt) {
+            document.getElementById("serial").innerHTML += evt.data;
+            document.getElementById("serial").scrollTop = document.getElementById("serial").scrollHeight;
+        };
+    </script>
+</head>
+
+<body>
+    <main class="container">
+        <nav>
+            <ul>
+                <li><img src="/Logo.png"></li>
+            </ul>
+            <ul>
+                <li><a href="/settings.html" role="button" class="outline">Settings</a></li>
+                <li><a href="/serial.html" role="button">Serial</a></li>
+                <li><a href="/" role="button" class="outline">Firmware</a></li>
+            </ul>
+        </nav>
+        <h1>gba<sup>HD</sup> Web Serial</h1>
+        <code id="serial" style="width: 100%; overflow-y: scroll; height: 40vH">
+            Serial Started.<br> =============================<br>
+        </code>
+    </main>
+</body>

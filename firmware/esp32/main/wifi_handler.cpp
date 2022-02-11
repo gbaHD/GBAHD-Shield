@@ -33,6 +33,7 @@
 #include <cJSON.h>
 
 #include "wifi_handler.h"
+#include "log_handler.h"
 
 #define WIFI_SSID_SIZE    ( 32U )  // 32 length
 #define WIFI_PW_SIZE      ( 64U )     // 64 length
@@ -42,7 +43,7 @@
 void Wifi_Handler_Class::getSTACredentials(Wifi_Config& wifi_config)
 {
     Preferences_Handler.getWifiCredentials(wifi_config);
-    Serial.println(wifi_config.ssid);
+    Log_Handler.println(wifi_config.ssid);
 
     if (SD_MMC.begin())
     {
@@ -52,7 +53,7 @@ void Wifi_Handler_Class::getSTACredentials(Wifi_Config& wifi_config)
 
         if (wifi_creds)
         {
-            Serial.println("Found creds file...");
+            Log_Handler.println("Found creds file...");
             if (wifi_creds.size() < 1024U)
             {
                 cJSON *creds_json = NULL;
@@ -62,7 +63,7 @@ void Wifi_Handler_Class::getSTACredentials(Wifi_Config& wifi_config)
                     wifi_creds.readBytes(buffer, (sizeof(buffer)/sizeof(buffer[0])));
                     
                     creds_json = cJSON_Parse(buffer);
-                    Serial.println("Loaded new creds...");
+                    Log_Handler.println("Loaded new creds...");
                 }
 
                 if (NULL != creds_json)
@@ -72,7 +73,7 @@ void Wifi_Handler_Class::getSTACredentials(Wifi_Config& wifi_config)
                         if (cJSON_IsString(ssid) && (ssid->valuestring != NULL))
                         {
                             new_wifi_config.ssid = ssid->valuestring;
-                            Serial.println("Creds File SSID: " + new_wifi_config.ssid);
+                            Log_Handler.println("Creds File SSID: " + new_wifi_config.ssid);
                         }
                     }
                     {
@@ -87,18 +88,18 @@ void Wifi_Handler_Class::getSTACredentials(Wifi_Config& wifi_config)
                 }
                 else
                 {
-                    Serial.println("WiFi Creds JSON was invalid");
+                    Log_Handler.println("WiFi Creds JSON was invalid");
                 }
             }
             else
             {
-                Serial.println("WiFi Creds JSON too big");
+                Log_Handler.println("WiFi Creds JSON too big");
             }
             wifi_creds.close();
         }
         else
         {
-            Serial.println("Didn't find any Wifi Creds file on SD-Card. Skipping Update.");
+            Log_Handler.println("Didn't find any Wifi Creds file on SD-Card. Skipping Update.");
         }
 
         if ((wifi_config.ssid != new_wifi_config.ssid) || (wifi_config.password != new_wifi_config.password))
@@ -110,17 +111,17 @@ void Wifi_Handler_Class::getSTACredentials(Wifi_Config& wifi_config)
             }
             else
             {
-                Serial.println("Error: Entered SSID or Password is too long and is potentially invalid.");
+                Log_Handler.println("Error: Entered SSID or Password is too long and is potentially invalid.");
             }
         }
     }
     else
     {
-        Serial.println("Error: SD_MMC not available. Skip getting new Credentials...");
+        Log_Handler.println("Error: SD_MMC not available. Skip getting new Credentials...");
     }
 
+    
 }
-
 
 
 void Wifi_Handler_Class::connectWifiSTA(Wifi_Config& wifi_config)
@@ -150,18 +151,18 @@ void Wifi_Handler_Class::update()
         {
             case WL_IDLE_STATUS:
             case WL_CONNECTED:
-                Serial.println("Connection established.");
-                Serial.print("IP:\t");
-                Serial.println(WiFi.localIP());
+                Log_Handler.println("Connection established.");
+                Log_Handler.print("IP:\t");
+                Log_Handler.println(WiFi.localIP());
                 WiFi.setTxPower(WIFI_POWER_19_5dBm);
                 //WiFi.setSleep(WIFI_PS_NONE);
-                Serial.println(WiFi.getSleep());
+                Log_Handler.println(WiFi.getSleep());
                 
                 break;
             case WL_NO_SSID_AVAIL:
             case WL_CONNECT_FAILED:
             case WL_CONNECTION_LOST:
-                Serial.println("Connection not available.");
+                Log_Handler.println("Connection not available.");
                 break;
             case WL_SCAN_COMPLETED:
             case WL_DISCONNECTED:

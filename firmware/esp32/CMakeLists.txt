@@ -19,5 +19,5 @@ add_compile_definitions(I2C_BUFFER_LENGTH=132)
 
 project(gbaHD)
 
-spiffs_create_partition_image(spiffs ${CMAKE_CURRENT_SOURCE_DIR}/data FLASH_IN_PROJECT)
-#littlefs_create_partition_image(littlefs ${CMAKE_CURRENT_SOURCE_DIR}/data FLASH_IN_PROJECT)
+#spiffs_create_partition_image(spiffs ${CMAKE_CURRENT_SOURCE_DIR}/data FLASH_IN_PROJECT)
+littlefs_create_partition_image(spiffs ${CMAKE_CURRENT_SOURCE_DIR}/data FLASH_IN_PROJECT)

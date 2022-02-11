@@ -1,0 +1,57 @@
+<!doctype html>
+
+<head>
+    <title>gbaHD OTA Update</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="pico.min.css">
+    <meta name="viewport" content="width=device-width,initial-scale=0.8">
+    <script type="text/javascript">
+        var ws;
+
+        function updateProgress(evt) {
+            document.getElementById("updateProgress").value = evt.data;
+            document.getElementById("progressText").innerHTML = evt.data + "%%";
+            if (document.getElementById("updateProgress").value == 100) {
+                document.getElementById("rebootButton").hidden = false;
+                document.getElementById("progressText").innerHTML = "Done!";
+            }
+        };
+
+        function startOtaUpdate() {
+            document.getElementById("updateMonitor").hidden = false;
+            document.getElementById("updateButton").hidden = true;
+            ws = new WebSocket("ws://%IP_ADDRESS%/ota");
+            ws.onmessage = updateProgress;
+        }
+    </script>
+</head>
+
+<body>
+    <main class="container">
+        <nav>
+            <ul>
+                <li><img src="/Logo.png"></li>
+            </ul>
+            <ul>
+                <li><a href="/settings.html" role="button" class="outline">Settings</a></li>
+                <li><a href="/serial.html" role="button" class="outline">Serial</a></li>
+                <li><a href="/" role="button">Firmware</a></li>
+            </ul>
+        </nav>
+        <h1>gba<sup>HD</sup> OTA Update</h1>
+        <article>
+            <p id="information">
+                <h3>Version %VERSION%</h3>
+                <code style="width: 100%%" id="changelog">%CHANGELOG%</code>
+            </p>
+            <p id="updateMonitor" hidden=true>
+                <progress id="updateProgress" value="0" max="100"></progress>
+                <code style="text-align:center; width:100%%;" id="progressText">Starting Update...</code>
+            </p>
+            <footer>
+                <button id="updateButton" onclick="startOtaUpdate()">Update</button>
+                <div id="rebootButton" hidden=true><a href="/reboot" role="button">Reboot</a></div>
+            </footer>
+        </article>
+    </main>
+</body>

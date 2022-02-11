@@ -28,18 +28,21 @@
 
 #include "web_handler.h"
 #include <Arduino.h>
-#include <SPIFFS.h>
+#include <LittleFS.h>
 #include <Update.h>
 #include <ESPmDNS.h>
 #include <Preferences.h>
 #include <esp_ota_ops.h>
+#include <WiFi.h>
 
 #include "mega_handler.h"
 #include "bitstream_handler.h"
 #include "preferences_handler.h"
+#include "log_handler.h"
+#include "ota_handler.h"
 
 Web_Handler_Class Web_Handler;
-WebServer Web_Handler_Class::_server(80);
+AsyncWebServer Web_Handler_Class::_Aserver(80);
 File Web_Handler_Class::fsUpload;
 bool Web_Handler_Class::uploadSuccess = false;
 int64_t Web_Handler_Class::rebootTimer = -1;
@@ -64,16 +67,12 @@ const String INPUT_HTML_MAP[BT_INP_MAX] = {
     HTML_SELECT,
     HTML_SYSTEM};
 
-void Web_Handler_Class::_handle404()
-{
-  _server.send(404, "text/plain", "Not found.");
-}
 
-void Web_Handler_Class::_sendOK()
-{
-  _server.send(200);
-}
 
+void Web_Handler_Class::_handle404(AsyncWebServerRequest *request)
+{
+  request->send(404, "text/plain", "Not found.");
+}
 
 String Web_Handler_Class::build_option(uint16_t value, uint16_t mappedValue, String text)
 {
@@ -114,7 +113,7 @@ String Web_Handler_Class::build_update_done(bool success)
   String mega_version = ""; 
   esp_app_desc_t app_desc;
   {
-    File page = SPIFFS.open("/webpage/update.html", "r");
+    File page = LittleFS.open("/webpage/update.html", "r");
     if (page)
     {
       page_string = page.readString();
@@ -133,95 +132,79 @@ String Web_Handler_Class::build_update_done(bool success)
   return page_string;
 }
 
-void Web_Handler_Class::handleReboot()
+void Web_Handler_Class::handleReboot(AsyncWebServerRequest *request)
 {
-  _server.sendHeader("Location", "/");
-  _server.send(303);
+  request->redirect("/");
   rebootTimer = (esp_timer_get_time() / 1000) + 4000;
-  Serial.println("Scheduled Reboot");
+  Log_Handler.println("Scheduled Reboot");
 }
 
-void Web_Handler_Class::handleUploadDone()
+void Web_Handler_Class::handleUploadDone(AsyncWebServerRequest *request)
 {
-  _server.send(200, "text/html", build_update_done(uploadSuccess));
+  request->send(200, "text/html", build_update_done(uploadSuccess));
 }
 
-void Web_Handler_Class::handleSPIFFSFileUpload()
+void Web_Handler_Class::handleLittleFSFileUpload(AsyncWebServerRequest *request, const String& filename, size_t index, uint8_t *data, size_t len, bool final)
 {
   String path = "";
 
   uploadSuccess = false;
 
-  if (_server.uri() == "/upgrade/bitstream")
+  if (request->url() == "/upgrade/bitstream")
   {
     path = BITSTREAM_SPIFFS_PATH;
   }
-  else if (_server.uri() == "/upgrade/atmega")
+  else if (request->url() == "/upgrade/atmega")
   {
     path = ATMEGA_SPIFFS_PATH;
   }
   
   if (path.length() > 0)
   {
-    HTTPUpload &upload = _server.upload();
-    Serial.println(upload.status);
-
-    if (upload.status == UPLOAD_FILE_START)
+    if (index == 0)
     {
-      fsUpload = SPIFFS.open(path, "w");
+      fsUpload = LittleFS.open(path, "w");
       if (!fsUpload)
       {
-        Serial.println("Cannot open " + path + " in SPIFFS");
+        Log_Handler.println("Cannot open " + path + " in LittleFS");
       }
     }
-    else if (upload.status == UPLOAD_FILE_WRITE)
+
+    if (fsUpload)
     {
-      if (fsUpload)
-      {
-        fsUpload.write(upload.buf, upload.currentSize);
-      }
+      fsUpload.write(data, len);
     }
-    else if (UPLOAD_FILE_END == upload.status)
+
+    if (final)
     {
-      if (fsUpload)
+      fsUpload.close();
+      uploadSuccess = true;
+      if (path == ATMEGA_SPIFFS_PATH)
       {
-        fsUpload.close();
-        uploadSuccess = true;
-        if (path == ATMEGA_SPIFFS_PATH)
-        {
-          Mega_Handler.trigger_external_update(_server.arg("force") == "on");
-        }
-      }
-      else
-      {
-        Serial.println("FAILED: File already closed.");
+        Mega_Handler.trigger_external_update(request->arg("force") == "on");
       }
     }
   }
-  else
-  {
-    Serial.println("FAILED: Path empty.");
-  }
+
 }
 
 
-void Web_Handler_Class::handlePartitionUpload()
+void Web_Handler_Class::handlePartitionUpload(AsyncWebServerRequest *request, const String& filename, size_t index, uint8_t *data, size_t len, bool final)
 {
   int partition = -1;
 
   uploadSuccess = false;
 
-  if (_server.uri() == "/upgrade/esp32")
+  if (request->url() == "/upgrade/esp32")
   {
     partition = U_FLASH;
   }
-  else if (_server.uri() == "/upgrade/spiffs")
+  else if (request->url() == "/upgrade/LittleFS")
   {
     partition = U_SPIFFS;
   }
 
-  HTTPUpload &upload = _server.upload();
-  if (upload.status == UPLOAD_FILE_START)
+  if (index == 0)
   {
     // Open the file to write.
     if (!Update.begin(UPDATE_SIZE_UNKNOWN, partition))
@@ -229,19 +212,17 @@ void Web_Handler_Class::handlePartitionUpload()
       Update.printError(Serial);
     }
   }
-  else if (upload.status == UPLOAD_FILE_WRITE)
+
+  if (Update.write(data, len) != len)
   {
-    /* flashing firmware to ESP*/
-    if (Update.write(upload.buf, upload.currentSize) != upload.currentSize)
-    {
-      Update.printError(Serial);
-    }
+    Update.printError(Serial);
   }
-  else if (UPLOAD_FILE_END == upload.status)
+
+  if (final)
   {
     if (Update.end(true))
     { //true to set the size to the current progress
-      Serial.printf("Update Success: %u\n", upload.totalSize);
+      Log_Handler.println("Update Success");
       uploadSuccess = true;
     }
     else
@@ -253,38 +234,38 @@ void Web_Handler_Class::handlePartitionUpload()
 
 
 
-void Web_Handler_Class::handleSettings()
+void Web_Handler_Class::handleSettings(AsyncWebServerRequest *request)
 {
   String page_string = "";
 
-  if (_server.method() == HTTP_POST)
+  if (request->method() == HTTP_POST)
   {
     Bluetooth_Config config = {};
     Settings settings = {};
-    for (uint8_t i = 0U; i < _server.args(); i++)
+    for (uint8_t i = 0U; i < request->args(); i++)
     {
-      if (_server.argName(i) == "bluetooth_enable")
+      if (request->argName(i) == "bluetooth_enable")
       {
-        config.enabled = (_server.arg(i) == "on");
+        config.enabled = (request->arg(i) == "on");
       }
-      else if (_server.argName(i) == "bitstream")
+      else if (request->argName(i) == "bitstream")
       {
-        settings.bitstream = _server.arg(i).toInt();
+        settings.bitstream = request->arg(i).toInt();
       }
       else
       {
-        config.mapping[_server.argName(i).toInt()] = _server.arg(i).toInt();
+        config.mapping[request->argName(i).toInt()] = request->arg(i).toInt();
       }
     }
     Preferences_Handler.saveBluetoothConfig(config);
     Preferences_Handler.saveSettings(settings);
 
-    handleReboot();
+    handleReboot(request);
   }
   else
   {
     {
-      File page = SPIFFS.open("/webpage/settings.html", "r");
+      File page = LittleFS.open("/webpage/settings.html", "r");
       if (page)
       {
         page_string = page.readString();
@@ -308,15 +289,15 @@ void Web_Handler_Class::handleSettings()
       page_string.replace("{{1080_SELECTED}}", settings.bitstream == BITSTREAM_1080P ? "selected" : "");
     }
 
-    _server.send(200, "text/html", page_string);
+    request->send(200, "text/html", page_string);
   }
 }
 
-void Web_Handler_Class::handleIndex()
+void Web_Handler_Class::handleIndex(AsyncWebServerRequest *request)
 {
   String page_string = "";
   {
-    File page = SPIFFS.open("/webpage/index.html", "r");
+    File page = LittleFS.open("/webpage/index.html", "r");
     if (page)
     {
       page_string = page.readString();
@@ -325,7 +306,43 @@ void Web_Handler_Class::handleIndex()
   }
   page_string.replace("{{MESSAGE}}", "");
 
-  _server.send(200, "text/html", page_string);
+  request->send(200, "text/html", page_string);
+}
+
+void Web_Handler_Class::addWebSocket(AsyncWebSocket* handler)
+{
+  _Aserver.addHandler(handler);
+}
+
+String Web_Handler_Class::serial_ip(const String& var)
+{
+  if (var == "IP_ADDRESS")
+  {
+    return WiFi.localIP().toString();
+  }
+  return "";
+}
+
+String Web_Handler_Class::ota_info(const String& var)
+{
+  if (var == "IP_ADDRESS")
+  {
+    return WiFi.localIP().toString();
+  }
+  else if (var == "CHANGELOG")
+  {
+    Update_Info info;
+    OTA_Handler.get_update_info(info);
+    info.changelog.replace("\r\n", "<br>");
+    return info.changelog;
+  }
+  else if (var == "VERSION")
+  {
+    Update_Info info;
+    OTA_Handler.get_update_info(info);
+    return info.version;
+  }
+  return "";
 }
 
 
@@ -333,36 +350,39 @@ void Web_Handler_Class::init(void)
 {
 
   // Handle Bitstream upload.
-  _server.on("/upgrade/bitstream",  HTTP_POST, handleUploadDone, handleSPIFFSFileUpload);
+  _Aserver.on("/upgrade/bitstream",  HTTP_POST, handleUploadDone, handleLittleFSFileUpload);
   // Handle ATMega upload.
-  _server.on("/upgrade/atmega",     HTTP_POST, handleUploadDone, handleSPIFFSFileUpload);
+  _Aserver.on("/upgrade/atmega",     HTTP_POST, handleUploadDone, handleLittleFSFileUpload);
 
-  // Handle Bitstream upload.
-  _server.on("/upgrade/esp32", HTTP_POST, handleUploadDone, handlePartitionUpload);
+  // // Handle Bitstream upload.
+  _Aserver.on("/upgrade/esp32", HTTP_POST, handleUploadDone, handlePartitionUpload);
 
-  // Handle SPIFFS upload.
-  _server.on("/upgrade/spiffs", HTTP_POST, handleUploadDone, handlePartitionUpload);
+  // // Handle LittleFS upload.
+  _Aserver.on("/upgrade/LittleFS", HTTP_POST, handleUploadDone, handlePartitionUpload);
 
-  _server.on("/reboot", HTTP_GET, handleReboot);
+  _Aserver.on("/reboot", HTTP_GET, handleReboot);
 
   // Handle bt config
-  _server.on("/settings.html", HTTP_GET, handleSettings);
-  _server.on("/settings.html", HTTP_POST, handleSettings);
+  _Aserver.on("/settings.html", HTTP_GET, handleSettings);
+  _Aserver.on("/settings.html", HTTP_POST, handleSettings);
 
-  _server.on("/", HTTP_GET, handleIndex);
-  _server.serveStatic("/pico.min.css", SPIFFS, "/webpage/pico.min.css");
-  _server.serveStatic("/Logo.png", SPIFFS, "/webpage/Logo.png");
+  _Aserver.on("/", HTTP_GET, handleIndex);
+  _Aserver.serveStatic("/pico.min.css", LittleFS, "/webpage/pico.min.css");
+  _Aserver.serveStatic("/Logo.png", LittleFS, "/webpage/Logo.png");
+  _Aserver.serveStatic("/serial.html", LittleFS, "/webpage/serial.html").setTemplateProcessor(serial_ip);
+  _Aserver.serveStatic("/ota.html", LittleFS, "/webpage/ota.html").setTemplateProcessor(ota_info);
 
   // Handle everything else.
-  _server.onNotFound(_handle404);
+  _Aserver.onNotFound(_handle404);
 
   // Set up DNS.
   if (!MDNS.begin("gbahd"))
   {
-    Serial.println("Error setting up DNS");
+    Log_Handler.println("Error setting up DNS");
   }
 
-  _server.begin();
+  _Aserver.begin();
+
 }
 
 void Web_Handler_Class::run(void)
@@ -372,5 +392,6 @@ void Web_Handler_Class::run(void)
     ESP.restart();
   }
 
-  _server.handleClient();
+  
+
 }
