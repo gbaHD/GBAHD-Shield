@@ -33,7 +33,21 @@ jobs:
           filters: |
             esp32:
             - 'firmware/esp32/*'
+            atmega:
+            - 'firmware/avr/*'
       
+      - name: ATMega - Install GCC
+        run: |
+          apt-get -y install make srecord xz-utils
+          curl 'https://downloads.arduino.cc/arduino-1.8.19-linux64.tar.xz' -o /tmp/arduino.tar.xz
+          tar xf /tmp/arduino.tar.xz /tmp/arduino/
+          export PATH=/tmp/arduino:$PATH
+        shell: bash
+      - name: ATMega - Build
+        run: |
+          cd firmware/avr && make 
+          tar xf /tmp/arduino.tar.xz /tmp/arduino/all
+        shell: bash
       - name: ESP32
         # You may pin to the exact commit or the version.
         # uses: espressif/esp-idf-ci-action@d69494cb0e7f6e06d27addca596aa4519b0b4e7f
