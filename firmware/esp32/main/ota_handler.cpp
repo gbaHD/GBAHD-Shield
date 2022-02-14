@@ -32,6 +32,7 @@
 #include <WiFi.h>
 #include <Update.h>
 #include <cJSON.h>
+#include <uni_bluetooth.h>
 
 #include "bitstream_handler.h"
 #include "log_handler.h"
@@ -86,6 +87,7 @@ void OTA_Handler_Class::refresh_update_info(Update_Info& info, const String& url
         {
             uint8_t update_idx = 0U;
             info.changelog = cJSON_GetObjectItem(release_json, "body")->valuestring;
+            info.changelog.replace("\n", "<br>");
             info.version = cJSON_GetObjectItem(release_json, "name")->valuestring;
 
             cJSON* assets = cJSON_GetObjectItem(release_json, "assets");
@@ -120,7 +122,7 @@ void OTA_Handler_Class::refresh_update_info(Update_Info& info, const String& url
                         info.urls[update_idx].url = url;
                         update_idx++;
                     }
-                    else if (url.indexOf("1080.bit") != -1)
+                    else if (url.indexOf("1080") != -1)
                     {
                         Log_Handler.println("1080P URL: " + url);
                         info.urls[update_idx].ota_part = OTA_BS_1080;
@@ -128,7 +130,7 @@ void OTA_Handler_Class::refresh_update_info(Update_Info& info, const String& url
                         update_idx++;
                     }
 
-                    info.changelog += url;
+                    //info.changelog += url;
                 }
             }
             for (;update_idx < (sizeof(info.urls)/sizeof(info.urls[0])); update_idx++)
@@ -136,7 +138,6 @@ void OTA_Handler_Class::refresh_update_info(Update_Info& info, const String& url
                 info.urls[update_idx].ota_part = OTA_NONE;
             }
         }
-
 
         client.end();
     }
@@ -208,27 +209,12 @@ bool OTA_Handler_Class::initialize_ota(OTA_Part_Mapping& part)
     {
         if (!stream)
         {
-            String url = "";
-            // switch (part)
-            // {
-            //     case OTA_BS_720:
-            //         url = OTA_BS_720_URL;
-            //         break;
-            //     case OTA_BS_1080:
-            //         url = OTA_BS_1080_URL;
-            //         break;
-            //     case OTA_ESP:
-            //     case OTA_SPIFFS:
-            //     case OTA_ATMEGA:
-            //     default:
-            //         url = "";
-            //         break;
-            // }
             Log_Handler.println("Trying to get url " + part.url);
 
             http_client.setFollowRedirects(HTTPC_FORCE_FOLLOW_REDIRECTS);
             http_client.setRedirectLimit(10);
             http_client.setReuse(true);
+            http_client.setTimeout(10000);
 
             http_client.begin(part.url);
             int returncode = http_client.GET();
@@ -266,7 +252,7 @@ bool OTA_Handler_Class::initialize_ota(OTA_Part_Mapping& part)
             }
             else
             {
-                Log_Handler.println("Failed to get url " + url + " Error: " + returncode);
+                Log_Handler.println("Failed to get url " + part.url + " Error: " + returncode);
                 retval = false;
                 ota_state = OTA_STATE_NONE;
             }
@@ -282,7 +268,6 @@ void OTA_Handler_Class::update(void)
         Log_Handler.println("Queue IDX " + String(ota_queue_idx) + " is " + String(current_update->urls[ota_queue_idx].ota_part));
 
         if (current_update->urls[ota_queue_idx].ota_part != OTA_NONE)
-//        if (ota_queue[ota_queue_idx] != OTA_NONE)
         {
             current_part = current_update->urls[ota_queue_idx].ota_part;
             current_part_mapping = &current_update->urls[ota_queue_idx];
@@ -290,7 +275,6 @@ void OTA_Handler_Class::update(void)
             {
                 ota_state = OTA_STATE_RUNNING;
                 Log_Handler.println("Getting " + current_part_mapping->url);
-                //ota_queue[ota_queue_idx] = OTA_NONE;
             }
         }
     }
@@ -302,7 +286,7 @@ void OTA_Handler_Class::update(void)
         // read all data from server
         while (http_client.connected() 
                 && (remainingSize > 0 || remainingSize == -1) 
-                && stream->available())
+                && (stream->available()))
         {
             int readCount = stream->read(buffer, sizeof(buffer)/sizeof(buffer[0]));
             if (readCount > 0)
@@ -314,9 +298,10 @@ void OTA_Handler_Class::update(void)
                 write_to_current_output(buffer, readCount, (remainingSize == 0));
             }
             
-            Log_Handler.println("Read\t" + String(remainingSize) + "\t/ " + String(totalSize));
-            
+            Log_Handler.println("Read\t" + String(remainingSize) + "\t/ " + String(totalSize));            
         }
+        Log_Handler.printf("State %d, Wifi: %d, http_client: %d Stream: %d\n", ota_state, WiFi.isConnected(), http_client.connected(), stream->available());
+
         if (remainingSize == 0)
         {
             http_client.setReuse(true);
@@ -343,10 +328,8 @@ void OTA_Handler_Class::update(void)
 
 void OTA_Handler_Class::full_update(void)
 {
-    ota_queue[0] = OTA_ESP;
-    ota_queue[1] = OTA_SPIFFS;
-    ota_queue[2] = OTA_NONE;
-    ota_queue[3] = OTA_NONE;
+    current_update = &release_update_info;
+    uni_bluetooth_enable_new_connections_safe(false);
     ota_queue_length = 2U;
     ota_queue_idx = 0U;
     ota_state = OTA_STATE_QUEUED;
@@ -355,14 +338,11 @@ void OTA_Handler_Class::full_update(void)
 void OTA_Handler_Class::update_latest_BS(void)
 {
     current_update = &bs_update_info;
-    ota_queue[0] = OTA_BS_720;
-    ota_queue[1] = OTA_BS_1080;
-    ota_queue[2] = OTA_NONE;
-    ota_queue[3] = OTA_NONE;
+    uni_bluetooth_enable_new_connections_safe(false);
     ota_queue_length = 2U;
     ota_queue_idx = 0U;
     ota_state = OTA_STATE_QUEUED;
-    Log_Handler.println("Schedulung BS Updates.");
+    Log_Handler.println("Scheduling BS Updates.");
 }
 
 void OTA_Handler_Class::run(void)
@@ -416,12 +396,9 @@ void OTA_Handler_Class::run(void)
 
 void OTA_Handler_Class::init(void)
 {
-    ota_queue[0] = OTA_NONE;
-    ota_queue[1] = OTA_NONE;
-    ota_queue[2] = OTA_NONE;
-    ota_queue[3] = OTA_NONE;
     ws = new AsyncWebSocket("/ota");
     ws->onEvent(onWsEvent);    
     Web_Handler.addWebSocket(ws);
     ws_client = nullptr;    
+    
 }
