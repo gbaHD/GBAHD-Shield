@@ -38,10 +38,10 @@ jobs:
       
       - name: ATMega - Install GCC
         run: |
-          apt-get -y install make srecord xz-utils
+          sudo apt-get -y install make srecord xz-utils
           curl 'https://downloads.arduino.cc/arduino-1.8.19-linux64.tar.xz' -o /tmp/arduino.tar.xz
-          tar xf /tmp/arduino.tar.xz /tmp/arduino/
-          export PATH=/tmp/arduino:$PATH
+          tar xf /tmp/arduino.tar.xz -C /tmp/
+          export PATH=/tmp/arduino-1.8.19/hardware/tools/avr/bin:$PATH
         shell: bash
       - name: ATMega - Build
         run: |
