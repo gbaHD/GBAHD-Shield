@@ -61,6 +61,13 @@ jobs:
         with:
           # Relative path under $GITHUB_WORKSPACE to place the repository
           path: firmware/esp32
+      - name: Prepare Release
+        run: |
+          mkdir /tmp/release
+          cp firmware/esp32/build/gbaHD.bin /tmp/release/gbaHD-esp32.bin
+          cp firmware/esp32/build/spiffs.bin /tmp/release/gbaHD-spiffs.bin
+          cp firmware/avr/gbaHD-avr.bin /tmp/release/gbaHD-avr.bin
+        shell: bash
           
       - uses: marvinpinto/action-automatic-releases@v1.2.1
         # uses: marvinpinto/action-automatic-releases@919008cf3f741b179569b7a6fb4d8860689ab7f0
@@ -73,6 +80,5 @@ jobs:
           prerelease: true
           # Assets to upload to the release
           files: |
-            firmware/esp32/build/**/*.bin
-            firmware/avr/gbaHD-avr.bin
+            /tmp/release/gbAHD-*.bin
         if: steps.changes.outputs.changed == 'true'
