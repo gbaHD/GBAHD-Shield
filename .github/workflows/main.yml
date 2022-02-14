@@ -31,9 +31,8 @@ jobs:
         id: changes
         with:
           filters: |
-            esp32:
+            changed:
             - 'firmware/esp32/*'
-            atmega:
             - 'firmware/avr/*'
       
       - name: ATMega - Install GCC
@@ -45,10 +44,13 @@ jobs:
       - name: ATMega - Build
         run: |
           export PATH=/tmp/arduino-1.8.19/hardware/tools/avr/bin:$PATH
-          cd firmware/avr && make 
-          tar xf /tmp/arduino.tar.xz /tmp/arduino/all
+          cd firmware/avr && make
+          cp firmware/avr/gbaHD-avr.bin firmware/esp32/data/atmega.bin
+        # git config --global user.name 'GitHub Action'
+        # git config --global user.email 'action@users.noreply.github.com'
+        # git commit firmware/esp32/data/atmega.bin -m "Update atmega.bin" && git push
         shell: bash
-      - name: ESP32
+      - name: ESP32 Build
         # You may pin to the exact commit or the version.
         # uses: espressif/esp-idf-ci-action@d69494cb0e7f6e06d27addca596aa4519b0b4e7f
         uses: espressif/esp-idf-ci-action@release-v4.4
@@ -68,4 +70,5 @@ jobs:
           # Assets to upload to the release
           files: |
             firmware/esp32/build/**/*.bin
-        if: steps.changes.outputs.esp32 == 'true'
+            firmware/avr/gbaHD-avr.bin
+        if: steps.changes.outputs.changed == 'true'
