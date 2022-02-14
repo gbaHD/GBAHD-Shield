@@ -19,3 +19,6 @@
 [submodule "firmware/esp32/components/esp_littlefs"]
 	path = firmware/esp32/components/esp_littlefs
 	url = https://github.com/joltwallet/esp_littlefs
+[submodule "firmware/esp32/external/bluepad32"]
+	path = firmware/esp32/external/bluepad32
+	url = https://gitlab.com/ricardoquesada/bluepad32.git

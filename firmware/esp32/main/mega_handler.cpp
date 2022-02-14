@@ -429,7 +429,7 @@ void Mega_Handler_Class::init()
     Preferences_Handler.getBluetoothConfig(bt_config);
 
     BP32.setup(&onConnectedGamepad, &onDisconnectedGamepad);
-    uni_bluetooth_enable_new_connections(bt_config.enabled);
+    uni_bluetooth_enable_new_connections_safe(bt_config.enabled);
     
 
     Wire.begin(SDA_PIN, SCL_PIN);
