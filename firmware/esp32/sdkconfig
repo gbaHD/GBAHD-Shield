@@ -200,7 +200,7 @@ CONFIG_ARDUINO_SELECTIVE_SD=y
 CONFIG_ARDUINO_SELECTIVE_SD_MMC=y
 CONFIG_ARDUINO_SELECTIVE_SimpleBLE=y
 CONFIG_ARDUINO_SELECTIVE_SPI=y
-CONFIG_ARDUINO_SELECTIVE_SPIFFS=y
+# CONFIG_ARDUINO_SELECTIVE_SPIFFS is not set
 CONFIG_ARDUINO_SELECTIVE_Ticker=y
 CONFIG_ARDUINO_SELECTIVE_Update=y
 # CONFIG_ARDUINO_SELECTIVE_WebServer is not set
@@ -208,16 +208,6 @@ CONFIG_ARDUINO_SELECTIVE_WiFi=y
 CONFIG_ARDUINO_SELECTIVE_WiFiClientSecure=y
 # CONFIG_ARDUINO_SELECTIVE_WiFiProv is not set
 CONFIG_ARDUINO_SELECTIVE_Wire=y
-# end of Arduino Configuration
-
-#
-# Arduino Configuration
-#
-
-#
-# Debug Log Configuration
-#
-# end of Debug Log Configuration
 # end of Arduino Configuration
 
 #
@@ -400,6 +390,13 @@ CONFIG_SPI_SLAVE_ISR_IN_IRAM=y
 #
 # CONFIG_GPIO_ESP32_SUPPORT_SWITCH_SLP_PULL is not set
 # end of GPIO Configuration
+
+#
+# GDMA Configuration
+#
+# CONFIG_GDMA_CTRL_FUNC_IN_IRAM is not set
+# CONFIG_GDMA_ISR_IRAM_SAFE is not set
+# end of GDMA Configuration
 # end of Driver configurations
 
 #
@@ -1032,6 +1029,15 @@ CONFIG_MBEDTLS_DYNAMIC_BUFFER=y
 # CONFIG_MBEDTLS_DYNAMIC_FREE_PEER_CERT is not set
 # CONFIG_MBEDTLS_DYNAMIC_FREE_CONFIG_DATA is not set
 # CONFIG_MBEDTLS_DEBUG is not set
+
+#
+# mbedTLS v2.28.x related
+#
+# CONFIG_MBEDTLS_SSL_VARIABLE_BUFFER_LENGTH is not set
+# CONFIG_MBEDTLS_X509_TRUSTED_CERT_CALLBACK is not set
+# CONFIG_MBEDTLS_SSL_CONTEXT_SERIALIZATION is not set
+CONFIG_MBEDTLS_SSL_KEEP_PEER_CERTIFICATE=y
+# end of mbedTLS v2.28.x related
 
 #
 # Certificate Bundle
