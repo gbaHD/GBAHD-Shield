@@ -18,9 +18,11 @@ WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
 
 set(ENV{IDF_PATH} ${REAL_IDF_PATH})
 
-file(COPY_FILE ${CMAKE_CURRENT_SOURCE_DIR}/external/zwenergy/bitstream/default_720p.bit ${CMAKE_CURRENT_SOURCE_DIR}/data/720p.bit ONLY_IF_DIFFERENT)
-file(COPY_FILE ${CMAKE_CURRENT_SOURCE_DIR}/external/zwenergy/bitstream/default_1080p.bit ${CMAKE_CURRENT_SOURCE_DIR}/data/1080p.bit ONLY_IF_DIFFERENT)
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/external/zwenergy/bitstream/default_720p.bit DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/data/)
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/external/zwenergy/bitstream/default_1080p.bit DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/data/)
 
+file(RENAME ${CMAKE_CURRENT_SOURCE_DIR}/data/default_720p.bit ${CMAKE_CURRENT_SOURCE_DIR}/data/720p.bit)
+file(RENAME ${CMAKE_CURRENT_SOURCE_DIR}/data/default_1080p.bit ${CMAKE_CURRENT_SOURCE_DIR}/data/1080p.bit)
 
 # See: https://gitlab.com/ricardoquesada/bluepad32/-/issues/9
 set(ENV{BLUEPAD32_ARDUINO} TRUE)
