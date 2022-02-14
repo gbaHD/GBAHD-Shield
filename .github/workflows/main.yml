@@ -80,5 +80,5 @@ jobs:
           prerelease: true
           # Assets to upload to the release
           files: |
-            /tmp/release/gbAHD-*.bin
+            /tmp/release/*.bin
         if: steps.changes.outputs.changed == 'true'
