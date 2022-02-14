@@ -135,6 +135,10 @@ void Wifi_Handler_Class::init()
 
     WiFi.setHostname("gbaHD");
 
+    WiFi.setTxPower(WIFI_POWER_19_5dBm);
+
+    //WiFi.setSleep(WIFI_PS_NONE);
+
     getSTACredentials(wifi_config);
 
     connectWifiSTA(wifi_config);
