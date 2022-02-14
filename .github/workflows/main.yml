@@ -51,6 +51,7 @@ jobs:
         shell: bash
       - name: Collect Files
         run: |
+          git config pull.rebase false
           cp firmware/avr/gbaHD-avr.bin firmware/esp32/data/atmega.bin
           (cd firmware/esp32/external/zwenergy && git pull)
         shell: bash
