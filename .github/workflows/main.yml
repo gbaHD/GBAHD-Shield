@@ -26,6 +26,13 @@ jobs:
       - uses: actions/checkout@v2
         with:
           submodules: 'recursive'
+
+      - uses: dorny/paths-filter@v2
+        id: changes
+        with:
+          filters: |
+            esp32:
+            - 'firmware/esp32/*'
       
       - name: ESP32
         # You may pin to the exact commit or the version.
@@ -34,17 +41,17 @@ jobs:
         with:
           # Relative path under $GITHUB_WORKSPACE to place the repository
           path: firmware/esp32
-
-      - name: Upload GBAHD-ESP32
-        uses: actions/upload-artifact@v2.3.1
+          
+      - uses: marvinpinto/action-automatic-releases@v1.2.1
+        # uses: marvinpinto/action-automatic-releases@919008cf3f741b179569b7a6fb4d8860689ab7f0
         with:
-          # Artifact name
-          name: 'GBAHD ESP32'
-          # A file, directory or wildcard pattern that describes what to upload
-          path: firmware/esp32/build/*.bin
-          # The desired behavior if no files are found using the provided path.
-      - uses: ncipollo/release-action@v1
-        with:
-          artifacts: firmware/esp32/build/**/*.bin
-          token: ${{ secrets.GITHUB_TOKEN }}
-          draft: true
+          # GitHub secret token
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: latest
+          # Release title (for automatic releases)
+          title: draft
+          prerelease: true
+          # Assets to upload to the release
+          files: |
+            firmware/esp32/build/**/*.bin
+        if: steps.changes.outputs.esp32 == 'true'
