@@ -61,8 +61,10 @@ jobs:
           (cd firmware/avr/ && make clean)
           git config --global user.name 'GitHub Action'
           git config --global user.email 'action@users.noreply.github.com'
+          git config pull.rebase false 
           git commit firmware/esp32/data/atmega.bin -m "Update atmega.bin" && git push
-          (cd firmware/esp32/external/zwenergy && git config pull.rebase false && git pull)
+          (cd firmware/esp32/external/zwenergy && git pull)
+          git commit firmware/esp32/external/zwenergy -m "Update Bitstreams" && git push
         shell: bash
       - name: ESP32 Build
         if: steps.esp_change.outputs.changed == 'true'
@@ -84,7 +86,7 @@ jobs:
           mkdir /tmp/release
           cp firmware/esp32/build/gbaHD.bin /tmp/release/gbaHD-esp32.bin
           cp firmware/esp32/build/spiffs.bin /tmp/release/gbaHD-spiffs.bin
-          cp firmware/avr/gbaHD-avr.bin /tmp/release/gbaHD-avr.bin
+          cp firmware/esp32/data/atmega.bin /tmp/release/gbaHD-avr.bin
         shell: bash
           
       - if: steps.esp_change.outputs.changed == 'true'
