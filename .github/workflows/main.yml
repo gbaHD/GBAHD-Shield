@@ -61,6 +61,11 @@ jobs:
         with:
           # Relative path under $GITHUB_WORKSPACE to place the repository
           path: firmware/esp32
+      - name: Get Version
+        run: |
+          echo "ESP_VERSION=$(dd if=firmware/esp32/build/gbaHD.bin skip=48 bs=1 count=32 status=none)" >> $GITHUB_ENV
+        shell: bash
+        
       - name: Prepare Release
         run: |
           mkdir /tmp/release
@@ -76,7 +81,7 @@ jobs:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           automatic_release_tag: latest
           # Release title (for automatic releases)
-          title: draft
+          title:  " ${{ env.ESP_VERSION }}"
           prerelease: true
           # Assets to upload to the release
           files: |
