@@ -28,11 +28,17 @@ jobs:
           submodules: 'recursive'
 
       - uses: dorny/paths-filter@v2
-        id: changes
+        id: esp_change
         with:
           filters: |
             changed:
             - 'firmware/esp32/*'
+  
+      - uses: dorny/paths-filter@v2
+        id: atmega_change
+        with:
+          filters: |
+            changed:
             - 'firmware/avr/*'
       
       - name: ATMega - Install GCC
@@ -41,19 +47,22 @@ jobs:
           curl 'https://downloads.arduino.cc/arduino-1.8.19-linux64.tar.xz' -o /tmp/arduino.tar.xz
           tar xf /tmp/arduino.tar.xz -C /tmp/
         shell: bash
+        if: steps.atmega_change.outputs.changed == 'true'
       - name: ATMega - Build
         run: |
           export PATH=/tmp/arduino-1.8.19/hardware/tools/avr/bin:$PATH
           cd firmware/avr && make
-        # git config --global user.name 'GitHub Action'
-        # git config --global user.email 'action@users.noreply.github.com'
-        # git commit firmware/esp32/data/atmega.bin -m "Update atmega.bin" && git push
+          git config --global user.name 'GitHub Action'
+          git config --global user.email 'action@users.noreply.github.com'
+          git commit firmware/esp32/data/atmega.bin -m "Update atmega.bin" && git push
         shell: bash
+        if: steps.atmega_change.outputs.changed == 'true'
       - name: Collect Files
         run: |
           cp firmware/avr/gbaHD-avr.bin firmware/esp32/data/atmega.bin
         # (cd firmware/esp32/external/zwenergy && git config pull.rebase false && git pull)
         shell: bash
+        if: steps.atmega_change.outputs.changed == 'true'
       - name: ESP32 Build
         # You may pin to the exact commit or the version.
         # uses: espressif/esp-idf-ci-action@d69494cb0e7f6e06d27addca596aa4519b0b4e7f
@@ -61,10 +70,12 @@ jobs:
         with:
           # Relative path under $GITHUB_WORKSPACE to place the repository
           path: firmware/esp32
+        if: steps.esp_change.outputs.changed == 'true'
       - name: Get Version
         run: |
           echo "ESP_VERSION=$(dd if=firmware/esp32/build/gbaHD.bin skip=48 bs=1 count=32 status=none)" >> $GITHUB_ENV
         shell: bash
+        if: steps.esp_change.outputs.changed == 'true'
         
       - name: Prepare Release
         run: |
@@ -73,6 +84,7 @@ jobs:
           cp firmware/esp32/build/spiffs.bin /tmp/release/gbaHD-spiffs.bin
           cp firmware/avr/gbaHD-avr.bin /tmp/release/gbaHD-avr.bin
         shell: bash
+        if: steps.esp_change.outputs.changed == 'true'
           
       - uses: marvinpinto/action-automatic-releases@v1.2.1
         # uses: marvinpinto/action-automatic-releases@919008cf3f741b179569b7a6fb4d8860689ab7f0
@@ -86,4 +98,4 @@ jobs:
           # Assets to upload to the release
           files: |
             /tmp/release/*.bin
-        if: steps.changes.outputs.changed == 'true'
+        if: steps.esp_change.outputs.changed == 'true'
