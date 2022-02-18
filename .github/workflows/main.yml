@@ -62,9 +62,15 @@ jobs:
           git config --global user.name 'GitHub Action'
           git config --global user.email 'action@users.noreply.github.com'
           git config pull.rebase false 
-          git commit firmware/esp32/data/atmega.bin -m "Update atmega.bin" && git push
+          [ ! $(git status --porcelain | wc -l) -eq "0" ] && git commit firmware/esp32/data/atmega.bin -m "Update atmega.bin" && git push
+        shell: bash
+      - name: Update Bitstreams
+        run: |
+          git config --global user.name 'GitHub Action'
+          git config --global user.email 'action@users.noreply.github.com'
+          git config pull.rebase false 
           (cd firmware/esp32/external/zwenergy && git pull)
-          git commit firmware/esp32/external/zwenergy -m "Update Bitstreams" && git push
+          [ ! $(git status --porcelain | wc -l) -eq "0" ] && git commit firmware/esp32/external/zwenergy -m "Update Bitstreams" && git push
         shell: bash
       - name: ESP32 Build
         if: steps.esp_change.outputs.changed == 'true'
