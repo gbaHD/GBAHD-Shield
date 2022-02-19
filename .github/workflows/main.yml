@@ -30,7 +30,7 @@ jobs:
       - uses: dorny/paths-filter@v2
         id: esp_change
         with:
-          base: '${{ env.GITHUB_REF }}'
+          base: '${{ github.ref }}'
           filters: |
             changed:
             - 'firmware/esp32/*'
