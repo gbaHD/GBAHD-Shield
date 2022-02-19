@@ -69,7 +69,5 @@ jobs:
           committer_name: GitHub Action
           # The email of the custom committer you want to use
           committer_email: action@users.noreply.github.com
-          # How the action should fill missing author name or email.
-          default_author: GitHub Action
           # The message for the commit
           message: "Update atmega.bin"
