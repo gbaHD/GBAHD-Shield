@@ -33,49 +33,8 @@ jobs:
           filters: |
             changed:
             - 'firmware/esp32/*'
-  
-      - uses: dorny/paths-filter@v2
-        id: atmega_change
-        with:
-          filters: |
-            changed:
-            - 'firmware/avr/*'
-      
-      - name: ATMega - Install GCC
-        run: |
-          sudo apt-get -y install make srecord xz-utils
-          curl 'https://downloads.arduino.cc/arduino-1.8.19-linux64.tar.xz' -o /tmp/arduino.tar.xz
-          tar xf /tmp/arduino.tar.xz -C /tmp/
-        shell: bash
-        if: steps.atmega_change.outputs.changed == 'true'
-      - name: ATMega - Build
-        if: steps.atmega_change.outputs.changed == 'true'
-        run: |
-          export PATH=/tmp/arduino-1.8.19/hardware/tools/avr/bin:$PATH
-          cd firmware/avr && make
-        shell: bash
-      - name: Collect Files
-        if: steps.atmega_change.outputs.changed == 'true'
-        run: |
-          cp firmware/avr/gbaHD-avr.bin firmware/esp32/data/atmega.bin
-          (cd firmware/avr/ && make clean)
-          git config --global user.name 'GitHub Action'
-          git config --global user.email 'action@users.noreply.github.com'
-          git config pull.rebase false 
-          [ ! $(git status --porcelain | wc -l) -eq "0" ] && git commit firmware/esp32/data/atmega.bin -m "Update atmega.bin" && git push
-        shell: bash
-      - name: Update Bitstreams
-        run: |
-          git config --global user.name 'GitHub Action'
-          git config --global user.email 'action@users.noreply.github.com'
-          git config pull.rebase false 
-          (cd firmware/esp32/external/zwenergy && git pull)
-          [ ! $(git status --porcelain | wc -l) -eq "0" ] && git commit firmware/esp32/external/zwenergy -m "Update Bitstreams" && git push
-        shell: bash
       - name: ESP32 Build
         if: steps.esp_change.outputs.changed == 'true'
-        # You may pin to the exact commit or the version.
-        # uses: espressif/esp-idf-ci-action@d69494cb0e7f6e06d27addca596aa4519b0b4e7f
         uses: espressif/esp-idf-ci-action@release-v4.4
         with:
           # Relative path under $GITHUB_WORKSPACE to place the repository
