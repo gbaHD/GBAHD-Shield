@@ -30,6 +30,7 @@ jobs:
       - uses: dorny/paths-filter@v2
         id: atmega_change
         with:
+          base: '${{ github.ref }}'
           filters: |
             changed:
             - 'firmware/avr/*'
@@ -52,8 +53,22 @@ jobs:
         run: |
           cp firmware/avr/gbaHD-avr.bin firmware/esp32/data/atmega.bin
           (cd firmware/avr/ && make clean)
-          git config --global user.name 'GitHub Action'
-          git config --global user.email 'action@users.noreply.github.com'
-          git config pull.rebase false 
-          [ ! $(git status --porcelain | wc -l) -eq "0" ] && git commit firmware/esp32/data/atmega.bin -m "Update atmega.bin" && git push
+          # git config --global user.name 'GitHub Action'
+          # git config --global user.email 'action@users.noreply.github.com'
+          # git config pull.rebase false 
+          # [ ! $(git status --porcelain | wc -l) -eq "0" ] && git commit firmware/esp32/data/atmega.bin -m "Update atmega.bin" && git push
         shell: bash
+      - if: steps.atmega_change.outputs.changed == 'true'
+        name: Add & Commit
+        # You may pin to the exact commit or the version.
+        # uses: EndBug/add-and-commit@72e246094f1af94def5a07467cd789c503ae8be0
+        uses: EndBug/add-and-commit@v8.0.2
+        with:
+          # Arguments for the git add command
+          add: firmware/esp32/data/
+          # The name of the custom committer you want to use
+          committer_name: GitHub Action
+          # The email of the custom committer you want to use
+          committer_email: action@users.noreply.github.com
+          # The message for the commit
+          message: "Update atmega.bin"
