@@ -122,7 +122,7 @@ void Log_Handler_Class::run(void)
                 clients[idx]->text(string_buffer);
             }
         }
-        string_buffer = "";
+        string_buffer.clear();
     }
 
     ws->cleanupClients();
