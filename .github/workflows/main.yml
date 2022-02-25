@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: ESP Release
 
 # Controls when the workflow will run
 on:
@@ -71,7 +71,7 @@ jobs:
           automatic_release_tag: latest
           # Release title (for automatic releases)
           title:  " ${{ env.ESP_VERSION }}"
-          prerelease: true
+          #prerelease: true
           # Assets to upload to the release
           files: |
             /tmp/release/*.bin
