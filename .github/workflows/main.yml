@@ -37,7 +37,7 @@ jobs:
             - 'firmware/esp32/*'
       - name: ESP32 Add version
         run: |
-          git describe --tags | sed 's/\(.*\)-.*/\1/' >> ESP_VERSION
+          git describe | sed 's/\(.*\)-.*/\1/' >> ESP_VERSION
           echo "ESP_VERSION=${ESP_VERSION}" >> $GITHUB_ENV
           echo $ESP_VERSION >> firmware/esp32/version.txt
         shell: bash
