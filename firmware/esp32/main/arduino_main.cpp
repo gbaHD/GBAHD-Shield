@@ -93,17 +93,16 @@ void loop() {
   {
     Web_Handler.run();
     Wifi_Handler.update();    
+    
     OTA_Handler.run();
-//    OTA_Handler.update_bitstream();
     timer_50ms_timestamp = timestamp;
   }
 
 
   if ((timestamp - timer_100ms_timestamp) > 100)
   {
-
     Log_Handler.run();
-//    OTA_Handler.update_bitstream();
+    
     timer_100ms_timestamp = timestamp;
   }
 }
