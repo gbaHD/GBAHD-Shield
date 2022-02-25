@@ -29,6 +29,7 @@
 #include "bitstream_handler.h"
 #include <SD_MMC.h>
 #include <LittleFS.h>
+#include <Arduino.h>
 
 #include "preferences_handler.h"
 #include "log_handler.h"
@@ -88,16 +89,32 @@ void Bitstream_Handler_Class::init(void) {
 
 // load bitstream from file to FPGA
 bool Bitstream_Handler_Class::pushBitStream(File& file) {
-  char byte_buff[1024];  
+  char byte_buff[1024];
+  uint8_t ident_idx = 0U;
 
   Log_Handler.print("Loading FPGA ... ");
   pinMode(XFPGA_DIN_PIN, OUTPUT);
 
   while(file.available()){
-     int cnt = file.readBytes(byte_buff, sizeof(byte_buff));
-     for(int i=0; i<cnt; i++){ 
+    int cnt = file.readBytes(byte_buff, sizeof(byte_buff));
+    for(int i=0; i<cnt; i++){ 
       shiftOut(XFPGA_DIN_PIN, XFPGA_CCLK_PIN, MSBFIRST, byte_buff[i]);
-     }
+      if ((ident_idx < 4))
+      {
+        if (byte_buff[i] == BITSTREAM_VERSION_IDENT[ident_idx])
+        {
+          ident_idx++;
+        }
+        else
+        {
+          ident_idx = 0U;
+        }
+      }
+      else if (ident_idx < 8)
+      {
+        version[ident_idx++ - 4] = byte_buff[i];
+      }
+    }
   }
   
   Log_Handler.println("DONE!");
@@ -209,5 +226,11 @@ void Bitstream_Handler_Class::handle_bit_stream(void)
     this->pushBitStream(file);
   }
   file.close();
+}
+
+void Bitstream_Handler_Class::get_current_version(String& version)
+{
+  version = String(this->version);
+  Log_Handler.println(this->version);
 }
 
