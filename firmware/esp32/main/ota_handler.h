@@ -41,7 +41,7 @@
 #define OTA_BS_720_URL      ( "https://raw.githubusercontent.com/zwenergy/gbaHD/master/bitstream/default_720p.bit" )
 #define OTA_BS_1080_URL     ( "https://raw.githubusercontent.com/zwenergy/gbaHD/master/bitstream/default_1080p.bit" )
 
-const String OTA_BS_RELEASE_URL = "https://api.github.com/repos/bbsan2k/gbaHD/releases/latest";
+const String OTA_BS_RELEASE_URL = "https://api.github.com/repos/zwenergy/gbaHD/releases/latest";
 const String OTA_PROD_RELEASE_URL =  "https://api.github.com/repos/ManCloud/GBAHD-Shield/releases/latest" ;
 
 enum OTA_Part
