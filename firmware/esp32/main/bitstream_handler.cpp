@@ -34,7 +34,7 @@
 #include "preferences_handler.h"
 #include "log_handler.h"
 
-#define DEV_BOARD
+// #define DEV_BOARD
 
 /* pin define */
 #define XFPGA_CCLK_PIN 17
