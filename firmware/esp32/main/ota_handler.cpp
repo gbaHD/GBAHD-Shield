@@ -129,8 +129,11 @@ void OTA_Handler_Class::refresh_update_info(Update_Info& info, const String* url
                 && cJSON_HasObjectItem(release_json, "assets"))
         {
             uint8_t update_idx = 0U;
-            // info.changelog = cJSON_GetObjectItem(release_json, "body")->valuestring;
-            // info.changelog.replace("\n", "<br>");
+            String changelog = String(cJSON_GetObjectItem(release_json, "body")->valuestring);
+            
+            changelog.replace("\n", "<br>");
+
+            info.changelog = changelog;
             info.version = cJSON_GetObjectItem(release_json, "name")->valuestring;
 
             cJSON* assets = cJSON_GetObjectItem(release_json, "assets");
@@ -186,6 +189,7 @@ void OTA_Handler_Class::refresh_update_info(Update_Info& info, const String* url
     }
     else
     {
+        info.version;
         Log_Handler.println("Failed to get url ");
     }
     client.end();
