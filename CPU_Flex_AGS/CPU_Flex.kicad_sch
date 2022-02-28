@@ -537,7 +537,7 @@
   (symbol (lib_id "Connector_Generic:Conn_01x16") (at 96.52 68.58 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 00000000-0000-0000-0000-0000618ce4cc)
-    (property "Reference" "J3" (id 0) (at 98.6028 45.2882 0))
+    (property "Reference" "J1" (id 0) (at 98.6028 45.2882 0))
     (property "Value" "Conn_01x16" (id 1) (at 98.6028 47.5996 0))
     (property "Footprint" "Connector_FFC-FPC:TE_1-1734839-6_1x16-1MP_P0.5mm_Horizontal" (id 2) (at 96.52 68.58 0)
       (effects (font (size 1.27 1.27)) hide)
@@ -602,7 +602,7 @@
   (symbol (lib_id "power:GND") (at 104.14 91.44 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 00000000-0000-0000-0000-0000618d4507)
-    (property "Reference" "#PWR0101" (id 0) (at 104.14 97.79 0)
+    (property "Reference" "#PWR04" (id 0) (at 104.14 97.79 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (id 1) (at 104.267 95.8342 0))
@@ -618,7 +618,7 @@
   (symbol (lib_id "power:VCC") (at 104.14 48.26 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 00000000-0000-0000-0000-0000618d4f38)
-    (property "Reference" "#PWR0102" (id 0) (at 104.14 52.07 0)
+    (property "Reference" "#PWR03" (id 0) (at 104.14 52.07 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "VCC" (id 1) (at 104.521 43.8658 0))
@@ -634,7 +634,7 @@
   (symbol (lib_id "power:VCC") (at 76.2 45.72 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 00000000-0000-0000-0000-0000618d5479)
-    (property "Reference" "#PWR0103" (id 0) (at 76.2 49.53 0)
+    (property "Reference" "#PWR01" (id 0) (at 76.2 49.53 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "VCC" (id 1) (at 76.581 41.3258 0))
@@ -650,7 +650,7 @@
   (symbol (lib_id "power:GND") (at 76.2 62.23 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 00000000-0000-0000-0000-0000618d599d)
-    (property "Reference" "#PWR0104" (id 0) (at 76.2 68.58 0)
+    (property "Reference" "#PWR02" (id 0) (at 76.2 68.58 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (id 1) (at 76.327 66.6242 0))
@@ -666,7 +666,7 @@
   (symbol (lib_id "Nintendo:CPU_AGB_B_Interface") (at 121.92 67.31 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 00000000-0000-0000-0000-0000618d78f3)
-    (property "Reference" "J4" (id 0) (at 119.38 49.53 0)
+    (property "Reference" "J2" (id 0) (at 119.38 49.53 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "CPU_AGB_B_Interface" (id 1) (at 128.27 88.9 90)
@@ -699,17 +699,17 @@
   )
 
   (symbol_instances
-    (path "/00000000-0000-0000-0000-0000618d4507"
-      (reference "#PWR0101") (unit 1) (value "GND") (footprint "")
-    )
-    (path "/00000000-0000-0000-0000-0000618d4f38"
-      (reference "#PWR0102") (unit 1) (value "VCC") (footprint "")
-    )
     (path "/00000000-0000-0000-0000-0000618d5479"
-      (reference "#PWR0103") (unit 1) (value "VCC") (footprint "")
+      (reference "#PWR01") (unit 1) (value "VCC") (footprint "")
     )
     (path "/00000000-0000-0000-0000-0000618d599d"
-      (reference "#PWR0104") (unit 1) (value "GND") (footprint "")
+      (reference "#PWR02") (unit 1) (value "GND") (footprint "")
+    )
+    (path "/00000000-0000-0000-0000-0000618d4f38"
+      (reference "#PWR03") (unit 1) (value "VCC") (footprint "")
+    )
+    (path "/00000000-0000-0000-0000-0000618d4507"
+      (reference "#PWR04") (unit 1) (value "GND") (footprint "")
     )
     (path "/00000000-0000-0000-0000-0000618d2a1d"
       (reference "BAT+1") (unit 1) (value "Conn_01x01") (footprint "TestPoint:TestPoint_THTPad_D1.5mm_Drill0.7mm")
@@ -718,10 +718,10 @@
       (reference "GND1") (unit 1) (value "Conn_01x01") (footprint "TestPoint:TestPoint_THTPad_D1.5mm_Drill0.7mm")
     )
     (path "/00000000-0000-0000-0000-0000618ce4cc"
-      (reference "J3") (unit 1) (value "Conn_01x16") (footprint "Connector_FFC-FPC:TE_1-1734839-6_1x16-1MP_P0.5mm_Horizontal")
+      (reference "J1") (unit 1) (value "Conn_01x16") (footprint "Connector_FFC-FPC:TE_1-1734839-6_1x16-1MP_P0.5mm_Horizontal")
     )
     (path "/00000000-0000-0000-0000-0000618d78f3"
-      (reference "J4") (unit 1) (value "CPU_AGB_B_Interface") (footprint "Ninteno:CPU_AGB_B_Interface")
+      (reference "J2") (unit 1) (value "CPU_AGB_B_Interface") (footprint "Ninteno:CPU_AGB_B_Interface")
     )
   )
 )
