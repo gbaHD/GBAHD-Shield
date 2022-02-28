@@ -43,4 +43,4 @@ jobs:
         uses: espressif/esp-idf-ci-action@rust-latest
         with:
           # Relative path under $GITHUB_WORKSPACE to place the repository
-          path: $GITHUB_WORKSPACE/firmware/esp32
+          path: firmware/esp32
