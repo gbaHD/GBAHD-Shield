@@ -99,6 +99,14 @@ void Preferences_Handler_Class::restoreBluetoothConfig()
     preferences.end();    
 }
 
+void Preferences_Handler_Class::saveOTAToken(String& token)
+{
+    Preferences preferences;
+    preferences.begin("GBAHD_OTA");
+    preferences.putString("TOKEN", token);
+    preferences.end();
+    this->token = token;
+}
 
 void Preferences_Handler_Class::saveSettings(Settings& settings)
 {
@@ -117,6 +125,15 @@ void Preferences_Handler_Class::restoreSettings()
     preferences.end();
 }
 
+void Preferences_Handler_Class::restoreOTAToken()
+{
+
+    Preferences preferences;
+    preferences.begin("GBAHD_OTA");
+    this->token = preferences.getString("TOKEN", "");
+    preferences.end();
+}
+
 
 void Preferences_Handler_Class::reset()
 {
@@ -132,6 +149,7 @@ void Preferences_Handler_Class::init()
     restoreBluetoothConfig();
     restoreWifiCredentials();
     restoreSettings();
+    restoreOTAToken();
 }
 
 
