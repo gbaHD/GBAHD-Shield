@@ -189,7 +189,6 @@ void OTA_Handler_Class::refresh_update_info(Update_Info& info, const String* url
     }
     else
     {
-        info.version;
         Log_Handler.println("Failed to get url ");
     }
     client.end();
