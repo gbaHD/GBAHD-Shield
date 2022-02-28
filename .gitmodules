@@ -1,3 +1,24 @@
-[submodule "twiboot"]
-	path = twiboot
-	url = git@github.com:ManCloud/twiboot.git
+[submodule "firmware/esp32/components/arduino"]
+	path = firmware/esp32/components/arduino
+url=https://github.com/bbsan2k/arduino-esp32.git
+[submodule "firmware/esp32/external/bluepad32_template"]
+	path = firmware/esp32/external/bluepad32_template
+	url = https://gitlab.com/ricardoquesada/esp-idf-arduino-bluepad32-template.git
+[submodule "firmware/twiboot"]
+	path = firmware/twiboot
+	url = https://github.com/ManCloud/twiboot.git
+[submodule "firmware/esp32/components/AsyncTCP"]
+	path = firmware/esp32/components/AsyncTCP
+	url = https://github.com/bbsan2k/AsyncTCP
+[submodule "firmware/esp32/components/ESPAsyncWebServer"]
+	path = firmware/esp32/components/ESPAsyncWebServer
+	url = https://github.com/bbsan2k/ESPAsyncWebServer
+[submodule "firmware/esp32/external/zwenergy"]
+	path = firmware/esp32/external/zwenergy
+	url = https://github.com/zwenergy/gbaHD
+[submodule "firmware/esp32/components/esp_littlefs"]
+	path = firmware/esp32/components/esp_littlefs
+	url = https://github.com/joltwallet/esp_littlefs
+[submodule "firmware/esp32/external/bluepad32"]
+	path = firmware/esp32/external/bluepad32
+	url = https://gitlab.com/ricardoquesada/bluepad32.git
