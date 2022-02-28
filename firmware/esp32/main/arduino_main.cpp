@@ -51,7 +51,7 @@ static int64_t timer_100ms_timestamp = 0U;
 // Arduino setup function. Runs in CPU 1
 void setup() {
   Serial.begin(115200);
-  Serial.setDebugOutput(false);
+  Serial.setDebugOutput(true);
   // Start LittleFS
   LittleFS.begin(true);
 
@@ -65,7 +65,6 @@ void setup() {
 
   // Handle pushing the bitstream to Spartan
   Bitstream_Handler.handle_bit_stream();
-
 
   Mega_Handler.init();
 
@@ -88,6 +87,7 @@ void loop() {
     Mega_Handler.update();
     timer_5ms_timestamp = timestamp;
   }
+  vTaskDelay(1);
 
   if ((timestamp - timer_50ms_timestamp) > 50)
   {
@@ -97,6 +97,7 @@ void loop() {
     OTA_Handler.run();
     timer_50ms_timestamp = timestamp;
   }
+  vTaskDelay(1);
 
 
   if ((timestamp - timer_100ms_timestamp) > 100)
@@ -105,5 +106,6 @@ void loop() {
     
     timer_100ms_timestamp = timestamp;
   }
+  vTaskDelay(1);
 }
 
