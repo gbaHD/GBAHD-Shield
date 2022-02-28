@@ -110,7 +110,7 @@ String Web_Handler_Class::build_select_entry(uint16_t &inp_btn, uint16_t &mapped
 String Web_Handler_Class::build_update_done(bool success)
 {
   String page_string = "";
-  String mega_version = ""; 
+  String mega_version = "";
   esp_app_desc_t app_desc;
   {
     File page = LittleFS.open("/webpage/update.html", "r");
@@ -120,11 +120,11 @@ String Web_Handler_Class::build_update_done(bool success)
       page.close();
     }
   }
-  
+
   page_string.replace("{{STATE}}", success ? "successful" : "failed");
   Mega_Handler.get_update_version(mega_version);
   page_string.replace("{{SHIELD_VER}}", mega_version);
-  
+
   esp_ota_get_partition_description(esp_ota_get_boot_partition(), &app_desc);
   page_string.replace("{{ESP_VER}}", app_desc.version);
 
@@ -158,7 +158,7 @@ void Web_Handler_Class::handleLittleFSFileUpload(AsyncWebServerRequest *request,
   {
     path = ATMEGA_SPIFFS_PATH;
   }
-  
+
   if (path.length() > 0)
   {
     if (index == 0)
@@ -187,7 +187,6 @@ void Web_Handler_Class::handleLittleFSFileUpload(AsyncWebServerRequest *request,
   }
 
 }
-
 
 void Web_Handler_Class::handlePartitionUpload(AsyncWebServerRequest *request, const String& filename, size_t index, uint8_t *data, size_t len, bool final)
 {
@@ -304,9 +303,74 @@ void Web_Handler_Class::handleIndex(AsyncWebServerRequest *request)
       page.close();
     }
   }
-  page_string.replace("{{MESSAGE}}", "");
+  String current_bs_version = "";
+  Bitstream_Handler.get_current_version(current_bs_version);
+  page_string.replace("{{MESSAGE}}", current_bs_version);
+  
+  {
+    Update_Info info;
+    String current_bitstream;
+    OTA_Handler.get_bitstream_update_info(info);
+    Bitstream_Handler.get_current_version(current_bitstream);
+    page_string.replace("{{LATEST_BS_VERSION}}", info.version);
+    page_string.replace("{{CURRENT_BS_VERSION}}", current_bitstream);
+    page_string.replace("{{BS_OTA_HIDDEN}}", strcmp(info.version, current_bitstream.c_str()) ? "" : "hidden");
+  }
+  {
+    Update_Info info;  
+    esp_app_desc_t app_desc;
+    esp_ota_get_partition_description(esp_ota_get_boot_partition(), &app_desc);
+    OTA_Handler.get_esp_update_info(info);
+    page_string.replace("{{LATEST_ESP_VERSION}}", info.version);
+    page_string.replace("{{CURRENT_ESP_VERSION}}", app_desc.version);
+    page_string.replace("{{ESP_OTA_HIDDEN}}", strcmp(info.version, app_desc.version) ? "" : "hidden");
+  }
 
   request->send(200, "text/html", page_string);
+}
+
+void Web_Handler_Class::handleOTA(AsyncWebServerRequest *request)
+{
+  String page_string = "";
+  Update_Info info;
+  {
+    File page = LittleFS.open("/webpage/ota.html", "r");
+    if (page)
+    {
+      page_string = page.readString();
+      page.close();
+    }
+  }
+
+  if (request->arg("part") == "bitstream")
+  {
+    page_string.replace("{{UPDATE_PART}}", "bitstream");
+    OTA_Handler.get_bitstream_update_info(info);
+  }
+  else if (request->arg("part") == "esp")
+  {
+    page_string.replace("{{UPDATE_PART}}", "esp");
+    OTA_Handler.get_esp_update_info(info);
+  }
+
+  //info.changelog.replace("\r\n", "<br>");
+  
+  page_string.replace("{{IP_ADDRESS}}", WiFi.localIP().toString());
+  page_string.replace("{{CHANGELOG}}", info.changelog);
+  page_string.replace("{{VERSION}}", info.version);
+
+  request->send(200, "text/html", page_string);
+}
+
+void Web_Handler_Class::handleToken(AsyncWebServerRequest *request)
+{
+  if (request->hasArg("token"))
+  {
+    String token = request->arg("token");
+    Preferences_Handler.saveOTAToken(token);
+    Log_Handler.println("Received token " + token);
+  }
+  request->redirect("/");
 }
 
 void Web_Handler_Class::addWebSocket(AsyncWebSocket* handler)
@@ -322,29 +386,6 @@ String Web_Handler_Class::serial_ip(const String& var)
   }
   return "";
 }
-
-String Web_Handler_Class::ota_info(const String& var)
-{
-  if (var == "IP_ADDRESS")
-  {
-    return WiFi.localIP().toString();
-  }
-  else if (var == "CHANGELOG")
-  {
-    Update_Info info;
-    OTA_Handler.get_update_info(info);
-    info.changelog.replace("\r\n", "<br>");
-    return info.changelog;
-  }
-  else if (var == "VERSION")
-  {
-    Update_Info info;
-    OTA_Handler.get_update_info(info);
-    return info.version;
-  }
-  return "";
-}
-
 
 void Web_Handler_Class::init(void)
 {
@@ -370,7 +411,8 @@ void Web_Handler_Class::init(void)
   _Aserver.serveStatic("/pico.min.css", LittleFS, "/webpage/pico.min.css");
   _Aserver.serveStatic("/Logo.png", LittleFS, "/webpage/Logo.png");
   _Aserver.serveStatic("/serial.html", LittleFS, "/webpage/serial.html").setTemplateProcessor(serial_ip);
-  _Aserver.serveStatic("/ota.html", LittleFS, "/webpage/ota.html").setTemplateProcessor(ota_info);
+  _Aserver.on("/ota.html", HTTP_GET, handleOTA);
+  _Aserver.on("/setToken", HTTP_GET, handleToken);
 
   // Handle everything else.
   _Aserver.onNotFound(_handle404);
@@ -391,7 +433,4 @@ void Web_Handler_Class::run(void)
   {
     ESP.restart();
   }
-
-  
-
 }

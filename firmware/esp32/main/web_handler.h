@@ -69,6 +69,10 @@ class Web_Handler_Class {
         static void handleIndex(AsyncWebServerRequest *request);
         static void handleCSS(AsyncWebServerRequest *request);
         static void handleLogo(AsyncWebServerRequest *request);
+        static void handleOTA(AsyncWebServerRequest *request);
+        static void handleToken(AsyncWebServerRequest *request);
+
+
         static String serial_ip(const String& var);
         static String ota_info(const String& var);
 

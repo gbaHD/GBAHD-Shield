@@ -33,16 +33,38 @@
 #include <Update.h>
 #include <cJSON.h>
 #include <uni_bluetooth.h>
+#include <Esp.h>
+#include <base64.h>
 
 #include "bitstream_handler.h"
 #include "log_handler.h"
 #include "web_handler.h"
 #include "mega_handler.h"
+#include "preferences_handler.h"
 
 OTA_Handler_Class OTA_Handler;
 
 
 uint32_t startTime = 0U;
+
+void OTA_Handler_Class::initialize_client(HTTPClient& client)
+{
+    
+    client.setFollowRedirects(HTTPC_FORCE_FOLLOW_REDIRECTS);
+    client.setRedirectLimit(10);
+    client.setReuse(true);
+
+    {
+        String token = "";
+        Preferences_Handler.getOTAToken(token);
+
+        if (token != "")
+        {
+            client.setAuthorizationType("token");
+            client.setAuthorization(token.c_str());
+        }
+    }
+}
 
 
 void OTA_Handler_Class::onWsEvent(AsyncWebSocket * server, AsyncWebSocketClient * client, AwsEventType type, void * arg, uint8_t *data, size_t len)
@@ -51,16 +73,35 @@ void OTA_Handler_Class::onWsEvent(AsyncWebSocket * server, AsyncWebSocketClient 
     if (type == WS_EVT_CONNECT)
     {
         Log_Handler.println("Websocket client connection received");
-        if (OTA_Handler.ota_state == OTA_STATE_NONE)
-        {
-            OTA_Handler.update_latest_BS();
-        }
+        // if (OTA_Handler.ota_state == OTA_STATE_NONE)
+        // {
+        //     OTA_Handler.update_latest_BS();
+        // }
         OTA_Handler.ws_client = client;
-    } 
+    }
     else if (type == WS_EVT_DISCONNECT)
     {
         OTA_Handler.ws_client = nullptr;
         Log_Handler.println("Websocket client connection finished");
+    }
+    else if (type == WS_EVT_DATA)
+    {
+        if (String(reinterpret_cast<char*>(data), len) == "bitstream")
+        {
+            if (OTA_Handler.ota_state == OTA_STATE_NONE)
+            {
+                OTA_Handler.update_latest_BS();
+            }
+            OTA_Handler.ws_client = client;
+        }
+        else if (String(reinterpret_cast<char*>(data), len) == "esp")
+        {
+            if (OTA_Handler.ota_state == OTA_STATE_NONE)
+            {
+                OTA_Handler.full_update();
+            }
+            OTA_Handler.ws_client = client;
+        }
     }
 }
 
@@ -71,23 +112,25 @@ bool OTA_Handler_Class::get_update_available(void)
 }
 
 
-void OTA_Handler_Class::refresh_update_info(Update_Info& info, const String& url)
+void OTA_Handler_Class::refresh_update_info(Update_Info& info, const String* url)
 {
     HTTPClient client;
 
-    if ((client.begin(url)
-            && (HTTP_CODE_OK == client.GET())))
+    initialize_client(client);
+
+    if (client.begin(*url + "latest") && (HTTP_CODE_OK == client.GET()))
     {
         String jsonString = client.getString();
 
         cJSON* release_json = cJSON_Parse(jsonString.c_str());
+
         if (cJSON_HasObjectItem(release_json, "body")
                 && cJSON_HasObjectItem(release_json, "name")
                 && cJSON_HasObjectItem(release_json, "assets"))
         {
             uint8_t update_idx = 0U;
-            info.changelog = cJSON_GetObjectItem(release_json, "body")->valuestring;
-            info.changelog.replace("\n", "<br>");
+            // info.changelog = cJSON_GetObjectItem(release_json, "body")->valuestring;
+            // info.changelog.replace("\n", "<br>");
             info.version = cJSON_GetObjectItem(release_json, "name")->valuestring;
 
             cJSON* assets = cJSON_GetObjectItem(release_json, "assets");
@@ -96,41 +139,42 @@ void OTA_Handler_Class::refresh_update_info(Update_Info& info, const String& url
             {
                 cJSON* asset = cJSON_GetArrayItem(assets, i);
 
-                if (cJSON_HasObjectItem(asset, "browser_download_url"))
+
+                if (cJSON_HasObjectItem(asset, "id"))
                 {
-                    String url = String(cJSON_GetObjectItem(asset, "browser_download_url")->valuestring);
+                    String name = String(cJSON_GetObjectItem(asset, "name")->valuestring);
+                    int asset_id = cJSON_GetObjectItem(asset, "id")->valueint;
                     //url.toLowerCase();
-
-                    if (url.indexOf("gbahd_esp32") != -1)
+                    Log_Handler.print(name);
+                    Log_Handler.print(" ID: ");
+                    Log_Handler.println(asset_id);
+                    info.urls[update_idx].root_url = url;
+                    if (name.indexOf("gbaHD-esp32") != -1)
                     {
-                        Log_Handler.println("ESP URL: " + url);
                         info.urls[update_idx].ota_part = OTA_ESP;
-                        info.urls[update_idx].url = url;
+                        info.urls[update_idx].id = asset_id;
                         update_idx++;
                     }
-                    else if (url.indexOf("gbahd_spiffs") != -1)
+                    else if (name.indexOf("gbaHD-spiffs") != -1)
                     {
-                        Log_Handler.println("SPIFFS URL: " + url);
                         info.urls[update_idx].ota_part = OTA_SPIFFS;
-                        info.urls[update_idx].url = url;
+                        info.urls[update_idx].id = asset_id;
                         update_idx++;
                     }
-                    else if (url.indexOf("720") != -1)
+                    else if (name.indexOf("720") != -1)
                     {
-                        Log_Handler.println("720P URL: " + url);
                         info.urls[update_idx].ota_part = OTA_BS_720;
-                        info.urls[update_idx].url = url;
+                        info.urls[update_idx].id = asset_id;
                         update_idx++;
                     }
-                    else if (url.indexOf("1080") != -1)
+                    else if (name.indexOf("1080") != -1)
                     {
-                        Log_Handler.println("1080P URL: " + url);
                         info.urls[update_idx].ota_part = OTA_BS_1080;
-                        info.urls[update_idx].url = url;
+                        info.urls[update_idx].id = asset_id;
                         update_idx++;
                     }
 
-                    //info.changelog += url;
+
                 }
             }
             for (;update_idx < (sizeof(info.urls)/sizeof(info.urls[0])); update_idx++)
@@ -139,23 +183,46 @@ void OTA_Handler_Class::refresh_update_info(Update_Info& info, const String& url
             }
         }
 
-        client.end();
     }
     else
     {
         Log_Handler.println("Failed to get url ");
     }
+    client.end();
 }
 
-void OTA_Handler_Class::get_update_info(Update_Info& info)
+void OTA_Handler_Class::get_bitstream_update_info(Update_Info& info)
 {
     if (!bs_update_info.checked)
     {
-        refresh_update_info(bs_update_info, OTA_BS_RELEASE_URL);
+        refresh_update_info(bs_update_info, &OTA_BS_RELEASE_URL);
         bs_update_info.checked = true;
     }
 
     info = bs_update_info;
+}
+
+void OTA_Handler_Class::get_esp_update_info(Update_Info& info)
+{
+    if (!release_update_info.checked)
+    {
+        String token;
+        Preferences_Handler.getOTAToken(token);
+        
+        if (token != "")
+        {
+            Log_Handler.println("Getting ESP Testing");
+            refresh_update_info(release_update_info, &OTA_PROD_TESTING_URL);
+        }
+        else
+        {
+            Log_Handler.println("Getting ESP Release");
+            refresh_update_info(release_update_info, &OTA_PROD_RELEASE_URL);
+        }
+        release_update_info.checked = true;
+    }
+
+    info = release_update_info;
 }
 
 void OTA_Handler_Class::write_to_current_output(uint8_t* buffer, size_t size, bool final)
@@ -168,7 +235,7 @@ void OTA_Handler_Class::write_to_current_output(uint8_t* buffer, size_t size, bo
         {
             if (Update.write(buffer, size) != size)
             {
-                Update.printError(Serial);
+                Update.printError(Log_Handler);
             }
             else if (final)
             {
@@ -195,7 +262,7 @@ void OTA_Handler_Class::write_to_current_output(uint8_t* buffer, size_t size, bo
         }
         break;
     default:
-        break;    
+        break;
     }
 }
 
@@ -203,26 +270,27 @@ bool OTA_Handler_Class::initialize_ota(OTA_Part_Mapping& part)
 {
     bool retval = false;
 
-    Log_Handler.println("Initializing OTA for part " + String(part.ota_part));
+    Log_Handler.printf("Initializing OTA for part %d\n", part.ota_part);
 
     if (WiFi.isConnected())
     {
-        if (!stream)
+        Log_Handler.printf("AssetID: %d\n", part.id);
+        if (!stream && part.root_url != nullptr)
         {
-            Log_Handler.println("Trying to get url " + part.url);
+            String url = *part.root_url + "assets/" + part.id;
+            Log_Handler.println("Trying to get url " + url);
 
-            http_client.setFollowRedirects(HTTPC_FORCE_FOLLOW_REDIRECTS);
-            http_client.setRedirectLimit(10);
-            http_client.setReuse(true);
-            http_client.setTimeout(10000);
-
-            http_client.begin(part.url);
+            http_client.begin(url);
+            initialize_client(http_client);
+            http_client.addHeader("Accept", "application/octet-stream");
             int returncode = http_client.GET();
+
+            Log_Handler.printf("ReturnCode %d\n", returncode);
 
             if ( (HTTP_CODE_OK == returncode))
             {
                 stream = http_client.getStreamPtr();
-                        
+
                 totalSize = http_client.getSize();
                 remainingSize = totalSize;
 
@@ -230,6 +298,7 @@ bool OTA_Handler_Class::initialize_ota(OTA_Part_Mapping& part)
                 {
                     case OTA_ESP:
                         retval = Update.begin(UPDATE_SIZE_UNKNOWN, U_FLASH);
+                        Log_Handler.println(Update.errorString());
                         break;
                     case OTA_SPIFFS:
                         retval = Update.begin(UPDATE_SIZE_UNKNOWN, U_SPIFFS);
@@ -252,7 +321,7 @@ bool OTA_Handler_Class::initialize_ota(OTA_Part_Mapping& part)
             }
             else
             {
-                Log_Handler.println("Failed to get url " + part.url + " Error: " + returncode);
+                Log_Handler.println("Failed to get url " + url + " Error: " + returncode);
                 retval = false;
                 ota_state = OTA_STATE_NONE;
             }
@@ -265,7 +334,7 @@ void OTA_Handler_Class::update(void)
 {
     if ((ota_state == OTA_STATE_QUEUED) && (ota_queue_idx >= 0) && (ota_queue_length > ota_queue_idx))
     {
-        Log_Handler.println("Queue IDX " + String(ota_queue_idx) + " is " + String(current_update->urls[ota_queue_idx].ota_part));
+        Log_Handler.printf("Queue IDX %d is %d\n", ota_queue_idx, current_update->urls[ota_queue_idx].ota_part);
 
         if (current_update->urls[ota_queue_idx].ota_part != OTA_NONE)
         {
@@ -274,7 +343,6 @@ void OTA_Handler_Class::update(void)
             if (initialize_ota(*current_part_mapping))
             {
                 ota_state = OTA_STATE_RUNNING;
-                Log_Handler.println("Getting " + current_part_mapping->url);
             }
         }
     }
@@ -284,11 +352,12 @@ void OTA_Handler_Class::update(void)
         uint8_t buffer[1024] = { 0 };
 
         // read all data from server
-        while (http_client.connected() 
-                && (remainingSize > 0 || remainingSize == -1) 
+        if ((stream->connected())
+                && (remainingSize > 0 || remainingSize == -1)
                 && (stream->available()))
         {
             int readCount = stream->read(buffer, sizeof(buffer)/sizeof(buffer[0]));
+
             if (readCount > 0)
             {
                 if (remainingSize > 0)
@@ -297,19 +366,21 @@ void OTA_Handler_Class::update(void)
                 }
                 write_to_current_output(buffer, readCount, (remainingSize == 0));
             }
-            
-            Log_Handler.println("Read\t" + String(remainingSize) + "\t/ " + String(totalSize));            
-        }
-        Log_Handler.printf("State %d, Wifi: %d, http_client: %d Stream: %d\n", ota_state, WiFi.isConnected(), http_client.connected(), stream->available());
 
+
+        }
+        Log_Handler.printf("State %d, Wifi: %d, Connection:: %d Stream: %d\n", ota_state, WiFi.isConnected(), stream->connected(), stream->available());
+        Log_Handler.println("Read\t" + String(remainingSize) + "\t/ " + String(totalSize));
+
+        Log_Handler.printf("Free Heap: %d\n", ESP.getFreeHeap());
         if (remainingSize == 0)
         {
             http_client.setReuse(true);
             stream = nullptr;
             http_client.end();
-            
+
             current_part = OTA_NONE;
-            
+
             if (++ota_queue_idx >= ota_queue_length)
             {
                 ota_state = OTA_STATE_COMPLETED;
@@ -330,6 +401,7 @@ void OTA_Handler_Class::full_update(void)
 {
     current_update = &release_update_info;
     uni_bluetooth_enable_new_connections_safe(false);
+    uni_bluetooth_del_keys_safe();
     ota_queue_length = 2U;
     ota_queue_idx = 0U;
     ota_state = OTA_STATE_QUEUED;
@@ -339,6 +411,7 @@ void OTA_Handler_Class::update_latest_BS(void)
 {
     current_update = &bs_update_info;
     uni_bluetooth_enable_new_connections_safe(false);
+    uni_bluetooth_del_keys_safe();
     ota_queue_length = 2U;
     ota_queue_idx = 0U;
     ota_state = OTA_STATE_QUEUED;
@@ -351,12 +424,23 @@ void OTA_Handler_Class::run(void)
     {
         if (!bs_update_info.checked)
         {
-            refresh_update_info(bs_update_info, OTA_BS_RELEASE_URL);
+            refresh_update_info(bs_update_info, &OTA_BS_RELEASE_URL);
             bs_update_info.checked = true;
         }
         if (!release_update_info.checked)
         {
-            refresh_update_info(release_update_info, OTA_PROD_RELEASE_URL);
+            String token;
+            Preferences_Handler.getOTAToken(token);
+            
+
+            if (token != "")
+            {
+                refresh_update_info(release_update_info, &OTA_PROD_TESTING_URL);
+            }
+            else
+            {
+                refresh_update_info(release_update_info, &OTA_PROD_RELEASE_URL);
+            }
             release_update_info.checked = true;
         }
     }
@@ -397,8 +481,8 @@ void OTA_Handler_Class::run(void)
 void OTA_Handler_Class::init(void)
 {
     ws = new AsyncWebSocket("/ota");
-    ws->onEvent(onWsEvent);    
+    ws->onEvent(onWsEvent);
     Web_Handler.addWebSocket(ws);
-    ws_client = nullptr;    
-    
+    ws_client = nullptr;
+
 }

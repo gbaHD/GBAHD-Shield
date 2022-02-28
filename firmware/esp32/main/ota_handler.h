@@ -35,14 +35,9 @@
 #include <AsyncTCP.h>
 
 
-#define OTA_PROD_LittleFS_URL ( "https://cdn.discordapp.com/attachments/871683546031484928/938885413437837433/gbaHD-LittleFS.bin" )
-#define OTA_PROD_APP_URL    ( "https://cdn.discordapp.com/attachments/871683546031484928/938885412888404018/gbaHD-esp32.bin" )
-
-#define OTA_BS_720_URL      ( "https://raw.githubusercontent.com/zwenergy/gbaHD/master/bitstream/default_720p.bit" )
-#define OTA_BS_1080_URL     ( "https://raw.githubusercontent.com/zwenergy/gbaHD/master/bitstream/default_1080p.bit" )
-
-const String OTA_BS_RELEASE_URL = "https://api.github.com/repos/zwenergy/gbaHD/releases/latest";
-const String OTA_PROD_RELEASE_URL =  "https://api.github.com/repos/ManCloud/GBAHD-Shield/releases/latest" ;
+const String OTA_BS_RELEASE_URL = "https://api.github.com/repos/zwenergy/gbaHD/releases/";
+const String OTA_PROD_RELEASE_URL =  "https://api.github.com/repos/ManCloud/GBAHD-Shield/releases/" ;
+const String OTA_PROD_TESTING_URL =  "https://api.github.com/repos/ManCloud/GBAHD-Shield.private/releases/" ;
 
 enum OTA_Part
 {
@@ -58,15 +53,16 @@ enum OTA_Part
 struct OTA_Part_Mapping
 {
     OTA_Part ota_part;
-    String url;
+    const String* root_url;
+    int id;
 };
 
 struct Update_Info
 {
-  String version;
-  OTA_Part_Mapping urls[5];
+  char* version;
+  OTA_Part_Mapping urls[2];
   uint8_t available_parts;
-  String changelog;
+  char* changelog;
   bool checked;
 };
 
@@ -83,7 +79,8 @@ class OTA_Handler_Class
 {
     public:
         bool get_update_available();
-        void get_update_info(Update_Info& info);
+        void get_bitstream_update_info(Update_Info& info);
+        void get_esp_update_info(Update_Info& info);
         void update_bitstream(void);
         void full_update(void);
         void update_latest_BS(void);
@@ -93,8 +90,9 @@ class OTA_Handler_Class
   private:
         static void onWsEvent(AsyncWebSocket * server, AsyncWebSocketClient * client, AwsEventType type, void * arg, uint8_t *data, size_t len);
         void write_to_current_output(uint8_t* buffer, size_t size, bool final=false);
-        void refresh_update_info(Update_Info& info, const String& url);
+        void refresh_update_info(Update_Info& info, const String* url);
         bool initialize_ota(OTA_Part_Mapping& part);
+        void initialize_client(HTTPClient& client);
         void update(void);
 
         AsyncWebSocket* ws;
@@ -108,7 +106,6 @@ class OTA_Handler_Class
         int totalSize = -1;
         OTA_Part current_part = OTA_NONE;
         OTA_State ota_state = OTA_STATE_NONE;
-        OTA_Part ota_queue[4] = {OTA_NONE};
         uint8_t ota_queue_length = 0U;
         int8_t ota_queue_idx = -1;
 

@@ -20,19 +20,43 @@
             </nav>
             <h1>gba<sup>HD</sup> Firmware Update</h1>
             {{MESSAGE}}
-            <article>
-                <details open>
-                    <summary>Manual Firmware Update</summary>
-                    <div class="grid">
+            <div class="grid">
+                <article>
+                    <h4>Bitstream</h4>
+                    <p>
+                        Current Version: <br><code>{{CURRENT_BS_VERSION}}</code><br>Latest Version: <br><code>{{LATEST_BS_VERSION}}</code><br>
+                    </p>
+                    <p {{BS_OTA_HIDDEN}}>
+                        <a href="ota.html?part=bitstream" role="button">OTA Update</a>
+                    </p>
+                    <details>
+                        <summary>Manual Update</summary>
                         <div>
                             <form action="/upgrade/bitstream" method="post" enctype="multipart/form-data"><label>FPGA
                         bitstream:</label> <input type="file" name="name" accept=".bit"> <input class="button" type="submit" value="Upload"></form>
                         </div>
+                    </details>
+                </article>
+                <article>
+                    <h4>ESP Application</h4>
+                    <p>
+                        Current Version: <br><code>{{CURRENT_ESP_VERSION}}</code><br>Latest Version: <br><code>{{LATEST_ESP_VERSION}}</code><br>
+                    </p>
+                    <p {{ESP_OTA_HIDDEN}}>
+                        <a href="ota.html?part=esp" role="button">OTA Update</a>
+                    </p>
+                    <details>
+                        <summary>Manual Update</summary>
                         <div>
                             <form action="/upgrade/esp32" method="post" enctype="multipart/form-data"><label>ESP32
                             Application:</label> <input type="file" name="name" accept=".bin"> <input class="button" type="submit" value="Upload"></form>
                         </div>
-                    </div>
+                    </details>
+                </article>
+            </div>
+            <article>
+                <details>
+                    <summary>Manual ATMega Update</summary>
                     <div>
                         <form action="/upgrade/atmega" method="post" enctype="multipart/form-data">
                             <label>Shield Firmware:</label>
@@ -41,7 +65,6 @@
                             <input type="file" name="name" accept=".bin">
                             <input class="button" type="submit" value="Upload"></form>
                     </div>
-                    </div>
                 </details>
                 <details>
                     <summary>WARNING: SPIFFS Partition Update</summary>
@@ -49,10 +72,10 @@
                     <form action="/upgrade/spiffs" method="post" enctype="multipart/form-data"><label>SPIFFS Image:</label>
                         <input type="file" name="name" accept="spiffs.bin"> <input class="button" type="submit" value="Upload - I KNOW WHAT I'M DOING"></form>
                 </details>
-                <footer>
-                    <a href="/reboot" role="button">Reboot</a>
-                </footer>
             </article>
+            <footer>
+                <a href="/reboot" role="button">Reboot</a>
+            </footer>
         </main>
     </body>
 </head>
