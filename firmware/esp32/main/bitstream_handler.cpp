@@ -231,6 +231,5 @@ void Bitstream_Handler_Class::handle_bit_stream(void)
 void Bitstream_Handler_Class::get_current_version(String& version)
 {
   version = String(this->version);
-  Log_Handler.println(this->version);
 }
 
