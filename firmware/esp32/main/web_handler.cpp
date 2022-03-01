@@ -314,7 +314,7 @@ void Web_Handler_Class::handleIndex(AsyncWebServerRequest *request)
     Bitstream_Handler.get_current_version(current_bitstream);
     page_string.replace("{{LATEST_BS_VERSION}}", info.version);
     page_string.replace("{{CURRENT_BS_VERSION}}", current_bitstream);
-    page_string.replace("{{BS_OTA_HIDDEN}}", info.version && strcmp(info.version, current_bitstream.c_str()) ? "" : "hidden");
+    page_string.replace("{{BS_OTA_HIDDEN}}", info.version.length() && info.version != current_bitstream? "" : "hidden");
   }
   {
     Update_Info info;  
@@ -323,7 +323,7 @@ void Web_Handler_Class::handleIndex(AsyncWebServerRequest *request)
     OTA_Handler.get_esp_update_info(info);
     page_string.replace("{{LATEST_ESP_VERSION}}", info.version);
     page_string.replace("{{CURRENT_ESP_VERSION}}", app_desc.version);
-    page_string.replace("{{ESP_OTA_HIDDEN}}", info.version && strcmp(info.version, app_desc.version) ? "" : "hidden");
+    page_string.replace("{{ESP_OTA_HIDDEN}}", info.version.length() && info.version != String(app_desc.version) ? "" : "hidden");
   }
 
   request->send(200, "text/html", page_string);
