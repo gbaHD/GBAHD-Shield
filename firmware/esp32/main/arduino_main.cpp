@@ -51,7 +51,7 @@ static int64_t timer_100ms_timestamp = 0U;
 // Arduino setup function. Runs in CPU 1
 void setup() {
   Serial.begin(115200);
-  Serial.setDebugOutput(true);
+  Serial.setDebugOutput(false);
   // Start LittleFS
   LittleFS.begin(true);
 
