@@ -33,7 +33,7 @@ jobs:
           base: '${{ github.ref }}'
           filters: |
             changed:
-            - 'firmware/avr/*'
+            - 'firmware/avr/*' |
             twiboot: |
             - 'firmware/twiboot'
       
