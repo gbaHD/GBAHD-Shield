@@ -39,7 +39,7 @@ jobs:
         with:
           base: '${{ github.ref }}'
           filters: |
-            changed: |
+            changed:
             - 'firmware/twiboot'
       
       - name: ATMega - Install GCC
