@@ -36,6 +36,8 @@
 
 // #define DEV_BOARD
 
+#define XFPGA_RESET_TIMEOUT ( 200 )
+
 /* pin define */
 #define XFPGA_CCLK_PIN 17
 #define XFPGA_DIN_PIN 27
@@ -56,6 +58,7 @@ extern "C" {
 // initialization
 void Bitstream_Handler_Class::init(void) {
 
+  uint16_t reset_counter = 0U;
 #ifndef DEV_BOARD
   // initialize serial communication at 115200 bits per second: 
 
@@ -82,7 +85,14 @@ void Bitstream_Handler_Class::init(void) {
   digitalWrite(XFPGA_PROGRAM_PIN, HIGH);
 
   // wait until fpga reports reset complete
-  while(digitalRead(XFPGA_INTB_PIN) == 0) {}
+  while(digitalRead(XFPGA_INTB_PIN) == 0) 
+  {
+    if (reset_counter++ > XFPGA_RESET_TIMEOUT)
+    {
+      break;
+    }
+    delay(10);
+  }
 #endif
 }
 
