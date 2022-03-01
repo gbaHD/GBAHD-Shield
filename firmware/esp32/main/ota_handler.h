@@ -59,7 +59,7 @@ struct OTA_Part_Mapping
 
 struct Update_Info
 {
-  char* version;
+  String version;
   OTA_Part_Mapping urls[2];
   uint8_t available_parts;
   String changelog;

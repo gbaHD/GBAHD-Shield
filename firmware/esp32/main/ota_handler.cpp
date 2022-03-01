@@ -129,12 +129,12 @@ void OTA_Handler_Class::refresh_update_info(Update_Info& info, const String* url
                 && cJSON_HasObjectItem(release_json, "assets"))
         {
             uint8_t update_idx = 0U;
-            String changelog = String(cJSON_GetObjectItem(release_json, "body")->valuestring);
+            info.changelog = String(cJSON_GetObjectItem(release_json, "body")->valuestring);
             
-            changelog.replace("\n", "<br>");
+            info.changelog.replace("\n", "<br>");
+            Log_Handler.println("Got release, checking assets...");
 
-            info.changelog = changelog;
-            info.version = cJSON_GetObjectItem(release_json, "name")->valuestring;
+            info.version = String(cJSON_GetObjectItem(release_json, "name")->valuestring);
 
             cJSON* assets = cJSON_GetObjectItem(release_json, "assets");
 
@@ -177,7 +177,6 @@ void OTA_Handler_Class::refresh_update_info(Update_Info& info, const String* url
                         update_idx++;
                     }
 
-
                 }
             }
             for (;update_idx < (sizeof(info.urls)/sizeof(info.urls[0])); update_idx++)
@@ -185,13 +184,16 @@ void OTA_Handler_Class::refresh_update_info(Update_Info& info, const String* url
                 info.urls[update_idx].ota_part = OTA_NONE;
             }
         }
-
+        info.checked = true;
+        cJSON_Delete(release_json);
     }
     else
     {
         Log_Handler.println("Failed to get url ");
+        info.checked = false;
     }
     client.end();
+    Log_Handler.println(ESP.getFreeHeap());
 }
 
 void OTA_Handler_Class::get_bitstream_update_info(Update_Info& info)
@@ -199,7 +201,6 @@ void OTA_Handler_Class::get_bitstream_update_info(Update_Info& info)
     if (!bs_update_info.checked)
     {
         refresh_update_info(bs_update_info, &OTA_BS_RELEASE_URL);
-        bs_update_info.checked = true;
     }
 
     info = bs_update_info;
@@ -222,7 +223,6 @@ void OTA_Handler_Class::get_esp_update_info(Update_Info& info)
             Log_Handler.println("Getting ESP Release");
             refresh_update_info(release_update_info, &OTA_PROD_RELEASE_URL);
         }
-        release_update_info.checked = true;
     }
 
     info = release_update_info;
@@ -428,14 +428,12 @@ void OTA_Handler_Class::run(void)
         if (!bs_update_info.checked)
         {
             refresh_update_info(bs_update_info, &OTA_BS_RELEASE_URL);
-            bs_update_info.checked = true;
         }
         if (!release_update_info.checked)
         {
             String token;
             Preferences_Handler.getOTAToken(token);
             
-
             if (token != "")
             {
                 refresh_update_info(release_update_info, &OTA_PROD_TESTING_URL);
@@ -444,7 +442,6 @@ void OTA_Handler_Class::run(void)
             {
                 refresh_update_info(release_update_info, &OTA_PROD_RELEASE_URL);
             }
-            release_update_info.checked = true;
         }
     }
 
