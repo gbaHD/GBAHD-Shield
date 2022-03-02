@@ -34,7 +34,7 @@ jobs:
           base: '${{ github.ref }}'
           filters: |
             changed:
-            - 'firmware/esp32/*'
+            - 'firmware/esp32/**/*'
       - name: ESP32 Add version
         run: |
           git describe --exclude latest | sed 's/\(.*\)-.*/\1/' >> ESP_VERSION
