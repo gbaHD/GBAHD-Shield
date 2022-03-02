@@ -198,7 +198,7 @@ void Web_Handler_Class::handlePartitionUpload(AsyncWebServerRequest *request, co
   {
     partition = U_FLASH;
   }
-  else if (request->url() == "/upgrade/LittleFS")
+  else if (request->url() == "/upgrade/spiffs")
   {
     partition = U_SPIFFS;
   }
@@ -399,7 +399,7 @@ void Web_Handler_Class::init(void)
   _Aserver.on("/upgrade/esp32", HTTP_POST, handleUploadDone, handlePartitionUpload);
 
   // // Handle LittleFS upload.
-  _Aserver.on("/upgrade/LittleFS", HTTP_POST, handleUploadDone, handlePartitionUpload);
+  _Aserver.on("/upgrade/spiffs", HTTP_POST, handleUploadDone, handlePartitionUpload);
 
   _Aserver.on("/reboot", HTTP_GET, handleReboot);
 
