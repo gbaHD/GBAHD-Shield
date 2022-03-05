@@ -425,11 +425,17 @@ void OTA_Handler_Class::run(void)
 {
     if (WiFi.isConnected())
     {
-        if (!bs_update_info.checked)
+        if ((!bs_update_info.checked) && (bs_retries < 10U))
         {
             refresh_update_info(bs_update_info, &OTA_BS_RELEASE_URL);
+
+
+            if (!bs_update_info.checked)
+            {
+                bs_retries++;
+            }
         }
-        if (!release_update_info.checked)
+        if ((!release_update_info.checked) && (esp_retries < 10U))
         {
             String token;
             Preferences_Handler.getOTAToken(token);
@@ -441,6 +447,11 @@ void OTA_Handler_Class::run(void)
             else
             {
                 refresh_update_info(release_update_info, &OTA_PROD_RELEASE_URL);
+            }
+
+            if (!release_update_info.checked)
+            {
+                esp_retries++;
             }
         }
     }

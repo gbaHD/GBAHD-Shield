@@ -305,23 +305,23 @@ void Web_Handler_Class::handleIndex(AsyncWebServerRequest *request)
   }
   String current_bs_version = "";
   Bitstream_Handler.get_current_version(current_bs_version);
-  page_string.replace("{{MESSAGE}}", current_bs_version);
+  page_string.replace("{{MESSAGE}}", "");
   
   {
     Update_Info info;
     String current_bitstream;
     OTA_Handler.get_bitstream_update_info(info);
     Bitstream_Handler.get_current_version(current_bitstream);
-    page_string.replace("{{LATEST_BS_VERSION}}", info.version);
+    page_string.replace("{{LATEST_BS_VERSION}}", info.checked ? info.version : "OTA Server N/A");
     page_string.replace("{{CURRENT_BS_VERSION}}", current_bitstream);
-    page_string.replace("{{BS_OTA_HIDDEN}}", info.version.length() && info.version != current_bitstream? "" : "hidden");
+    page_string.replace("{{BS_OTA_HIDDEN}}", !current_bitstream.length() || (info.version.length() && info.version.indexOf(current_bitstream) < 0) ? "" : "hidden");
   }
   {
     Update_Info info;  
     esp_app_desc_t app_desc;
     esp_ota_get_partition_description(esp_ota_get_boot_partition(), &app_desc);
     OTA_Handler.get_esp_update_info(info);
-    page_string.replace("{{LATEST_ESP_VERSION}}", info.version);
+    page_string.replace("{{LATEST_ESP_VERSION}}", info.checked ? info.version : "OTA Server N/A");
     page_string.replace("{{CURRENT_ESP_VERSION}}", app_desc.version);
     page_string.replace("{{ESP_OTA_HIDDEN}}", info.version.length() && info.version != String(app_desc.version) ? "" : "hidden");
   }

@@ -111,6 +111,8 @@ class OTA_Handler_Class
 
         Update_Info bs_update_info;
         Update_Info release_update_info;
+        uint8_t esp_retries = 0U;
+        uint8_t bs_retries = 0U;
         Update_Info* current_update = nullptr;
         OTA_Part_Mapping* current_part_mapping = nullptr;
 
