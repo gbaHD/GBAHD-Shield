@@ -23,7 +23,7 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           submodules: 'recursive'
           fetch-depth: 0
@@ -71,7 +71,7 @@ jobs:
           automatic_release_tag: latest
           # Release title (for automatic releases)
           title:  " ${{ env.ESP_VERSION }}"
-          #prerelease: true
+          prerelease: false
           # Assets to upload to the release
           files: |
             /tmp/release/*.bin
