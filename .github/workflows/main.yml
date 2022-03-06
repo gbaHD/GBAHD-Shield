@@ -58,7 +58,7 @@ jobs:
           mkdir /tmp/release
           cp firmware/esp32/build/gbaHD.bin /tmp/release/gbaHD-esp32.bin
           cp firmware/esp32/build/spiffs.bin /tmp/release/gbaHD-spiffs.bin
-          cp firmware/esp32/build/partition_table/partition_table.bin /tmp/release/gbaHD-partition_table.bin
+          cp firmware/esp32/build/partition_table/partition-table.bin /tmp/release/gbaHD-partition-table.bin
           co firmware/esp32/build/bootloader/bootloader.bin /tmp/release/gbaHD-esp32-bootloader.bin
           cp firmware/esp32/data/atmega.bin /tmp/release/gbaHD-avr.bin
         shell: bash
