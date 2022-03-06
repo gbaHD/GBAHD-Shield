@@ -6,7 +6,7 @@ name: ESP Release
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
-    branches: [ feat/esp32 ]
+    branches: [ feat/esp32, develop, master ]
   pull_request:
     branches: [ master ]
 
@@ -26,8 +26,7 @@ jobs:
       - uses: actions/checkout@v3
         with:
           submodules: 'recursive'
-          fetch-depth: 0
-
+          fetch-depth: '0'
       - uses: dorny/paths-filter@v2
         id: esp_change
         with:
@@ -59,6 +58,8 @@ jobs:
           mkdir /tmp/release
           cp firmware/esp32/build/gbaHD.bin /tmp/release/gbaHD-esp32.bin
           cp firmware/esp32/build/spiffs.bin /tmp/release/gbaHD-spiffs.bin
+          cp firmware/esp32/build/partition-image/partition-image.bin /tmp/release/gbaHD-partition-image.bin
+          co firmware/esp32/build/bootloader/bootloader.bin /tmp/release/gbaHD-esp32-bootloader.bin
           cp firmware/esp32/data/atmega.bin /tmp/release/gbaHD-avr.bin
         shell: bash
           
