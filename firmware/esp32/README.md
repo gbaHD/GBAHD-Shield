@@ -37,10 +37,10 @@ As per default, gbaHD will be started with the 720P Bitstream. In the *Settings*
 ## Thanks to...
 
 - Zwenergy for gbaHD [1]
+- ManCloud for coordination and gbaHD shield
 - Ricardo Quesada for Bluepad32 [2]
 - Arduino and Espressif for arduino-esp32
 - PicoCSS team for PicoCSS [3]
-- ManCloud for coordination and gbaHD shield
 - jotheripper for his gbaHD Case
 - derKevin for test feedback
 - bbsan for ESP32 SW
