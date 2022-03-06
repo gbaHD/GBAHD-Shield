@@ -52,7 +52,7 @@ Bitstream_Handler_Class Bitstream_Handler;
 
 extern "C" {
   //external header for the pulling up of SD pins at the initialization
-  #include "driver/sdmmc_host.h"
+  //#include "driver/sdmmc_host.h"
 }
 
 // initialization
@@ -63,7 +63,7 @@ void Bitstream_Handler_Class::init(void) {
   // initialize serial communication at 115200 bits per second: 
 
   //PULL UP of SD card pins <--- preventing mounting failure due to floating state
-  sdmmc_host_pullup_en(1, 4); //Slot: 1 and Bit mode: 4
+  //sdmmc_host_pullup_en(1, 4); //Slot: 1 and Bit mode: 4
   
   // ESP/SD pulled up pins list as reference:
   // ESP GPIO2        (pin 22) <---> SD CARD D0
@@ -144,55 +144,6 @@ bool Bitstream_Handler_Class::pushBitStream(File& file) {
     Log_Handler.println("FPGA Configuration success");
     return true;
   }
-}
-
-void Bitstream_Handler_Class::handle_sd_card(void)
-{
-  #ifndef DEV_BOARD
-    if (SD_MMC.begin())
-    {
-        Log_Handler.println("SD Card available! Checking for update...");
-
-        if (SD_MMC.exists(BITSTREAM_SD_UPDATE_FILE))
-        {
-            // if (LittleFS.begin(true))
-            // {
-              Log_Handler.println("Update available, copying to LittleFS");
-
-              unsigned char buffer[CHUNK_SIZE];
-              int bytes_read;
-
-              File SD_File = SD_MMC.open(BITSTREAM_SD_UPDATE_FILE, "r");
-              File LittleFS_File = LittleFS.open(BITSTREAM_SPIFFS_PATH, "w+");
-
-              do
-              {
-                  Log_Handler.print(".");
-                  bytes_read = SD_File.read(buffer, CHUNK_SIZE);
-                  LittleFS_File.write(buffer, CHUNK_SIZE);
-
-              } while (bytes_read > 0);
-
-              LittleFS_File.flush();
-
-              SD_File.close();
-              LittleFS_File.close();
-
-              Log_Handler.println("Done!");
-              Log_Handler.println("Renaming Update File.");
-
-              SD_MMC.rename(BITSTREAM_SD_UPDATE_FILE, BITSTREAM_SD_UPDATE_FILE_OLD);
-
-          //    LittleFS.end();
-          // }
-          // else
-          // {
-          //   Serial.println("Error mounting LittleFS. Please reflash using Serial flashing.");
-          // }
-        }
-        SD_MMC.end();
-    }
-  #endif
 }
 
 void Bitstream_Handler_Class::handle_bit_stream(void)

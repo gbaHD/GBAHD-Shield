@@ -46,7 +46,7 @@ const unsigned char BITSTREAM_VERSION_IDENT[] = { 0x30, 0x01, 0xA0, 0x01 };
 class Bitstream_Handler_Class {
   public:
     void init(void);	
-    void handle_sd_card(void);
+   // void handle_sd_card(void);
     void handle_bit_stream(void);
     void get_current_version(String& version);
   private: 

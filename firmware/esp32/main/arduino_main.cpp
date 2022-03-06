@@ -61,7 +61,7 @@ void setup() {
   Bitstream_Handler.init();
 
   // Handle SD Card LittleFS Update and Hotboot detection
-  Bitstream_Handler.handle_sd_card();
+  // Bitstream_Handler.handle_sd_card();
 
   // Handle pushing the bitstream to Spartan
   Bitstream_Handler.handle_bit_stream();

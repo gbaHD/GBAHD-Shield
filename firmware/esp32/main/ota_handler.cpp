@@ -576,6 +576,10 @@ void OTA_Handler_Class::fallback_update(void)
         }
         SD_MMC.end();
     }
+    else
+    {
+        Log_Handler.println("Can not mount SD Card for Update");
+    }
 }
 
 void OTA_Handler_Class::init(void)
