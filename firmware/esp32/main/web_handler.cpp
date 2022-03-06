@@ -409,7 +409,7 @@ void Web_Handler_Class::init(void)
 
   _Aserver.on("/", HTTP_GET, handleIndex);
   _Aserver.serveStatic("/pico.min.css", LittleFS, "/webpage/pico.min.css");
-  _Aserver.serveStatic("/Logo.png", LittleFS, "/webpage/Logo.png");
+  _Aserver.serveStatic("/Logo.png", LittleFS, "/webpage/Logo.svg");
   _Aserver.serveStatic("/serial.html", LittleFS, "/webpage/serial.html").setTemplateProcessor(serial_ip);
   _Aserver.on("/ota.html", HTTP_GET, handleOTA);
   _Aserver.on("/setToken", HTTP_GET, handleToken);
