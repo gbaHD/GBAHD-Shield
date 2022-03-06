@@ -35,6 +35,7 @@
 #include <uni_bluetooth.h>
 #include <Esp.h>
 #include <base64.h>
+#include <SD_MMC.h>
 
 #include "bitstream_handler.h"
 #include "log_handler.h"
@@ -486,11 +487,100 @@ void OTA_Handler_Class::run(void)
             break;
         }
     }
+}
 
+void OTA_Handler_Class::fallback_update(void)
+{
+    if (SD_MMC.begin())
+    {
+        Log_Handler.println("SD Card available! Checking for update...");
+        unsigned char buffer[1024];
+        int bytes_read;
+
+        if (SD_MMC.exists(SD_ESP_FILE_NAME))
+        {
+            Log_Handler.println("ESP Update available. Updating");
+
+            File SD_File = SD_MMC.open(SD_ESP_FILE_NAME, "r");
+            Update.begin(UPDATE_SIZE_UNKNOWN, U_FLASH);
+            Update.write(SD_File);
+            Update.end();
+            Log_Handler.println("Done!");
+            Log_Handler.println("Renaming Update File.");
+            SD_File.close();
+            SD_MMC.rename(SD_ESP_FILE_NAME, SD_ESP_FILE_NAME + "_DONE");
+        }
+        if (SD_MMC.exists(SD_SPIFFS_FILE_NAME))
+        {
+            File SD_File = SD_MMC.open(SD_SPIFFS_FILE_NAME, "r");
+            Log_Handler.println("SPIFFS Update available. Updating");
+            LittleFS.end();
+            Update.begin(UPDATE_SIZE_UNKNOWN, U_SPIFFS);
+            Update.write(SD_File);
+            Update.end();
+            Log_Handler.println("Done!");
+            Log_Handler.println("Renaming Update File.");
+            SD_File.close();
+            SD_MMC.rename(SD_SPIFFS_FILE_NAME, SD_SPIFFS_FILE_NAME + "_DONE");
+        }
+        if (SD_MMC.exists(SD_720P_FILE_NAME))
+        {
+            File SD_File = SD_MMC.open(SD_720P_FILE_NAME, "r");
+            File BS_File = LittleFS.open(BITSTREAM_720P_PATH, "w");
+            
+            Log_Handler.println("720P Update available. Updating");
+            do
+            {
+                bytes_read = SD_File.read(buffer, sizeof(buffer)/sizeof(buffer[0]));
+                BS_File.write(buffer, bytes_read);
+            } while (bytes_read > 0);
+            SD_File.close();
+            BS_File.close();
+            Log_Handler.println("Done!");
+            Log_Handler.println("Renaming Update File.");
+            SD_MMC.rename(SD_720P_FILE_NAME, SD_720P_FILE_NAME + "_DONE");
+        }
+        if (SD_MMC.exists(SD_1080P_FILE_NAME))
+        {
+            File SD_File = SD_MMC.open(SD_1080P_FILE_NAME, "r");
+            File BS_File = LittleFS.open(BITSTREAM_1080P_PATH, "w");
+            
+            Log_Handler.println("1080P Update available. Updating");
+            do
+            {
+                bytes_read = SD_File.read(buffer, sizeof(buffer)/sizeof(buffer[0]));
+                BS_File.write(buffer, bytes_read);
+            } while (bytes_read > 0);
+            SD_File.close();
+            BS_File.close();
+            Log_Handler.println("Done!");
+            Log_Handler.println("Renaming Update File.");
+            SD_MMC.rename(SD_1080P_FILE_NAME, SD_1080P_FILE_NAME + "_DONE");
+        }
+        if (SD_MMC.exists(SD_MEGA_FILE_NAME))
+        {
+            File SD_File = SD_MMC.open(SD_MEGA_FILE_NAME, "r");
+            File BS_File = LittleFS.open(ATMEGA_SPIFFS_PATH, "w");
+            
+            Log_Handler.println("ATMega Update available. Updating");
+            do
+            {
+                bytes_read = SD_File.read(buffer, sizeof(buffer)/sizeof(buffer[0]));
+                BS_File.write(buffer, bytes_read);
+            } while (bytes_read > 0);
+            SD_File.close();
+            BS_File.close();
+            Log_Handler.println("Done!");
+            Log_Handler.println("Renaming Update File.");
+            SD_MMC.rename(SD_MEGA_FILE_NAME, SD_MEGA_FILE_NAME + "_DONE");
+        }
+        SD_MMC.end();
+    }
 }
 
 void OTA_Handler_Class::init(void)
 {
+    fallback_update();
     ws = new AsyncWebSocket("/ota");
     ws->onEvent(onWsEvent);
     Web_Handler.addWebSocket(ws);
