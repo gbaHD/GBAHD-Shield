@@ -76,7 +76,7 @@ jobs:
         with:
           # GitHub secret token
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: latest
+          #automatic_release_tag: latest
           # Release title (for automatic releases)
           title:  " ${{ env.ESP_VERSION }}"
           prerelease: false
