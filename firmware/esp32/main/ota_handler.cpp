@@ -154,13 +154,13 @@ void OTA_Handler_Class::refresh_update_info(Update_Info& info, const String* url
                     Log_Handler.print(" ID: ");
                     Log_Handler.println(asset_id);
                     info.urls[update_idx].root_url = url;
-                    if (name.indexOf("gbaHD-esp32") != -1)
+                    if (name.indexOf("gbaHD-esp32.bin") != -1)
                     {
                         info.urls[update_idx].ota_part = OTA_ESP;
                         info.urls[update_idx].id = asset_id;
                         update_idx++;
                     }
-                    else if (name.indexOf("gbaHD-spiffs") != -1)
+                    else if (name.indexOf("gbaHD-spiffs.bin") != -1)
                     {
                         info.urls[update_idx].ota_part = OTA_SPIFFS;
                         info.urls[update_idx].id = asset_id;
