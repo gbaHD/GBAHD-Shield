@@ -50,10 +50,10 @@
 
 Bitstream_Handler_Class Bitstream_Handler;
 
-extern "C" {
-  //external header for the pulling up of SD pins at the initialization
-  //#include "driver/sdmmc_host.h"
-}
+// extern "C" {
+//   //external header for the pulling up of SD pins at the initialization
+//   #include "driver/sdmmc_host.h"
+// }
 
 // initialization
 void Bitstream_Handler_Class::init(void) {
@@ -63,7 +63,7 @@ void Bitstream_Handler_Class::init(void) {
   // initialize serial communication at 115200 bits per second: 
 
   //PULL UP of SD card pins <--- preventing mounting failure due to floating state
-  //sdmmc_host_pullup_en(1, 4); //Slot: 1 and Bit mode: 4
+//  sdmmc_host_pullup_en(1, 4); //Slot: 1 and Bit mode: 4
   
   // ESP/SD pulled up pins list as reference:
   // ESP GPIO2        (pin 22) <---> SD CARD D0

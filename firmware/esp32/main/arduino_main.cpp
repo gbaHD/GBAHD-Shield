@@ -35,6 +35,9 @@
 
 #include <LittleFS.h>
 
+#include "driver/sdmmc_host.h"
+
+
 #include "web_handler.h"
 #include "wifi_handler.h"
 #include "bitstream_handler.h"
@@ -50,6 +53,12 @@ static int64_t timer_100ms_timestamp = 0U;
 
 // Arduino setup function. Runs in CPU 1
 void setup() {
+  // sdmmc_slot_config_t sd_config = SDMMC_SLOT_CONFIG_DEFAULT();
+  // sd_config.flags = SDMMC_SLOT_FLAG_INTERNAL_PULLUP;
+  // sdmmc_host_init();
+  // sdmmc_host_init_slot(1, &sd_config);
+  sdmmc_host_pullup_en(1, 4); //Slot: 1 and Bit mode: 4
+
   Serial.begin(115200);
   Serial.setDebugOutput(false);
   // Start LittleFS

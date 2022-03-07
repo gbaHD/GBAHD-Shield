@@ -37,6 +37,7 @@
 #include <base64.h>
 #include <SD_MMC.h>
 
+
 #include "bitstream_handler.h"
 #include "log_handler.h"
 #include "web_handler.h"
@@ -424,7 +425,14 @@ void OTA_Handler_Class::update_latest_BS(void)
 
 void OTA_Handler_Class::run(void)
 {
-    if (WiFi.isConnected())
+    static bool firstRun = true;
+
+    if (firstRun)
+    {
+        fallback_update();
+        firstRun = false;
+    }
+    else if (WiFi.isConnected())
     {
         if ((!bs_update_info.checked) && (bs_retries < 10U))
         {
@@ -584,7 +592,7 @@ void OTA_Handler_Class::fallback_update(void)
 
 void OTA_Handler_Class::init(void)
 {
-    fallback_update();
+
     ws = new AsyncWebSocket("/ota");
     ws->onEvent(onWsEvent);
     Web_Handler.addWebSocket(ws);
