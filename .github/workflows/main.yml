@@ -41,7 +41,7 @@ jobs:
       - name: ESP32 Add version
         run: |
           git fetch --all --tags
-          git describe --exclude latest
+          git describe --exclude latest | sed 's/\(.*\)-.*/\1/'
           git describe --exclude latest | sed 's/\(.*\)-.*/\1/' >> ESP_VERSION
           echo "ESP_VERSION=${ESP_VERSION}" >> $GITHUB_ENV
           echo $ESP_VERSION >> firmware/esp32/version.txt
