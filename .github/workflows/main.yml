@@ -42,7 +42,7 @@ jobs:
         run: |
           git fetch --all --tags
           git describe --exclude latest | sed 's/\(.*\)-.*/\1/'
-          git describe --exclude latest | sed 's/\(.*\)-.*/\1/' >> ESP_VERSION
+          ESP_VERSION=$(git describe --exclude latest | sed 's/\(.*\)-.*/\1/')
           echo "ESP_VERSION=${ESP_VERSION}" >> $GITHUB_ENV
           echo $ESP_VERSION >> firmware/esp32/version.txt
           echo "${ESP_VERSION}"
@@ -76,9 +76,9 @@ jobs:
         with:
           # GitHub secret token
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          #automatic_release_tag: latest
+          automatic_release_tag: latest
           # Release title (for automatic releases)
-          title:  " ${{ env.ESP_VERSION }}"
+          title:  "${{ env.ESP_VERSION }}"
           prerelease: false
           # Assets to upload to the release
           files: |
