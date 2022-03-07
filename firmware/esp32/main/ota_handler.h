@@ -39,11 +39,11 @@ const String OTA_BS_RELEASE_URL = "https://api.github.com/repos/zwenergy/gbaHD/r
 const String OTA_PROD_RELEASE_URL =  "https://api.github.com/repos/ManCloud/GBAHD-Shield/releases/" ;
 const String OTA_PROD_TESTING_URL =  "https://api.github.com/repos/ManCloud/GBAHD-Shield.private/releases/" ;
 
-const String SD_ESP_FILE_NAME = "/gbaHD-esp32.bin";
-const String SD_SPIFFS_FILE_NAME = "/gbaHD-spiffs.bin";
-const String SD_720P_FILE_NAME = "/default_720p.bit";
-const String SD_1080P_FILE_NAME = "/default_1080p.bit";
-const String SD_MEGA_FILE_NAME = "/gbaHD-avr.bit";
+const String SD_ESP_FILE_NAME = "/esp32.bin";
+const String SD_SPIFFS_FILE_NAME = "/spiffs.bin";
+const String SD_720P_FILE_NAME = "/720p.bit";
+const String SD_1080P_FILE_NAME = "/1080p.bit";
+const String SD_MEGA_FILE_NAME = "/avr.bin";
 
 enum OTA_Part
 {

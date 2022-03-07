@@ -504,7 +504,7 @@ void OTA_Handler_Class::fallback_update(void)
         Log_Handler.println("SD Card available! Checking for update...");
         unsigned char buffer[1024];
         int bytes_read;
-
+        bool schedule_reboot = false;
         if (SD_MMC.exists(SD_ESP_FILE_NAME))
         {
             Log_Handler.println("ESP Update available. Updating");
@@ -514,9 +514,11 @@ void OTA_Handler_Class::fallback_update(void)
             Update.write(SD_File);
             Update.end();
             Log_Handler.println("Done!");
-            Log_Handler.println("Renaming Update File.");
+            Log_Handler.println("Removing Update File.");
             SD_File.close();
-            SD_MMC.rename(SD_ESP_FILE_NAME, SD_ESP_FILE_NAME + "_DONE");
+            SD_MMC.remove(SD_ESP_FILE_NAME);
+            schedule_reboot = true;
+
         }
         if (SD_MMC.exists(SD_SPIFFS_FILE_NAME))
         {
@@ -527,9 +529,10 @@ void OTA_Handler_Class::fallback_update(void)
             Update.write(SD_File);
             Update.end();
             Log_Handler.println("Done!");
-            Log_Handler.println("Renaming Update File.");
+            Log_Handler.println("Removing Update File.");
             SD_File.close();
-            SD_MMC.rename(SD_SPIFFS_FILE_NAME, SD_SPIFFS_FILE_NAME + "_DONE");
+            SD_MMC.remove(SD_SPIFFS_FILE_NAME);
+            schedule_reboot = true;
         }
         if (SD_MMC.exists(SD_720P_FILE_NAME))
         {
@@ -545,8 +548,9 @@ void OTA_Handler_Class::fallback_update(void)
             SD_File.close();
             BS_File.close();
             Log_Handler.println("Done!");
-            Log_Handler.println("Renaming Update File.");
-            SD_MMC.rename(SD_720P_FILE_NAME, SD_720P_FILE_NAME + "_DONE");
+            Log_Handler.println("Removing Update File.");
+            SD_MMC.remove(SD_720P_FILE_NAME);
+            schedule_reboot = true;
         }
         if (SD_MMC.exists(SD_1080P_FILE_NAME))
         {
@@ -562,8 +566,9 @@ void OTA_Handler_Class::fallback_update(void)
             SD_File.close();
             BS_File.close();
             Log_Handler.println("Done!");
-            Log_Handler.println("Renaming Update File.");
-            SD_MMC.rename(SD_1080P_FILE_NAME, SD_1080P_FILE_NAME + "_DONE");
+            Log_Handler.println("Removing Update File.");
+            SD_MMC.remove(SD_1080P_FILE_NAME);
+            schedule_reboot = true;
         }
         if (SD_MMC.exists(SD_MEGA_FILE_NAME))
         {
@@ -579,10 +584,16 @@ void OTA_Handler_Class::fallback_update(void)
             SD_File.close();
             BS_File.close();
             Log_Handler.println("Done!");
-            Log_Handler.println("Renaming Update File.");
-            SD_MMC.rename(SD_MEGA_FILE_NAME, SD_MEGA_FILE_NAME + "_DONE");
+            Log_Handler.println("Removing Update File.");
+            SD_MMC.remove(SD_MEGA_FILE_NAME);
+            schedule_reboot = true;
         }
         SD_MMC.end();
+
+        if (schedule_reboot)
+        {
+            ESP.restart(); 
+        }
     }
     else
     {
