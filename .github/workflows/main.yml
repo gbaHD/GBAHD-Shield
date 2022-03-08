@@ -38,6 +38,13 @@ jobs:
           filters: |
             changed:
             - 'firmware/esp32/**/*'
+      
+      - name: Update Bitstreams
+        run: |
+          git config --global user.name 'GitHub Action'
+          git config --global user.email 'action@users.noreply.github.com'
+          git config pull.rebase false 
+          (cd firmware/esp32/external/zwenergy && git pull)
       - name: ESP32 Add version
         run: |
           git fetch --all --tags
@@ -53,11 +60,6 @@ jobs:
         with:
           # Relative path under $GITHUB_WORKSPACE to place the repository
           path: firmware/esp32
-      #- name: Get Version
-      #  if: steps.esp_change.outputs.changed == 'true'
-      #  run: |
-      #    echo "ESP_VERSION=$(dd if=firmware/esp32/build/gbaHD.bin skip=48 bs=1 count=32 status=none)" >> $GITHUB_ENV
-      #  shell: bash
         
       - name: Prepare Release
         if: steps.esp_change.outputs.changed == 'true'
