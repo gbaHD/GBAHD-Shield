@@ -24,10 +24,10 @@ If you want to keep your device offline but still want to experience the latest 
 
 File            |   Update
 ----------------|------------
-gbaHD-esp32.bin | ESP32
-gbaHD-spiffs.bin| ESP32 data partition
-default_720p.bit| 720P Bitstream
-default_1080p.bit| 1080P Bitstream
+esp32.bin       | ESP32
+spiffs.bin      | ESP32 data partition
+720p.bit        | 720P Bitstream
+1080p.bit       | 1080P Bitstream
 
 **Bitstream Selection:**
 
