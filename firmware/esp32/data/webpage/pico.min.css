@@ -1894,7 +1894,11 @@ details[open]>summary:after {
 
 article {
     margin: var(--block-spacing-vertical) 0;
+    margin-top: 0px;
+    margin-bottom: 40px;
     padding: var(--block-spacing-vertical) var(--block-spacing-horizontal);
+    padding-top: 40px;
+    padding-bottom: 20px;
     overflow: hidden;
     border-radius: var(--border-radius);
     background: var(--card-background-color);

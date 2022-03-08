@@ -111,6 +111,7 @@ String Web_Handler_Class::build_update_done(bool success)
 {
   String page_string = "";
   String mega_version = "";
+  String bitstream_version = "";
   esp_app_desc_t app_desc;
   {
     File page = LittleFS.open("/webpage/update.html", "r");
@@ -124,6 +125,9 @@ String Web_Handler_Class::build_update_done(bool success)
   page_string.replace("{{STATE}}", success ? "successful" : "failed");
   Mega_Handler.get_update_version(mega_version);
   page_string.replace("{{SHIELD_VER}}", mega_version);
+
+  Bitstream_Handler.get_current_version(bitstream_version);
+  page_string.replace("{{BITSTREAM_VER}}", bitstream_version);
 
   esp_ota_get_partition_description(esp_ota_get_boot_partition(), &app_desc);
   page_string.replace("{{ESP_VER}}", app_desc.version);
