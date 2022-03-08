@@ -31,6 +31,11 @@ jobs:
           git fetch --prune --tags
           echo exit code $?
           git tag --list
+          git config --global user.name 'GitHub Action'
+          git config --global user.email 'action@users.noreply.github.com'
+          git config pull.rebase false
+          (cd firmware/esp32/external/zwenergy && git pull origin master)
+
       - uses: dorny/paths-filter@v2
         id: esp_change
         with:
@@ -39,12 +44,12 @@ jobs:
             changed:
             - 'firmware/esp32/**/*'
       
-      - name: Update Bitstreams
-        run: |
-          git config --global user.name 'GitHub Action'
-          git config --global user.email 'action@users.noreply.github.com'
-          git config pull.rebase false 
-          (cd firmware/esp32/external/zwenergy && git pull origin master)
+      # - name: Update Bitstreams
+      #   run: |
+      #     git config --global user.name 'GitHub Action'
+      #     git config --global user.email 'action@users.noreply.github.com'
+      #     git config pull.rebase false 
+      #     (cd firmware/esp32/external/zwenergy && git pull origin master)
       - name: ESP32 Add version
         run: |
           git fetch --all --tags
