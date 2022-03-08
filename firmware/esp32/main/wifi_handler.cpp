@@ -30,7 +30,6 @@
 #include <WiFi.h>
 
 #include <SD_MMC.h>
-#include <cJSON.h>
 
 #include "wifi_handler.h"
 #include "log_handler.h"
@@ -54,47 +53,29 @@ void Wifi_Handler_Class::getSTACredentials(Wifi_Config& wifi_config)
         if (wifi_creds)
         {
             Log_Handler.println("Found creds file...");
-            if (wifi_creds.size() < 1024U)
-            {
-                cJSON *creds_json = NULL;
-
+            String line = wifi_creds.readStringUntil(0xA);
+            do {
+                int idx = -1;
+                line.replace("\r", "");
+                idx = line.indexOf("=");
+                if (idx != -1)
                 {
-                    char buffer[1024U] = { 0 };
-                    wifi_creds.readBytes(buffer, (sizeof(buffer)/sizeof(buffer[0])));
-                    
-                    creds_json = cJSON_Parse(buffer);
-                    Log_Handler.println("Loaded new creds...");
-                }
-
-                if (NULL != creds_json)
-                {
+                    String key, value;
+                    key = line.substring(0, idx);
+                    value = line.substring(idx + 1, line.length());
+                    key.trim();
+                    value.trim();
+                    if (key == "ssid")
                     {
-                        cJSON* ssid = cJSON_GetObjectItem(creds_json, "ssid");
-                        if (cJSON_IsString(ssid) && (ssid->valuestring != NULL))
-                        {
-                            new_wifi_config.ssid = ssid->valuestring;
-                            Log_Handler.println("Creds File SSID: " + new_wifi_config.ssid);
-                        }
+                        new_wifi_config.ssid = value;
                     }
+                    else if (key == "password")
                     {
-                        cJSON* password = cJSON_GetObjectItem(creds_json, "password");
-                        if (cJSON_IsString(password) && (password->valuestring != NULL))
-                        {
-                            new_wifi_config.password = password->valuestring;
-                        }
+                        new_wifi_config.password = value;
                     }
-                    cJSON_Delete(creds_json);
-
                 }
-                else
-                {
-                    Log_Handler.println("WiFi Creds JSON was invalid");
-                }
-            }
-            else
-            {
-                Log_Handler.println("WiFi Creds JSON too big");
-            }
+                line = wifi_creds.readStringUntil(0xA);
+            } while (line.length() > 0);
             wifi_creds.close();
         }
         else

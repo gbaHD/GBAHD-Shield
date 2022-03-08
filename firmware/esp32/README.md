@@ -17,6 +17,11 @@ A simplified mapping is provided in the *Settings* tab on gbaHDs Web Interface.
 
 To simplify all further updates by zwenergy or for the esp32, OTA functionality was added.
 When opening the Web Interface on http://gbahd.local it automatically checks, if a new bitstream update or a new esp32 software is available. You can directly update using the *OTA Update* Button on the Web Interface.
+To connect to a WiFi network, create a file called "wifi.cfg" with your wifi credentials on an sd card. Insert it and connection to this network will be established:
+```
+ssid=MyWifiSSID
+password=MyWifiPasswordIsSecure
+```
 
 **SD Card Update:**
 
