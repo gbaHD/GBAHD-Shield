@@ -413,6 +413,7 @@ void Web_Handler_Class::init(void)
 
   _Aserver.on("/", HTTP_GET, handleIndex);
   _Aserver.serveStatic("/pico.min.css", LittleFS, "/webpage/pico.min.css");
+  _Aserver.serveStatic("/gbaHD.css", LittleFS, "/webpage/gbaHD.css");
   _Aserver.serveStatic("/Logo.svg", LittleFS, "/webpage/Logo.svg");
   _Aserver.serveStatic("/serial.html", LittleFS, "/webpage/serial.html").setTemplateProcessor(serial_ip);
   _Aserver.on("/ota.html", HTTP_GET, handleOTA);
