@@ -131,8 +131,9 @@ void OTA_Handler_Class::refresh_update_info(Update_Info& info, const String* url
                 && cJSON_HasObjectItem(release_json, "assets"))
         {
             uint8_t update_idx = 0U;
-            info.changelog = String(cJSON_GetObjectItem(release_json, "body")->valuestring);
-            
+            String changelog = String(cJSON_GetObjectItem(release_json, "body")->valuestring);
+            info.changelog = changelog.length() > 1024 ? changelog.substring(0, 1024) : changelog;
+            info.changelog += "<br><br><a href=\"" + String(cJSON_GetObjectItem(release_json, "html_url")->valuestring) + "\">Link to release</a>";
             info.changelog.replace("\n", "<br>");
             Log_Handler.println("Got release, checking assets...");
 
