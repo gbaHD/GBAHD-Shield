@@ -34,6 +34,7 @@
 #include <mbedtls/sha1.h>
 #include <uni_bluetooth.h>
 
+#include "ArduinoBluepad32.h"
 #include "mega_handler.h"
 #include "preferences_handler.h"
 #include "log_handler.h"
@@ -429,9 +430,7 @@ void Mega_Handler_Class::init()
     Preferences_Handler.getBluetoothConfig(bt_config);
 
     BP32.setup(&onConnectedGamepad, &onDisconnectedGamepad);
-    BP32.forgetBluetoothKeys();
     uni_bluetooth_enable_new_connections_safe(bt_config.enabled);
-    
 
     Wire.begin(SDA_PIN, SCL_PIN);
 
