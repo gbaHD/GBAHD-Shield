@@ -310,7 +310,7 @@ void Web_Handler_Class::handleIndex(AsyncWebServerRequest *request)
   {
     String gamepad_message = "";
     Mega_Handler.get_controller_name(gamepad_message);
-    gamepad_message += " connected.";
+    gamepad_message = "<b>Current Controller:</b> " + gamepad_message;
     
     page_string.replace("{{BLUETOOTH_MESSAGE}}", gamepad_message);
   }
