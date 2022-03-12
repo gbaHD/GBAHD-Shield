@@ -423,6 +423,18 @@ void Mega_Handler_Class::trigger_external_update(bool force)
     start_application();
 }
 
+void Mega_Handler_Class::get_controller_name(String& name)
+{
+    if (controller)
+    {
+        name = controller->getModelName();
+    }
+    else
+    {
+        name = "No Controller";
+    }
+}
+
 
 void Mega_Handler_Class::init()
 {

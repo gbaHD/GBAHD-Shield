@@ -307,10 +307,13 @@ void Web_Handler_Class::handleIndex(AsyncWebServerRequest *request)
       page.close();
     }
   }
-  String current_bs_version = "";
-  Bitstream_Handler.get_current_version(current_bs_version);
-  page_string.replace("{{MESSAGE}}", "");
-  
+  {
+    String gamepad_message = "";
+    Mega_Handler.get_controller_name(gamepad_message);
+    gamepad_message += " connected.";
+    
+    page_string.replace("{{BLUETOOTH_MESSAGE}}", gamepad_message);
+  }
   {
     Update_Info info;
     String current_bitstream;

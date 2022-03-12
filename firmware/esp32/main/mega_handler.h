@@ -67,6 +67,7 @@ class Mega_Handler_Class
         void get_mega_hash(uint8_t hash[20]);
         void get_update_hash(uint8_t hash[20]);
         void trigger_external_update(bool force);
+        void get_controller_name(String& name);
     private:
         void update_mega(bool force = false);
         void update_controller();
