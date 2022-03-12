@@ -56,7 +56,7 @@ void Mega_Handler_Class::onConnectedGamepad(GamepadPtr gp)
     if (!controller)
     {
         controller = gp;
-        Log_Handler.println("CALLBACK: Controller is connected!");
+        Log_Handler.println("CALLBACK: " + gp->getModelName() + " is connected!");
     }
 }
 
@@ -100,6 +100,14 @@ void Mega_Handler_Class::update_controller()
             MAP_BUTTON(controller->miscButtons(), new_outputs, MISC_BUTTON_BACK, bt_config.mapping[BT_INP_SELECT]);
 
             new_outputs |= CTRL_BT_AVAILABLE;
+            {
+                static int model = 0;
+                if (controller->getModel() != model)
+                {
+                    Log_Handler.println("Model changed to " + controller->getModelName());
+                    model = controller->getModel();
+                }
+            }
         }
     }
     else
@@ -119,6 +127,7 @@ void Mega_Handler_Class::update_controller()
         Log_Handler.print("Current Controls: 0x");
         Log_Handler.println(new_outputs, HEX);
     }
+
 
 }
 
@@ -431,7 +440,7 @@ void Mega_Handler_Class::get_controller_name(String& name)
     }
     else
     {
-        name = "No Controller";
+        name = "Wired Controller";
     }
 }
 
