@@ -59,7 +59,7 @@ jobs:
         if: steps.twiboot_change.outputs.changed == 'true'
         run: |
           export PATH=/tmp/arduino-1.8.19/hardware/tools/avr/bin:$PATH
-          cd firmware/twiboot && make
+          cd firmware/twiboot && make MCU=atmega168p && make MCU=atmega328p
         shell: bash
       - name: Collect Files
         if: steps.atmega_change.outputs.changed == 'true'
