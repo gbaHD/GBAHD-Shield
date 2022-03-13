@@ -37,7 +37,7 @@ jobs:
       - uses: dorny/paths-filter@v2
         id: twiboot_change
         with:
-          base: '${{ github.ref }}'
+#          base: '${{ github.ref }}'
           filters: |
             changed:
             - 'firmware/twiboot'
