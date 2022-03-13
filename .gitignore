@@ -9,3 +9,5 @@ firmware/esp32/components/btstack*
 *.zip
 *bak
 *.hex
+firmware/esp32/data/1080p.bit
+firmware/esp32/data/720p.bit

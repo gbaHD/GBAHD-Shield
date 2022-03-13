@@ -97,6 +97,13 @@ class Preferences_Handler_Class
             settings = this->settings;
         }
 
+        void saveOTAToken(String& token);
+        void getOTAToken(String& token)
+        {
+            token = this->token;
+        }
+
+
         void reset();
         void init();
 
@@ -104,9 +111,11 @@ class Preferences_Handler_Class
         void restoreBluetoothConfig();
         void restoreWifiCredentials();
         void restoreSettings();
+        void restoreOTAToken();
         Wifi_Config wifi_config;
         Bluetooth_Config bt_config;
         Settings settings;
+        String token;
 
 
 };

@@ -26,34 +26,28 @@
 
  *******************************************************************************/
 
-// Include Guards
-#ifndef BITSTREAM_HANDLER_H
-#define BITSTREAM_HANDLER_H 
- 
-#include <Arduino.h>
-#include <FS.h>
+#include "Arduino.h"
+#include "ESPAsyncWebServer.h"
+#include "AsyncTCP.h"
 
-/* */
-#define BITSTREAM_SD_UPDATE_FILE        "/update.bit"
-#define BITSTREAM_SD_UPDATE_FILE_OLD    "/update.done"
-#define BITSTREAM_SD_HOTBOOT_FILE       "/hotboot.bit"
-#define BITSTREAM_SPIFFS_PATH           "/bitstream.bit"
-#define BITSTREAM_720P_PATH             "/720p.bit"
-#define BITSTREAM_1080P_PATH            "/1080p.bit"
+#define MAX_NUM_CLIENTS ( 4U )
 
-const unsigned char BITSTREAM_VERSION_IDENT[] = { 0x30, 0x01, 0xA0, 0x01 };
+class Log_Handler_Class : public Print
+{
+    public:
+        void init(void);
+        void run(void);
 
-class Bitstream_Handler_Class {
-  public:
-    void init(void);	
-   // void handle_sd_card(void);
-    void handle_bit_stream(void);
-    void get_current_version(String& version);
-  private: 
-    bool pushBitStream(File& file);
-    char version[5] = { 0 };
+        size_t write(uint8_t c);
+        size_t write(const uint8_t *buffer, size_t size);
+    private:
+        static void onWsEvent(AsyncWebSocket * server, AsyncWebSocketClient * client, AwsEventType type, void * arg, uint8_t *data, size_t len);
+        AsyncWebSocket* ws;
+        AsyncWebSocketClient * clients[MAX_NUM_CLIENTS];
+        uint8_t no_of_clients = 0U;
+
+
+
 };
 
-extern Bitstream_Handler_Class Bitstream_Handler;
-
-#endif
+extern Log_Handler_Class Log_Handler;

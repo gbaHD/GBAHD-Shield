@@ -30,12 +30,14 @@
 #include <Arduino.h>
 #include <Wire.h>
 #include <Bluepad32.h>
-#include <SPIFFS.h>
+#include <LittleFS.h>
 #include <mbedtls/sha1.h>
 #include <uni_bluetooth.h>
 
+#include "ArduinoBluepad32.h"
 #include "mega_handler.h"
 #include "preferences_handler.h"
+#include "log_handler.h"
 
 
 
@@ -51,13 +53,16 @@ GamepadPtr Mega_Handler_Class::controller;
 
 void Mega_Handler_Class::onConnectedGamepad(GamepadPtr gp) 
 {
-  controller = gp;
-  Serial.println("CALLBACK: Controller is connected!");
+    if (!controller)
+    {
+        controller = gp;
+        Log_Handler.println("CALLBACK: " + gp->getModelName() + " is connected!");
+    }
 }
 
 void Mega_Handler_Class::onDisconnectedGamepad(GamepadPtr gp) 
 {
-  Serial.println("CALLBACK: Controller is disconnected!");
+  Log_Handler.println("CALLBACK: Controller is disconnected!");
   controller = nullptr;
 }
 
@@ -74,14 +79,14 @@ void Mega_Handler_Class::update_controller()
 
         if (controller && controller->isConnected()) 
         {
-            MAP_BUTTON(controller->dpad(), new_outputs, DPAD_UP,  bt_config.mapping[BT_INP_UP]);
             MAP_BUTTON(((controller->axisY() < -80) ? DPAD_UP : 0), new_outputs, DPAD_UP, bt_config.mapping[BT_INP_UP]);
-            MAP_BUTTON(controller->dpad(), new_outputs, DPAD_DOWN, bt_config.mapping[BT_INP_DOWN]);
             MAP_BUTTON(((controller->axisY() > 80) ? DPAD_DOWN : 0), new_outputs, DPAD_DOWN, bt_config.mapping[BT_INP_DOWN]);
-            MAP_BUTTON(controller->dpad(), new_outputs, DPAD_LEFT, bt_config.mapping[BT_INP_LEFT]);
             MAP_BUTTON(((controller->axisX() < -80) ? DPAD_LEFT : 0), new_outputs, DPAD_LEFT, bt_config.mapping[BT_INP_LEFT]);
-            MAP_BUTTON(controller->dpad(), new_outputs, DPAD_RIGHT, bt_config.mapping[BT_INP_RIGHT]);
             MAP_BUTTON(((controller->axisX() > 80) ? DPAD_RIGHT : 0), new_outputs, DPAD_RIGHT, bt_config.mapping[BT_INP_RIGHT]);
+            MAP_BUTTON(controller->dpad(), new_outputs, DPAD_UP,  bt_config.mapping[BT_INP_UP]);
+            MAP_BUTTON(controller->dpad(), new_outputs, DPAD_DOWN, bt_config.mapping[BT_INP_DOWN]);
+            MAP_BUTTON(controller->dpad(), new_outputs, DPAD_LEFT, bt_config.mapping[BT_INP_LEFT]);
+            MAP_BUTTON(controller->dpad(), new_outputs, DPAD_RIGHT, bt_config.mapping[BT_INP_RIGHT]);
             MAP_BUTTON(controller->buttons(), new_outputs, BUTTON_B, bt_config.mapping[BT_INP_B]);
             MAP_BUTTON(controller->buttons(), new_outputs, BUTTON_A, bt_config.mapping[BT_INP_A]);
             MAP_BUTTON(controller->buttons(), new_outputs, BUTTON_Y, bt_config.mapping[BT_INP_Y]);
@@ -95,6 +100,14 @@ void Mega_Handler_Class::update_controller()
             MAP_BUTTON(controller->miscButtons(), new_outputs, MISC_BUTTON_BACK, bt_config.mapping[BT_INP_SELECT]);
 
             new_outputs |= CTRL_BT_AVAILABLE;
+            {
+                static int model = 0;
+                if (controller->getModel() != model)
+                {
+                    Log_Handler.println("Model changed to " + controller->getModelName());
+                    model = controller->getModel();
+                }
+            }
         }
     }
     else
@@ -105,18 +118,17 @@ void Mega_Handler_Class::update_controller()
     if (new_outputs != previous_outputs)
     {
         Wire.beginTransmission(MEGA_BL_ADDRESS);
+        Wire.flush();
         Wire.write(reinterpret_cast<uint8_t*>(&new_outputs), sizeof(uint16_t));
         Wire.endTransmission();
         Wire.flush();
 
         previous_outputs = new_outputs;
+        Log_Handler.print("Current Controls: 0x");
+        Log_Handler.println(new_outputs, HEX);
     }
 
-    if (new_outputs != 0)
-    {
-        Serial.print("Current Controls: 0x");
-        Serial.println(new_outputs, HEX);
-    }
+
 }
 
 
@@ -134,7 +146,7 @@ String Mega_Handler_Class::string_hash(const uint8_t* const hash)
 void Mega_Handler_Class::get_update_version(String& version)
 {
     uint8_t hash[20] = {0};
-    File atmelFile = SPIFFS.open(ATMEGA_SPIFFS_PATH, "r");
+    File atmelFile = LittleFS.open(ATMEGA_SPIFFS_PATH, "r");
 
     if (atmelFile)
     {
@@ -191,7 +203,7 @@ void Mega_Handler_Class::get_mega_hash(uint8_t hash[20])
 
 void Mega_Handler_Class::get_update_hash(uint8_t hash[20])
 {
-    File atmelFile = SPIFFS.open(ATMEGA_SPIFFS_PATH, "r");
+    File atmelFile = LittleFS.open(ATMEGA_SPIFFS_PATH, "r");
 
     if (atmelFile)
     {
@@ -215,7 +227,7 @@ void Mega_Handler_Class::get_update_hash(uint8_t hash[20])
 void Mega_Handler_Class::restart_shield()
 {
     uint16_t restart = RESET_SHIELD;
-    Serial.println("Restarting shield");
+    Log_Handler.println("Restarting shield");
     Wire.flush();
     Wire.beginTransmission(MEGA_BL_ADDRESS);
     Wire.write(reinterpret_cast<uint8_t*>(&restart), sizeof(uint16_t));
@@ -235,7 +247,7 @@ void Mega_Handler_Class::stop_bootloader()
 
 void Mega_Handler_Class::start_application()
 {
-	Serial.println("Starting application");
+	Log_Handler.println("Starting application");
     Wire.beginTransmission(MEGA_BL_ADDRESS);
     Wire.write(0x01);
     Wire.write(0x80);
@@ -249,11 +261,11 @@ bool Mega_Handler_Class::verify_page(uint16_t address, const uint8_t page[MEGA_P
     uint16_t timeout = 0U;
     bool ret = true;
 
-    Serial.println("Flash verify ...");
-    Serial.print("Waiting for TWI response");
+    Log_Handler.println("Flash verify ...");
+    Log_Handler.print("Waiting for TWI response");
 
     do {
-        Serial.print(".");
+        Log_Handler.print(".");
         
         Wire.beginTransmission(MEGA_BL_ADDRESS);
         Wire.write(cmd, sizeof(cmd)/sizeof(uint8_t));   // <-- Command Read
@@ -264,7 +276,7 @@ bool Mega_Handler_Class::verify_page(uint16_t address, const uint8_t page[MEGA_P
         if (++timeout > MEGA_RESPONSE_TIMEOUT)
         {
             ret = false;
-            Serial.println("Timeout!");
+            Log_Handler.println("Timeout!");
         }
     } while ((!Wire.available()) && (timeout < MEGA_RESPONSE_TIMEOUT));
 
@@ -278,11 +290,11 @@ bool Mega_Handler_Class::verify_page(uint16_t address, const uint8_t page[MEGA_P
 
     if (!ret)
     {
-        Serial.println("verify failed!");
+        Log_Handler.println("verify failed!");
     } 
     else 
     {
-        Serial.println("verify passed!");
+        Log_Handler.println("verify passed!");
     }
 
     return ret;
@@ -300,19 +312,19 @@ bool Mega_Handler_Class::get_chip_info()
     Wire.requestFrom(MEGA_BL_ADDRESS, 8);
     if (Wire.available())
     {
-        Serial.print("Chip Info: ");
+        Log_Handler.print("Chip Info: ");
         for (uint8_t i = 0U; i < 8; i++)
         {
-            Serial.print(i);
-            Serial.print(" - ");
-            Serial.println(static_cast<char>(Wire.read()), HEX);
+            Log_Handler.print(i);
+            Log_Handler.print(" - ");
+            Log_Handler.println(static_cast<char>(Wire.read()), HEX);
         }
-        Serial.println("");
+        Log_Handler.println("");
         ret = true;
     }
     else
     {
-        Serial.println("TWI is not answering...");
+        Log_Handler.println("TWI is not answering...");
         ret = false;
     }
     return ret;
@@ -328,7 +340,7 @@ bool Mega_Handler_Class::flash_page(uint16_t address, const uint8_t page[MEGA_PA
 
     if(Wire.write(page, MEGA_PAGE_SIZE) != MEGA_PAGE_SIZE)
     {
-        Serial.println("Page not sent completely!");
+        Log_Handler.println("Page not sent completely!");
         ret = false;
     }
 
@@ -346,7 +358,7 @@ void Mega_Handler_Class::update_mega(bool force)
 
     while ((!shield_available) && (shield_timeout < SHIELD_TIMEOUT))
     {
-        Serial.println("Press Reset on Shield... Retrying - " + String(shield_timeout));
+        Log_Handler.println("Press Reset on Shield... Retrying - " + String(shield_timeout));
         restart_shield();
         delay(500);
         shield_timeout++;
@@ -362,19 +374,19 @@ void Mega_Handler_Class::update_mega(bool force)
         {
             bool update_success = true;
             {
-                File atmelFile = SPIFFS.open(ATMEGA_SPIFFS_PATH, "r");
+                File atmelFile = LittleFS.open(ATMEGA_SPIFFS_PATH, "r");
                 uint16_t write_address = 0;
                 uint8_t bytes_read = 0U;
                 uint8_t buffer[MEGA_PAGE_SIZE] = {0};
 
-                Serial.println("Updating Shield...");
+                Log_Handler.println("Updating Shield...");
 
                 bytes_read = atmelFile.read(buffer, MEGA_PAGE_SIZE);
 
                 while ((bytes_read > 0) && (update_success))
                 {
-                    Serial.print("Writing at ");
-                    Serial.println(write_address, HEX);
+                    Log_Handler.print("Writing at ");
+                    Log_Handler.println(write_address, HEX);
                     update_success = flash_page(write_address, buffer);
                     update_success &= verify_page(write_address, buffer);
                     memset(buffer, 0xFF, MEGA_PAGE_SIZE);
@@ -394,22 +406,22 @@ void Mega_Handler_Class::update_mega(bool force)
                 Wire.write(newHash, sizeof(newHash));
                 Wire.endTransmission();
 
-                Serial.print("Updated to version:\t" + string_hash(newHash));
+                Log_Handler.print("Updated to version:\t" + string_hash(newHash));
             }  
             else
             {
-                Serial.println("Update: failed");
+                Log_Handler.println("Update: failed");
             }
             
         } 
         else 
         {
-            Serial.println("Version Match: No Update!");
+            Log_Handler.println("Version Match: No Update!");
         }
     }
     else
     {
-        Serial.println("Shield is not available. Update failed.");
+        Log_Handler.println("Shield is not available. Update failed.");
     }
 }
 
@@ -420,6 +432,18 @@ void Mega_Handler_Class::trigger_external_update(bool force)
     start_application();
 }
 
+void Mega_Handler_Class::get_controller_name(String& name)
+{
+    if (controller)
+    {
+        name = controller->getModelName();
+    }
+    else
+    {
+        name = "Wired Controller";
+    }
+}
+
 
 void Mega_Handler_Class::init()
 {
@@ -427,7 +451,7 @@ void Mega_Handler_Class::init()
     Preferences_Handler.getBluetoothConfig(bt_config);
 
     BP32.setup(&onConnectedGamepad, &onDisconnectedGamepad);
-    uni_bluetooth_enable_new_connections(bt_config.enabled);
+    uni_bluetooth_enable_new_connections_safe(bt_config.enabled);
 
     Wire.begin(SDA_PIN, SCL_PIN);
 
@@ -441,9 +465,6 @@ void Mega_Handler_Class::init()
 
 void Mega_Handler_Class::update()
 {
-    Bluetooth_Config bt_config;
-    Preferences_Handler.getBluetoothConfig(bt_config);
-    uni_bluetooth_enable_new_connections(bt_config.enabled);
     update_controller();
 }
 

@@ -3,22 +3,23 @@
 <head>
     <title>gbaHD Settings</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="stylesheet" href="pico.min.css">
-
+    <link rel="stylesheet" href="gbaHD.css">
+    <meta name="viewport" content="width=device-width,initial-scale=0.8">
 
     <body>
         <main class="container">
             <nav>
                 <ul>
-                    <li><img src="Logo.png"></li>
+                    <li><img src="Logo.svg" width="223"></li>
                 </ul>
                 <ul>
-                    <li><a href="#" role="button">Settings</a></li>
-                    <li><a href="/" role="button" class="outline">Firmware</a></li>
+                    <li><a href="settings.html" role="button">Settings</a></li>
+                    <li><a href="serial.html" role="button" class="outline">Log</a></li>
+                    <li><a href="/" role="button" class="outline">Update</a></li>
                 </ul>
             </nav>
-            <h1>gba<sup>HD</sup> Settings</h1>
+            <h1>Settings</h1>
             <form action="/settings.html" method="post">
                 <article>
                     <h3>General Config</h3>
@@ -45,7 +46,7 @@
                         </table>
                     </p>
                     <footer>
-                        <input type="submit" value="Save" />
+                        <input type="submit" value="Save and Reboot" />
                     </footer>
                 </article>
             </form>

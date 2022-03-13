@@ -29,8 +29,10 @@
 #ifndef _WEB_HANDLER_H
 #define _WEB_HANDLER_H
 
-#include <WebServer.h>
 #include <FS.h>
+
+#include <ESPAsyncWebServer.h>
+#include <AsyncTCP.h>
 
 #define HTML_A      ( "A" )
 #define HTML_B      ( "B" )
@@ -53,17 +55,29 @@
 
 class Web_Handler_Class {
     public:
+        void addWebSocket(AsyncWebSocket* handler);
         void init(void);
         void run(void);
     private:
-        static void _handle404();
-        static void _sendOK();
-        static void handleSettings();
-        static void handlePartitionUpload();
-        static void handleSPIFFSFileUpload();
-        static void handleUploadDone();
-        static void handleReboot();
-        static void handleIndex();
+        static void _handle404(AsyncWebServerRequest *request);
+        static void _sendOK(AsyncWebServerRequest *request);
+        static void handleSettings(AsyncWebServerRequest *request);
+        static void handlePartitionUpload(AsyncWebServerRequest *request, const String& filename, size_t index, uint8_t *data, size_t len, bool final);
+        static void handleLittleFSFileUpload(AsyncWebServerRequest *request, const String& filename, size_t index, uint8_t *data, size_t len, bool final);
+        static void handleUploadDone(AsyncWebServerRequest *request);
+        static void handleReboot(AsyncWebServerRequest *request);
+        static void handleIndex(AsyncWebServerRequest *request);
+        static void handleCSS(AsyncWebServerRequest *request);
+        static void handleLogo(AsyncWebServerRequest *request);
+        static void handleOTA(AsyncWebServerRequest *request);
+        static void handleToken(AsyncWebServerRequest *request);
+        static void handleBTReset(AsyncWebServerRequest *request);
+
+
+
+        static String serial_ip(const String& var);
+        static String ota_info(const String& var);
+
 
         static String build_option(uint16_t value, uint16_t mappedValue, String text);
         static String build_select_entry(uint16_t& inp_btn, uint16_t& mappedValue);
@@ -72,7 +86,7 @@ class Web_Handler_Class {
 
         static File fsUpload;
         static bool uploadSuccess;
-        static WebServer _server;
+        static AsyncWebServer _Aserver;
         static int64_t rebootTimer;
 };
 
