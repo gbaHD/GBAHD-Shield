@@ -35,6 +35,7 @@
 #include <esp_ota_ops.h>
 #include <WiFi.h>
 
+#include "ArduinoBluepad32.h"
 #include "mega_handler.h"
 #include "bitstream_handler.h"
 #include "preferences_handler.h"
@@ -310,9 +311,8 @@ void Web_Handler_Class::handleIndex(AsyncWebServerRequest *request)
   {
     String gamepad_message = "";
     Mega_Handler.get_controller_name(gamepad_message);
-    gamepad_message = "<b>Current Controller:</b> " + gamepad_message;
     
-    page_string.replace("{{BLUETOOTH_MESSAGE}}", gamepad_message);
+    page_string.replace("{{CURRENT_CONTROLLER}}", gamepad_message);
   }
   {
     Update_Info info;
@@ -380,6 +380,13 @@ void Web_Handler_Class::handleToken(AsyncWebServerRequest *request)
   request->redirect("/");
 }
 
+
+void Web_Handler_Class::handleBTReset(AsyncWebServerRequest *request)
+{
+  BP32.forgetBluetoothKeys();
+  request->redirect("/");
+}
+
 void Web_Handler_Class::addWebSocket(AsyncWebSocket* handler)
 {
   _Aserver.addHandler(handler);
@@ -421,6 +428,7 @@ void Web_Handler_Class::init(void)
   _Aserver.serveStatic("/serial.html", LittleFS, "/webpage/serial.html").setTemplateProcessor(serial_ip);
   _Aserver.on("/ota.html", HTTP_GET, handleOTA);
   _Aserver.on("/setToken", HTTP_GET, handleToken);
+  _Aserver.on("/resetBTDeviceList", HTTP_GET, handleBTReset);
 
   // Handle everything else.
   _Aserver.onNotFound(_handle404);

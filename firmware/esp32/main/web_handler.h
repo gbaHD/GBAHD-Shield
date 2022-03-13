@@ -71,6 +71,8 @@ class Web_Handler_Class {
         static void handleLogo(AsyncWebServerRequest *request);
         static void handleOTA(AsyncWebServerRequest *request);
         static void handleToken(AsyncWebServerRequest *request);
+        static void handleBTReset(AsyncWebServerRequest *request);
+
 
 
         static String serial_ip(const String& var);
