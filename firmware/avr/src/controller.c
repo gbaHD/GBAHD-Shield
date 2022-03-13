@@ -34,13 +34,14 @@ void controller_init(void) {
     GBA_OUTPUT_EN_INIT_M();
 
     //SPI Mode 2 @ fosc/32
-    SPCR = _BV(SPE) | _BV(MSTR) | _BV(SPR1) | _BV(CPOL);
+    SPCR = _BV(SPE) | _BV(MSTR) | _BV(SPR1); //| _BV(CPOL);
     SPSR |= _BV(SPI2X);
 }
 
 void controller_update(void) {
     GBA_OUTPUT_EN_M(gba_data != 0);
     CTRL_PORT &= ~_BV(CTRL_LATCH);
+//    _delay_ms(1);
     controller_data = ((~transfer_16bit(~(gba_data & GBA_DATA_MASK))));
     controller_data = (controller_data == 0xFFFF) ? 0 : ((controller_data >> 4) & CTRL_DATA_MASK);
     CTRL_PORT |= _BV(CTRL_LATCH);
