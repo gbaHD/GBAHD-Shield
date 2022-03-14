@@ -1,0 +1,87 @@
+# This is a basic workflow to help you get started with Actions
+
+name: ATMega Build
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  push:
+    branches: [ develop, master ]
+  pull_request:
+    branches: [ master ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+        with:
+          submodules: 'recursive'
+          
+      - uses: dorny/paths-filter@v2
+        id: atmega_change
+        with:
+       #   base: '${{ github.ref }}'
+          filters: |
+            changed:
+            - 'firmware/avr/*' 
+      - uses: dorny/paths-filter@v2
+        id: twiboot_change
+        with:
+#          base: '${{ github.ref }}'
+          filters: |
+            changed:
+            - 'firmware/twiboot'
+      
+      - name: ATMega - Install GCC
+        run: |
+          sudo apt-get -y install make srecord xz-utils
+          curl 'https://downloads.arduino.cc/arduino-1.8.19-linux64.tar.xz' -o /tmp/arduino.tar.xz
+          tar xf /tmp/arduino.tar.xz -C /tmp/
+        shell: bash
+        if: steps.atmega_change.outputs.changed == 'true'
+      - name: ATMega - Build App
+        if: steps.atmega_change.outputs.changed == 'true'
+        run: |
+          export PATH=/tmp/arduino-1.8.19/hardware/tools/avr/bin:$PATH
+          cd firmware/avr && make
+        shell: bash
+      - name: ATMega - Build TWIBoot
+        if: steps.twiboot_change.outputs.changed == 'true'
+        run: |
+          export PATH=/tmp/arduino-1.8.19/hardware/tools/avr/bin:$PATH
+          cd firmware/twiboot && make MCU=atmega168p && make MCU=atmega328p
+        shell: bash
+      - name: Collect Files
+        if: steps.atmega_change.outputs.changed == 'true'
+        run: |
+          cp firmware/avr/gbaHD-avr.bin firmware/esp32/data/atmega.bin
+          (cd firmware/avr/ && make clean)
+          # git config --global user.name 'GitHub Action'
+          # git config --global user.email 'action@users.noreply.github.com'
+          # git config pull.rebase false 
+          # [ ! $(git status --porcelain | wc -l) -eq "0" ] && git commit firmware/esp32/data/atmega.bin -m "Update atmega.bin" && git push
+        shell: bash
+      - if: steps.atmega_change.outputs.changed == 'true'
+        name: Add & Commit
+        # You may pin to the exact commit or the version.
+        # uses: EndBug/add-and-commit@72e246094f1af94def5a07467cd789c503ae8be0
+        uses: EndBug/add-and-commit@v8.0.2
+        with:
+          # Arguments for the git add command
+          add: firmware/esp32/data/
+          # The name of the custom committer you want to use
+          committer_name: GitHub Action
+          # The email of the custom committer you want to use
+          committer_email: action@users.noreply.github.com
+          # The message for the commit
+          message: "Update atmega.bin"
