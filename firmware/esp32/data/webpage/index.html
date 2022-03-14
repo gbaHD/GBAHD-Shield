@@ -1,7 +1,7 @@
 <!doctype html>
 
 <head>
-    <title>gbaHD Firmware Update</title>
+    <title>gbaHD Status</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="pico.min.css">
     <link rel="stylesheet" href="gbaHD.css">
@@ -16,11 +16,10 @@
                 <ul>
                     <li><a href="settings.html" role="button" class="outline">Settings</a></li>
                     <li><a href="serial.html" role="button" class="outline">Log</a></li>
-                    <li><a href="#" role="button">Update</a></li>
+                    <li><a href="#" role="button">Status</a></li>
                 </ul>
             </nav>
-            <h1>Firmware Update</h1>
-            <h3>A nice and easy way to update your gbaHD over the air.</h3>
+            <h1>gbaHD Status</h1>
             <article>
                 <p>
                     <b>Current Controller: </b>{{CURRENT_CONTROLLER}}
@@ -51,23 +50,32 @@
                         <summary>Manual Update</summary>
                         <div>
                             <form action="/upgrade/esp32" method="post" enctype="multipart/form-data"><label>ESP32
-                            Application:</label> <input type="file" name="name" accept=".bin"> <input class="button" type="submit" value="Upload"></form>
+                                Application:</label> <input type="file" name="name" accept=".bin"> <input class="button" type="submit" value="Upload"></form>
                         </div>
                     </details>
                 </article>
+                <article>
+                    <h4>gbaHD Shield</h4>
+                    <p>
+                        Detected: <b>{{SHIELD_DETECTED}}</b>
+                    </p>
+                    <p {{SHIELD_HIDDEN}}>
+                        Current Version: <br><code>{{CURRENT_SHIELD_VERSION}}</code><br>
+                        <details>
+                            <summary>Manual Update</summary>
+                            <div>
+                                <form action="/upgrade/atmega" method="post" enctype="multipart/form-data">
+                                    <label>Shield Firmware:</label>
+                                    <input type="checkbox" id="force" name="force">
+                                    <label for="force" data-tooltip="Force on same version">Force Update</label>
+                                    <input type="file" name="name" accept=".bin">
+                                    <input class="button" type="submit" value="Upload"></form>
+                            </div>
+                        </details>
+                    </p>
+                </article>
             </div>
             <article>
-                <details>
-                    <summary>Manual ATMega Update</summary>
-                    <div>
-                        <form action="/upgrade/atmega" method="post" enctype="multipart/form-data">
-                            <label>Shield Firmware:</label>
-                            <input type="checkbox" id="force" name="force">
-                            <label for="force" data-tooltip="Force on same version">Force Update</label>
-                            <input type="file" name="name" accept=".bin">
-                            <input class="button" type="submit" value="Upload"></form>
-                    </div>
-                </details>
                 <details>
                     <summary>WARNING: SPIFFS Partition Update</summary>
                     <p>This will update your complete SPIFFS partition. It may cause the web view to malfunction up to a point were you need to manually reflash your Spartan Edge Board.<br>This will overwrite your currently installed bitstream.</p>

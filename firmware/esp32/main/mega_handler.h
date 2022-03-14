@@ -68,6 +68,7 @@ class Mega_Handler_Class
         void get_update_hash(uint8_t hash[20]);
         void trigger_external_update(bool force);
         void get_controller_name(String& name);
+        bool get_shield_available(void) {return shield_available;};
     private:
         void update_mega(bool force = false);
         void update_controller();
@@ -82,6 +83,7 @@ class Mega_Handler_Class
         static void onConnectedGamepad(GamepadPtr gp);
         static void onDisconnectedGamepad(GamepadPtr gp);
         static GamepadPtr controller;
+        bool shield_available = false;
 };
 
 extern Mega_Handler_Class Mega_Handler;

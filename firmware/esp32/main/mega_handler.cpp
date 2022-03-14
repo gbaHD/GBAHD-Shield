@@ -353,7 +353,7 @@ void Mega_Handler_Class::update_mega(bool force)
 {
     uint8_t oldHash[20] = {0}, newHash[20] = {0};
     uint8_t shield_timeout = 0U;
-    bool shield_available = get_chip_info();
+    shield_available = get_chip_info();
 
 
     while ((!shield_available) && (shield_timeout < SHIELD_TIMEOUT))

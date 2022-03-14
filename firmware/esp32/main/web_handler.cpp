@@ -332,6 +332,14 @@ void Web_Handler_Class::handleIndex(AsyncWebServerRequest *request)
     page_string.replace("{{CURRENT_ESP_VERSION}}", app_desc.version);
     page_string.replace("{{ESP_OTA_HIDDEN}}", info.version.length() && info.version != String(app_desc.version) ? "" : "hidden");
   }
+  {
+    String version;
+    Mega_Handler.get_update_version(version);
+
+    page_string.replace("{{SHIELD_DETECTED}}", Mega_Handler.get_shield_available() ? "Yes" : "No");
+    page_string.replace("{{CURRENT_SHIELD_VERSION}}", version);
+    page_string.replace("{{SHIELD_HIDDEN}}", Mega_Handler.get_shield_available() ? "" : "hidden");
+  }
 
   request->send(200, "text/html", page_string);
 }
