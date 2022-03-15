@@ -25,8 +25,8 @@ The new features are:
 - Bitstream selection (720p / 1080p) in the WebUI
 
 ## Special Thanks
-- @zwenergy for the gbaHD-Project itself
-- @bbsan for all the hard work with the ESP32-Side
+- @zwenergy0 for the gbaHD-Project itself
+- @bbsan2k for all the hard work with the ESP32-Side
 - @ManCloud for the Shield design itself
 - @jotheripper for the awesome cases (https://www.prusaprinters.org/social/170041-jotheripper/about)
 - @ricardoquesada for the BluePad-Implementation (https://github.com/ricardoquesada/bluepad32)
