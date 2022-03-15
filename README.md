@@ -28,7 +28,7 @@ The new features are:
 - @zwenergy for the gbaHD-Project itself
 - @bbsan for all the hard work with the ESP32-Side
 - @ManCloud for the Shield design itself
-- @jotheripper for the awesome cases
+- @jotheripper for the awesome cases (https://www.prusaprinters.org/social/170041-jotheripper/about)
 - @ricardoquesada for the BluePad-Implementation (https://github.com/ricardoquesada/bluepad32)
 
 
