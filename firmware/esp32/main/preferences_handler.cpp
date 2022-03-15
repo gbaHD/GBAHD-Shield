@@ -66,8 +66,8 @@ void Preferences_Handler_Class::saveBluetoothConfig(Bluetooth_Config& cfg)
     preferences.putUShort("SYS",   cfg.mapping[BT_INP_SYSTEM]);
     preferences.putUShort("BTNA",  cfg.mapping[BT_INP_A]);
     preferences.putUShort("BTNB",  cfg.mapping[BT_INP_B]);
-    preferences.getUShort("BTNX",  cfg.mapping[BT_INP_X]);
-    preferences.getUShort("BTNY",  cfg.mapping[BT_INP_Y]);
+    preferences.putUShort("BTNX",  cfg.mapping[BT_INP_X]);
+    preferences.putUShort("BTNY",  cfg.mapping[BT_INP_Y]);
     preferences.putUShort("STRT",  cfg.mapping[BT_INP_START]);
     preferences.putUShort("SEL",   cfg.mapping[BT_INP_SELECT]);
     preferences.putBool("ENABLED", cfg.enabled);
