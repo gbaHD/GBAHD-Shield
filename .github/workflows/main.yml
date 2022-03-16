@@ -55,7 +55,7 @@ jobs:
         run: |
           export PATH=/tmp/arduino-1.8.19/hardware/tools/avr/bin:$PATH
           cd firmware/avr && make
-          cp firmware/avr/gbaHD-avr.bin firmware/esp32/data/atmega.bin
+          cp gbaHD-avr.bin firmware/esp32/data/atmega.bin
         shell: bash
       - name: ATMega - Build TWIBoot
         run: |
