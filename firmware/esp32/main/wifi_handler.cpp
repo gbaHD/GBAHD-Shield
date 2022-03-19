@@ -140,9 +140,7 @@ void Wifi_Handler_Class::update()
                 Log_Handler.print("IP:\t");
                 Log_Handler.println(WiFi.localIP());
                 WiFi.setTxPower(WIFI_POWER_19_5dBm);
-                //WiFi.setSleep(WIFI_PS_NONE);
-                Log_Handler.println(WiFi.getSleep());
-                
+               
                 break;
             case WL_NO_SSID_AVAIL:
             case WL_CONNECT_FAILED:
