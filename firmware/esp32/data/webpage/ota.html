@@ -13,6 +13,9 @@
             if (document.getElementById("updateProgress").value == 100) {
                 document.getElementById("rebootButton").hidden = false;
                 document.getElementById("progressText").innerHTML = "Done!";
+            } else if (document.getElementById("updateProgress").value == -1) {
+                document.getElementById("rebootButton").hidden = false;
+                document.getElementById("progressText").innerHTML = "Update Failed! Please Reboot and Retry.";
             }
         };
         var ws = new WebSocket("ws://{{IP_ADDRESS}}/ota");

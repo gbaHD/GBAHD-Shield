@@ -277,6 +277,8 @@ bool OTA_Handler_Class::initialize_ota(OTA_Part_Mapping& part)
     bool retval = false;
 
     Log_Handler.printf("Initializing OTA for part %d\n", part.ota_part);
+    Log_Handler.println(ESP.getFreeHeap());
+
 
     if (WiFi.isConnected())
     {
@@ -329,7 +331,7 @@ bool OTA_Handler_Class::initialize_ota(OTA_Part_Mapping& part)
             {
                 Log_Handler.println("Failed to get url " + url + " Error: " + returncode);
                 retval = false;
-                ota_state = OTA_STATE_NONE;
+                ota_state = OTA_STATE_FAILED;
             }
         }
     }
@@ -372,16 +374,27 @@ void OTA_Handler_Class::update(void)
                 }
                 write_to_current_output(buffer, readCount, (remainingSize == 0));
             }
+            
+            Log_Handler.printf("State %d, Wifi: %d, Connection:: %d Stream: %d\n", ota_state, WiFi.isConnected(), stream->connected(), stream->available());
+            Log_Handler.println("Remaining\t" + String(remainingSize) + "\t/ " + String(totalSize));
 
 
         }
-        Log_Handler.printf("State %d, Wifi: %d, Connection:: %d Stream: %d\n", ota_state, WiFi.isConnected(), stream->connected(), stream->available());
-        Log_Handler.println("Read\t" + String(remainingSize) + "\t/ " + String(totalSize));
 
         Log_Handler.printf("Free Heap: %d\n", ESP.getFreeHeap());
-        if (remainingSize == 0)
+
+        if (!stream->connected() && remainingSize > 0)
         {
             http_client.setReuse(true);
+            stream->stop();
+            stream = nullptr;
+            http_client.end();
+            ota_state = OTA_STATE_FAILED;
+        }
+        else if (remainingSize == 0)
+        {
+            http_client.setReuse(true);
+            stream->stop();
             stream = nullptr;
             http_client.end();
 
@@ -489,6 +502,9 @@ void OTA_Handler_Class::run(void)
         }
         case OTA_STATE_COMPLETED:
             ws_client->text("100");
+            break;
+        case OTA_STATE_FAILED:
+            ws_client->text("-1");
             break;
         case OTA_STATE_NONE:
             break;
