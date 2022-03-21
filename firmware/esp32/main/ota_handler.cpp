@@ -621,6 +621,16 @@ void OTA_Handler_Class::fallback_update(void)
 void OTA_Handler_Class::init(void)
 {
 
+    bs_update_info.changelog = "";
+    bs_update_info.checked = false;
+    bs_update_info.version = "";
+    bs_update_info.available_parts = 0;
+    
+    release_update_info.changelog = "";
+    release_update_info.checked = false;
+    release_update_info.version = "";
+    release_update_info.available_parts = 0;
+
     ws = new AsyncWebSocket("/ota");
     ws->onEvent(onWsEvent);
     Web_Handler.addWebSocket(ws);
