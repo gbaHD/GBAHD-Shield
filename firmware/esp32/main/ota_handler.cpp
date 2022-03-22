@@ -46,7 +46,6 @@
 
 OTA_Handler_Class OTA_Handler;
 
-
 uint32_t startTime = 0U;
 
 void OTA_Handler_Class::initialize_client(HTTPClient& client)
@@ -132,19 +131,20 @@ void OTA_Handler_Class::refresh_update_info(Update_Info& info, const String* url
         {
             uint8_t update_idx = 0U;
             String changelog = String(cJSON_GetObjectItem(release_json, "body")->valuestring);
-            info.changelog = changelog.length() > 1024 ? changelog.substring(0, 1024) : changelog;
-            info.changelog += "<br><br><a target=\"_blank\" href=\"" + String(cJSON_GetObjectItem(release_json, "html_url")->valuestring) + "\">Link to release</a>";
-            info.changelog.replace("\n", "<br>");
-            Log_Handler.println("Got release, checking assets...");
+            
+            changelog = changelog.substring(0, 512);
+            changelog += "<br><br><a target=\"_blank\" href=\"" + String(cJSON_GetObjectItem(release_json, "html_url")->valuestring) + "\">Link to release</a>";
+            changelog.replace("\n", "<br>");
 
+            info.changelog = changelog;
             info.version = String(cJSON_GetObjectItem(release_json, "name")->valuestring);
+            Log_Handler.println("Got release " + info.version);
 
             cJSON* assets = cJSON_GetObjectItem(release_json, "assets");
 
             for (uint8_t i = 0U; i < cJSON_GetArraySize(assets); i++)
             {
                 cJSON* asset = cJSON_GetArrayItem(assets, i);
-
 
                 if (cJSON_HasObjectItem(asset, "id"))
                 {
@@ -154,32 +154,39 @@ void OTA_Handler_Class::refresh_update_info(Update_Info& info, const String* url
                     Log_Handler.print(name);
                     Log_Handler.print(" ID: ");
                     Log_Handler.println(asset_id);
-                    info.urls[update_idx].root_url = url;
                     if (name.indexOf("gbaHD-esp32.bin") != -1)
                     {
                         info.urls[update_idx].ota_part = OTA_ESP;
+                        info.urls[update_idx].root_url = url;
                         info.urls[update_idx].id = asset_id;
                         update_idx++;
                     }
                     else if (name.indexOf("gbaHD-spiffs.bin") != -1)
                     {
                         info.urls[update_idx].ota_part = OTA_SPIFFS;
+                        info.urls[update_idx].root_url = url;
                         info.urls[update_idx].id = asset_id;
                         update_idx++;
                     }
                     else if (name.indexOf("720") != -1)
                     {
                         info.urls[update_idx].ota_part = OTA_BS_720;
+                        info.urls[update_idx].root_url = url;
                         info.urls[update_idx].id = asset_id;
                         update_idx++;
                     }
                     else if (name.indexOf("1080") != -1)
                     {
                         info.urls[update_idx].ota_part = OTA_BS_1080;
+                        info.urls[update_idx].root_url = url;
                         info.urls[update_idx].id = asset_id;
                         update_idx++;
                     }
 
+                }
+                if (update_idx >= (sizeof(info.urls)/sizeof(info.urls[0])))
+                {
+                    break;
                 }
             }
             for (;update_idx < (sizeof(info.urls)/sizeof(info.urls[0])); update_idx++)
@@ -199,17 +206,17 @@ void OTA_Handler_Class::refresh_update_info(Update_Info& info, const String* url
     Log_Handler.println(ESP.getFreeHeap());
 }
 
-void OTA_Handler_Class::get_bitstream_update_info(Update_Info& info)
+void OTA_Handler_Class::get_bitstream_update_info(Update_Info_p& info)
 {
     if (!bs_update_info.checked)
     {
         refresh_update_info(bs_update_info, &OTA_BS_RELEASE_URL);
     }
 
-    info = bs_update_info;
+    info = &bs_update_info;
 }
 
-void OTA_Handler_Class::get_esp_update_info(Update_Info& info)
+void OTA_Handler_Class::get_esp_update_info(Update_Info_p& info)
 {
     if (!release_update_info.checked)
     {
@@ -228,7 +235,7 @@ void OTA_Handler_Class::get_esp_update_info(Update_Info& info)
         }
     }
 
-    info = release_update_info;
+    info = &release_update_info;
 }
 
 void OTA_Handler_Class::write_to_current_output(uint8_t* buffer, size_t size, bool final)
@@ -625,7 +632,7 @@ void OTA_Handler_Class::init(void)
     bs_update_info.checked = false;
     bs_update_info.version = "";
     bs_update_info.available_parts = 0;
-    
+
     release_update_info.changelog = "";
     release_update_info.checked = false;
     release_update_info.version = "";

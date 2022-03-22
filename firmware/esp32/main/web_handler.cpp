@@ -315,22 +315,22 @@ void Web_Handler_Class::handleIndex(AsyncWebServerRequest *request)
     page_string.replace("{{CURRENT_CONTROLLER}}", gamepad_message);
   }
   {
-    Update_Info info;
+    Update_Info_p info;
     String current_bitstream;
     OTA_Handler.get_bitstream_update_info(info);
     Bitstream_Handler.get_current_version(current_bitstream);
-    page_string.replace("{{LATEST_BS_VERSION}}", info.checked ? info.version : "OTA Server N/A");
+    page_string.replace("{{LATEST_BS_VERSION}}", info->checked ? info->version : "OTA Server N/A");
     page_string.replace("{{CURRENT_BS_VERSION}}", current_bitstream);
-    page_string.replace("{{BS_OTA_HIDDEN}}", !current_bitstream.length() || (info.version.length() && info.version.indexOf(current_bitstream) < 0) ? "" : "hidden");
+    page_string.replace("{{BS_OTA_HIDDEN}}", !current_bitstream.length() || (info->version.length() && info->version.indexOf(current_bitstream) < 0) ? "" : "hidden");
   }
   {
-    Update_Info info;  
+    Update_Info_p info;  
     esp_app_desc_t app_desc;
     esp_ota_get_partition_description(esp_ota_get_boot_partition(), &app_desc);
     OTA_Handler.get_esp_update_info(info);
-    page_string.replace("{{LATEST_ESP_VERSION}}", info.checked ? info.version : "OTA Server N/A");
+    page_string.replace("{{LATEST_ESP_VERSION}}", info->checked ? info->version : "OTA Server N/A");
     page_string.replace("{{CURRENT_ESP_VERSION}}", app_desc.version);
-    page_string.replace("{{ESP_OTA_HIDDEN}}", info.version.length() && info.version != String(app_desc.version) ? "" : "hidden");
+    page_string.replace("{{ESP_OTA_HIDDEN}}", info->version.length() && info->version != String(app_desc.version) ? "" : "hidden");
   }
   {
     String version;
@@ -347,7 +347,7 @@ void Web_Handler_Class::handleIndex(AsyncWebServerRequest *request)
 void Web_Handler_Class::handleOTA(AsyncWebServerRequest *request)
 {
   String page_string = "";
-  Update_Info info;
+  Update_Info_p info;
   {
     File page = LittleFS.open("/webpage/ota.html", "r");
     if (page)
@@ -370,9 +370,9 @@ void Web_Handler_Class::handleOTA(AsyncWebServerRequest *request)
 
   //info.changelog.replace("\r\n", "<br>");
   
+  page_string.replace("{{CHANGELOG}}", info->changelog);
   page_string.replace("{{IP_ADDRESS}}", WiFi.localIP().toString());
-  page_string.replace("{{CHANGELOG}}", info.changelog);
-  page_string.replace("{{VERSION}}", info.version);
+  page_string.replace("{{VERSION}}", info->version);
 
   request->send(200, "text/html", page_string);
 }
