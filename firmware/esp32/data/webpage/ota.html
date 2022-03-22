@@ -8,6 +8,8 @@
     <meta name="viewport" content="width=device-width,initial-scale=0.8">
     <script type="text/javascript">
         function updateProgress(evt) {
+            document.getElementById("updateMonitor").hidden = false;
+            document.getElementById("updateButton").hidden = true;
             document.getElementById("updateProgress").value = evt.data;
             document.getElementById("progressText").innerHTML = evt.data + "%";
             if (document.getElementById("updateProgress").value == 100) {
