@@ -610,6 +610,7 @@ void OTA_Handler_Class::fallback_update(void)
             Log_Handler.println("Done!");
             Log_Handler.println("Removing Update File.");
             SD_MMC.remove(SD_MEGA_FILE_NAME);
+            Mega_Handler.trigger_external_update(true);
             schedule_reboot = true;
         }
         SD_MMC.end();
