@@ -37,6 +37,11 @@ void Preferences_Handler_Class::saveWifiCredentials(Wifi_Config& cfg)
     preferences.begin("GBAHD_WIFI");
     preferences.putString("SSID", cfg.ssid);
     preferences.putString("PASSWORD", cfg.password);
+    /* Save Hostname only if it is available */
+    if (cfg.hostname.length())
+    {
+        preferences.putString("HOSTNAME", cfg.hostname);
+    }
     preferences.end();
     wifi_config = cfg;
 }
@@ -48,6 +53,7 @@ void Preferences_Handler_Class::restoreWifiCredentials()
   preferences.begin("GBAHD_WIFI");
   wifi_config.ssid = preferences.getString("SSID", "gbahd");
   wifi_config.password = preferences.getString("PASSWORD", "gbahdwifi");
+  wifi_config.hostname = preferences.getString("HOSTNAME", "gbaHD");
   preferences.end();
 }
 
@@ -141,6 +147,10 @@ void Preferences_Handler_Class::reset()
     preferences.begin("GBAHD_WIFI");
     preferences.putString("SSID", "");
     preferences.putString("PASSWORD", "");
+
+    /* Make sure to always use default Hostname after Reset */
+    preferences.putString("HOSTNAME", "gbaHD");
+    
     preferences.end();
 }
 

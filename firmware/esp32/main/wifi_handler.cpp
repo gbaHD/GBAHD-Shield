@@ -46,7 +46,7 @@ void Wifi_Handler_Class::getSTACredentials(Wifi_Config& wifi_config)
 
     if (SD_MMC.begin())
     {
-        Wifi_Config new_wifi_config;
+        Wifi_Config new_wifi_config = wifi_config;
 
         File wifi_creds = SD_MMC.open(WIFI_CREDS_FILE, "r", true);
 
@@ -64,6 +64,7 @@ void Wifi_Handler_Class::getSTACredentials(Wifi_Config& wifi_config)
                     key = line.substring(0, idx);
                     value = line.substring(idx + 1, line.length());
                     key.trim();
+                    key.toLowerCase();
                     value.trim();
                     if (key == "ssid")
                     {
@@ -72,6 +73,10 @@ void Wifi_Handler_Class::getSTACredentials(Wifi_Config& wifi_config)
                     else if (key == "password")
                     {
                         new_wifi_config.password = value;
+                    }
+                    else if (key == "hostname")
+                    {
+                        new_wifi_config.hostname = value;
                     }
                 }
                 line = wifi_creds.readStringUntil(0xA);
@@ -83,7 +88,9 @@ void Wifi_Handler_Class::getSTACredentials(Wifi_Config& wifi_config)
             Log_Handler.println("Didn't find any Wifi Creds file on SD-Card. Skipping Update.");
         }
 
-        if ((wifi_config.ssid != new_wifi_config.ssid) || (wifi_config.password != new_wifi_config.password))
+        if ((wifi_config.ssid != new_wifi_config.ssid) 
+            || (wifi_config.password != new_wifi_config.password) 
+            || (wifi_config.hostname != new_wifi_config.hostname) )
         {
             if ((new_wifi_config.ssid.length() < WIFI_SSID_SIZE) && (new_wifi_config.password.length() < WIFI_PW_SIZE))
             {
@@ -114,13 +121,11 @@ void Wifi_Handler_Class::init()
 {
     Wifi_Config wifi_config;
 
-    WiFi.setHostname("gbaHD");
+    getSTACredentials(wifi_config);
+
+    WiFi.setHostname(wifi_config.hostname.c_str());
 
     WiFi.setTxPower(WIFI_POWER_19_5dBm);
-
-    //WiFi.setSleep(WIFI_PS_NONE);
-
-    getSTACredentials(wifi_config);
 
     connectWifiSTA(wifi_config);
 
@@ -140,7 +145,6 @@ void Wifi_Handler_Class::update()
                 Log_Handler.print("IP:\t");
                 Log_Handler.println(WiFi.localIP());
                 WiFi.setTxPower(WIFI_POWER_19_5dBm);
-               
                 break;
             case WL_NO_SSID_AVAIL:
             case WL_CONNECT_FAILED:
