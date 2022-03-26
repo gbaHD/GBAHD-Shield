@@ -68,25 +68,27 @@ struct Update_Info
   String version;
   OTA_Part_Mapping urls[2];
   uint8_t available_parts;
-  String changelog;
   bool checked;
+  String changelog;
 };
 
+typedef Update_Info* Update_Info_p;
 
 enum OTA_State
 {
   OTA_STATE_NONE,
   OTA_STATE_QUEUED,
   OTA_STATE_RUNNING,
-  OTA_STATE_COMPLETED
+  OTA_STATE_COMPLETED,
+  OTA_STATE_FAILED
 };
 
 class OTA_Handler_Class
 {
     public:
         bool get_update_available();
-        void get_bitstream_update_info(Update_Info& info);
-        void get_esp_update_info(Update_Info& info);
+        void get_bitstream_update_info(Update_Info_p& info);
+        void get_esp_update_info(Update_Info_p& info);
         void update_bitstream(void);
         void full_update(void);
         void update_latest_BS(void);

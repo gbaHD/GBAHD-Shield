@@ -75,6 +75,7 @@ typedef struct
 {
     String ssid;
     String password; 
+    String hostname;
 } Wifi_Config;
 
 
