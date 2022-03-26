@@ -44,16 +44,29 @@ jobs:
             changed:
             - 'firmware/esp32/**/*'
       
-      # - name: Update Bitstreams
-      #   run: |
-      #     git config --global user.name 'GitHub Action'
-      #     git config --global user.email 'action@users.noreply.github.com'
-      #     git config pull.rebase false 
-      #     (cd firmware/esp32/external/zwenergy && git pull origin master)
+
+      - name: ATMega - Install GCC
+        run: |
+          sudo apt-get -y install make srecord xz-utils
+          curl 'https://downloads.arduino.cc/arduino-1.8.19-linux64.tar.xz' -o /tmp/arduino.tar.xz
+          tar xf /tmp/arduino.tar.xz -C /tmp/
+        shell: bash
+      - name: ATMega - Build App
+        run: |
+          export PATH=/tmp/arduino-1.8.19/hardware/tools/avr/bin:$PATH
+          cd firmware/avr && make
+          cp gbaHD-avr.bin ../esp32/data/atmega.bin
+        shell: bash
+      - name: ATMega - Build TWIBoot
+        run: |
+          export PATH=/tmp/arduino-1.8.19/hardware/tools/avr/bin:$PATH
+          cd firmware/twiboot && make MCU=atmega168p && make MCU=atmega328p
+        shell: bash
+        
       - name: ESP32 Add version
         run: |
           git fetch --all --tags
-          git describe --tags --exclude latest | sed 's/\(.*\)-.*/\1/'
+          git describe --exclude latest | sed 's/\(.*\)-.*/\1/'
           ESP_VERSION=$(git describe --exclude latest | sed 's/\(.*\)-.*/\1/')
           echo "ESP_VERSION=${ESP_VERSION}" >> $GITHUB_ENV
           echo $ESP_VERSION >> firmware/esp32/version.txt
@@ -74,7 +87,8 @@ jobs:
           cp firmware/esp32/build/spiffs.bin /tmp/release/gbaHD-spiffs.bin
           cp firmware/esp32/build/partition_table/partition-table.bin /tmp/release/gbaHD-partition-table.bin
           cp firmware/esp32/build/bootloader/bootloader.bin /tmp/release/gbaHD-esp32-bootloader.bin
-          cp firmware/esp32/data/atmega.bin /tmp/release/gbaHD-avr.bin
+          cp firmware/avr/gbaHD-avr.bin /tmp/release/gbaHD-avr.bin
+          cp firmware/twiboot/*.hex /tmp/release/ 
         shell: bash
           
       - if: steps.esp_change.outputs.changed == 'true'
@@ -89,4 +103,4 @@ jobs:
           prerelease: false
           # Assets to upload to the release
           files: |
-            /tmp/release/*.bin
+            /tmp/release/*

@@ -106,9 +106,19 @@ bool Bitstream_Handler_Class::pushBitStream(File& file) {
   pinMode(XFPGA_DIN_PIN, OUTPUT);
 
   while(file.available()){
+
     int cnt = file.readBytes(byte_buff, sizeof(byte_buff));
+
     for(int i=0; i<cnt; i++){ 
-      shiftOut(XFPGA_DIN_PIN, XFPGA_CCLK_PIN, MSBFIRST, byte_buff[i]);
+     // shiftOut(XFPGA_DIN_PIN, XFPGA_CCLK_PIN, MSBFIRST, byte_buff[i]);
+      unsigned char byte = static_cast<unsigned char>(byte_buff[i]);
+      for(int j = 0;j < 8;j++) {
+        REG_WRITE(GPIO_OUT_W1TC_REG, (1<<XFPGA_CCLK_PIN));
+        REG_WRITE((byte&0x80)?GPIO_OUT_W1TS_REG:GPIO_OUT_W1TC_REG, (1<<XFPGA_DIN_PIN));
+        byte = byte << 1;
+        REG_WRITE(GPIO_OUT_W1TS_REG, (1<<XFPGA_CCLK_PIN));
+      }
+
       if ((ident_idx < 4))
       {
         if (byte_buff[i] == BITSTREAM_VERSION_IDENT[ident_idx])
