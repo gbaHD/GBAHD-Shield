@@ -11,11 +11,11 @@
 /* === INCLUDES ============================================================= */
 #include <util/twi.h>
 #include <avr/interrupt.h>
+#include <global.h>
 #include <stdint.h>
 #include <stdbool.h>
 #include <string.h>  //<- for memmove
 
-#include "pins.h"
 
 /* === TYPES ================================================================ */
 
