@@ -60,7 +60,9 @@ void setup() {
   sdmmc_host_pullup_en(1, 4); //Slot: 1 and Bit mode: 4
 
   Serial.begin(115200);
-  Serial.setDebugOutput(false);
+#ifdef GBAHD_DEBUG_OUTPUT
+  Serial.setDebugOutput(true);
+#endif
   // Start LittleFS
   LittleFS.begin(true);
 

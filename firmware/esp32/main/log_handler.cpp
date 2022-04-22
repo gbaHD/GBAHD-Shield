@@ -111,6 +111,14 @@ size_t Log_Handler_Class::write(const uint8_t *buffer, size_t size)
     return Serial.write(buffer, size);
 }
 
+void Log_Handler_Class::debugLine(String& string)
+{
+#ifdef GBAHD_DEBUG_OUTPUT
+    this->println(string);
+#endif
+}
+
+
 void Log_Handler_Class::run(void)
 {
     if (string_buffer.length() > 0 && ws && WiFi.isConnected())
