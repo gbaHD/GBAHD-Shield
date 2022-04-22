@@ -28,7 +28,7 @@ typedef enum {
 #define MC_GBA_OUTPUT_EN_DIR       DDRB
 #define MC_GBA_OUTPUT_EN_PORT      PORTB
 #define MC_GBA_OUTPUT_EN_PIN       PIN1
-#define MC_GBA_OUTPUT_EN_INIT_M()  DDRB |= _BV(MC_GBA_OUTPUT_EN_PIN)
+#define MC_GBA_OUTPUT_EN_INIT_M()  MC_GBA_OUTPUT_EN_DIR |= _BV(MC_GBA_OUTPUT_EN_PIN)
 #define MC_GBA_OUTPUT_EN_M(enable) MC_GBA_OUTPUT_EN_PORT = ((MC_GBA_OUTPUT_EN_PORT & ~_BV(MC_GBA_OUTPUT_EN_PIN)) | ((enable) ? 0 : _BV(MC_GBA_OUTPUT_EN_PIN)))
 
 #define MC_CTRL_DIR        DDRB
@@ -71,40 +71,50 @@ typedef enum {
 #define C4Y_LED_RED_PIN     PIN5
 #define C4Y_LED_GREEN_PIN   10      //undefined
 
+#define C4Y_OUT_PORT_UP PORTD
 #define C4Y_OUT_DIR_UP DDRD
 #define C4Y_OUT_PIN_UP PIN3
 
+#define C4Y_OUT_PORT_DOWN PORTD
 #define C4Y_OUT_DIR_DOWN DDRD
 #define C4Y_OUT_PIN_DOWN PIN5
 
+#define C4Y_OUT_PORT_LEFT PORTD
 #define C4Y_OUT_DIR_LEFT DDRD
 #define C4Y_OUT_PIN_LEFT PIN4
 
+#define C4Y_OUT_PORT_RIGHT PORTD
 #define C4Y_OUT_DIR_RIGHT DDRD
 #define C4Y_OUT_PIN_RIGHT PIN6
 
+#define C4Y_OUT_PORT_START PORTB
 #define C4Y_OUT_DIR_START DDRB
 #define C4Y_OUT_PIN_START PIN0
 
+#define C4Y_OUT_PORT_SELECT PORTD
 #define C4Y_OUT_DIR_SELECT DDRD
 #define C4Y_OUT_PIN_SELECT PIN7
 
+#define C4Y_OUT_PORT_A PORTB
 #define C4Y_OUT_DIR_A DDRB
 #define C4Y_OUT_PIN_A PIN2
 
+#define C4Y_OUT_PORT_B PORTB
 #define C4Y_OUT_DIR_B DDRB
 #define C4Y_OUT_PIN_B PIN3
 
+#define C4Y_OUT_PORT_L PORTD
 #define C4Y_OUT_DIR_L DDRD
 #define C4Y_OUT_PIN_L PIN2
 
+#define C4Y_OUT_PORT_R PORTB
 #define C4Y_OUT_DIR_R DDRB
 #define C4Y_OUT_PIN_R PIN1
 
 #define C4Y_SETPIN_M(reg, pin, state) {reg = ((reg & ~_BV(pin)) | (state ? _BV(pin) : 0));}
 
 #define C4Y_RESET_PORT PORTB
-#define C4Y_RESET_DIR  PORTB
+#define C4Y_RESET_DIR  DDRB
 #define C4Y_RESET_PIN  PIN4
 /* === GLOBALS ============================================================== */
 extern uint8_t shield_variant;

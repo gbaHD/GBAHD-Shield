@@ -39,6 +39,16 @@ void controller_init(void) {
         SPSR |= _BV(SPI2X);
     } else if (shield_variant == CONSOLES4YOU) {
         C4Y_CTRL_INIT_M();
+        C4Y_SETPIN_M(C4Y_OUT_PORT_UP,       C4Y_OUT_PIN_UP,     0);
+        C4Y_SETPIN_M(C4Y_OUT_PORT_DOWN,     C4Y_OUT_PIN_DOWN,   0);
+        C4Y_SETPIN_M(C4Y_OUT_PORT_LEFT,     C4Y_OUT_PIN_LEFT,   0);
+        C4Y_SETPIN_M(C4Y_OUT_PORT_RIGHT,    C4Y_OUT_PIN_RIGHT,  0);
+        C4Y_SETPIN_M(C4Y_OUT_PORT_START,    C4Y_OUT_PIN_START,  0);
+        C4Y_SETPIN_M(C4Y_OUT_PORT_SELECT,   C4Y_OUT_PIN_SELECT, 0);
+        C4Y_SETPIN_M(C4Y_OUT_PORT_A,        C4Y_OUT_PIN_A,      0);
+        C4Y_SETPIN_M(C4Y_OUT_PORT_B,        C4Y_OUT_PIN_B,      0);
+        C4Y_SETPIN_M(C4Y_OUT_PORT_L,        C4Y_OUT_PIN_L,      0);
+        C4Y_SETPIN_M(C4Y_OUT_PORT_R,        C4Y_OUT_PIN_R,      0);
     }
 }
 
@@ -72,6 +82,8 @@ void controller_update(void) {
             controller_data <<= 1;
             if(i < 12) {
                 controller_data |= ((C4Y_CTRL_INPUT & _BV(C4Y_CTRL_DATA_IN)) ? 0x0001 : 0);
+            } else {
+                controller_data |= 1;
             }
             C4Y_CTRL_PORT |= _BV(C4Y_CTRL_CLOCK);
             _delay_us(12);
@@ -80,7 +92,7 @@ void controller_update(void) {
         controller_data = ~controller_data;
         // Fetch controller data - END
     }
-    controller_data = ((controller_data & 0xFFF0) == 0xFFF0) ? 0 : ((controller_data >> 4) & CTRL_DATA_MASK);
+    controller_data = (controller_data == 0xFFFF) ? 0 : ((controller_data >> 4) & CTRL_DATA_MASK);
 }
 
 void controller_map_data(void) {
