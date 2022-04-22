@@ -17,8 +17,6 @@
 #include <util/delay.h>
 #include <avr/boot.h>
 
-
-
 /* === TYPES ================================================================ */
 typedef enum {
     MANCLOUD,

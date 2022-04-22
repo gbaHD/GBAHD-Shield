@@ -52,7 +52,7 @@ void init_uart(void)
    static FILE str_uart = FDEV_SETUP_STREAM(uart_putchar, NULL, _FDEV_SETUP_WRITE);
    stdout = &str_uart;
 
-   printf("init_uart done!");
+   printf("init_uart done!\n");
 }
 
 

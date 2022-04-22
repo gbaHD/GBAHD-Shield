@@ -82,6 +82,11 @@ void get_shield_variant();
 
 int main(void) {
     init_uart();
+    printf("RstRsn: %02X\n", MCUSR);
+
+    MCUSR = 0;
+    wdt_disable();
+
     get_shield_variant();
     if(shield_variant == MANCLOUD) {
         MC_LED_DIR |= _BV(MC_LED_GREEN_PIN) | _BV(MC_LED_RED_PIN);
@@ -89,6 +94,7 @@ int main(void) {
     } else if (shield_variant == CONSOLES4YOU) {
         C4Y_LED_DIR |= _BV(C4Y_LED_RED_PIN);
         C4Y_LED_PORT |= _BV(C4Y_LED_RED_PIN);
+        C4Y_FPGA_COMM_PORT |= _BV(C4Y_FPGA_COMM_PIN);
         C4Y_FPGA_COMM_DIR |= _BV(C4Y_FPGA_COMM_PIN);
     }
     controller_init();
@@ -138,7 +144,7 @@ void process_data(uint16_t ctrl_data) {
               }
             } break;
             case COMBO_AVR_RST: {
-              wdt_enable(WDTO_30MS);
+              wdt_enable(WDTO_120MS);
               while(1);
             } break;
         }
