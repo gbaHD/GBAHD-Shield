@@ -28,7 +28,25 @@
 
 #include <Preferences.h>
 
+#include "log_handler.h"
+
 #include "preferences_handler.h"
+
+
+static bool split(String& s, char separator, String& key, String& value)
+{
+    s.replace("\r", "");
+    int idx = s.indexOf(separator);
+    if (idx != -1)
+    {
+        key = s.substring(0, idx);
+        value = s.substring(idx + 1, s.length());
+        key.trim();
+        value.trim();
+        return true;
+    }
+    return false;
+}
 
 
 void Preferences_Handler_Class::saveWifiCredentials(Wifi_Config& cfg)
@@ -140,6 +158,47 @@ void Preferences_Handler_Class::restoreOTAToken()
     preferences.end();
 }
 
+void Preferences_Handler_Class::run()
+{
+    if (Serial.available())
+    {
+        String input = Serial.readString();
+        String key, value;
+        input.trim();
+        if (split(input, '=', key, value))
+        {
+            String config, sub_config;
+            if (split(key, '.', config, sub_config))
+            {
+                config.toLowerCase();
+                sub_config.toLowerCase();
+                if (config == "wifi")
+                {
+                    if (sub_config == "ssid")
+                    {
+                        this->wifi_config.ssid = value;
+                    }
+                    else if (sub_config == "password")
+                    {
+                        this->wifi_config.password = value;
+                    }
+                    else if (sub_config == "hostname")
+                    {
+                        this->wifi_config.hostname = value;
+                    }
+                    this->saveWifiCredentials(this->wifi_config);
+                }
+            }
+
+            Log_Handler.debugLine("Key " + key + " - Value: " + value);
+
+        }
+        else if (input == "reboot")
+        {
+            ESP.restart();
+        }
+    }
+}
 
 void Preferences_Handler_Class::reset()
 {

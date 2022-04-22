@@ -104,6 +104,7 @@ class Preferences_Handler_Class
             token = this->token;
         }
 
+        void run();
 
         void reset();
         void init();
