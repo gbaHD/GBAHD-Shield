@@ -56,14 +56,10 @@
 
  *******************************************************************************/
 /* === INCLUDES ============================================================= */
-#include <stdint.h>
-#include <stdbool.h>
-#include <avr/io.h>
-#include <avr/wdt.h>
-#include <util/twi.h>
-#include <util/delay.h>
+#include <global.h>
 
-#include "pins.h"
+#include "debug.h"
+
 #include "controller.h"
 #include "twiSlave.h"
 /* === TYPES ================================================================ */
@@ -74,6 +70,7 @@
 
 bool osd_enabled = false;
 volatile uint32_t twi_data_valid_ms = 0;
+uint8_t shield_variant = MANCLOUD;
 
 /* === PROTOTYPES =========================================================== */
 void process_data(uint16_t ctrl_data);
@@ -81,15 +78,25 @@ void reboot(void);
 uint8_t map_osd(uint16_t ctrl_data);
 void fpga_transfer(uint8_t data);
 void fpga_write_bit(bool high);
+void get_shield_variant();
 
 int main(void) {
-    LED_DIR |= _BV(LED_GREEN_PIN) | _BV(LED_RED_PIN);
-    FPGA_COMM_DIR |= _BV(FPGA_COMM_PIN);
+    init_uart();
+    get_shield_variant();
+    if(shield_variant == MANCLOUD) {
+        MC_LED_DIR |= _BV(MC_LED_GREEN_PIN) | _BV(MC_LED_RED_PIN);
+        MC_FPGA_COMM_DIR |= _BV(MC_FPGA_COMM_PIN);
+    } else if (shield_variant == CONSOLES4YOU) {
+        C4Y_LED_DIR |= _BV(C4Y_LED_RED_PIN);
+        C4Y_LED_PORT |= _BV(C4Y_LED_RED_PIN);
+        C4Y_FPGA_COMM_DIR |= _BV(C4Y_FPGA_COMM_PIN);
+    }
     controller_init();
     twi_init();
     reboot();
     while(1) {
         controller_update();
+        printf("controller_data: %04X \n", get_controller_data());
         if(twi_available()){
             uint16_t tmpVal = twi_read();
             if(tmpVal & CTRL_BT_CONNECTED) {
@@ -100,7 +107,6 @@ int main(void) {
         }
         process_data(get_controller_data());
         controller_map_data();
-//        _delay_ms(8);
     }
 }
 
@@ -140,10 +146,16 @@ void process_data(uint16_t ctrl_data) {
 }
 
 void reboot(void) {
-    GBA_OUTPUT_EN_M(false);
-    GBA_POWER_OFF_M();
-    _delay_ms(500);
-    GBA_POWER_ON_M();
+    if(shield_variant == MANCLOUD) {
+        MC_GBA_OUTPUT_EN_M(false);
+        MC_GBA_POWER_OFF_M();
+        _delay_ms(500);
+        MC_GBA_POWER_ON_M();
+    } else if (shield_variant == CONSOLES4YOU) {
+        C4Y_RESET_PORT &= ~_BV(C4Y_RESET_PIN);
+        _delay_ms(1000);
+        C4Y_RESET_PORT |= _BV(C4Y_RESET_PIN);
+    }
 }
 
 //maps the raw controller data to OSD controls
@@ -161,13 +173,40 @@ uint8_t map_osd(uint16_t ctrl_data) {
 
 //this function is empirically compensated to generate 10us pulses inside a for loop @ 8MHz
 void fpga_write_bit(bool high) {
-    if(high) {FPGA_COMM_PORT &= ~_BV(FPGA_COMM_PIN); _delay_us(2);FPGA_COMM_PORT |= _BV(FPGA_COMM_PIN); _delay_us(5);}
-    else {FPGA_COMM_PORT &= ~_BV(FPGA_COMM_PIN); _delay_us(7);FPGA_COMM_PORT |= _BV(FPGA_COMM_PIN);}
+    if(shield_variant == MANCLOUD) {
+        if(high) {
+            MC_FPGA_COMM_PORT &= ~_BV(MC_FPGA_COMM_PIN);
+            _delay_us(2);
+            MC_FPGA_COMM_PORT |= _BV(MC_FPGA_COMM_PIN);
+            _delay_us(5);
+        } else {
+            MC_FPGA_COMM_PORT &= ~_BV(MC_FPGA_COMM_PIN);
+            _delay_us(7);
+            MC_FPGA_COMM_PORT |= _BV(MC_FPGA_COMM_PIN);
+        }
+    } else if (shield_variant == CONSOLES4YOU) {
+        if(high) {
+            C4Y_FPGA_COMM_PORT &= ~_BV(C4Y_FPGA_COMM_PIN);
+            _delay_us(4);
+            C4Y_FPGA_COMM_PORT |= _BV(C4Y_FPGA_COMM_PIN);
+            _delay_us(10);
+        } else {
+            C4Y_FPGA_COMM_PORT &= ~_BV(C4Y_FPGA_COMM_PIN);
+            _delay_us(14);
+            C4Y_FPGA_COMM_PORT |= _BV(C4Y_FPGA_COMM_PIN);
+        }
+    }
 }
 
 //transfer command byte to FPGA
 void fpga_transfer(uint8_t data) {
     for(uint8_t i = 1; i != 0; i<<=1) {
         fpga_write_bit(data & i);
+    }
+}
+
+void get_shield_variant(void){
+    if(boot_lock_fuse_bits_get(GET_LOW_FUSE_BITS) == 0xFF) {
+        shield_variant = CONSOLES4YOU;
     }
 }

@@ -13,7 +13,7 @@
 /* === MACROS =============================================================== */
 
 /* === GLOBALS ============================================================== */
-uint16_t controller_data = 0x0000;
+volatile uint16_t controller_data = 0x0000;
 uint16_t gba_data = 0x0000;
 
 /* === PROTOTYPES =========================================================== */
@@ -30,21 +30,59 @@ void set_controller_data(uint16_t data) {
 }
 
 void controller_init(void) {
-    CTRL_INIT_M();
-    GBA_OUTPUT_EN_INIT_M();
+    if(shield_variant == MANCLOUD) {
+        MC_CTRL_INIT_M();
+        MC_GBA_OUTPUT_EN_INIT_M();
 
-    //SPI Mode 2 @ fosc/32
-    SPCR = _BV(SPE) | _BV(MSTR) | _BV(SPR1); //| _BV(CPOL);
-    SPSR |= _BV(SPI2X);
+        //SPI Mode 2 @ fosc/32
+        SPCR = _BV(SPE) | _BV(MSTR) | _BV(SPR1); //| _BV(CPOL);
+        SPSR |= _BV(SPI2X);
+    } else if (shield_variant == CONSOLES4YOU) {
+        C4Y_CTRL_INIT_M();
+    }
 }
 
 void controller_update(void) {
-    GBA_OUTPUT_EN_M(gba_data != 0);
-    CTRL_PORT &= ~_BV(CTRL_LATCH);
-//    _delay_ms(1);
-    controller_data = ((~transfer_16bit(~(gba_data & GBA_DATA_MASK))));
+    if(shield_variant == MANCLOUD) {
+        MC_GBA_OUTPUT_EN_M(gba_data != 0);
+        MC_CTRL_PORT &= ~_BV(MC_CTRL_LATCH);
+        //    _delay_ms(1);
+        controller_data = ((~transfer_16bit(~(gba_data & GBA_DATA_MASK))));
+        MC_CTRL_PORT |= _BV(MC_CTRL_LATCH);
+    } else if (shield_variant == CONSOLES4YOU) {
+        // Output GBA data - START
+        C4Y_SETPIN_M(C4Y_OUT_DIR_UP,        (C4Y_OUT_PIN_UP),       (gba_data & GBA_OUT_UP)     );
+        C4Y_SETPIN_M(C4Y_OUT_DIR_DOWN,      (C4Y_OUT_PIN_DOWN),     (gba_data & GBA_OUT_DOWN)   );
+        C4Y_SETPIN_M(C4Y_OUT_DIR_LEFT,      (C4Y_OUT_PIN_LEFT),     (gba_data & GBA_OUT_LEFT)   );
+        C4Y_SETPIN_M(C4Y_OUT_DIR_RIGHT,     (C4Y_OUT_PIN_RIGHT),    (gba_data & GBA_OUT_RIGHT)  );
+        C4Y_SETPIN_M(C4Y_OUT_DIR_START,     (C4Y_OUT_PIN_START),    (gba_data & GBA_OUT_START)  );
+        C4Y_SETPIN_M(C4Y_OUT_DIR_SELECT,    (C4Y_OUT_PIN_SELECT),   (gba_data & GBA_OUT_SELECT) );
+        C4Y_SETPIN_M(C4Y_OUT_DIR_A,         (C4Y_OUT_PIN_A),        (gba_data & GBA_OUT_A)      );
+        C4Y_SETPIN_M(C4Y_OUT_DIR_B,         (C4Y_OUT_PIN_B),        (gba_data & GBA_OUT_B)      );
+        C4Y_SETPIN_M(C4Y_OUT_DIR_L,         (C4Y_OUT_PIN_L),        (gba_data & GBA_OUT_L)      );
+        C4Y_SETPIN_M(C4Y_OUT_DIR_R,         (C4Y_OUT_PIN_R),        (gba_data & GBA_OUT_R)      );
+        // Output GBA data - END
+
+        // Fetch controller data - START
+        controller_data = 0;
+        C4Y_CTRL_PORT &= ~_BV(C4Y_CTRL_LATCH);
+        for(uint8_t i = 0; i < 16; i++) {
+            C4Y_CTRL_PORT &= ~_BV(C4Y_CTRL_CLOCK);
+            _delay_us(12);
+            controller_data <<= 1;
+            if(i < 12) {
+                controller_data |= ((C4Y_CTRL_INPUT & _BV(C4Y_CTRL_DATA_IN)) ? 0x0001 : 0);
+            } else {
+                controller_data |= 1;
+            }
+            C4Y_CTRL_PORT |= _BV(C4Y_CTRL_CLOCK);
+            _delay_us(12);
+        }
+        C4Y_CTRL_PORT |= _BV(C4Y_CTRL_LATCH);
+        controller_data = ~controller_data;
+        // Fetch controller data - END
+    }
     controller_data = (controller_data == 0xFFFF) ? 0 : ((controller_data >> 4) & CTRL_DATA_MASK);
-    CTRL_PORT |= _BV(CTRL_LATCH);
 }
 
 void controller_map_data(void) {
