@@ -134,7 +134,6 @@ void OTA_Handler_Class::refresh_update_info(Update_Info& info, const String* url
             
             changelog = changelog.substring(0, 512);
             changelog += "<br><br><a target=\"_blank\" href=\"" + String(cJSON_GetObjectItem(release_json, "html_url")->valuestring) + "\">Link to release</a>";
-            changelog.replace("\n", "<br>");
 
             info.changelog = changelog;
             info.version = String(cJSON_GetObjectItem(release_json, "name")->valuestring);
