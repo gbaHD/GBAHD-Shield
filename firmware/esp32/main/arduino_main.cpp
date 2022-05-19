@@ -26,6 +26,7 @@
 
  *******************************************************************************/
 
+#include "preferences_handler.h"
 #include "sdkconfig.h"
 #ifndef CONFIG_BLUEPAD32_PLATFORM_ARDUINO
 #error "Must only be compiled when using Bluepad32 Arduino platform"
@@ -51,29 +52,34 @@ static int64_t timer_50ms_timestamp = 0U;
 static int64_t timer_100ms_timestamp = 0U;
 
 
+
 // Arduino setup function. Runs in CPU 1
 void setup() {
   // sdmmc_slot_config_t sd_config = SDMMC_SLOT_CONFIG_DEFAULT();
   // sd_config.flags = SDMMC_SLOT_FLAG_INTERNAL_PULLUP;
   // sdmmc_host_init();
   // sdmmc_host_init_slot(1, &sd_config);
+  Log_Handler.println("Setting PullUp");
   sdmmc_host_pullup_en(1, 4); //Slot: 1 and Bit mode: 4
 
+  Log_Handler.println("Starting Serial");
   Serial.begin(115200);
 #ifdef GBAHD_DEBUG_OUTPUT
   Serial.setDebugOutput(true);
 #endif
+
+  Log_Handler.println("Mounting LittleFS");
   // Start LittleFS
   LittleFS.begin(true);
 
+  Log_Handler.println("Initializing Preferences");
   Preferences_Handler.init();
 
+  Log_Handler.println("Initializing BitstreamHandler");
   // initialization 
   Bitstream_Handler.init();
 
-  // Handle SD Card LittleFS Update and Hotboot detection
-  // Bitstream_Handler.handle_sd_card();
-
+  Log_Handler.println("Pushing Bitstream");
   // Handle pushing the bitstream to Spartan
   Bitstream_Handler.handle_bit_stream();
 
@@ -106,6 +112,7 @@ void loop() {
     Wifi_Handler.update();    
     
     OTA_Handler.run();
+    Preferences_Handler.run();
     timer_50ms_timestamp = timestamp;
   }
   vTaskDelay(1);
