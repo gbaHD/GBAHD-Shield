@@ -125,8 +125,6 @@ void Wifi_Handler_Class::init()
 
     WiFi.setHostname(wifi_config.hostname.c_str());
 
-    WiFi.setTxPower(WIFI_POWER_19_5dBm);
-
     connectWifiSTA(wifi_config);
 
 }
