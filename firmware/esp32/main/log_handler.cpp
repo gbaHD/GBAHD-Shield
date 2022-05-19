@@ -84,29 +84,14 @@ void Log_Handler_Class::init(void)
 
 size_t Log_Handler_Class::write(uint8_t c)
 {
-    Serial.write(c);
-    String s = "";
-    if (c == 0x0A)
-    {
-        s += "<br>";
-    }
-    else if (c != 0x0D)
-    {
-        s += static_cast<char>(c);
-    }
-    
-    string_buffer += s;
+    string_buffer += static_cast<char>(c);
 
-    return 1;
+    return Serial.write(c);;
 }
 
 size_t Log_Handler_Class::write(const uint8_t *buffer, size_t size)
 {
-    String s = String(reinterpret_cast<const char*>(buffer));
-
-    s.replace("\r\n", "<br>");
-
-    string_buffer += s;    
+    string_buffer += reinterpret_cast<const char*>(buffer);    
 
     return Serial.write(buffer, size);
 }
@@ -121,6 +106,7 @@ void Log_Handler_Class::debugLine(String& string)
 
 void Log_Handler_Class::run(void)
 {
+    printf("Free Heap: %d \n", ESP.getFreeHeap());
     if (string_buffer.length() > 0 && ws && WiFi.isConnected())
     {
         for (uint8_t idx = 0U; idx < MAX_NUM_CLIENTS; idx++)
@@ -134,6 +120,8 @@ void Log_Handler_Class::run(void)
     }
 
     ws->cleanupClients();
+
+//    Serial.readBytes();
 }
 
 
