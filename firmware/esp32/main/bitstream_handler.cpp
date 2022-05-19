@@ -59,7 +59,7 @@ Bitstream_Handler_Class Bitstream_Handler;
 void Bitstream_Handler_Class::init(void) {
 
   uint16_t reset_counter = 0U;
-#ifndef DEV_BOARD
+  
   // initialize serial communication at 115200 bits per second: 
 
   //PULL UP of SD card pins <--- preventing mounting failure due to floating state
@@ -93,24 +93,25 @@ void Bitstream_Handler_Class::init(void) {
     }
     delay(10);
   }
-#endif
 }
 
 
 // load bitstream from file to FPGA
 bool Bitstream_Handler_Class::pushBitStream(File& file) {
   char byte_buff[1024];
+  memset(byte_buff, 0x00, sizeof(byte_buff));
   uint8_t ident_idx = 0U;
 
   Log_Handler.print("Loading FPGA ... ");
+  log_i("Loading FPGA");
   pinMode(XFPGA_DIN_PIN, OUTPUT);
 
-  while(file.available()){
-
-    int cnt = file.readBytes(byte_buff, sizeof(byte_buff));
-
+  int cnt = file.readBytes(byte_buff, sizeof(byte_buff));
+  while(cnt > 0){
     for(int i=0; i<cnt; i++){ 
-     // shiftOut(XFPGA_DIN_PIN, XFPGA_CCLK_PIN, MSBFIRST, byte_buff[i]);
+#ifdef USE_SHIFTOUT
+      shiftOut(XFPGA_DIN_PIN, XFPGA_CCLK_PIN, MSBFIRST, byte_buff[i]);
+#else
       unsigned char byte = static_cast<unsigned char>(byte_buff[i]);
       for(int j = 0;j < 8;j++) {
         REG_WRITE(GPIO_OUT_W1TC_REG, (1<<XFPGA_CCLK_PIN));
@@ -118,7 +119,7 @@ bool Bitstream_Handler_Class::pushBitStream(File& file) {
         byte = byte << 1;
         REG_WRITE(GPIO_OUT_W1TS_REG, (1<<XFPGA_CCLK_PIN));
       }
-
+#endif
       if ((ident_idx < 4))
       {
         if (byte_buff[i] == BITSTREAM_VERSION_IDENT[ident_idx])
@@ -135,9 +136,11 @@ bool Bitstream_Handler_Class::pushBitStream(File& file) {
         version[ident_idx++ - 4] = byte_buff[i];
       }
     }
+    cnt = file.readBytes(byte_buff, sizeof(byte_buff));
   }
   
   Log_Handler.println("DONE!");
+  log_d("Done");
   digitalWrite(XFPGA_CCLK_PIN, LOW); 
   
   file.close();
