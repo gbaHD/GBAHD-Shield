@@ -35,6 +35,7 @@
 #include <uni_bluetooth.h>
 
 #include "ArduinoBluepad32.h"
+#include "esp_task_wdt.h"
 #include "mega_handler.h"
 #include "preferences_handler.h"
 #include "log_handler.h"
@@ -363,6 +364,7 @@ void Mega_Handler_Class::update_mega(bool force)
         delay(500);
         shield_timeout++;
         shield_available = get_chip_info();
+        esp_task_wdt_reset();
     }
     
     if (shield_available)
@@ -451,6 +453,7 @@ void Mega_Handler_Class::init()
     Preferences_Handler.getBluetoothConfig(bt_config);
 
     BP32.setup(&onConnectedGamepad, &onDisconnectedGamepad);
+
     uni_bluetooth_enable_new_connections_safe(bt_config.enabled);
 
     Wire.begin(SDA_PIN, SCL_PIN);
