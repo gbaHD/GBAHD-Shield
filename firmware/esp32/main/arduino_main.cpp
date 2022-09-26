@@ -26,6 +26,7 @@
 
  *******************************************************************************/
 
+#include "esp_task_wdt.h"
 #include "preferences_handler.h"
 #include "sdkconfig.h"
 #ifndef CONFIG_BLUEPAD32_PLATFORM_ARDUINO
@@ -104,18 +105,30 @@ void loop() {
     Mega_Handler.update();
     timer_5ms_timestamp = timestamp;
   }
-  vTaskDelay(1);
+  
 
   if ((timestamp - timer_50ms_timestamp) > 50)
   {
-    Web_Handler.run();
-    Wifi_Handler.update();    
+    if (Web_Handler.isRunning())
+    {
+      if (Web_Handler.isAccessTimeout() 
+          && !OTA_Handler.isOtaRunning())
+      {
+        Log_Handler.println("No Web Request since 3 Minutes - shutting down Web Server.");
+        Web_Handler.shutdown();
+        Wifi_Handler.shutdown();
+      }
+      else
+      {
+        Web_Handler.run();
+        Wifi_Handler.update();
+        OTA_Handler.run();
+      }
+    }
     
-    OTA_Handler.run();
     Preferences_Handler.run();
     timer_50ms_timestamp = timestamp;
   }
-  vTaskDelay(1);
 
 
   if ((timestamp - timer_100ms_timestamp) > 100)
@@ -124,6 +137,7 @@ void loop() {
     
     timer_100ms_timestamp = timestamp;
   }
-  vTaskDelay(1);
+
+  esp_task_wdt_reset();
 }
 
