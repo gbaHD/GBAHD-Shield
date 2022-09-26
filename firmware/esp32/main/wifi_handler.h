@@ -8,6 +8,7 @@ class Wifi_Handler_Class {
     public:
         void init();
         void update();
+        void shutdown();
         void reset();
     private:
         void getSTACredentials(Wifi_Config& wifi_config);

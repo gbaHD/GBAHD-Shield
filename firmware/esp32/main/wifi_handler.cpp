@@ -117,6 +117,12 @@ void Wifi_Handler_Class::connectWifiSTA(Wifi_Config& wifi_config)
     WiFi.begin(wifi_config.ssid.c_str(), wifi_config.password.c_str());
 }
 
+void Wifi_Handler_Class::shutdown()
+{
+    WiFi.disconnect(true);
+    WiFi.mode(WIFI_OFF);
+}
+
 void Wifi_Handler_Class::init()
 {
     Wifi_Config wifi_config;
