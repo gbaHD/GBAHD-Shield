@@ -625,6 +625,19 @@ void OTA_Handler_Class::fallback_update(void)
     }
 }
 
+
+bool OTA_Handler_Class::isOtaRunning(void)
+{
+    bool retval = false;
+
+    if (this->ota_state != OTA_STATE_NONE)
+    {
+        retval = true;
+    }
+
+    return retval;
+}
+
 void OTA_Handler_Class::init(void)
 {
 
