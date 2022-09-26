@@ -4,6 +4,9 @@ cmake_minimum_required(VERSION 3.5)
 
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/external/bluepad32/src/components/bluepad32 DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/components)
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/external/bluepad32/src/components/bluepad32_arduino DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/components)
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/external/bluepad32/src/components/cmd_nvs DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/components)
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/external/bluepad32/src/components/cmd_system DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/components)
+
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/external/bluepad32/external/btstack DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/components)
 
 # BTStack
