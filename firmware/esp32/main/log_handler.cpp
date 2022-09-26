@@ -106,7 +106,6 @@ void Log_Handler_Class::debugLine(String& string)
 
 void Log_Handler_Class::run(void)
 {
-    printf("Free Heap: %d \n", ESP.getFreeHeap());
     if (string_buffer.length() > 0 && ws && WiFi.isConnected())
     {
         for (uint8_t idx = 0U; idx < MAX_NUM_CLIENTS; idx++)
@@ -120,8 +119,6 @@ void Log_Handler_Class::run(void)
     }
 
     ws->cleanupClients();
-
-//    Serial.readBytes();
 }
 
 
