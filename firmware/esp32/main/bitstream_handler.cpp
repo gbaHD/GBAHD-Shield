@@ -31,6 +31,7 @@
 #include <LittleFS.h>
 #include <Arduino.h>
 
+#include "esp_task_wdt.h"
 #include "preferences_handler.h"
 #include "log_handler.h"
 
@@ -92,6 +93,7 @@ void Bitstream_Handler_Class::init(void) {
       break;
     }
     delay(10);
+    esp_task_wdt_reset();
   }
 }
 
