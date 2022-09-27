@@ -82,13 +82,20 @@ void get_shield_variant();
 
 int main(void) {
     init_uart();
+    printf("RstRsn: %02X\n", MCUSR);
+
+    MCUSR = 0;
+    wdt_disable();
+
     get_shield_variant();
     if(shield_variant == MANCLOUD) {
         MC_LED_DIR |= _BV(MC_LED_GREEN_PIN) | _BV(MC_LED_RED_PIN);
         MC_FPGA_COMM_DIR |= _BV(MC_FPGA_COMM_PIN);
     } else if (shield_variant == CONSOLES4YOU) {
+        C4Y_SETPIN_M(C4Y_RESET_DIR, C4Y_RESET_PIN, 1);
         C4Y_LED_DIR |= _BV(C4Y_LED_RED_PIN);
         C4Y_LED_PORT |= _BV(C4Y_LED_RED_PIN);
+        C4Y_FPGA_COMM_PORT |= _BV(C4Y_FPGA_COMM_PIN);
         C4Y_FPGA_COMM_DIR |= _BV(C4Y_FPGA_COMM_PIN);
     }
     controller_init();
@@ -138,7 +145,7 @@ void process_data(uint16_t ctrl_data) {
               }
             } break;
             case COMBO_AVR_RST: {
-              wdt_enable(WDTO_30MS);
+              wdt_enable(WDTO_120MS);
               while(1);
             } break;
         }
@@ -152,9 +159,9 @@ void reboot(void) {
         _delay_ms(500);
         MC_GBA_POWER_ON_M();
     } else if (shield_variant == CONSOLES4YOU) {
-        C4Y_RESET_PORT &= ~_BV(C4Y_RESET_PIN);
+        C4Y_SETPIN_M(C4Y_RESET_PORT, C4Y_RESET_PIN, 0);
         _delay_ms(1000);
-        C4Y_RESET_PORT |= _BV(C4Y_RESET_PIN);
+        C4Y_SETPIN_M(C4Y_RESET_PORT, C4Y_RESET_PIN, 1);
     }
 }
 
