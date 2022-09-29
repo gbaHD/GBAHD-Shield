@@ -40,6 +40,8 @@ class Log_Handler_Class : public Print
 
         size_t write(uint8_t c);
         size_t write(const uint8_t *buffer, size_t size);
+
+        void debugLine(String& string);
     private:
         static void onWsEvent(AsyncWebSocket * server, AsyncWebSocketClient * client, AwsEventType type, void * arg, uint8_t *data, size_t len);
         AsyncWebSocket* ws;

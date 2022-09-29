@@ -93,6 +93,7 @@ class OTA_Handler_Class
         void full_update(void);
         void update_latest_BS(void);
         void fallback_update(void);
+        bool isOtaRunning(void);
 
         void init(void);
         void run(void);

@@ -33,6 +33,7 @@
 
 #include <ESPAsyncWebServer.h>
 #include <AsyncTCP.h>
+#include <stdint.h>
 
 #define HTML_A      ( "A" )
 #define HTML_B      ( "B" )
@@ -53,10 +54,15 @@
 #define HTML_SYSTEM ( "System" )
 #define HTML_OSD    ( "OSD" )
 
+#define WEB_TIMEOUT ( 180000000 )
+
 class Web_Handler_Class {
     public:
         void addWebSocket(AsyncWebSocket* handler);
+        bool isAccessTimeout(void);
+        bool isRunning(void);
         void init(void);
+        void shutdown(void);
         void run(void);
     private:
         static void _handle404(AsyncWebServerRequest *request);
@@ -74,7 +80,6 @@ class Web_Handler_Class {
         static void handleBTReset(AsyncWebServerRequest *request);
 
 
-
         static String serial_ip(const String& var);
         static String ota_info(const String& var);
 
@@ -88,6 +93,8 @@ class Web_Handler_Class {
         static bool uploadSuccess;
         static AsyncWebServer _Aserver;
         static int64_t rebootTimer;
+        static int64_t lastAccess;
+        static bool serverRunning;
 };
 
 extern Web_Handler_Class Web_Handler;

@@ -62,7 +62,7 @@ ISR (TWI_vect)
     {
     // Slave Receiver
     case TW_SR_SLA_ACK: //slave was addressed: prepare to receive data
-        LED_PORT |= _BV(LED_RED_PIN);
+//        MC_LED_PORT |= _BV(MC_LED_RED_PIN);
         TWCR_ACK;
         buff_bytes = 0;
         break;
@@ -86,7 +86,7 @@ ISR (TWI_vect)
         TWCR_NACK;  //this slave can only receive data and not send some
         break;
     case TW_SR_STOP:
-        LED_PORT &= ~_BV(LED_RED_PIN);
+//        MC_LED_PORT &= ~_BV(MC_LED_RED_PIN);
         TWCR_ACK;
         break;
     default:
