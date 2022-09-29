@@ -117,6 +117,12 @@ void Wifi_Handler_Class::connectWifiSTA(Wifi_Config& wifi_config)
     WiFi.begin(wifi_config.ssid.c_str(), wifi_config.password.c_str());
 }
 
+void Wifi_Handler_Class::shutdown()
+{
+    WiFi.disconnect(true);
+    WiFi.mode(WIFI_OFF);
+}
+
 void Wifi_Handler_Class::init()
 {
     Wifi_Config wifi_config;
@@ -124,8 +130,6 @@ void Wifi_Handler_Class::init()
     getSTACredentials(wifi_config);
 
     WiFi.setHostname(wifi_config.hostname.c_str());
-
-    WiFi.setTxPower(WIFI_POWER_19_5dBm);
 
     connectWifiSTA(wifi_config);
 

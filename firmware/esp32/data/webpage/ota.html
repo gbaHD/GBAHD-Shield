@@ -3,8 +3,8 @@
 <head>
     <title>gbaHD OTA Update</title>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="pico.min.css">
-    <link rel="stylesheet" href="gbaHD.css">
+    <link rel="stylesheet" href="/pico.min.css">
+    <link rel="stylesheet" href="/gbaHD.css">
     <meta name="viewport" content="width=device-width,initial-scale=0.8">
     <script type="text/javascript">
         function updateProgress(evt) {
@@ -36,19 +36,19 @@
     <main class="container">
         <nav>
             <ul>
-                <li><img src="Logo.svg" width="223"></li>
+                <li><img src="/Logo.svg" width="223"></li>
             </ul>
             <ul>
-                <li><a href="settings.html" role="button" class="outline">Settings</a></li>
-                <li><a href="serial.html" role="button" class="outline">Log</a></li>
-                <li><a href="#" role="button">Status</a></li>
+                <li><a href="/settings.html" role="button" class="outline">Settings</a></li>
+                <li><a href="/serial.html" role="button" class="outline">Log</a></li>
+                <li><a href="/index.html" role="button">Status</a></li>
             </ul>
         </nav>
         <h1>OTA Update</h1>
         <article>
             <p id="information">
                 <h3>Version {{VERSION}}</h3>
-                <code style="width: 100%" id="changelog">{{CHANGELOG}}</code>
+                <code style="width: 100%; white-space: pre-wrap;" id="changelog">{{CHANGELOG}}</code>
             </p>
             <p id="updateMonitor" hidden=true>
                 <progress id="updateProgress" value="0" max="100"></progress>

@@ -70,13 +70,14 @@ INC = ./inc
 # include path
 INCLUDE := $(foreach dir, $(INC), -I$(dir))
 # c flags
-CFLAGS    += -Wall -Os -DF_CPU=$(CLK) -mmcu=$(MCU) $(INCLUDE)
+CFLAGS    += -Wall -Os -DF_CPU=$(CLK) -mmcu=$(MCU) $(INCLUDE) 
+#CFLAGS    += -DDEBUG=1
 
 # executables
 AVRDUDE = avrdude -c $(PRG) -p $(AVRDUDE_MCU)
 OBJCOPY = avr-objcopy
 OBJDUMP = avr-objdump
-SIZE    = avr-size --format=avr --mcu=$(MCU)
+SIZE    = avr-size
 CC      = avr-gcc
 
 # generate list of objects
@@ -116,13 +117,12 @@ clean:
 # elf file
 $(PRJ).elf: $(OBJ)
 	$(CC) $(CFLAGS) -o $(PRJ).elf $(OBJ)
+	$(SIZE) $@
 
 # hex file
 $(PRJ).hex: $(PRJ).elf
 	$(OBJCOPY) -j .text -j .data -O ihex $(PRJ).elf $(PRJ).hex
-	$(SIZE) $(PRJ).elf
 	
 # hex file
 $(PRJ).bin: $(PRJ).elf
 	$(OBJCOPY) -j .text -j .data -O binary $(PRJ).elf $(PRJ).bin
-	$(SIZE) $(PRJ).elf

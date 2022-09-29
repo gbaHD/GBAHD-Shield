@@ -74,10 +74,11 @@ jobs:
         shell: bash
       - name: ESP32 Build
         if: steps.esp_change.outputs.changed == 'true'
-        uses: espressif/esp-idf-ci-action@release-v4.4
+        uses: espressif/esp-idf-ci-action@v1
         with:
           # Relative path under $GITHUB_WORKSPACE to place the repository
           path: firmware/esp32
+          esp_idf_version: v4.4.2
         
       - name: Prepare Release
         if: steps.esp_change.outputs.changed == 'true'
