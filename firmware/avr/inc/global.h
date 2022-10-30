@@ -37,7 +37,7 @@ typedef enum {
 #define MC_GBA_DATA_OUT    PIN3
 #define MC_CTRL_DATA_IN    PIN4
 #define MC_CTRL_CLOCK      PIN5
-#define MC_CTRL_INIT_M()   MC_CTRL_DIR |= _BV(MC_CTRL_LATCH) | _BV(MC_GBA_DATA_OUT) | _BV(MC_CTRL_CLOCK)
+#define MC_CTRL_INIT_M()   {MC_CTRL_DIR |= _BV(MC_CTRL_LATCH) | _BV(MC_GBA_DATA_OUT) | _BV(MC_CTRL_CLOCK); MC_CTRL_PORT |= _BV(MC_CTRL_DATA_IN);}
 
 #define MC_LED_DIR         DDRD
 #define MC_LED_PORT        PORTD
