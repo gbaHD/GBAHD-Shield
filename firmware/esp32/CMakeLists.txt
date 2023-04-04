@@ -41,3 +41,4 @@ endif()
 project(gbaHD)
 
 littlefs_create_partition_image(spiffs ${CMAKE_CURRENT_SOURCE_DIR}/data FLASH_IN_PROJECT)
+
