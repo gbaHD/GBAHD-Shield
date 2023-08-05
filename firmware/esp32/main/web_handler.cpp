@@ -437,7 +437,8 @@ bool Web_Handler_Class::isAccessTimeout(void)
       retval = true;
     }
     
-    return retval;
+    //return retval;
+    return false;
 }
 
 
