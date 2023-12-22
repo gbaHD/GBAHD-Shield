@@ -59,7 +59,6 @@
 class Web_Handler_Class {
     public:
         void addWebSocket(AsyncWebSocket* handler);
-        bool isAccessTimeout(void);
         bool isRunning(void);
         void init(void);
         void shutdown(void);
@@ -93,7 +92,6 @@ class Web_Handler_Class {
         static bool uploadSuccess;
         static AsyncWebServer _Aserver;
         static int64_t rebootTimer;
-        static int64_t lastAccess;
         static bool serverRunning;
 };
 

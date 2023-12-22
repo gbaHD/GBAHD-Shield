@@ -32,7 +32,7 @@
 #include <Bluepad32.h>
 #include <LittleFS.h>
 #include <mbedtls/sha1.h>
-#include <uni_bluetooth.h>
+//#include <uni_bluetooth.h>
 
 #include "ArduinoBluepad32.h"
 #include "esp_task_wdt.h"
@@ -454,7 +454,7 @@ void Mega_Handler_Class::init()
 
     BP32.setup(&onConnectedGamepad, &onDisconnectedGamepad);
 
-    uni_bluetooth_enable_new_connections_safe(bt_config.enabled);
+    BP32.enableNewBluetoothConnections(bt_config.enabled);
 
     Wire.begin(SDA_PIN, SCL_PIN);
 
