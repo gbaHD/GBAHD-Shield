@@ -4,8 +4,8 @@ cmake_minimum_required(VERSION 3.5)
 
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/external/bluepad32/src/components/bluepad32 DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/components)
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/external/bluepad32/src/components/bluepad32_arduino DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/components)
-file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/external/bluepad32/src/components/cmd_nvs DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/components)
-file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/external/bluepad32/src/components/cmd_system DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/components)
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/external/bluepad32/src/components/cmd_nvs_4.4 DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/components)
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/external/bluepad32/src/components/cmd_system_4.4 DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/components)
 
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/external/bluepad32/external/btstack DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/components)
 
@@ -38,6 +38,7 @@ if(GBAHD_DEBUG)
     add_compile_definitions("GBAHD_DEBUG_OUTPUT=1")
 endif()
 
-project(gbaHD)
+project(gbaHD LANGUAGE C CXX)
 
 littlefs_create_partition_image(spiffs ${CMAKE_CURRENT_SOURCE_DIR}/data FLASH_IN_PROJECT)
+

@@ -61,6 +61,7 @@
 #include "debug.h"
 
 #include "controller.h"
+#include "osd.h"
 #include "twiSlave.h"
 /* === TYPES ================================================================ */
 
@@ -75,9 +76,6 @@ uint8_t shield_variant = MANCLOUD;
 /* === PROTOTYPES =========================================================== */
 void process_data(uint16_t ctrl_data);
 void reboot(void);
-uint8_t map_osd(uint16_t ctrl_data);
-void fpga_transfer(uint8_t data);
-void fpga_write_bit(bool high);
 void get_shield_variant();
 
 int main(void) {
@@ -90,6 +88,7 @@ int main(void) {
     get_shield_variant();
     if(shield_variant == MANCLOUD) {
         MC_LED_DIR |= _BV(MC_LED_GREEN_PIN) | _BV(MC_LED_RED_PIN);
+        MC_FPGA_COMM_PORT |= _BV(MC_FPGA_COMM_PIN);
         MC_FPGA_COMM_DIR |= _BV(MC_FPGA_COMM_PIN);
     } else if (shield_variant == CONSOLES4YOU) {
         C4Y_SETPIN_M(C4Y_RESET_DIR, C4Y_RESET_PIN, 1);
@@ -101,6 +100,7 @@ int main(void) {
     controller_init();
     twi_init();
     reboot();
+    osd_init();
     while(1) {
         controller_update();
         printf("controller_data: %04X \n", get_controller_data());
@@ -120,35 +120,29 @@ int main(void) {
 void process_data(uint16_t ctrl_data) {
       static uint16_t last_combination = 0xFFF;
 
-      if (osd_enabled)
-      {
-        fpga_transfer(map_osd(ctrl_data));
+      if (osd_enabled) {
+          osd_enabled = osd_update(ctrl_data);
         set_controller_data(0);    //clear controller data as long as OSD is enabled
+      } else if(pad_display_enabled()) {
+          pad_display_update(ctrl_data);
       }
 
       if (last_combination != ctrl_data) {
-        last_combination = ctrl_data;
-        switch (ctrl_data)
-        {
-          case COMBO_IGR: {
-              reboot();
-            } break;
-          case ENABLE_OSD: {
-              osd_enabled = true;
-            } break;
-          case CTRL_IN_START: {
-            if (!osd_enabled) break;
-              osd_enabled = false;
-              //ensure the OSD is disabled properly
-              for(uint8_t i = 0; i < 8; i++) {
-                fpga_transfer(0);
-              }
-            } break;
-            case COMBO_AVR_RST: {
-              wdt_enable(WDTO_120MS);
-              while(1);
-            } break;
-        }
+          last_combination = ctrl_data;
+          switch (ctrl_data)
+          {
+              case COMBO_IGR: {
+                  reboot();
+              } break;
+              case ENABLE_OSD: {
+                  osd_enter();
+                  osd_enabled = true;
+              } break;
+              case COMBO_AVR_RST: {
+                  wdt_enable(WDTO_120MS);
+                  while(1);
+              } break;
+          }
       }
 }
 
@@ -162,53 +156,6 @@ void reboot(void) {
         C4Y_SETPIN_M(C4Y_RESET_PORT, C4Y_RESET_PIN, 0);
         _delay_ms(1000);
         C4Y_SETPIN_M(C4Y_RESET_PORT, C4Y_RESET_PIN, 1);
-    }
-}
-
-//maps the raw controller data to OSD controls
-uint8_t map_osd(uint16_t ctrl_data) {
-    uint16_t out_data = 0;
-    if (ctrl_data & CTRL_IN_B)      out_data |= 0x80;
-    if (ctrl_data & CTRL_IN_A)      out_data |= 0x40;
-    if (ctrl_data & CTRL_IN_LEFT)   out_data |= 0x20;
-    if (ctrl_data & CTRL_IN_RIGHT)  out_data |= 0x10;
-    if (ctrl_data & CTRL_IN_DOWN)   out_data |= 0x08;
-    if (ctrl_data & CTRL_IN_UP)     out_data |= 0x04;
-    out_data |= 0x02;
-    return out_data;
-}
-
-//this function is empirically compensated to generate 10us pulses inside a for loop @ 8MHz
-void fpga_write_bit(bool high) {
-    if(shield_variant == MANCLOUD) {
-        if(high) {
-            MC_FPGA_COMM_PORT &= ~_BV(MC_FPGA_COMM_PIN);
-            _delay_us(2);
-            MC_FPGA_COMM_PORT |= _BV(MC_FPGA_COMM_PIN);
-            _delay_us(5);
-        } else {
-            MC_FPGA_COMM_PORT &= ~_BV(MC_FPGA_COMM_PIN);
-            _delay_us(7);
-            MC_FPGA_COMM_PORT |= _BV(MC_FPGA_COMM_PIN);
-        }
-    } else if (shield_variant == CONSOLES4YOU) {
-        if(high) {
-            C4Y_FPGA_COMM_PORT &= ~_BV(C4Y_FPGA_COMM_PIN);
-            _delay_us(4);
-            C4Y_FPGA_COMM_PORT |= _BV(C4Y_FPGA_COMM_PIN);
-            _delay_us(10);
-        } else {
-            C4Y_FPGA_COMM_PORT &= ~_BV(C4Y_FPGA_COMM_PIN);
-            _delay_us(14);
-            C4Y_FPGA_COMM_PORT |= _BV(C4Y_FPGA_COMM_PIN);
-        }
-    }
-}
-
-//transfer command byte to FPGA
-void fpga_transfer(uint8_t data) {
-    for(uint8_t i = 1; i != 0; i<<=1) {
-        fpga_write_bit(data & i);
     }
 }
 
