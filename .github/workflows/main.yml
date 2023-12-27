@@ -78,7 +78,7 @@ jobs:
         with:
           # Relative path under $GITHUB_WORKSPACE to place the repository
           path: firmware/esp32
-          esp_idf_version: v4.4.2
+          esp_idf_version: v4.4.6
         
       - name: Prepare Release
         if: steps.esp_change.outputs.changed == 'true'

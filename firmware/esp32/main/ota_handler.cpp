@@ -32,7 +32,7 @@
 #include <WiFi.h>
 #include <Update.h>
 #include <cJSON.h>
-#include <uni_bluetooth.h>
+//#include <uni_bluetooth.h>
 #include <Esp.h>
 #include <base64.h>
 #include <SD_MMC.h>
@@ -425,8 +425,8 @@ void OTA_Handler_Class::update(void)
 void OTA_Handler_Class::full_update(void)
 {
     current_update = &release_update_info;
-    uni_bluetooth_enable_new_connections_safe(false);
-    uni_bluetooth_del_keys_safe();
+    BP32.enableNewBluetoothConnections(false);
+    BP32.forgetBluetoothKeys();
     ota_queue_length = 2U;
     ota_queue_idx = 0U;
     ota_state = OTA_STATE_QUEUED;
@@ -435,8 +435,8 @@ void OTA_Handler_Class::full_update(void)
 void OTA_Handler_Class::update_latest_BS(void)
 {
     current_update = &bs_update_info;
-    uni_bluetooth_enable_new_connections_safe(false);
-    uni_bluetooth_del_keys_safe();
+    BP32.enableNewBluetoothConnections(false);
+    BP32.forgetBluetoothKeys();
     ota_queue_length = 2U;
     ota_queue_idx = 0U;
     ota_state = OTA_STATE_QUEUED;
