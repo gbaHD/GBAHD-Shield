@@ -109,18 +109,21 @@ void loop() {
 
   if ((timestamp - timer_50ms_timestamp) > 50)
   {
-    if (Web_Handler.isAccessTimeout() 
-        && !OTA_Handler.isOtaRunning())
+    if (Web_Handler.isRunning())
     {
-      Log_Handler.println("No Web Request since 3 Minutes - shutting down Web Server.");
-      Web_Handler.shutdown();
-      Wifi_Handler.shutdown();
-    }
-    else
-    {
-      Web_Handler.run();
-      Wifi_Handler.update();
-      OTA_Handler.run();
+      if (Web_Handler.isAccessTimeout()  
+          && !OTA_Handler.isOtaRunning())
+      {
+        Log_Handler.println("No Web Request since 3 Minutes - shutting down Web Server.");
+        Web_Handler.shutdown();
+        Wifi_Handler.shutdown();
+      }
+      else
+      {
+        Web_Handler.run();
+        Wifi_Handler.update();
+        OTA_Handler.run();
+      }
     }
 
     Preferences_Handler.run();
