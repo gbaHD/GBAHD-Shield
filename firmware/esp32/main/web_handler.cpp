@@ -47,6 +47,7 @@ AsyncWebServer Web_Handler_Class::_Aserver(80);
 File Web_Handler_Class::fsUpload;
 bool Web_Handler_Class::uploadSuccess = false;
 int64_t Web_Handler_Class::rebootTimer = -1;
+int64_t Web_Handler_Class::lastAccess = -1;
 bool Web_Handler_Class::serverRunning = false;
 
 const String BT_MAPPING_OPTION = "<option value=\"{{OPTION_VALUE}}\" {{SELECTED}}>{{OPTION_TEXT}}</option>";
@@ -73,6 +74,7 @@ const String INPUT_HTML_MAP[BT_INP_MAX] = {
 
 void Web_Handler_Class::_handle404(AsyncWebServerRequest *request)
 {
+  lastAccess = esp_timer_get_time();
   request->send(404, "text/plain", "Not found.");
 }
 
@@ -147,6 +149,7 @@ void Web_Handler_Class::handleReboot(AsyncWebServerRequest *request)
 
 void Web_Handler_Class::handleUploadDone(AsyncWebServerRequest *request)
 {
+  lastAccess = esp_timer_get_time();
   request->send(200, "text/html", build_update_done(uploadSuccess));
 }
 
@@ -192,6 +195,8 @@ void Web_Handler_Class::handleLittleFSFileUpload(AsyncWebServerRequest *request,
     }
   }
 
+  lastAccess = esp_timer_get_time();
+
 }
 
 void Web_Handler_Class::handlePartitionUpload(AsyncWebServerRequest *request, const String& filename, size_t index, uint8_t *data, size_t len, bool final)
@@ -235,6 +240,9 @@ void Web_Handler_Class::handlePartitionUpload(AsyncWebServerRequest *request, co
       Update.printError(Serial);
     }
   }
+
+  lastAccess = esp_timer_get_time();
+
 }
 
 
@@ -296,6 +304,9 @@ void Web_Handler_Class::handleSettings(AsyncWebServerRequest *request)
 
     request->send(200, "text/html", page_string);
   }
+
+  lastAccess = esp_timer_get_time();
+
 }
 
 void Web_Handler_Class::handleIndex(AsyncWebServerRequest *request)
@@ -343,6 +354,9 @@ void Web_Handler_Class::handleIndex(AsyncWebServerRequest *request)
   }
 
   request->send(200, "text/html", page_string);
+
+  lastAccess = esp_timer_get_time();
+
 }
 
 void Web_Handler_Class::handleOTA(AsyncWebServerRequest *request)
@@ -376,6 +390,9 @@ void Web_Handler_Class::handleOTA(AsyncWebServerRequest *request)
   page_string.replace("{{VERSION}}", info->version);
 
   request->send(200, "text/html", page_string);
+
+  lastAccess = esp_timer_get_time();
+
 }
 
 void Web_Handler_Class::handleToken(AsyncWebServerRequest *request)
@@ -387,6 +404,9 @@ void Web_Handler_Class::handleToken(AsyncWebServerRequest *request)
     Log_Handler.println("Received token " + token);
   }
   request->redirect("/");
+
+  lastAccess = esp_timer_get_time();
+
 }
 
 
@@ -394,6 +414,9 @@ void Web_Handler_Class::handleBTReset(AsyncWebServerRequest *request)
 {
   BP32.forgetBluetoothKeys();
   request->redirect("/");
+
+  lastAccess = esp_timer_get_time();
+
 }
 
 void Web_Handler_Class::addWebSocket(AsyncWebSocket* handler)
@@ -410,7 +433,16 @@ String Web_Handler_Class::serial_ip(const String& var)
   return "";
 }
 
-
+bool Web_Handler_Class::isAccessTimeout(void)
+{
+    bool retval = false;
+    if (esp_timer_get_time() - this->lastAccess > WEB_TIMEOUT)
+    {
+      retval = true;
+    }
+    
+    return retval;
+}
 
 bool Web_Handler_Class::isRunning(void)
 {
@@ -465,6 +497,8 @@ void Web_Handler_Class::init(void)
   _Aserver.begin();
 
   serverRunning = true;
+
+  lastAccess = esp_timer_get_time();
 
 }
 
